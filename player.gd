@@ -16,7 +16,7 @@ class InputActions:
 	var jump: String
 
 var _input_actions: Dictionary = {}
-const _tones: Array[String] = ["A", "B", "C"]
+const _scale: Array[String] = ["A", "B", "C", "D", "E", "F", "G"]
 var current_tone: String = "A"
 
 func _ready() -> void:
@@ -32,13 +32,16 @@ func _setup_floor_map_layer_info():
 	
 func _setup_input_actions():
 	_input_actions.clear()
-	for tone in _tones:
-		var actions: InputActions = InputActions.new()
-		actions.move_left = tone + "_left"
-		actions.move_right = tone + "_right"
-		actions.jump = tone + "_jump"
+	for note in _scale.size():
+		var prev_note: int = posmod(note - 1, _scale.size())
+		var next_note: int = posmod(note + 1, _scale.size())
 		
-		_input_actions[tone] = actions
+		var actions: InputActions = InputActions.new()
+		actions.move_left = _scale[prev_note] + "_note"
+		actions.move_right = _scale[next_note] + "_note"
+		actions.jump = _scale[note] + "_note"
+		
+		_input_actions[_scale[note]] = actions
 	
 func _physics_process(delta: float) -> void:
 	_update_tone(delta)
