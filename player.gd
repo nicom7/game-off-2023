@@ -55,8 +55,8 @@ func _setup_input_actions():
 		var next_note: int = posmod(note + 1, _scale.size())
 		
 		var actions: InputActions = InputActions.new()
-		actions.move_left = _scale[prev_note] + "_note"
-		actions.move_right = _scale[next_note] + "_note"
+		actions.move_left = "ui_left"
+		actions.move_right = "ui_right"
 		actions.jump = _scale[note] + "_note"
 		
 		_input_actions[note] = actions
