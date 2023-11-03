@@ -12,4 +12,11 @@ func _process(delta: float) -> void:
 
 
 func _on_player_current_tone_changed(tone: Globals.Tone) -> void:
-	$PlatformSoundEmitter.tone = tone
+	$NotePlayer.tone = tone
+
+
+func _on_player_on_floor_changed(value) -> void:
+	if value:
+		$NotePlayer.start()
+	else:
+		$NotePlayer.stop()

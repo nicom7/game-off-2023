@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ber65i2siu7hu"]
+
+[ext_resource type="Script" path="res://platform_sound_emitter.gd" id="1_86hsk"]
+
+[sub_resource type="Curve" id="Curve_j8wna"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_e3tl6"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_t8jo2"]
+buffer_length = 0.05
+
+[node name="NotePlayer" type="Node"]
+script = ExtResource("1_86hsk")
+attack_duration = 0.5
+attack_curve = SubResource("Curve_j8wna")
+release_curve = SubResource("Curve_e3tl6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_t8jo2")
