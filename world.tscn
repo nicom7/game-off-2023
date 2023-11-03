@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=14 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Texture2D" uid="uid://cm1xiju3kidr7" path="res://platform.png" id="1_a1k5b"]
 [ext_resource type="Script" path="res://world.gd" id="1_u7smd"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://tlr4nak2n3x" path="res://a_tone.png" id="2_xej7t"]
 [ext_resource type="Texture2D" uid="uid://dyniha8bifqrr" path="res://b_tone.png" id="3_dgmfu"]
 [ext_resource type="Texture2D" uid="uid://bt4ogf2r5paa0" path="res://c_tone.png" id="4_nn1hh"]
-[ext_resource type="PackedScene" uid="uid://ber65i2siu7hu" path="res://note_player.tscn" id="8_ho3ld"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_br5yh"]
 texture = ExtResource("1_a1k5b")
@@ -600,7 +599,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(589841, 196608, 2, 589840, 131072, 2, 589839, 131072, 2, 589838, 65536, 2, 524302, 65536, 0, 524303, 131072, 0, 524304, 131072, 0, 524305, 196608, 0, 458758, 196608, 2, 393222, 196608, 0, 393221, 65536, 0, 458757, 65536, 2)
+layer_1/tile_data = PackedInt32Array(589841, 196608, 2, 589840, 131072, 2, 589839, 131072, 2, 589838, 65536, 2, 524302, 65536, 0, 524303, 131072, 0, 524304, 131072, 0, 524305, 196608, 0, 458758, 196608, 2, 393222, 196608, 0, 393221, 65536, 0, 458757, 65536, 2, 786443, 131072, 3, 786444, 131072, 3, 786445, 131072, 3, 786446, 131072, 3, 786447, 131072, 3, 786448, 131072, 3, 786449, 131072, 3, 786450, 131072, 3, 786451, 131072, 3, 786452, 131072, 3, 786453, 131072, 3, 786454, 131072, 3, 786455, 196608, 3, 786442, 131072, 3, 786441, 131072, 3, 786440, 131072, 3, 786439, 131072, 3, 786438, 131072, 3, 786437, 131072, 3, 786436, 131072, 3, 786435, 131072, 3, 786434, 131072, 3, 786433, 131072, 3, 786432, 65536, 3)
 layer_2/name = "Tones"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
@@ -623,8 +622,6 @@ texture = ExtResource("2_nu22u")
 
 [node name="TileDetector" type="Marker2D" parent="Player"]
 position = Vector2(0, 36)
-
-[node name="NotePlayer" parent="." instance=ExtResource("8_ho3ld")]
 
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
 [connection signal="on_floor_changed" from="Player" to="." method="_on_player_on_floor_changed"]

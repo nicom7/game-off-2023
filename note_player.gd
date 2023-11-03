@@ -1,3 +1,4 @@
+class_name NotePlayer
 extends Node
 
 @export var tone: Globals.Tone = Globals.Tone.A
@@ -67,6 +68,7 @@ func _update_envelope():
 			if relative_time > 1:
 				print("stop")
 				player.stop()
+				queue_free()
 			else:
 				player.volume_db = linear_to_db(release_curve.sample_baked(relative_time))
 		EnvelopePhase.SUSTAIN:
