@@ -20,6 +20,7 @@ var tone_frequencies: Array[float] = [220, 246.94, 261.63, 293.66, 329.63, 349.2
 var cursor = 0.0
 var phase_start_cursor = 0.0
 var phase_start_volume = 0.0
+var sustain_volume = 1.0
 
 enum EnvelopePhase
 {
@@ -40,6 +41,8 @@ const INV_SQRT_2_VEC = Vector2.ONE * INV_SQRT_2
 func start():
 	player.volume_db = linear_to_db(0)
 	current_phase = EnvelopePhase.ATTACK
+	# Sustain volume is equal to last point of attack curve
+	sustain_volume = attack_curve.sample_baked(1.0)
 	player.play()
 	playback = player.get_stream_playback()
 	if duration > 0:
@@ -76,7 +79,7 @@ func _update_envelope():
 				player.volume_db = linear_to_db(_get_volume(relative_time, release_curve))
 				
 		EnvelopePhase.SUSTAIN:
-			player.volume_db = 0
+			player.volume_db = linear_to_db(sustain_volume)
 			
 		
 func _get_volume(time: float, curve: Curve) -> float:
