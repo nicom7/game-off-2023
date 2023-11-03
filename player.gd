@@ -17,7 +17,25 @@ class InputActions:
 
 var _input_actions: Dictionary = {}
 const _scale: Array[String] = ["A", "B", "C", "D", "E", "F", "G"]
-var current_tone: String = "A"
+var current_tone: Globals.Tone = Globals.Tone.A:
+	get:
+		return current_tone
+	set(value):
+		if current_tone != value:
+			current_tone = value
+			current_tone_changed.emit(current_tone)
+			
+signal current_tone_changed(tone: Globals.Tone)			
+
+var on_floor: bool = false:
+	get:
+		return on_floor
+	set(value):
+		if on_floor != value:
+			on_floor = value
+			on_floor_changed.emit(on_floor)
+			
+signal on_floor_changed(value: bool)			
 
 func _ready() -> void:
 	_setup_floor_map_layer_info()
@@ -41,7 +59,7 @@ func _setup_input_actions():
 		actions.move_right = _scale[next_note] + "_note"
 		actions.jump = _scale[note] + "_note"
 		
-		_input_actions[_scale[note]] = actions
+		_input_actions[note] = actions
 	
 func _physics_process(delta: float) -> void:
 	_update_tone(delta)
@@ -50,18 +68,20 @@ func _physics_process(delta: float) -> void:
 func _update_tone(delta: float) -> void:
 	var custom_data = _get_floor_custom_data($TileDetector.global_position, "Tones", "Tone")
 	if custom_data != null:
-		current_tone = custom_data
-	print(current_tone)
+		current_tone = _scale.find(custom_data) as Globals.Tone
+#	print(current_tone)
 	
 func _update_movement(delta: float) -> void:
 	var current_input_actions: InputActions = _input_actions[current_tone]
 	
+	on_floor = is_on_floor()
+	
 	# Add the gravity.
-	if not is_on_floor():
+	if not on_floor:
 		velocity.y += gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed(current_input_actions.jump) and is_on_floor():
+	if Input.is_action_just_pressed(current_input_actions.jump) and on_floor:
 		velocity.y = jump_speed
 
 	# Get the input direction and handle the movement/deceleration.
