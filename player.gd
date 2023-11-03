@@ -8,6 +8,9 @@ extends CharacterBody2D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var jump_note_player_scene: PackedScene = preload("res://jump_note_player.tscn")
+var jump_note_player: NotePlayer
+
 var _floor_map_layer_info: Dictionary = {}
 
 class InputActions:
@@ -35,7 +38,8 @@ var on_floor: bool = false:
 			on_floor = value
 			on_floor_changed.emit(on_floor)
 			
-signal on_floor_changed(value: bool)			
+signal on_floor_changed(value: bool)
+signal jumped()
 
 func _ready() -> void:
 	_setup_floor_map_layer_info()
@@ -82,6 +86,7 @@ func _update_movement(delta: float) -> void:
 
 	# Handle Jump.
 	if Input.is_action_just_pressed(current_input_actions.jump) and on_floor:
+		jumped.emit()
 		velocity.y = jump_speed
 
 	# Get the input direction and handle the movement/deceleration.
@@ -111,3 +116,15 @@ func _get_floor_tile_data(pos: Vector2, layer: String):
 		tile_data = current_floor_map.get_cell_tile_data(layer_idx, floor_pos)
 		
 	return tile_data
+
+func _on_jumped() -> void:
+	jump_note_player = jump_note_player_scene.instantiate()
+	jump_note_player.tone = current_tone
+	add_child(jump_note_player)
+	jump_note_player.start()
+	$JumpNoteTimer.start()
+
+func _on_jump_note_timer_timeout() -> void:
+	if jump_note_player:
+		jump_note_player.stop()
+		jump_note_player = null

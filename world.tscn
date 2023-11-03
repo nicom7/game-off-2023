@@ -623,5 +623,11 @@ texture = ExtResource("2_nu22u")
 [node name="TileDetector" type="Marker2D" parent="Player"]
 position = Vector2(0, 36)
 
+[node name="JumpNoteTimer" type="Timer" parent="Player"]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
+[connection signal="jumped" from="Player" to="Player" method="_on_jumped"]
 [connection signal="on_floor_changed" from="Player" to="." method="_on_player_on_floor_changed"]
+[connection signal="timeout" from="Player/JumpNoteTimer" to="Player" method="_on_jump_note_timer_timeout"]
