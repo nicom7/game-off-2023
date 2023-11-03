@@ -17,6 +17,7 @@ var playback: AudioStreamGeneratorPlayback
 var tone_frequencies: Array[float] = [220, 246.94, 261.63, 293.66, 329.63, 349.23, 392] # The frequency of the sound wave.
 var cursor = 0.0
 var phase_start_cursor = 0.0
+var phase_start_volume = 0.0
 
 enum EnvelopePhase
 {
@@ -35,15 +36,14 @@ const INV_SQRT_2 = sqrt(2.0) / 2
 const INV_SQRT_2_VEC = Vector2.ONE * INV_SQRT_2
 
 func start():
-	print("-> attack")
+	player.volume_db = linear_to_db(0)
 	current_phase = EnvelopePhase.ATTACK
-	print("play")
 	player.play()
 	playback = player.get_stream_playback()
 
 func stop():
-	print("-> release")
 	current_phase = EnvelopePhase.RELEASE
+	phase_start_volume = db_to_linear(player.volume_db)
 
 func _ready():
 	pass
@@ -54,26 +54,34 @@ func _process(delta: float) -> void:
 		_fill_buffer()
 
 func _update_envelope():
-	var gain: float
 	match current_phase:
 		EnvelopePhase.ATTACK:
 			var relative_time = remap(cursor, phase_start_cursor, phase_start_cursor + attack_duration, 0, 1)
 			if relative_time > 1:
-				print("-> sustain")
 				current_phase = EnvelopePhase.SUSTAIN
 			else:
 				player.volume_db = linear_to_db(attack_curve.sample_baked(relative_time))
+				
 		EnvelopePhase.RELEASE:
 			var relative_time = remap(cursor, phase_start_cursor, phase_start_cursor + release_duration, 0, 1)
 			if relative_time > 1:
-				print("stop")
 				player.stop()
 				queue_free()
 			else:
-				player.volume_db = linear_to_db(release_curve.sample_baked(relative_time))
+				player.volume_db = linear_to_db(_get_volume(relative_time, release_curve))
+				
 		EnvelopePhase.SUSTAIN:
 			player.volume_db = 0
+			
 		
+func _get_volume(time: float, curve: Curve) -> float:
+	var relative_vol = curve.sample_baked(time)
+	var v0 = curve.sample_baked(0)
+	var v1 = curve.sample_baked(1)
+	
+	relative_vol = remap(relative_vol, v0, v1, phase_start_volume, v1)
+	return relative_vol
+	
 func _fill_buffer():
 	if !playback:
 		return

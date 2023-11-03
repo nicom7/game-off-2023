@@ -45,8 +45,8 @@ func _setup_floor_map_layer_info():
 	_floor_map_layer_info.clear()
 	if current_floor_map:
 		for l in current_floor_map.get_layers_count():
-			var name = current_floor_map.get_layer_name(l)
-			_floor_map_layer_info[name] = l
+			var layer_name = current_floor_map.get_layer_name(l)
+			_floor_map_layer_info[layer_name] = l
 	
 func _setup_input_actions():
 	_input_actions.clear()
