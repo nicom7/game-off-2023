@@ -22,3 +22,8 @@ release_curve = SubResource("Curve_e3tl6")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamGenerator_t8jo2")
+
+[node name="PlaybackTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="PlaybackTimer" to="." method="_on_playback_timer_timeout"]

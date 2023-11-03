@@ -122,9 +122,3 @@ func _on_jumped() -> void:
 	jump_note_player.tone = current_tone
 	add_child(jump_note_player)
 	jump_note_player.start()
-	$JumpNoteTimer.start()
-
-func _on_jump_note_timer_timeout() -> void:
-	if jump_note_player:
-		jump_note_player.stop()
-		jump_note_player = null

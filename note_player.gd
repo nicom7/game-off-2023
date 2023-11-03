@@ -3,6 +3,8 @@ extends Node
 
 @export var tone: Globals.Tone = Globals.Tone.A
 @export_range(0, 1) var octave_ratio: float = 0.25
+## Note playback duration in seconds. Set to 0 or less for infinite duration (until stopped manually).
+@export var duration: float = 0
 
 @export_group("Envelope")
 @export var attack_duration: float = 0.1
@@ -40,6 +42,9 @@ func start():
 	current_phase = EnvelopePhase.ATTACK
 	player.play()
 	playback = player.get_stream_playback()
+	if duration > 0:
+		$PlaybackTimer.wait_time = duration
+		$PlaybackTimer.start()
 
 func stop():
 	current_phase = EnvelopePhase.RELEASE
@@ -94,3 +99,7 @@ func _fill_buffer():
 	for i in range(frames_available):
 		playback.push_frame(Vector2.ONE * (sin(TAU * f1 * cursor) * (1 - octave_ratio) + sin(TAU * f2 * cursor) * octave_ratio))
 		cursor = fmod(cursor + sample_step, 1000.0)
+
+
+func _on_playback_timer_timeout() -> void:
+	stop()
