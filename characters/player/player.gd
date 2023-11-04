@@ -77,9 +77,6 @@ func _setup_floor_map_layer_info():
 func _setup_input_actions():
 	_input_actions.clear()
 	for note in _scale.size():
-		var prev_note: int = posmod(note - 1, _scale.size())
-		var next_note: int = posmod(note + 1, _scale.size())
-		
 		var actions: InputActions = InputActions.new()
 		actions.move_left = "ui_left"
 		actions.move_right = "ui_right"

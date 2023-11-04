@@ -9,6 +9,7 @@ script = ExtResource("1_mw5gq")
 
 [node name="InteractiveObjectInfo" type="Node" parent="."]
 script = ExtResource("2_lypse")
+enabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="InteractiveObjectInfo" method="_on_interactive_object_body_entered"]

@@ -1,7 +1,5 @@
 extends Node
 
-static var _debug_settings_path: String
-
 @export var enabled: bool = false
 
 func _on_interactive_object_body_entered(body):
