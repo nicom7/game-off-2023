@@ -18,7 +18,7 @@ func _update_block() -> void:
 		return
 		
 	modulate = Globals.tone_color[tone]
-	$Tone.frame = tone
+	$Block/Tone.frame = tone
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,6 +36,8 @@ func _on_hit_detection_body_entered(body: Node2D) -> void:
 		hit.emit(self)
 		
 func _on_hit(block: SwitchBlock) -> void:
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("hit")
 	hit_note_player = hit_note_player_scene.instantiate()
 	hit_note_player.tone = tone
 	hit_note_player.octave_ratio = 1
