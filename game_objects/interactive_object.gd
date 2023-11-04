@@ -1,6 +1,7 @@
 class_name InteractiveObject
 extends Area2D
 
+@export var interact_action: String
 var entered_objects: Dictionary
 
 signal interacted(player: Character, interactive_object: InteractiveObject)
@@ -17,5 +18,6 @@ func _on_body_exited(body):
 		var player = body as Character
 		player.interact.disconnect(_on_player_interact)
 
-func _on_player_interact(player):
-	interacted.emit(player, self)
+func _on_player_interact(player: Character, action: String):
+	if interact_action == action:
+		interacted.emit(player, self)

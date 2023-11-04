@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=18 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dqk2pedcucgnw" path="res://characters/player/player.tscn" id="6_ahra0"]
 [ext_resource type="Texture2D" uid="uid://bt4ogf2r5paa0" path="res://tilesets/c_tone.png" id="6_fbqr6"]
 [ext_resource type="Texture2D" uid="uid://c6txl6jf3smyb" path="res://sprites/ladder.png" id="8_3mg55"]
+[ext_resource type="Script" path="res://game_objects/ladders/ladder.gd" id="8_uk6d3"]
 [ext_resource type="PackedScene" uid="uid://c60xwma5dmoyi" path="res://game_objects/interactive_object.tscn" id="9_icboe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_br5yh"]
@@ -583,7 +584,7 @@ sources/2 = SubResource("TileSetAtlasSource_efq0d")
 sources/3 = SubResource("TileSetAtlasSource_6hnef")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svqag"]
-size = Vector2(48, 48)
+size = Vector2(48, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvy5e"]
 size = Vector2(48, 48)
@@ -614,15 +615,19 @@ layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(786432, 65537, 2, 786433, 131073, 2, 786434, 131073, 2, 786435, 131073, 2, 786436, 131073, 2, 786437, 131073, 2, 786438, 131073, 2, 786439, 131073, 2, 786440, 131073, 2, 786441, 131073, 2, 786442, 196609, 2, 720906, 196609, 0, 720905, 131073, 0, 720904, 131073, 0, 720903, 131073, 0, 720902, 131073, 0, 720901, 131073, 0, 720900, 131073, 0, 720899, 131073, 0, 720898, 131073, 0, 720897, 131073, 0, 720896, 65537, 0, 720909, 65538, 2, 720910, 131074, 2, 720911, 131074, 2, 720912, 131074, 2, 655376, 131074, 0, 655375, 131074, 0, 655374, 131074, 0, 655373, 65538, 0, 655377, 196610, 0, 720913, 196610, 2, 655379, 65539, 2, 589843, 65539, 0, 589844, 131075, 0, 589845, 131075, 0, 589846, 131075, 0, 589847, 196611, 0, 655383, 196611, 2, 655382, 131075, 2, 655381, 131075, 2, 655380, 131075, 2, 524302, 65537, 0, 524305, 196609, 0, 524304, 131073, 0, 524303, 131073, 0, 589841, 196609, 2, 589840, 131073, 2, 589839, 131073, 2, 589838, 65537, 2, 458760, 65539, 0, 458761, 131075, 0, 458762, 131075, 0, 458763, 131075, 0, 458764, 196611, 0, 524300, 196611, 2, 524299, 131075, 2, 524298, 131075, 2, 524297, 131075, 2, 524296, 65539, 2, 458758, 196610, 2, 393222, 196610, 0, 393221, 65538, 0, 458757, 65538, 2, 393220, 196611, 2, 327684, 196611, 0, 327683, 65539, 0, 393219, 65539, 2)
 
 [node name="Player" parent="." node_paths=PackedStringArray("current_floor_map") instance=ExtResource("6_ahra0")]
+position = Vector2(96, 492)
 current_floor_map = NodePath("../Platforms")
 
 [node name="Ladder" type="StaticBody2D" parent="."]
 texture_filter = 3
 texture_repeat = 2
-position = Vector2(432, 480)
+position = Vector2(432, 336)
+script = ExtResource("8_uk6d3")
+climb_up_action = "C_note"
+climb_down_action = "A_note"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
-position = Vector2(24, 24)
+position = Vector2(24, 96)
 shape = SubResource("RectangleShape2D_svqag")
 disabled = true
 
@@ -632,13 +637,28 @@ disabled = true
 texture = ExtResource("8_3mg55")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 48, 48)
+region_rect = Rect2(0, 0, 48, 192)
 
-[node name="InteractiveObject" parent="Ladder" instance=ExtResource("9_icboe")]
+[node name="LowerInteraction" parent="Ladder" instance=ExtResource("9_icboe")]
+position = Vector2(24, 162)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder/InteractiveObject"]
-position = Vector2(24, 24)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder/LowerInteraction"]
 shape = SubResource("RectangleShape2D_uvy5e")
+
+[node name="UpperInteraction" parent="Ladder" instance=ExtResource("9_icboe")]
+position = Vector2(24, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder/UpperInteraction"]
+shape = SubResource("RectangleShape2D_uvy5e")
+
+[node name="Area2D" type="Area2D" parent="Ladder"]
+position = Vector2(24, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder/Area2D"]
+shape = SubResource("RectangleShape2D_svqag")
 
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
 [connection signal="on_floor_changed" from="Player" to="." method="_on_player_on_floor_changed"]
+[connection signal="interacted" from="Ladder/LowerInteraction" to="Ladder" method="_on_lower_interaction_interacted"]
+[connection signal="interacted" from="Ladder/UpperInteraction" to="Ladder" method="_on_upper_interaction_interacted"]
+[connection signal="body_exited" from="Ladder/Area2D" to="Ladder" method="_on_area_2d_body_exited"]
