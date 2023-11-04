@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=17 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dyniha8bifqrr" path="res://tilesets/b_tone.png" id="5_gfi64"]
 [ext_resource type="PackedScene" uid="uid://dqk2pedcucgnw" path="res://characters/player/player.tscn" id="6_ahra0"]
 [ext_resource type="Texture2D" uid="uid://bt4ogf2r5paa0" path="res://tilesets/c_tone.png" id="6_fbqr6"]
+[ext_resource type="Texture2D" uid="uid://c6txl6jf3smyb" path="res://sprites/ladder.png" id="8_3mg55"]
+[ext_resource type="PackedScene" uid="uid://c60xwma5dmoyi" path="res://game_objects/interactive_object.tscn" id="9_icboe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_br5yh"]
 texture = ExtResource("3_1r6a2")
@@ -580,6 +582,12 @@ sources/1 = SubResource("TileSetAtlasSource_1dbm7")
 sources/2 = SubResource("TileSetAtlasSource_efq0d")
 sources/3 = SubResource("TileSetAtlasSource_6hnef")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svqag"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvy5e"]
+size = Vector2(48, 48)
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_u7smd")
 ambient_note_player_scene = ExtResource("2_573sm")
@@ -607,6 +615,30 @@ layer_2/tile_data = PackedInt32Array(786432, 65537, 2, 786433, 131073, 2, 786434
 
 [node name="Player" parent="." node_paths=PackedStringArray("current_floor_map") instance=ExtResource("6_ahra0")]
 current_floor_map = NodePath("../Platforms")
+
+[node name="Ladder" type="StaticBody2D" parent="."]
+texture_filter = 3
+texture_repeat = 2
+position = Vector2(432, 480)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_svqag")
+disabled = true
+
+[node name="Pivot" type="Node2D" parent="Ladder"]
+
+[node name="Ladder" type="Sprite2D" parent="Ladder/Pivot"]
+texture = ExtResource("8_3mg55")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 48)
+
+[node name="InteractiveObject" parent="Ladder" instance=ExtResource("9_icboe")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder/InteractiveObject"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_uvy5e")
 
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
 [connection signal="on_floor_changed" from="Player" to="." method="_on_player_on_floor_changed"]

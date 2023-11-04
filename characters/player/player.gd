@@ -1,3 +1,4 @@
+class_name Character
 extends CharacterBody2D
 
 @export var speed: float = 300.0
@@ -39,7 +40,8 @@ var on_floor: bool = false:
 			on_floor_changed.emit(on_floor)
 			
 signal on_floor_changed(value: bool)
-signal jumped()
+signal jumped
+signal interact
 
 func _ready() -> void:
 	_setup_floor_map_layer_info()
