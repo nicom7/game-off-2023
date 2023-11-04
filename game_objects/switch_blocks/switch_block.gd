@@ -2,7 +2,7 @@
 class_name SwitchBlock
 extends Node2D
 
-signal hit(block: SwitchBlock)
+signal is_hit(block: SwitchBlock)
 
 @export var tone: Globals.Tone = Globals.Tone.A:
 	set(value):
@@ -10,9 +10,24 @@ signal hit(block: SwitchBlock)
 			tone = value
 			_update_block()
 			
-@export var hit_note_player_scene: PackedScene
-var hit_note_player: NotePlayer
+@export var hit_valid: bool = true
 
+@export var block_note_player_scene: PackedScene
+var block_note_player: NotePlayer
+
+func hit() -> void:
+	is_hit.emit(self)
+	
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("hit_valid" if hit_valid else "hit_invalid")
+	block_note_player = block_note_player_scene.instantiate()
+	block_note_player.tone = tone
+	block_note_player.pitch = 4.0 if hit_valid else 0.7
+	block_note_player.octave_ratio = 0
+	add_child(block_note_player)
+	block_note_player.start()
+	$NotePlayerTimer.start()
+		
 func _update_block() -> void:
 	if not is_node_ready():
 		return
@@ -33,22 +48,12 @@ func _process(delta: float) -> void:
 func _on_hit_detection_body_entered(body: Node2D) -> void:
 	var character = body as Character
 	if character and character.velocity.y < 0:
-		hit.emit(self)
+		hit()
 		
-func _on_hit(block: SwitchBlock) -> void:
-	$AnimationPlayer.stop()
-	$AnimationPlayer.play("hit")
-	hit_note_player = hit_note_player_scene.instantiate()
-	hit_note_player.tone = tone
-	hit_note_player.octave_ratio = 1
-	add_child(hit_note_player)
-	hit_note_player.start()
-	$NotePlayerTimer.start()
-
-
 func _on_note_player_timer_timeout() -> void:
-	hit_note_player = hit_note_player_scene.instantiate()
-	hit_note_player.tone = tone
-	hit_note_player.octave_ratio = 0.2
-	add_child(hit_note_player)
-	hit_note_player.start()
+	block_note_player = block_note_player_scene.instantiate()
+	block_note_player.tone = tone
+	block_note_player.pitch = 2.0 if hit_valid else 0.6
+	block_note_player.octave_ratio = 0.2
+	add_child(block_note_player)
+	block_note_player.start()

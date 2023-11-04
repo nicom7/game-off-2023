@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbwx5x1x0vi2d"]
+[gd_scene load_steps=13 format=3 uid="uid://dbwx5x1x0vi2d"]
 
 [ext_resource type="Script" path="res://game_objects/switch_blocks/switch_block.gd" id="1_22t1h"]
 [ext_resource type="PackedScene" uid="uid://c2igw674holmk" path="res://game_objects/audio/block_note_player.tscn" id="2_32ohu"]
@@ -18,21 +18,6 @@ colors = PackedColorArray(1, 1, 1, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_egq61"]
 gradient = SubResource("Gradient_nebj2")
 
-[sub_resource type="Animation" id="Animation_xxq1r"]
-resource_name = "hit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Block/HitVFX:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_8sl87"]
 length = 0.001
 tracks/0/type = "value"
@@ -48,17 +33,48 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_xxq1r"]
+resource_name = "hit_valid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Block/HitVFX:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nhaao"]
+resource_name = "hit_invalid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Block/HitVFX:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2f47l"]
 _data = {
 "RESET": SubResource("Animation_8sl87"),
-"hit": SubResource("Animation_xxq1r")
+"hit_invalid": SubResource("Animation_nhaao"),
+"hit_valid": SubResource("Animation_xxq1r")
 }
 
 [node name="SwitchBlock" type="StaticBody2D"]
 modulate = Color(1, 0, 0, 1)
 texture_filter = 3
 script = ExtResource("1_22t1h")
-hit_note_player_scene = ExtResource("2_32ohu")
+block_note_player_scene = ExtResource("2_32ohu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(24, 24)
@@ -98,6 +114,5 @@ libraries = {
 "": SubResource("AnimationLibrary_2f47l")
 }
 
-[connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="body_entered" from="HitDetection" to="." method="_on_hit_detection_body_entered"]
 [connection signal="timeout" from="NotePlayerTimer" to="." method="_on_note_player_timer_timeout"]

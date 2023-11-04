@@ -3,6 +3,12 @@ extends Node
 
 @export var tone: Globals.Tone = Globals.Tone.A
 @export_range(0, 1) var octave_ratio: float = 0.25
+@export_range(0.01, 4) var pitch: float = 1:
+	set(value):
+		if pitch != value:
+			pitch = value
+			_update_pitch()
+			
 ## Note playback duration in seconds. Set to 0 or less for infinite duration (until stopped manually).
 @export var duration: float = 0
 
@@ -53,8 +59,14 @@ func stop():
 	current_phase = EnvelopePhase.RELEASE
 	phase_start_volume = db_to_linear(player.volume_db)
 
+func _update_pitch():
+	if not is_node_ready():
+		return
+		
+	$AudioStreamPlayer.pitch_scale = pitch
+	
 func _ready():
-	pass
+	_update_pitch()
 
 func _process(delta: float) -> void:
 	if player.playing:

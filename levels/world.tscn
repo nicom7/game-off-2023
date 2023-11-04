@@ -67,13 +67,42 @@ modulate = Color(1, 1, 0, 1)
 position = Vector2(144, 384)
 tone = 2
 
+[node name="SwitchBlock4" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(192, 384)
+tone = 3
+
+[node name="SwitchBlock5" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(240, 384)
+tone = 4
+
+[node name="SwitchBlock6" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(0, 0.5, 1, 1)
+position = Vector2(288, 384)
+tone = 5
+
+[node name="SwitchBlock7" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(336, 384)
+tone = 6
+
+[node name="SwitchBlock8" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(1, 0.5, 0, 1)
+position = Vector2(96, 384)
+tone = 1
+
+[node name="SwitchBlock9" parent="." instance=ExtResource("7_ki10g")]
+position = Vector2(48, 384)
+
 [node name="SwitchBlock2" parent="." instance=ExtResource("7_ki10g")]
 modulate = Color(1, 0, 1, 1)
 position = Vector2(288, 144)
 tone = 6
+hit_valid = false
 
 [node name="SwitchBlock3" parent="." instance=ExtResource("7_ki10g")]
-modulate = Color(0, 0, 1, 1)
+modulate = Color(0, 0.5, 1, 1)
 position = Vector2(912, 0)
 tone = 5
 

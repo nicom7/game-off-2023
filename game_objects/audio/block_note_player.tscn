@@ -8,11 +8,11 @@ point_count = 3
 
 [node name="NotePlayer" instance=ExtResource("1_6mql1")]
 octave_ratio = 0.0
+pitch = 2.0
 duration = 0.1
 attack_duration = 0.1
 release_duration = 0.3
 attack_curve = SubResource("Curve_2ck7q")
 
 [node name="AudioStreamPlayer" parent="." index="0"]
-pitch_scale = 2.0
 bus = &"SFX"
