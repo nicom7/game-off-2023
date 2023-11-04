@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyniha8bifqrr"
-path="res://.godot/imported/b_tone.png-ba2514aa04ef389a788f63a97a839eed.ctex"
+uid="uid://cm1xiju3kidr7"
+path="res://.godot/imported/platform.png-95e32a983eb854f6bf8c0626277e4f82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://b_tone.png"
-dest_files=["res://.godot/imported/b_tone.png-ba2514aa04ef389a788f63a97a839eed.ctex"]
+source_file="res://tilesets/platform.png"
+dest_files=["res://.godot/imported/platform.png-95e32a983eb854f6bf8c0626277e4f82.ctex"]
 
 [params]
 

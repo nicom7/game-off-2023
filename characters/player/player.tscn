@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqk2pedcucgnw"]
+[gd_scene load_steps=5 format=3 uid="uid://dqk2pedcucgnw"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_76y70"]
-[ext_resource type="Texture2D" uid="uid://d00tklro00aow" path="res://icon.svg" id="2_5o7h0"]
+[ext_resource type="Script" path="res://characters/player/player.gd" id="1_qb0pk"]
+[ext_resource type="PackedScene" uid="uid://c18g0su4mfuqt" path="res://game_objects/audio/jump_note_player.tscn" id="2_fw7sl"]
+[ext_resource type="Texture2D" uid="uid://d00tklro00aow" path="res://sprites/icon.svg" id="3_2e4b4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao35p"]
 radius = 12.0
@@ -9,14 +10,15 @@ height = 48.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(234, 504)
-script = ExtResource("1_76y70")
+script = ExtResource("1_qb0pk")
+jump_note_player_scene = ExtResource("2_fw7sl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ao35p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1875, 0.375)
-texture = ExtResource("2_5o7h0")
+texture = ExtResource("3_2e4b4")
 
 [node name="TileDetector" type="Marker2D" parent="."]
 position = Vector2(0, 36)

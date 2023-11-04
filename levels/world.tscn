@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=13 format=3 uid="uid://b7huf0srkra04"]
 
-[ext_resource type="Texture2D" uid="uid://cm1xiju3kidr7" path="res://platform.png" id="1_a1k5b"]
-[ext_resource type="Script" path="res://world.gd" id="1_u7smd"]
-[ext_resource type="Texture2D" uid="uid://tlr4nak2n3x" path="res://a_tone.png" id="2_xej7t"]
-[ext_resource type="Texture2D" uid="uid://dyniha8bifqrr" path="res://b_tone.png" id="3_dgmfu"]
-[ext_resource type="Texture2D" uid="uid://bt4ogf2r5paa0" path="res://c_tone.png" id="4_nn1hh"]
-[ext_resource type="PackedScene" uid="uid://dqk2pedcucgnw" path="res://player.tscn" id="6_ahra0"]
+[ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
+[ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
+[ext_resource type="Texture2D" uid="uid://cm1xiju3kidr7" path="res://tilesets/platform.png" id="3_1r6a2"]
+[ext_resource type="Texture2D" uid="uid://tlr4nak2n3x" path="res://tilesets/a_tone.png" id="4_md34q"]
+[ext_resource type="Texture2D" uid="uid://dyniha8bifqrr" path="res://tilesets/b_tone.png" id="5_gfi64"]
+[ext_resource type="PackedScene" uid="uid://dqk2pedcucgnw" path="res://characters/player/player.tscn" id="6_ahra0"]
+[ext_resource type="Texture2D" uid="uid://bt4ogf2r5paa0" path="res://tilesets/c_tone.png" id="6_fbqr6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_br5yh"]
-texture = ExtResource("1_a1k5b")
+texture = ExtResource("3_1r6a2")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -140,7 +141,7 @@ texture_region_size = Vector2i(48, 48)
 3:3/0/terrains_peering_bit/left_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1dbm7"]
-texture = ExtResource("2_xej7t")
+texture = ExtResource("4_md34q")
 texture_region_size = Vector2i(48, 48)
 0:2/0 = 0
 0:2/0/modulate = Color(1, 0, 0, 1)
@@ -280,7 +281,7 @@ texture_region_size = Vector2i(48, 48)
 3:3/0/custom_data_0 = "A"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efq0d"]
-texture = ExtResource("3_dgmfu")
+texture = ExtResource("5_gfi64")
 texture_region_size = Vector2i(48, 48)
 0:2/0 = 0
 0:2/0/modulate = Color(1, 0.568627, 0, 1)
@@ -420,7 +421,7 @@ texture_region_size = Vector2i(48, 48)
 0:3/0/custom_data_0 = "B"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6hnef"]
-texture = ExtResource("4_nn1hh")
+texture = ExtResource("6_fbqr6")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 0:0/0/modulate = Color(1, 1, 0, 1)
@@ -581,6 +582,7 @@ sources/3 = SubResource("TileSetAtlasSource_6hnef")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_u7smd")
+ambient_note_player_scene = ExtResource("2_573sm")
 
 [node name="Platforms" type="TileMap" parent="."]
 texture_filter = 3

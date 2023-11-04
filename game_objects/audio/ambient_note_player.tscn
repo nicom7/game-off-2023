@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfbbc1lm3doy7"]
+
+[ext_resource type="PackedScene" uid="uid://cdavtxyojmgkm" path="res://game_objects/audio/note_player.tscn" id="1_a3wo5"]
+
+[node name="NotePlayer" instance=ExtResource("1_a3wo5")]
+
+[node name="AudioStreamPlayer" parent="." index="0"]
+bus = &"Ambient"

@@ -4,11 +4,11 @@ extends CharacterBody2D
 @export var jump_speed: float = -400.0
 
 @export var current_floor_map: TileMap
+@export var jump_note_player_scene: PackedScene
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var jump_note_player_scene: PackedScene = preload("res://jump_note_player.tscn")
 var jump_note_player: NotePlayer
 
 var _floor_map_layer_info: Dictionary = {}

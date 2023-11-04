@@ -1,7 +1,7 @@
 extends Node2D
 
 var player_tone: Globals.Tone
-var ambient_note_player_scene: PackedScene = preload("res://ambient_note_player.tscn")
+@export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
 
 # Called when the node enters the scene tree for the first time.
