@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://knuujq4ac74r"]
+
+[ext_resource type="Script" path="res://game_objects/ladders/ladder.gd" id="1_dwuwm"]
+[ext_resource type="Texture2D" uid="uid://c6txl6jf3smyb" path="res://sprites/ladder.png" id="2_wfvfp"]
+[ext_resource type="PackedScene" uid="uid://c60xwma5dmoyi" path="res://game_objects/interactive_object.tscn" id="3_4txev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svqag"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvy5e"]
+size = Vector2(48, 48)
+
+[node name="Ladder" type="Node2D"]
+texture_filter = 3
+texture_repeat = 2
+script = ExtResource("1_dwuwm")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Ladder" type="Sprite2D" parent="Pivot"]
+unique_name_in_owner = true
+texture = ExtResource("2_wfvfp")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 96)
+
+[node name="Area2D" type="Area2D" parent="Pivot"]
+unique_name_in_owner = true
+scale = Vector2(1, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Area2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_svqag")
+
+[node name="BottomPivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 96)
+
+[node name="LowerInteraction" parent="BottomPivot" instance=ExtResource("3_4txev")]
+position = Vector2(24, -30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPivot/LowerInteraction"]
+shape = SubResource("RectangleShape2D_uvy5e")
+
+[node name="TopPivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="UpperInteraction" parent="TopPivot" instance=ExtResource("3_4txev")]
+position = Vector2(24, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPivot/UpperInteraction"]
+shape = SubResource("RectangleShape2D_uvy5e")
+
+[connection signal="body_exited" from="Pivot/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="interacted" from="BottomPivot/LowerInteraction" to="." method="_on_lower_interaction_interacted"]
+[connection signal="interacted" from="TopPivot/UpperInteraction" to="." method="_on_upper_interaction_interacted"]

@@ -9,7 +9,7 @@ radius = 12.0
 height = 48.0
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(234, 504)
+z_index = 1
 script = ExtResource("1_qb0pk")
 jump_note_player_scene = ExtResource("2_fw7sl")
 

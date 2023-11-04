@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c60xwma5dmoyi"]
+
+[ext_resource type="Script" path="res://game_objects/interactive_object.gd" id="1_mw5gq"]
+[ext_resource type="Script" path="res://game_objects/interactive_object_info.gd" id="2_lypse"]
+
+[node name="InteractiveObject" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_mw5gq")
+
+[node name="InteractiveObjectInfo" type="Node" parent="."]
+script = ExtResource("2_lypse")
+enabled = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="InteractiveObjectInfo" method="_on_interactive_object_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_exited" from="." to="InteractiveObjectInfo" method="_on_interactive_object_body_exited"]
+[connection signal="interacted" from="." to="InteractiveObjectInfo" method="_on_interactive_object_interacted"]
