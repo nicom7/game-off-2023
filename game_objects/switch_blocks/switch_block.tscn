@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbwx5x1x0vi2d"]
+
+[ext_resource type="Script" path="res://game_objects/switch_blocks/switch_block.gd" id="1_22t1h"]
+[ext_resource type="Texture2D" uid="uid://bfxbquwrra8m" path="res://sprites/block.png" id="2_ueuwi"]
+[ext_resource type="Texture2D" uid="uid://ce8lu3ux0xvwc" path="res://sprites/tones.png" id="3_bim2w"]
+
+[node name="SwitchBlock" type="Node2D"]
+modulate = Color(1, 0, 0, 1)
+script = ExtResource("1_22t1h")
+
+[node name="Block" type="Sprite2D" parent="."]
+texture = ExtResource("2_ueuwi")
+centered = false
+
+[node name="Tone" type="Sprite2D" parent="."]
+texture = ExtResource("3_bim2w")
+centered = false
+hframes = 7
+region_enabled = true
+region_rect = Rect2(0, 0, 336, 48)
