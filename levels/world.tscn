@@ -67,5 +67,15 @@ modulate = Color(1, 1, 0, 1)
 position = Vector2(144, 384)
 tone = 2
 
+[node name="SwitchBlock2" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(288, 144)
+tone = 6
+
+[node name="SwitchBlock3" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(912, 0)
+tone = 5
+
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
 [connection signal="on_floor_changed" from="Player" to="." method="_on_player_on_floor_changed"]
