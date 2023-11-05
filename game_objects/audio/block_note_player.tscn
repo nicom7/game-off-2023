@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2igw674holmk"]
+
+[ext_resource type="PackedScene" uid="uid://cdavtxyojmgkm" path="res://game_objects/audio/note_player.tscn" id="1_6mql1"]
+
+[sub_resource type="Curve" id="Curve_2ck7q"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502326, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.557895), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="NotePlayer" instance=ExtResource("1_6mql1")]
+octave_ratio = 0.0
+pitch = 2.0
+duration = 0.1
+attack_duration = 0.1
+release_duration = 0.3
+attack_curve = SubResource("Curve_2ck7q")
+
+[node name="AudioStreamPlayer" parent="." index="0"]
+bus = &"SFX"

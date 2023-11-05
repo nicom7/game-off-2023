@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=8 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
 [ext_resource type="TileSet" uid="uid://bm8j5kvkieyqj" path="res://tilesets/environment.tres" id="3_d11al"]
 [ext_resource type="PackedScene" uid="uid://dqk2pedcucgnw" path="res://characters/player/player.tscn" id="6_ahra0"]
+[ext_resource type="PackedScene" uid="uid://dbwx5x1x0vi2d" path="res://game_objects/switch_blocks/switch_block.tscn" id="7_ki10g"]
 [ext_resource type="PackedScene" uid="uid://knuujq4ac74r" path="res://game_objects/ladders/ladder.tscn" id="8_y3bu1"]
 [ext_resource type="PackedScene" uid="uid://bxun5w5sv6twu" path="res://game_objects/walls/wall.tscn" id="9_w7oqa"]
 
@@ -60,6 +61,50 @@ rotation = 1.5708
 [node name="RightWall" parent="Walls" instance=ExtResource("9_w7oqa")]
 position = Vector2(1152, 288)
 rotation = -1.5708
+
+[node name="SwitchBlock" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(144, 384)
+tone = 2
+
+[node name="SwitchBlock4" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(192, 384)
+tone = 3
+
+[node name="SwitchBlock5" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(240, 384)
+tone = 4
+
+[node name="SwitchBlock6" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(0, 0.5, 1, 1)
+position = Vector2(288, 384)
+tone = 5
+
+[node name="SwitchBlock7" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(336, 384)
+tone = 6
+
+[node name="SwitchBlock8" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(1, 0.5, 0, 1)
+position = Vector2(96, 384)
+tone = 1
+
+[node name="SwitchBlock9" parent="." instance=ExtResource("7_ki10g")]
+position = Vector2(48, 384)
+
+[node name="SwitchBlock2" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(288, 144)
+tone = 6
+hit_valid = false
+
+[node name="SwitchBlock3" parent="." instance=ExtResource("7_ki10g")]
+modulate = Color(0, 0.5, 1, 1)
+position = Vector2(912, 0)
+tone = 5
 
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
 [connection signal="on_floor_changed" from="Player" to="." method="_on_player_on_floor_changed"]
