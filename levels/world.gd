@@ -14,13 +14,18 @@ func _setup_overview():
 	for v in _overview.polygon:
 		_overview_rect = _overview_rect.expand(v)
 	
+	# Use center of overview rect as camera center
 	%CameraCenter.global_position = _overview_rect.get_center()
 	print("rect ", _overview_rect)
 	
+	# Adjust camera zoom to view all level
 	_overview_zoom = Vector2(get_viewport_rect().size.x / _overview_rect.size.x, get_viewport_rect().size.y / _overview_rect.size.y)
+	
+	# Preserve aspect ratio
+	_overview_zoom = Vector2.ONE * minf(_overview_zoom.x, _overview_zoom.y)
 	print("zoom ", _overview_zoom)
 	
-	%Camera2D.zoom = Vector2.ONE * minf(_overview_zoom.x, _overview_zoom.y)
+	%Camera2D.zoom = _overview_zoom
 	
 	
 # Called when the node enters the scene tree for the first time.
