@@ -46,6 +46,7 @@ var on_floor: bool = false:
 			
 var climbing: bool = false
 var current_ladder: Ladder
+var current_block: SwitchBlock
 			
 signal on_floor_changed(value: bool)
 signal jumped
@@ -97,7 +98,10 @@ func _input(event: InputEvent):
 func _update_tone(delta: float) -> void:
 	var custom_data = _get_floor_custom_data($TileDetector.global_position, "Tones", "Tone")
 	if custom_data != null:
+		current_block = null
 		current_tone = _scale.find(custom_data) as Globals.Tone
+	elif current_block:
+		current_tone = current_block.tone
 #	print(current_tone)
 	
 func _update_movement(delta: float) -> void:
