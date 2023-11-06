@@ -6,10 +6,27 @@ var ambient_note_player: NotePlayer
 
 @onready var _camera: Camera2D = %Camera2D
 @onready var _camera_target: Node2D = %CameraCenter
+@onready var _overview: Polygon2D = %Overview
+var _overview_rect: Rect2
+var _overview_zoom: Vector2
 
+func _setup_overview():
+	for v in _overview.polygon:
+		_overview_rect = _overview_rect.expand(v)
+	
+	%CameraCenter.global_position = _overview_rect.get_center()
+	print("rect ", _overview_rect)
+	
+	_overview_zoom = Vector2(get_viewport_rect().size.x / _overview_rect.size.x, get_viewport_rect().size.y / _overview_rect.size.y)
+	print("zoom ", _overview_zoom)
+	
+	%Camera2D.zoom = Vector2.ONE * minf(_overview_zoom.x, _overview_zoom.y)
+	
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$BlockSequence.start()
+	_setup_overview()
+	%BlockSequence.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,11 +52,11 @@ func _on_player_on_floor_changed(value) -> void:
 
 func _on_block_sequence_finished() -> void:
 	print("finished!")
-	$NewBlockSequenceTimer.start()
+	%NewBlockSequenceTimer.start()
 
 
 func _on_new_block_sequence_timer_timeout() -> void:
-	$BlockSequence.start()
+	%BlockSequence.start()
 
 
 func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
@@ -48,9 +65,11 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 		_camera.drag_horizontal_enabled = true
 		_camera.drag_vertical_enabled = true
 		_camera_target = %Player
+		%Camera2D.zoom = Vector2.ONE
 
 
 func _on_block_sequence_sequence_finished(valid) -> void:
 	_camera.drag_horizontal_enabled = false
 	_camera.drag_vertical_enabled = false
 	_camera_target = %CameraCenter
+	%Camera2D.zoom = _overview_zoom
