@@ -6,7 +6,7 @@ var ambient_note_player: NotePlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$BlockSequence.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,3 +28,12 @@ func _on_player_on_floor_changed(value) -> void:
 	else:
 		ambient_note_player.stop()
 		ambient_note_player = null
+
+
+func _on_block_sequence_finished() -> void:
+	print("finished!")
+	$NewBlockSequenceTimer.start()
+
+
+func _on_new_block_sequence_timer_timeout() -> void:
+	$BlockSequence.start()
