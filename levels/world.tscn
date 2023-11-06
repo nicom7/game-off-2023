@@ -76,6 +76,7 @@ tone = 5
 
 [node name="BlockSequence" type="Node" parent="."]
 script = ExtResource("8_xwl5r")
+sequence_length_max = 4
 
 [node name="SwitchBlockA" parent="BlockSequence" instance=ExtResource("7_ki10g")]
 position = Vector2(48, 384)
@@ -118,7 +119,13 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="NewBlockSequenceTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
 [connection signal="on_floor_changed" from="Player" to="." method="_on_player_on_floor_changed"]
+[connection signal="finished" from="BlockSequence" to="." method="_on_block_sequence_finished"]
 [connection signal="sequence_played" from="BlockSequence" to="BlockSequence" method="_on_sequence_played"]
 [connection signal="timeout" from="BlockSequence/SequenceTimer" to="BlockSequence" method="_on_sequence_timer_timeout"]
+[connection signal="timeout" from="NewBlockSequenceTimer" to="." method="_on_new_block_sequence_timer_timeout"]
