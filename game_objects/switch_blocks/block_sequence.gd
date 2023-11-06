@@ -17,7 +17,8 @@ var _sequence_cursor: int = 0
 var _current_sequence_end: int = 0
 var _sequence_state: SequenceState = SequenceState.DEMO
 
-signal sequence_played
+signal sequence_finished(valid: bool)
+signal sequence_played(demo_sequence: bool)
 signal finished
 
 func start() -> void:
@@ -55,7 +56,7 @@ func _play_sequence(blocks: Array) -> void:
 		timer.start()
 		await $BlockTimer.timeout
 
-	sequence_played.emit()
+	sequence_played.emit(_sequence_state == SequenceState.DEMO)
 
 func _validate_block(block: SwitchBlock) -> bool:
 	var valid = _blocks[_current_sequence[_sequence_cursor]] == block
@@ -89,7 +90,7 @@ func _on_sequence_timer_timeout() -> void:
 	_play_sequence(_current_sequence.slice(0, _current_sequence_end + 1))
 
 
-func _on_sequence_played() -> void:
+func _on_sequence_played(_demo_sequence: bool) -> void:
 	match _sequence_state:
 		SequenceState.DEMO:
 			_sequence_state = SequenceState.PLAYBACK			
@@ -110,6 +111,7 @@ func _on_block_is_hit(block: SwitchBlock) -> void:
 				_set_block_valid(_current_sequence[_sequence_cursor])
 			else:
 				# Sequence finished; next sequence or success
+				sequence_finished.emit(true)
 				if _current_sequence_end < sequence_length_max - 1:
 					_sequence_state = SequenceState.PLAYBACK
 					_setup_next_sequence(false)
@@ -120,5 +122,6 @@ func _on_block_is_hit(block: SwitchBlock) -> void:
 					finished.emit()
 		else:
 			# Reset current sequence
+			sequence_finished.emit(false)
 			_sequence_state = SequenceState.PLAYBACK
 			_setup_next_sequence(true)
