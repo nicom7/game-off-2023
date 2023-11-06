@@ -44,6 +44,7 @@ func _on_new_block_sequence_timer_timeout() -> void:
 
 func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 	if !demo_sequence:
+		_camera.position_smoothing_enabled = true
 		_camera.drag_horizontal_enabled = true
 		_camera.drag_vertical_enabled = true
 		_camera_target = %Player
