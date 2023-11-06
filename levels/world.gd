@@ -31,6 +31,7 @@ func _on_player_on_floor_changed(value) -> void:
 
 
 func _on_block_sequence_finished() -> void:
+	print("finished!")
 	$NewBlockSequenceTimer.start()
 
 

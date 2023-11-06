@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfqdgrh4lw7pi"]
+
+[ext_resource type="Script" path="res://game_objects/switch_blocks/block_sequence.gd" id="1_4kgpu"]
+
+[node name="BlockSequence" type="Node"]
+script = ExtResource("1_4kgpu")
+sequence_length_max = 4
+
+[node name="SequenceTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="BlockTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[connection signal="sequence_played" from="." to="." method="_on_sequence_played"]
+[connection signal="timeout" from="SequenceTimer" to="." method="_on_sequence_timer_timeout"]
