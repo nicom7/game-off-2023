@@ -59,11 +59,6 @@ func _play_sequence(blocks: Array) -> void:
 
 func _validate_block(block: SwitchBlock) -> bool:
 	var valid = _blocks[_current_sequence[_sequence_cursor]] == block
-	if valid:
-		print("valid hit")
-	else:
-		print("invalid hit")
-		
 	return valid
 	
 func _set_all_blocks_valid() -> void:
@@ -73,8 +68,7 @@ func _set_all_blocks_valid() -> void:
 func _set_block_valid(block: int) -> void:
 	for b in _blocks:
 		b.hit_valid = false
-		
-	print("set block valid ", _blocks[block].name)		
+			
 	_blocks[block].hit_valid = true
 		
 func _set_blocks_enabled(enabled: bool) -> void:
