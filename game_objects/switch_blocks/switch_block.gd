@@ -3,6 +3,7 @@ class_name SwitchBlock
 extends Node2D
 
 signal is_hit(block: SwitchBlock)
+signal body_entered(body: Node2D)
 
 @export var tone: Globals.Tone = Globals.Tone.A:
 	set(value):
@@ -58,9 +59,18 @@ func _process(delta: float) -> void:
 
 
 func _on_hit_detection_body_entered(body: Node2D) -> void:
+	body_entered.emit(body)
+	
+func _on_body_entered(body: Node2D) -> void:
 	var character = body as Character
-	if character and character.velocity.y < 0:
-		hit()
+	if character:
+		if character.velocity.y < 0:
+			# Hit from below
+			hit()
+		else:
+			# Hit from above (landed on)
+			character.current_block = self
+			
 		
 func _on_note_player_timer_timeout() -> void:
 	block_note_player = block_note_player_scene.instantiate()
