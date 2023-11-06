@@ -24,8 +24,8 @@ func _setup_overview():
 	_overview_zoom = Vector2.ONE * minf(_overview_zoom.x, _overview_zoom.y)
 	print("zoom ", _overview_zoom)
 	
-	_camera.target_node = %CameraCenter
-	_camera.target_zoom = _overview_zoom
+	_camera.set_target_node(%CameraCenter, true)
+	_camera.set_target_zoom(_overview_zoom, true)
 	_camera.zoom = _overview_zoom
 	
 	
@@ -70,12 +70,12 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 		_camera.position_smoothing_enabled = true
 		_camera.drag_horizontal_enabled = true
 		_camera.drag_vertical_enabled = true
-		_camera.target_node = %Player
-		_camera.set_zoom_target(Vector2.ONE)
+		_camera.set_target_node(%Player)
+		_camera.set_target_zoom(Vector2.ONE)
 
 
 func _on_block_sequence_sequence_finished(valid) -> void:
 	_camera.drag_horizontal_enabled = false
 	_camera.drag_vertical_enabled = false
-	_camera.target_node = %CameraCenter
-	_camera.set_zoom_target(_overview_zoom)
+	_camera.set_target_node(%CameraCenter)
+	_camera.set_target_zoom(_overview_zoom)
