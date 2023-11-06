@@ -8,6 +8,7 @@
 [node name="World" instance=ExtResource("1_dlj7h")]
 
 [node name="Player" parent="." index="0" node_paths=PackedStringArray("current_floor_map")]
+position = Vector2(48, 456)
 current_floor_map = NodePath("../Environment/Platforms")
 
 [node name="CameraCenter" parent="." index="1"]
