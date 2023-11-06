@@ -4,8 +4,7 @@ var player_tone: Globals.Tone
 @export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
 
-@onready var _camera: Camera2D = %Camera2D
-@onready var _camera_target: Node2D = %CameraCenter
+@onready var _camera: Camera2D = %Camera
 @onready var _overview: Polygon2D = %Overview
 var _overview_rect: Rect2
 var _overview_zoom: Vector2
@@ -25,7 +24,9 @@ func _setup_overview():
 	_overview_zoom = Vector2.ONE * minf(_overview_zoom.x, _overview_zoom.y)
 	print("zoom ", _overview_zoom)
 	
-	%Camera2D.zoom = _overview_zoom
+	_camera.target_node = %CameraCenter
+	_camera.target_zoom = _overview_zoom
+	_camera.zoom = _overview_zoom
 	
 	
 # Called when the node enters the scene tree for the first time.
@@ -36,7 +37,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	_camera.global_position = _camera_target.global_position
+	pass
 
 
 func _on_player_current_tone_changed(tone: Globals.Tone) -> void:
@@ -69,12 +70,12 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 		_camera.position_smoothing_enabled = true
 		_camera.drag_horizontal_enabled = true
 		_camera.drag_vertical_enabled = true
-		_camera_target = %Player
-		%Camera2D.zoom = Vector2.ONE
+		_camera.target_node = %Player
+		_camera.set_zoom_target(Vector2.ONE)
 
 
 func _on_block_sequence_sequence_finished(valid) -> void:
 	_camera.drag_horizontal_enabled = false
 	_camera.drag_vertical_enabled = false
-	_camera_target = %CameraCenter
-	%Camera2D.zoom = _overview_zoom
+	_camera.target_node = %CameraCenter
+	_camera.set_zoom_target(_overview_zoom)
