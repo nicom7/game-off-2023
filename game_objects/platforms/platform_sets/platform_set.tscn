@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://btccwmjkek1ng"]
+[gd_scene load_steps=5 format=3 uid="uid://btccwmjkek1ng"]
 
 [ext_resource type="Script" path="res://game_objects/platforms/platform_sets/platform_set.gd" id="1_ec12g"]
 [ext_resource type="TileSet" uid="uid://bm8j5kvkieyqj" path="res://tilesets/environment.tres" id="2_mb8jr"]
+[ext_resource type="PackedScene" uid="uid://dbwx5x1x0vi2d" path="res://game_objects/switch_blocks/switch_block.tscn" id="2_qslti"]
+[ext_resource type="PackedScene" uid="uid://knuujq4ac74r" path="res://game_objects/ladders/ladder.tscn" id="4_i4kyn"]
 
 [node name="PlatformSet" type="Node2D"]
 script = ExtResource("1_ec12g")
+
+[node name="SwitchBlock" parent="." instance=ExtResource("2_qslti")]
+position = Vector2(0, -126)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_mb8jr")
@@ -60,3 +65,8 @@ layer_7/y_sort_enabled = false
 layer_7/y_sort_origin = 0
 layer_7/z_index = 0
 layer_7/tile_data = PackedInt32Array(65536, 7, 2, 0, 7, 0)
+
+[node name="Ladder" parent="." instance=ExtResource("4_i4kyn")]
+upper_tone = 0
+lower_tone = 6
+size = 4
