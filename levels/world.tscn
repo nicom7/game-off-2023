@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=7 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
+[ext_resource type="Script" path="res://game_objects/camera.gd" id="4_jd0f8"]
 [ext_resource type="PackedScene" uid="uid://dqk2pedcucgnw" path="res://characters/player/player.tscn" id="6_ahra0"]
 [ext_resource type="PackedScene" uid="uid://cfqdgrh4lw7pi" path="res://game_objects/switch_blocks/block_sequence.tscn" id="7_v4u45"]
 [ext_resource type="PackedScene" uid="uid://bxun5w5sv6twu" path="res://game_objects/walls/wall.tscn" id="9_w7oqa"]
@@ -13,23 +14,24 @@ ambient_note_player_scene = ExtResource("2_573sm")
 [node name="Player" parent="." instance=ExtResource("6_ahra0")]
 unique_name_in_owner = true
 
-[node name="CameraCenter" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(576, 312)
-
 [node name="Overview" type="Polygon2D" parent="."]
 unique_name_in_owner = true
 visible = false
 color = Color(0, 0, 0, 0)
 polygon = PackedVector2Array(0, 624, 1152, 624, 1152, -816, 0, -816)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="CameraCenter" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(576, 312)
+
+[node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
 position_smoothing_speed = 4.0
 drag_left_margin = 0.1
 drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
+script = ExtResource("4_jd0f8")
 
 [node name="Environment" type="Node2D" parent="."]
 
