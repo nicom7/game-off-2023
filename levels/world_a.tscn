@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dbwx5x1x0vi2d" path="res://game_objects/switch_blocks/switch_block.tscn" id="8_0rm1w"]
 
 [sub_resource type="Curve" id="Curve_1888p"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_q2det"]
@@ -23,8 +23,12 @@ current_floor_map = NodePath("../Environment/Platforms")
 position = Vector2(576, -96)
 
 [node name="Camera" parent="." index="3"]
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
 target_node_path = NodePath("../CameraCenter")
-move_speed = 1.2
+move_speed = 1.4
 position_easing = SubResource("Curve_1888p")
 zoom_easing = SubResource("Curve_q2det")
 
