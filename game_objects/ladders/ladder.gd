@@ -18,15 +18,15 @@ extends Node2D
 	set(value):
 		size = value
 		_update_size()
-		
+
 var climb_up_action: String
 var climb_down_action: String
 
 func _update_upper_tone() -> void:
-	climb_up_action = Globals.Tone.keys()[upper_tone] + "_note"
+	climb_up_action = Globals.get_action_from_tone(upper_tone)
 	
 func _update_lower_tone() -> void:
-	climb_down_action = Globals.Tone.keys()[lower_tone] + "_note"
+	climb_down_action = Globals.get_action_from_tone(lower_tone)
 	
 func _update_size():
 	if !is_node_ready():

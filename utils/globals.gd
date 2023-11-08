@@ -21,3 +21,6 @@ const tone_color: Array[Color] = [
 	Color(0, 0.5, 1),	
 	Color(1, 0, 1),	
 ]
+
+static func get_action_from_tone(tone: Tone) -> String:
+	return Tone.keys()[tone] + "_note"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqk2pedcucgnw"]
+[gd_scene load_steps=6 format=3 uid="uid://dqk2pedcucgnw"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_qb0pk"]
 [ext_resource type="PackedScene" uid="uid://c18g0su4mfuqt" path="res://game_objects/audio/jump_note_player.tscn" id="2_fw7sl"]
@@ -7,6 +7,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao35p"]
 radius = 12.0
 height = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v2tak"]
+radius = 2.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -23,4 +26,10 @@ texture = ExtResource("3_2e4b4")
 [node name="TileDetector" type="Marker2D" parent="."]
 position = Vector2(0, 36)
 
+[node name="TileDetectorArea" type="Area2D" parent="TileDetector"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetector/TileDetectorArea"]
+shape = SubResource("CircleShape2D_v2tak")
+
 [connection signal="jumped" from="." to="." method="_on_jumped"]
+[connection signal="body_entered" from="TileDetector/TileDetectorArea" to="." method="_on_tile_detector_area_body_entered"]

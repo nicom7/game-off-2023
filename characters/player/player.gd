@@ -4,15 +4,12 @@ extends CharacterBody2D
 @export var speed: float = 300.0
 @export var jump_speed: float = -400.0
 
-@export var current_floor_map: TileMap
 @export var jump_note_player_scene: PackedScene
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var jump_note_player: NotePlayer
-
-var _floor_map_layer_info: Dictionary = {}
 
 class InputActions:
 	var move_left: String
@@ -47,7 +44,10 @@ var on_floor: bool = false:
 var climbing: bool = false
 var current_ladder: Ladder
 var current_block: SwitchBlock
-			
+
+var current_floor_map: TileMap
+var floor_map_tone_layer = -1
+
 signal on_floor_changed(value: bool)
 signal jumped
 signal interact(player: Character, action: String)
@@ -65,15 +65,7 @@ func exit_climb() -> void:
 #		print("exit climb")
 	
 func _ready() -> void:
-	_setup_floor_map_layer_info()
 	_setup_input_actions()
-	
-func _setup_floor_map_layer_info():
-	_floor_map_layer_info.clear()
-	if current_floor_map:
-		for l in current_floor_map.get_layers_count():
-			var layer_name = current_floor_map.get_layer_name(l)
-			_floor_map_layer_info[layer_name] = l
 	
 func _setup_input_actions():
 	_input_actions.clear()
@@ -90,13 +82,14 @@ func _physics_process(delta: float) -> void:
 	_update_movement(delta)
 	
 func _input(event: InputEvent):
-	for action in _note_actions:
+	for tone in Globals.Tone.size():
+		var action = Globals.get_action_from_tone(tone)
 		if event.is_action_pressed(action):
 			interact.emit(self, action)
 			return
 		
 func _update_tone(delta: float) -> void:
-	var custom_data = _get_floor_custom_data($TileDetector.global_position, "Tones", "Tone")
+	var custom_data = _get_floor_custom_data($TileDetector.global_position, floor_map_tone_layer, "Tone")
 	if custom_data != null:
 		current_block = null
 		current_tone = _scale.find(custom_data) as Globals.Tone
@@ -144,7 +137,7 @@ func _update_movement(delta: float) -> void:
 
 	move_and_slide()
 
-func _get_floor_custom_data(pos: Vector2, tile_map_layer: String, data_layer: String):
+func _get_floor_custom_data(pos: Vector2, tile_map_layer: int, data_layer: String):
 	var tile_data = _get_floor_tile_data(pos, tile_map_layer)
 	if tile_data:
 		var custom_data = tile_data.get_custom_data(data_layer)
@@ -153,12 +146,11 @@ func _get_floor_custom_data(pos: Vector2, tile_map_layer: String, data_layer: St
 			
 	return null
 	
-func _get_floor_tile_data(pos: Vector2, layer: String):
+func _get_floor_tile_data(pos: Vector2, layer: int):
 	var tile_data: TileData
-	if current_floor_map:
-		var layer_idx = _floor_map_layer_info[layer] if _floor_map_layer_info.has(layer) else 0
+	if current_floor_map and layer >= 0:
 		var floor_pos = current_floor_map.local_to_map(current_floor_map.to_local(pos))
-		tile_data = current_floor_map.get_cell_tile_data(layer_idx, floor_pos)
+		tile_data = current_floor_map.get_cell_tile_data(layer, floor_pos)
 		
 	return tile_data
 
@@ -167,3 +159,15 @@ func _on_jumped() -> void:
 	jump_note_player.tone = current_tone
 	add_child(jump_note_player)
 	jump_note_player.start()
+
+
+func _on_tile_detector_area_body_entered(body: Node2D) -> void:
+	current_floor_map = body as TileMap
+	if current_floor_map:
+		floor_map_tone_layer = -1
+		# Skip layer 0 (Platform layer)
+		for l in range(1, current_floor_map.get_layers_count()):
+			if current_floor_map.is_layer_enabled(l):
+				# Enabled layer is the current tone layer
+				floor_map_tone_layer = l
+				break
