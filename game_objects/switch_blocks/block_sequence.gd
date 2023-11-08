@@ -1,5 +1,6 @@
 extends Node
 
+@export var switch_blocks: Array[SwitchBlock] = []
 @export_range(1, 99) var sequence_length_max: int = 7
 
 enum SequenceState
@@ -10,7 +11,6 @@ enum SequenceState
 	FINISHED,
 }
 
-var _blocks: Array[SwitchBlock] = []
 var _current_sequence: Array[int] = []
 var _sequence_cursor: int = 0
 		
@@ -24,13 +24,11 @@ signal finished
 func start() -> void:
 	_set_blocks_enabled(false)
 	_sequence_state = SequenceState.DEMO
-	_play_sequence(range(_blocks.size()))
+	_play_sequence(range(switch_blocks.size()))
 	
 func _setup_blocks() -> void:
-	for c in get_children():
-		if c is SwitchBlock:
-			c.is_hit.connect(_on_block_is_hit)
-			_blocks.append(c)
+	for b in switch_blocks:
+		b.is_hit.connect(_on_block_is_hit)
 	
 func _setup_next_sequence(reset: bool) -> void:
 	_sequence_cursor = 0
@@ -39,7 +37,7 @@ func _setup_next_sequence(reset: bool) -> void:
 	if reset:
 		_current_sequence.clear()
 		for i in sequence_length_max:
-			_current_sequence.append(randi_range(0, _blocks.size() - 1))
+			_current_sequence.append(randi_range(0, switch_blocks.size() - 1))
 	
 		_current_sequence_end = 0
 	else:
@@ -52,28 +50,28 @@ func _play_sequence(blocks: Array) -> void:
 	
 	var timer: Timer = $BlockTimer
 	for b in blocks:
-		_blocks[b].hit()
+		switch_blocks[b].hit()
 		timer.start()
 		await $BlockTimer.timeout
 
 	sequence_played.emit(_sequence_state == SequenceState.DEMO)
 
 func _validate_block(block: SwitchBlock) -> bool:
-	var valid = _blocks[_current_sequence[_sequence_cursor]] == block
+	var valid = switch_blocks[_current_sequence[_sequence_cursor]] == block
 	return valid
 	
 func _set_all_blocks_valid() -> void:
-	for b in _blocks:
+	for b in switch_blocks:
 		b.hit_valid = true
 		
 func _set_block_valid(block: int) -> void:
-	for b in _blocks:
+	for b in switch_blocks:
 		b.hit_valid = false
 			
-	_blocks[block].hit_valid = true
+	switch_blocks[block].hit_valid = true
 		
 func _set_blocks_enabled(enabled: bool) -> void:
-	for b in _blocks:
+	for b in switch_blocks:
 		b.hit_detection_enabled = enabled
 	
 # Called when the node enters the scene tree for the first time.
