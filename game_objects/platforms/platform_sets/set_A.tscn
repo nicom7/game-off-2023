@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhxpfwjuuirp5"]
+[gd_scene load_steps=3 format=3 uid="uid://bhxpfwjuuirp5"]
 
 [ext_resource type="PackedScene" uid="uid://btccwmjkek1ng" path="res://game_objects/platforms/platform_sets/platform_set.tscn" id="1_qcfxd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yiglt"]
+size = Vector2(1152, 288)
 
 [node name="PlatformSet" instance=ExtResource("1_qcfxd")]
 tone = 2
@@ -27,3 +30,7 @@ layer_7/tile_data = PackedInt32Array(65536, 65543, 2, 0, 65543, 0, 65559, 196615
 visible = false
 upper_tone = 2
 lower_tone = 1
+
+[node name="BoundingRect" parent="." index="3"]
+position = Vector2(576, -48)
+shape = SubResource("RectangleShape2D_yiglt")

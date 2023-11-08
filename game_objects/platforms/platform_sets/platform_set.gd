@@ -13,7 +13,10 @@ extends Node2D
 		if lower_tone != value:
 			lower_tone = value
 			_update_lower_tone()
-			
+
+func get_bounding_rect() -> Rect2:
+	return $BoundingRect.global_transform * $BoundingRect.shape.get_rect()
+	
 func get_switch_blocks() -> Array[SwitchBlock]:
 	var switch_blocks: Array[SwitchBlock] = []
 	for c in get_children():
