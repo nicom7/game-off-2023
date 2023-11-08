@@ -48,6 +48,8 @@ rotation = 1.5708
 position = Vector2(1152, 288)
 rotation = -1.5708
 
+[node name="Stages" type="Node2D" parent="Environment"]
+
 [node name="GameObjects" type="Node2D" parent="."]
 
 [node name="BlockSequence" parent="GameObjects" instance=ExtResource("7_v4u45")]

@@ -1,5 +1,11 @@
 extends Node2D
 
+@export_range(1, 7) var stage_count: int = 7:
+	set(value):
+		if stage_count != value:
+			stage_count = value
+			_update_stages()
+		
 var player_tone: Globals.Tone
 @export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
@@ -8,6 +14,8 @@ var ambient_note_player: NotePlayer
 @onready var _overview: Polygon2D = %Overview
 var _overview_rect: Rect2
 var _overview_zoom: Vector2
+
+var _stages: Array[Node] = []
 
 func _setup_overview():
 	for v in _overview.polygon:
@@ -28,10 +36,24 @@ func _setup_overview():
 	_camera.set_target_zoom(_overview_zoom, true)
 	_camera.zoom = _overview_zoom
 	
+func _setup_stages() -> void:
+	_stages = $Environment/Stages.get_children()
+	
+func _update_stages() -> void:
+	if not is_node_ready():
+		return
+		
+	for s in _stages:
+		$Environment/Stages.remove_child(s)
+		
+	for i in stage_count:
+		$Environment/Stages.add_child(_stages[i])
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_setup_overview()
+	_setup_stages()
+	_update_stages()
 	%BlockSequence.start()
 
 
