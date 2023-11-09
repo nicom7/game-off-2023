@@ -131,12 +131,5 @@ func _on_jumped() -> void:
 	jump_note_player.start()
 
 
-func _on_tile_detector_area_body_entered(body: Node2D) -> void:
-	current_floor_map = body as TileMap
-	if current_floor_map:
-		# Skip layer 0 (Platform layer)
-		for l in range(1, current_floor_map.get_layers_count()):
-			if current_floor_map.is_layer_enabled(l):
-				# Enabled layer - 1 is the current tone
-				current_tone = (l - 1) as Globals.Tone
-				break
+func _on_tile_detector_area_tone_changed(tone) -> void:
+	current_tone = tone

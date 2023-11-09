@@ -56,7 +56,6 @@ size = Vector2(480, 288)
 size = Vector2(288, 288)
 
 [node name="World" instance=ExtResource("1_dlj7h")]
-stage_count = 3
 
 [node name="Player" parent="." index="0"]
 position = Vector2(48, 456)
@@ -82,17 +81,18 @@ zoom_easing = SubResource("Curve_q2det")
 [node name="PlatformSet" parent="Environment/Stages/Stage0" index="0" instance=ExtResource("3_6tf3d")]
 position = Vector2(0, 528)
 
-[node name="Ladder" parent="Environment/Stages/Stage0/PlatformSet" index="2"]
-process_mode = 4
-
-[node name="BoundingRect" parent="Environment/Stages/Stage0/PlatformSet" index="3"]
+[node name="BoundingRect" parent="Environment/Stages/Stage0/PlatformSet" index="0"]
 shape = SubResource("RectangleShape2D_j14s7")
+
+[node name="Ladder" parent="Environment/Stages/Stage0/PlatformSet" index="3"]
+process_mode = 4
 
 [node name="PlatformSet2" parent="Environment/Stages/Stage0" index="1" instance=ExtResource("3_6tf3d")]
 position = Vector2(1152, 528)
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage0/PlatformSet2" index="0"]
-position = Vector2(384, -126)
+[node name="BoundingRect" parent="Environment/Stages/Stage0/PlatformSet2" index="0"]
+position = Vector2(312, -48)
+shape = SubResource("RectangleShape2D_kcawv")
 
 [node name="TileMap" parent="Environment/Stages/Stage0/PlatformSet2" index="1"]
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 65538, 131072, 2, 65539, 131072, 2, 65540, 131072, 2, 65541, 131072, 2, 65542, 131072, 2, 65543, 131072, 2, 7, 131072, 0, 6, 131072, 0, 5, 131072, 0, 4, 131072, 0, 3, 131072, 0, 2, 131072, 0, 8, 131072, 0, 65544, 131072, 2, 65545, 131072, 2, 65546, 131072, 2, 65547, 131072, 2, 65548, 196608, 2, 11, 131072, 0, 10, 131072, 0, 9, 131072, 0, 12, 196608, 0)
@@ -104,12 +104,11 @@ layer_5/tile_data = PackedInt32Array(65536, 65541, 2, 0, 65541, 0, 65548, 196613
 layer_6/tile_data = PackedInt32Array(65536, 65542, 2, 0, 65542, 0, 65548, 196614, 2, 12, 196614, 0, 65547, 131078, 2, 11, 131078, 0, 65546, 131078, 2, 10, 131078, 0, 65545, 131078, 2, 9, 131078, 0, 65544, 131078, 2, 8, 131078, 0, 65543, 131078, 2, 7, 131078, 0, 65542, 131078, 2, 6, 131078, 0, 65541, 131078, 2, 5, 131078, 0, 65540, 131078, 2, 4, 131078, 0, 65539, 131078, 2, 3, 131078, 0, 65538, 131078, 2, 2, 131078, 0, 65537, 131078, 2, 1, 131078, 0)
 layer_7/tile_data = PackedInt32Array(65536, 65543, 2, 0, 65543, 0, 65548, 196615, 2, 12, 196615, 0, 65547, 131079, 2, 11, 131079, 0, 65546, 131079, 2, 10, 131079, 0, 65545, 131079, 2, 9, 131079, 0, 65544, 131079, 2, 8, 131079, 0, 65543, 131079, 2, 7, 131079, 0, 65542, 131079, 2, 6, 131079, 0, 65541, 131079, 2, 5, 131079, 0, 65540, 131079, 2, 4, 131079, 0, 65539, 131079, 2, 3, 131079, 0, 65538, 131079, 2, 2, 131079, 0, 65537, 131079, 2, 1, 131079, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage0/PlatformSet2" index="2"]
-process_mode = 4
+[node name="SwitchBlock" parent="Environment/Stages/Stage0/PlatformSet2" index="2"]
+position = Vector2(384, -126)
 
-[node name="BoundingRect" parent="Environment/Stages/Stage0/PlatformSet2" index="3"]
-position = Vector2(312, -48)
-shape = SubResource("RectangleShape2D_kcawv")
+[node name="Ladder" parent="Environment/Stages/Stage0/PlatformSet2" index="3"]
+process_mode = 4
 
 [node name="Stage1" type="Node2D" parent="Environment/Stages" index="1"]
 
@@ -118,10 +117,9 @@ position = Vector2(432, 336)
 tone = 4
 lower_tone = 2
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage1/PlatformSet" index="0"]
-modulate = Color(0, 1, 1, 1)
-position = Vector2(120, -126)
-tone = 4
+[node name="BoundingRect" parent="Environment/Stages/Stage1/PlatformSet" index="0"]
+position = Vector2(120, -48)
+shape = SubResource("RectangleShape2D_ax677")
 
 [node name="TileMap" parent="Environment/Stages/Stage1/PlatformSet" index="1"]
 layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 2, 65535, 65536, 0, 131071, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 65538, 131072, 2, 65539, 131072, 2, 65540, 131072, 2, 65541, 196608, 2, 5, 196608, 0, 4, 131072, 0, 3, 131072, 0, 2, 131072, 0)
@@ -135,22 +133,23 @@ layer_5/tile_data = PackedInt32Array(65536, 131077, 2, 0, 131077, 0, 65535, 6554
 layer_6/tile_data = PackedInt32Array(65536, 131078, 2, 0, 131078, 0, 65535, 65542, 0, 65537, 131078, 2, 65538, 131078, 2, 65539, 131078, 2, 65540, 131078, 2, 65541, 196614, 2, 5, 196614, 0, 4, 131078, 0, 3, 131078, 0, 2, 131078, 0, 1, 131078, 0, 131071, 65542, 2)
 layer_7/tile_data = PackedInt32Array(65536, 131079, 2, 0, 131079, 0, 65535, 65543, 0, 131071, 65543, 2, 65537, 131079, 2, 65538, 131079, 2, 65539, 131079, 2, 65540, 131079, 2, 65541, 196615, 2, 5, 196615, 0, 4, 131079, 0, 3, 131079, 0, 2, 131079, 0, 1, 131079, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage1/PlatformSet" index="2"]
+[node name="SwitchBlock" parent="Environment/Stages/Stage1/PlatformSet" index="2"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(120, -126)
+tone = 4
+
+[node name="Ladder" parent="Environment/Stages/Stage1/PlatformSet" index="3"]
 upper_tone = 4
 lower_tone = 2
-
-[node name="BoundingRect" parent="Environment/Stages/Stage1/PlatformSet" index="3"]
-position = Vector2(120, -48)
-shape = SubResource("RectangleShape2D_ax677")
 
 [node name="PlatformSet2" parent="Environment/Stages/Stage1" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(1344, 336)
 tone = 4
 lower_tone = 2
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage1/PlatformSet2" index="0"]
-modulate = Color(0, 1, 1, 1)
-tone = 4
+[node name="BoundingRect" parent="Environment/Stages/Stage1/PlatformSet2" index="0"]
+position = Vector2(-192, -48)
+shape = SubResource("RectangleShape2D_d7xp7")
 
 [node name="TileMap" parent="Environment/Stages/Stage1/PlatformSet2" index="1"]
 layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 2, 65535, 131072, 0, 131071, 131072, 2, 65531, 196608, 0, 131067, 196608, 2, 131066, 131072, 2, 131065, 131072, 2, 131064, 131072, 2, 131063, 131072, 2, 131062, 65536, 2, 65526, 65536, 0, 65527, 131072, 0, 65528, 131072, 0, 65529, 131072, 0, 65530, 131072, 0, 1, 196608, 0, 65537, 196608, 2, 65534, 65536, 0, 131070, 65536, 2)
@@ -164,13 +163,14 @@ layer_5/tile_data = PackedInt32Array(65536, 131077, 2, 0, 131077, 0, 65535, 1310
 layer_6/tile_data = PackedInt32Array(65536, 131078, 2, 0, 131078, 0, 65526, 65542, 0, 131062, 65542, 2, 131063, 131078, 2, 131064, 131078, 2, 131065, 131078, 2, 131066, 131078, 2, 131067, 196614, 2, 65531, 196614, 0, 65530, 131078, 0, 65529, 131078, 0, 65528, 131078, 0, 65527, 131078, 0, 65534, 65542, 0, 131070, 65542, 2, 131071, 131078, 2, 65537, 196614, 2, 1, 196614, 0, 65535, 131078, 0)
 layer_7/tile_data = PackedInt32Array(65536, 131079, 2, 0, 131079, 0, 65526, 65543, 0, 131062, 65543, 2, 131063, 131079, 2, 131064, 131079, 2, 131065, 131079, 2, 131066, 131079, 2, 131067, 196615, 2, 65531, 196615, 0, 65530, 131079, 0, 65529, 131079, 0, 65528, 131079, 0, 65527, 131079, 0, 65534, 65543, 0, 131070, 65543, 2, 131071, 131079, 2, 65537, 196615, 2, 1, 196615, 0, 65535, 131079, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage1/PlatformSet2" index="2"]
+[node name="SwitchBlock" parent="Environment/Stages/Stage1/PlatformSet2" index="2"]
+modulate = Color(0, 1, 1, 1)
+tone = 4
+
+[node name="Ladder" parent="Environment/Stages/Stage1/PlatformSet2" index="3"]
+position = Vector2(-48, 0)
 upper_tone = 4
 lower_tone = 2
-
-[node name="BoundingRect" parent="Environment/Stages/Stage1/PlatformSet2" index="3"]
-position = Vector2(-192, -48)
-shape = SubResource("RectangleShape2D_d7xp7")
 
 [node name="Stage2" type="Node2D" parent="Environment/Stages" index="2"]
 
@@ -179,10 +179,9 @@ position = Vector2(672, 144)
 tone = 6
 lower_tone = 4
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage2/PlatformSet" index="0"]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(-264, -126)
-tone = 6
+[node name="BoundingRect" parent="Environment/Stages/Stage2/PlatformSet" index="0"]
+position = Vector2(-48, -48)
+shape = SubResource("RectangleShape2D_0xqdp")
 
 [node name="TileMap" parent="Environment/Stages/Stage2/PlatformSet" index="1"]
 layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 2, 65535, 65536, 0, 131071, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 65538, 131072, 2, 65539, 131072, 2, 65540, 131072, 2, 65541, 196608, 2, 5, 196608, 0, 4, 131072, 0, 3, 131072, 0, 2, 131072, 0, 65528, 65536, 0, 131064, 65536, 2, 131065, 131072, 2, 131066, 131072, 2, 131067, 131072, 2, 131068, 196608, 2, 65532, 196608, 0, 65531, 131072, 0, 65530, 131072, 0, 65529, 131072, 0)
@@ -196,22 +195,23 @@ layer_6/tile_data = PackedInt32Array(65536, 131078, 2, 0, 131078, 0, 131068, 196
 layer_7/enabled = true
 layer_7/tile_data = PackedInt32Array(65536, 131079, 2, 0, 131079, 0, 65528, 65543, 0, 131064, 65543, 2, 131065, 131079, 2, 131066, 131079, 2, 131067, 131079, 2, 131068, 196615, 2, 65532, 196615, 0, 65531, 131079, 0, 65530, 131079, 0, 65529, 131079, 0, 65535, 65543, 0, 131071, 65543, 2, 65537, 131079, 2, 65538, 131079, 2, 65539, 131079, 2, 65540, 131079, 2, 65541, 196615, 2, 5, 196615, 0, 4, 131079, 0, 3, 131079, 0, 2, 131079, 0, 1, 131079, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage2/PlatformSet" index="2"]
+[node name="SwitchBlock" parent="Environment/Stages/Stage2/PlatformSet" index="2"]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(-264, -126)
+tone = 6
+
+[node name="Ladder" parent="Environment/Stages/Stage2/PlatformSet" index="3"]
 upper_tone = 6
 lower_tone = 4
-
-[node name="BoundingRect" parent="Environment/Stages/Stage2/PlatformSet" index="3"]
-position = Vector2(-48, -48)
-shape = SubResource("RectangleShape2D_0xqdp")
 
 [node name="PlatformSet2" parent="Environment/Stages/Stage2" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(1440, 144)
 tone = 6
 lower_tone = 4
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage2/PlatformSet2" index="0"]
-modulate = Color(1, 0, 1, 1)
-tone = 6
+[node name="BoundingRect" parent="Environment/Stages/Stage2/PlatformSet2" index="0"]
+position = Vector2(-96, -48)
+shape = SubResource("RectangleShape2D_12tri")
 
 [node name="TileMap" parent="Environment/Stages/Stage2/PlatformSet2" index="1"]
 layer_0/tile_data = PackedInt32Array(1, 131072, 0, 65537, 131072, 2, 65538, 131072, 2, 65539, 196608, 2, 3, 196608, 0, 2, 131072, 0, 65528, 65536, 0, 131064, 65536, 2, 131065, 131072, 2, 131066, 131072, 2, 131067, 131072, 2, 131068, 196608, 2, 65532, 196608, 0, 65531, 131072, 0, 65530, 131072, 0, 65529, 131072, 0, 0, 65536, 0, 65536, 65536, 2)
@@ -225,14 +225,14 @@ layer_6/tile_data = PackedInt32Array(65536, 65542, 2, 0, 65542, 0, 65539, 196614
 layer_7/enabled = true
 layer_7/tile_data = PackedInt32Array(65536, 65543, 2, 0, 65543, 0, 65528, 65543, 0, 131064, 65543, 2, 131065, 131079, 2, 131066, 131079, 2, 131067, 131079, 2, 131068, 196615, 2, 65532, 196615, 0, 65531, 131079, 0, 65530, 131079, 0, 65529, 131079, 0, 65537, 131079, 2, 65538, 131079, 2, 65539, 196615, 2, 3, 196615, 0, 2, 131079, 0, 1, 131079, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage2/PlatformSet2" index="2"]
+[node name="SwitchBlock" parent="Environment/Stages/Stage2/PlatformSet2" index="2"]
+modulate = Color(1, 0, 1, 1)
+tone = 6
+
+[node name="Ladder" parent="Environment/Stages/Stage2/PlatformSet2" index="3"]
 position = Vector2(-336, 0)
 upper_tone = 6
 lower_tone = 4
-
-[node name="BoundingRect" parent="Environment/Stages/Stage2/PlatformSet2" index="3"]
-position = Vector2(-96, -48)
-shape = SubResource("RectangleShape2D_12tri")
 
 [node name="Stage3" type="Node2D" parent="Environment/Stages" index="3"]
 
@@ -241,10 +241,9 @@ position = Vector2(912, -48)
 tone = 5
 lower_tone = 4
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage3/PlatformSet" index="0"]
-modulate = Color(0, 0.5, 1, 1)
-position = Vector2(48, -126)
-tone = 5
+[node name="BoundingRect" parent="Environment/Stages/Stage3/PlatformSet" index="0"]
+position = Vector2(-264, -48)
+shape = SubResource("RectangleShape2D_s0sa1")
 
 [node name="TileMap" parent="Environment/Stages/Stage3/PlatformSet" index="1"]
 layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 2, 65535, 131072, 0, 131071, 131072, 2, 1, 131072, 0, 65537, 131072, 2, 65538, 131072, 2, 65539, 131072, 2, 65540, 196608, 2, 4, 196608, 0, 3, 131072, 0, 2, 131072, 0, 65528, 131072, 0, 131064, 131072, 2, 131065, 131072, 2, 131066, 196608, 2, 65530, 196608, 0, 65529, 131072, 0, 65534, 65536, 0, 131070, 65536, 2, 65527, 65536, 0, 131063, 65536, 2, 65524, 196608, 0, 131060, 196608, 2, 131059, 131072, 2, 131058, 131072, 2, 131057, 131072, 2, 131056, 65536, 2, 65520, 65536, 0, 65521, 131072, 0, 65522, 131072, 0, 65523, 131072, 0)
@@ -258,9 +257,10 @@ layer_6/enabled = true
 layer_6/tile_data = PackedInt32Array(65536, 131078, 2, 0, 131078, 0, 65520, 65542, 0, 131056, 65542, 2, 131057, 131078, 2, 131058, 131078, 2, 131059, 131078, 2, 131060, 196614, 2, 65524, 196614, 0, 65523, 131078, 0, 65522, 131078, 0, 65521, 131078, 0, 65527, 65542, 0, 131063, 65542, 2, 131064, 131078, 2, 131065, 131078, 2, 131066, 196614, 2, 65530, 196614, 0, 65529, 131078, 0, 65528, 131078, 0, 65534, 65542, 0, 131070, 65542, 2, 131071, 131078, 2, 65537, 131078, 2, 65538, 131078, 2, 65539, 131078, 2, 65540, 196614, 2, 4, 196614, 0, 3, 131078, 0, 2, 131078, 0, 1, 131078, 0, 65535, 131078, 0)
 layer_7/tile_data = PackedInt32Array(65536, 131079, 2, 0, 131079, 0, 131060, 196615, 2, 65524, 196615, 0, 131059, 131079, 2, 65523, 131079, 0, 131058, 131079, 2, 65522, 131079, 0, 131057, 131079, 2, 65521, 131079, 0, 131056, 65543, 2, 65520, 65543, 0, 131066, 196615, 2, 65530, 196615, 0, 131065, 131079, 2, 65529, 131079, 0, 131064, 131079, 2, 65528, 131079, 0, 131063, 65543, 2, 65527, 65543, 0, 65537, 131079, 2, 1, 131079, 0, 131071, 131079, 2, 65535, 131079, 0, 65540, 196615, 2, 4, 196615, 0, 65539, 131079, 2, 3, 131079, 0, 65538, 131079, 2, 2, 131079, 0, 131070, 65543, 2, 65534, 65543, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage3/PlatformSet" index="2"]
-upper_tone = 5
-lower_tone = 4
+[node name="SwitchBlock" parent="Environment/Stages/Stage3/PlatformSet" index="2"]
+modulate = Color(0, 0.5, 1, 1)
+position = Vector2(48, -126)
+tone = 5
 
 [node name="Ladder2" parent="Environment/Stages/Stage3/PlatformSet" index="3" instance=ExtResource("5_salg1")]
 position = Vector2(-624, 0)
@@ -268,19 +268,18 @@ upper_tone = 5
 lower_tone = 4
 size = 4
 
-[node name="BoundingRect" parent="Environment/Stages/Stage3/PlatformSet" index="4"]
-position = Vector2(-264, -48)
-shape = SubResource("RectangleShape2D_s0sa1")
+[node name="Ladder" parent="Environment/Stages/Stage3/PlatformSet" index="4"]
+upper_tone = 5
+lower_tone = 4
 
 [node name="PlatformSet2" parent="Environment/Stages/Stage3" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(2016, -48)
 tone = 5
 lower_tone = 2
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage3/PlatformSet2" index="0"]
-modulate = Color(0, 0.5, 1, 1)
-position = Vector2(-336, -126)
-tone = 5
+[node name="BoundingRect" parent="Environment/Stages/Stage3/PlatformSet2" index="0"]
+position = Vector2(-360, -48)
+shape = SubResource("RectangleShape2D_x82ws")
 
 [node name="TileMap" parent="Environment/Stages/Stage3/PlatformSet2" index="1"]
 layer_0/tile_data = PackedInt32Array(65528, 131072, 0, 131064, 131072, 2, 131065, 131072, 2, 131066, 196608, 2, 65530, 196608, 0, 65529, 131072, 0, 65527, 131072, 0, 131063, 131072, 2, 65526, 65536, 0, 131062, 65536, 2)
@@ -294,15 +293,16 @@ layer_6/enabled = true
 layer_6/tile_data = PackedInt32Array(65527, 131078, 0, 131063, 131078, 2, 131064, 131078, 2, 131065, 131078, 2, 131066, 196614, 2, 65530, 196614, 0, 65529, 131078, 0, 65528, 131078, 0, 65526, 65542, 0, 131062, 65542, 2)
 layer_7/tile_data = PackedInt32Array(131066, 196615, 2, 65530, 196615, 0, 131065, 131079, 2, 65529, 131079, 0, 131064, 131079, 2, 65528, 131079, 0, 131063, 131079, 2, 65527, 131079, 0, 131062, 65543, 2, 65526, 65543, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage3/PlatformSet2" index="2"]
+[node name="SwitchBlock" parent="Environment/Stages/Stage3/PlatformSet2" index="2"]
+modulate = Color(0, 0.5, 1, 1)
+position = Vector2(-288, -126)
+tone = 5
+
+[node name="Ladder" parent="Environment/Stages/Stage3/PlatformSet2" index="3"]
 position = Vector2(-336, 0)
 upper_tone = 5
 lower_tone = 2
 size = 12
-
-[node name="BoundingRect" parent="Environment/Stages/Stage3/PlatformSet2" index="3"]
-position = Vector2(-360, -48)
-shape = SubResource("RectangleShape2D_x82ws")
 
 [node name="Stage4" type="Node2D" parent="Environment/Stages" index="4"]
 
@@ -311,10 +311,9 @@ position = Vector2(528, -240)
 tone = 6
 lower_tone = 5
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage4/PlatformSet" index="0"]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(-192, -126)
-tone = 6
+[node name="BoundingRect" parent="Environment/Stages/Stage4/PlatformSet" index="0"]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_futcy")
 
 [node name="TileMap" parent="Environment/Stages/Stage4/PlatformSet" index="1"]
 layer_0/tile_data = PackedInt32Array(65540, 196608, 2, 65539, 131072, 2, 65538, 131072, 2, 65537, 131072, 2, 65536, 131072, 2, 131071, 131072, 2, 131070, 131072, 2, 131069, 131072, 2, 131068, 131072, 2, 131067, 65536, 2, 65531, 65536, 0, 65532, 131072, 0, 65533, 131072, 0, 65534, 131072, 0, 65535, 131072, 0, 0, 131072, 0, 1, 131072, 0, 2, 131072, 0, 3, 131072, 0, 4, 196608, 0)
@@ -328,22 +327,23 @@ layer_6/tile_data = PackedInt32Array(65540, 196614, 2, 4, 196614, 0, 65539, 1310
 layer_7/enabled = true
 layer_7/tile_data = PackedInt32Array(65536, 131079, 2, 0, 131079, 0, 65531, 65543, 0, 131067, 65543, 2, 131068, 131079, 2, 131069, 131079, 2, 131070, 131079, 2, 131071, 131079, 2, 65535, 131079, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 196615, 0, 65540, 196615, 2, 65539, 131079, 2, 65538, 131079, 2, 65537, 131079, 2, 65534, 131079, 0, 65533, 131079, 0, 65532, 131079, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage4/PlatformSet" index="2"]
+[node name="SwitchBlock" parent="Environment/Stages/Stage4/PlatformSet" index="2"]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(-192, -126)
+tone = 6
+
+[node name="Ladder" parent="Environment/Stages/Stage4/PlatformSet" index="3"]
 upper_tone = 6
 lower_tone = 5
-
-[node name="BoundingRect" parent="Environment/Stages/Stage4/PlatformSet" index="3"]
-position = Vector2(0, -48)
-shape = SubResource("RectangleShape2D_futcy")
 
 [node name="PlatformSet2" parent="Environment/Stages/Stage4" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(1392, -240)
 tone = 6
 lower_tone = 5
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage4/PlatformSet2" index="0"]
-modulate = Color(1, 0, 1, 1)
-tone = 6
+[node name="BoundingRect" parent="Environment/Stages/Stage4/PlatformSet2" index="0"]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_lhxmy")
 
 [node name="TileMap" parent="Environment/Stages/Stage4/PlatformSet2" index="1"]
 layer_0/tile_data = PackedInt32Array(65540, 196608, 2, 65539, 131072, 2, 65538, 131072, 2, 65537, 131072, 2, 65536, 131072, 2, 131071, 131072, 2, 131070, 131072, 2, 131069, 131072, 2, 131068, 131072, 2, 131067, 65536, 2, 65531, 65536, 0, 65532, 131072, 0, 65533, 131072, 0, 65534, 131072, 0, 65535, 131072, 0, 0, 131072, 0, 1, 131072, 0, 2, 131072, 0, 3, 131072, 0, 4, 196608, 0)
@@ -357,14 +357,14 @@ layer_6/tile_data = PackedInt32Array(65540, 196614, 2, 4, 196614, 0, 65539, 1310
 layer_7/enabled = true
 layer_7/tile_data = PackedInt32Array(65536, 131079, 2, 0, 131079, 0, 65531, 65543, 0, 131067, 65543, 2, 131068, 131079, 2, 131069, 131079, 2, 131070, 131079, 2, 131071, 131079, 2, 65535, 131079, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 196615, 0, 65540, 196615, 2, 65539, 131079, 2, 65538, 131079, 2, 65537, 131079, 2, 65534, 131079, 0, 65533, 131079, 0, 65532, 131079, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage4/PlatformSet2" index="2"]
+[node name="SwitchBlock" parent="Environment/Stages/Stage4/PlatformSet2" index="2"]
+modulate = Color(1, 0, 1, 1)
+tone = 6
+
+[node name="Ladder" parent="Environment/Stages/Stage4/PlatformSet2" index="3"]
 position = Vector2(144, 0)
 upper_tone = 6
 lower_tone = 5
-
-[node name="BoundingRect" parent="Environment/Stages/Stage4/PlatformSet2" index="3"]
-position = Vector2(0, -48)
-shape = SubResource("RectangleShape2D_lhxmy")
 
 [node name="Stage5" type="Node2D" parent="Environment/Stages" index="5"]
 
@@ -372,8 +372,9 @@ shape = SubResource("RectangleShape2D_lhxmy")
 position = Vector2(912, -432)
 lower_tone = 5
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage5/PlatformSet" index="0"]
-position = Vector2(-432, -126)
+[node name="BoundingRect" parent="Environment/Stages/Stage5/PlatformSet" index="0"]
+position = Vector2(-120, -48)
+shape = SubResource("RectangleShape2D_hvnr2")
 
 [node name="TileMap" parent="Environment/Stages/Stage5/PlatformSet" index="1"]
 layer_0/tile_data = PackedInt32Array(65540, 196608, 2, 65539, 131072, 2, 65538, 131072, 2, 65537, 131072, 2, 65536, 131072, 2, 131071, 131072, 2, 131070, 131072, 2, 65534, 131072, 0, 65535, 131072, 0, 0, 131072, 0, 1, 131072, 0, 2, 131072, 0, 3, 131072, 0, 4, 196608, 0, 65533, 65536, 0, 131069, 65536, 2, 65530, 196608, 0, 131066, 196608, 2, 131065, 131072, 2, 131064, 131072, 2, 131063, 131072, 2, 131062, 65536, 2, 65526, 65536, 0, 65527, 131072, 0, 65528, 131072, 0, 65529, 131072, 0)
@@ -385,21 +386,21 @@ layer_5/tile_data = PackedInt32Array(131066, 196613, 2, 131065, 131077, 2, 13106
 layer_6/tile_data = PackedInt32Array(131066, 196614, 2, 65530, 196614, 0, 131065, 131078, 2, 65529, 131078, 0, 131064, 131078, 2, 65528, 131078, 0, 131063, 131078, 2, 65527, 131078, 0, 131062, 65542, 2, 65526, 65542, 0, 65540, 196614, 2, 4, 196614, 0, 65539, 131078, 2, 3, 131078, 0, 65538, 131078, 2, 2, 131078, 0, 65537, 131078, 2, 1, 131078, 0, 65536, 131078, 2, 0, 131078, 0, 131071, 131078, 2, 65535, 131078, 0, 131070, 131078, 2, 65534, 131078, 0, 131069, 65542, 2, 65533, 65542, 0)
 layer_7/tile_data = PackedInt32Array(131066, 196615, 2, 65530, 196615, 0, 131065, 131079, 2, 65529, 131079, 0, 131064, 131079, 2, 65528, 131079, 0, 131063, 131079, 2, 65527, 131079, 0, 131062, 65543, 2, 65526, 65543, 0, 65540, 196615, 2, 4, 196615, 0, 65539, 131079, 2, 3, 131079, 0, 65538, 131079, 2, 2, 131079, 0, 65537, 131079, 2, 1, 131079, 0, 65536, 131079, 2, 0, 131079, 0, 131071, 131079, 2, 65535, 131079, 0, 131070, 131079, 2, 65534, 131079, 0, 131069, 65543, 2, 65533, 65543, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage5/PlatformSet" index="2"]
+[node name="SwitchBlock" parent="Environment/Stages/Stage5/PlatformSet" index="2"]
+position = Vector2(-432, -126)
+
+[node name="Ladder" parent="Environment/Stages/Stage5/PlatformSet" index="3"]
 position = Vector2(144, 0)
 lower_tone = 5
 size = 8
-
-[node name="BoundingRect" parent="Environment/Stages/Stage5/PlatformSet" index="3"]
-position = Vector2(-120, -48)
-shape = SubResource("RectangleShape2D_hvnr2")
 
 [node name="PlatformSet2" parent="Environment/Stages/Stage5" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(1344, -432)
 lower_tone = 0
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage5/PlatformSet2" index="0"]
-position = Vector2(-96, -126)
+[node name="BoundingRect" parent="Environment/Stages/Stage5/PlatformSet2" index="0"]
+position = Vector2(-72, -48)
+shape = SubResource("RectangleShape2D_2aqpr")
 
 [node name="TileMap" parent="Environment/Stages/Stage5/PlatformSet2" index="1"]
 layer_0/tile_data = PackedInt32Array(131070, 131072, 2, 65534, 131072, 0, 65533, 65536, 0, 131069, 65536, 2, 65535, 196608, 0, 131071, 196608, 2)
@@ -411,16 +412,15 @@ layer_5/tile_data = PackedInt32Array(131071, 196613, 2, 65535, 196613, 0, 131070
 layer_6/tile_data = PackedInt32Array(131071, 196614, 2, 65535, 196614, 0, 131070, 131078, 2, 65534, 131078, 0, 131069, 65542, 2, 65533, 65542, 0)
 layer_7/tile_data = PackedInt32Array(131071, 196615, 2, 65535, 196615, 0, 131070, 131079, 2, 65534, 131079, 0, 131069, 65543, 2, 65533, 65543, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage5/PlatformSet2" index="2"]
+[node name="SwitchBlock" parent="Environment/Stages/Stage5/PlatformSet2" index="2"]
+position = Vector2(-96, -126)
+
+[node name="Ladder" parent="Environment/Stages/Stage5/PlatformSet2" index="3"]
 process_mode = 4
 visible = false
 position = Vector2(144, 0)
 lower_tone = 0
 size = 8
-
-[node name="BoundingRect" parent="Environment/Stages/Stage5/PlatformSet2" index="3"]
-position = Vector2(-72, -48)
-shape = SubResource("RectangleShape2D_2aqpr")
 
 [node name="Stage6" type="Node2D" parent="Environment/Stages" index="6"]
 
@@ -429,10 +429,9 @@ position = Vector2(816, -624)
 tone = 1
 lower_tone = 0
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage6/PlatformSet" index="0"]
-modulate = Color(1, 0.5, 0, 1)
-position = Vector2(-48, -126)
-tone = 1
+[node name="BoundingRect" parent="Environment/Stages/Stage6/PlatformSet" index="0"]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_5qrl7")
 
 [node name="TileMap" parent="Environment/Stages/Stage6/PlatformSet" index="1"]
 layer_0/tile_data = PackedInt32Array(65540, 196608, 2, 65539, 131072, 2, 65538, 131072, 2, 65537, 131072, 2, 65536, 131072, 2, 131071, 131072, 2, 131070, 131072, 2, 4, 196608, 0, 3, 131072, 0, 2, 131072, 0, 1, 131072, 0, 0, 131072, 0, 65535, 131072, 0, 65534, 131072, 0, 65533, 131072, 0, 65532, 131072, 0, 65531, 65536, 0, 131067, 65536, 2, 131068, 131072, 2, 131069, 131072, 2)
@@ -446,23 +445,23 @@ layer_5/tile_data = PackedInt32Array(65540, 196613, 2, 4, 196613, 0, 65539, 1310
 layer_6/tile_data = PackedInt32Array(65540, 196614, 2, 4, 196614, 0, 65539, 131078, 2, 3, 131078, 0, 65538, 131078, 2, 2, 131078, 0, 65537, 131078, 2, 1, 131078, 0, 65536, 131078, 2, 0, 131078, 0, 131071, 131078, 2, 65535, 131078, 0, 131070, 131078, 2, 65534, 131078, 0, 131069, 131078, 2, 65533, 131078, 0, 131068, 131078, 2, 65532, 131078, 0, 131067, 65542, 2, 65531, 65542, 0)
 layer_7/tile_data = PackedInt32Array(65536, 131079, 2, 0, 131079, 0, 65531, 65543, 0, 131067, 65543, 2, 131068, 131079, 2, 131069, 131079, 2, 131070, 131079, 2, 131071, 131079, 2, 65535, 131079, 0, 1, 131079, 0, 2, 131079, 0, 3, 131079, 0, 4, 196615, 0, 65540, 196615, 2, 65539, 131079, 2, 65538, 131079, 2, 65537, 131079, 2, 65534, 131079, 0, 65533, 131079, 0, 65532, 131079, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage6/PlatformSet" index="2"]
+[node name="SwitchBlock" parent="Environment/Stages/Stage6/PlatformSet" index="2"]
+modulate = Color(1, 0.5, 0, 1)
+position = Vector2(-48, -126)
+tone = 1
+
+[node name="Ladder" parent="Environment/Stages/Stage6/PlatformSet" index="3"]
 position = Vector2(-192, 0)
 upper_tone = 1
 lower_tone = 0
-
-[node name="BoundingRect" parent="Environment/Stages/Stage6/PlatformSet" index="3"]
-position = Vector2(0, -48)
-shape = SubResource("RectangleShape2D_5qrl7")
 
 [node name="PlatformSet2" parent="Environment/Stages/Stage6" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(1440, -624)
 tone = 1
 
-[node name="SwitchBlock" parent="Environment/Stages/Stage6/PlatformSet2" index="0"]
-modulate = Color(1, 0.5, 0, 1)
-position = Vector2(48, -126)
-tone = 1
+[node name="BoundingRect" parent="Environment/Stages/Stage6/PlatformSet2" index="0"]
+position = Vector2(96, -48)
+shape = SubResource("RectangleShape2D_ykiij")
 
 [node name="TileMap" parent="Environment/Stages/Stage6/PlatformSet2" index="1"]
 layer_0/tile_data = PackedInt32Array(65540, 196608, 2, 65539, 131072, 2, 65538, 131072, 2, 65537, 131072, 2, 65536, 131072, 2, 131071, 65536, 2, 4, 196608, 0, 3, 131072, 0, 2, 131072, 0, 1, 131072, 0, 0, 131072, 0, 65535, 65536, 0)
@@ -476,16 +475,17 @@ layer_5/tile_data = PackedInt32Array(65540, 196613, 2, 4, 196613, 0, 65539, 1310
 layer_6/tile_data = PackedInt32Array(65540, 196614, 2, 4, 196614, 0, 65539, 131078, 2, 3, 131078, 0, 65538, 131078, 2, 2, 131078, 0, 65537, 131078, 2, 1, 131078, 0, 65536, 131078, 2, 0, 131078, 0, 131071, 65542, 2, 65535, 65542, 0)
 layer_7/tile_data = PackedInt32Array(65540, 196615, 2, 4, 196615, 0, 65539, 131079, 2, 3, 131079, 0, 65538, 131079, 2, 2, 131079, 0, 65537, 131079, 2, 1, 131079, 0, 65536, 131079, 2, 0, 131079, 0, 131071, 65543, 2, 65535, 65543, 0)
 
-[node name="Ladder" parent="Environment/Stages/Stage6/PlatformSet2" index="2"]
+[node name="SwitchBlock" parent="Environment/Stages/Stage6/PlatformSet2" index="2"]
+modulate = Color(1, 0.5, 0, 1)
+position = Vector2(48, -126)
+tone = 1
+
+[node name="Ladder" parent="Environment/Stages/Stage6/PlatformSet2" index="3"]
 upper_tone = 1
 size = 8
 
-[node name="BoundingRect" parent="Environment/Stages/Stage6/PlatformSet2" index="3"]
-position = Vector2(96, -48)
-shape = SubResource("RectangleShape2D_ykiij")
-
 [node name="BlockSequence" parent="GameObjects" index="0" node_paths=PackedStringArray("switch_blocks")]
-switch_blocks = [NodePath("../../Environment/Stages/Stage0/PlatformSet/SwitchBlock"), NodePath("../../Environment/Stages/Stage1/PlatformSet/SwitchBlock"), NodePath("../../Environment/Stages/Stage2/PlatformSet/SwitchBlock")]
+switch_blocks = [NodePath("../../Environment/Stages/Stage0/PlatformSet/SwitchBlock"), NodePath("../../Environment/Stages/Stage1/PlatformSet/SwitchBlock")]
 
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]

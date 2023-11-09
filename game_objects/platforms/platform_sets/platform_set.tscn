@@ -11,8 +11,10 @@ size = Vector2(48, 288)
 [node name="PlatformSet" type="Node2D"]
 script = ExtResource("1_ec12g")
 
-[node name="SwitchBlock" parent="." instance=ExtResource("2_qslti")]
-position = Vector2(0, -126)
+[node name="BoundingRect" type="CollisionShape2D" parent="."]
+position = Vector2(24, -48)
+shape = SubResource("RectangleShape2D_cmjku")
+disabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_mb8jr")
@@ -69,12 +71,10 @@ layer_7/y_sort_origin = 0
 layer_7/z_index = 0
 layer_7/tile_data = PackedInt32Array(65536, 7, 2, 0, 7, 0)
 
+[node name="SwitchBlock" parent="." instance=ExtResource("2_qslti")]
+position = Vector2(0, -126)
+
 [node name="Ladder" parent="." instance=ExtResource("4_i4kyn")]
 upper_tone = 0
 lower_tone = 6
 size = 4
-
-[node name="BoundingRect" type="CollisionShape2D" parent="."]
-position = Vector2(24, -48)
-shape = SubResource("RectangleShape2D_cmjku")
-disabled = true

@@ -23,13 +23,21 @@ var climb_up_action: String
 var climb_down_action: String
 
 func _update_upper_tone() -> void:
+	if not is_node_ready() or Engine.is_editor_hint():
+		return
+
 	climb_up_action = Globals.get_action_from_tone(upper_tone)
+	$BottomPivot/LowerInteraction.interact_action = climb_up_action
 
 func _update_lower_tone() -> void:
+	if not is_node_ready() or Engine.is_editor_hint():
+		return
+
 	climb_down_action = Globals.get_action_from_tone(lower_tone)
+	$TopPivot/UpperInteraction.interact_action = climb_down_action
 
 func _update_size():
-	if !is_node_ready():
+	if not is_node_ready():
 		return
 
 	var sprite_size: Vector2 = %Ladder.texture.get_size()
@@ -44,13 +52,6 @@ func _ready() -> void:
 	_update_size()
 	_update_upper_tone()
 	_update_lower_tone()
-
-	$BottomPivot/LowerInteraction.interact_action = climb_up_action
-	$TopPivot/UpperInteraction.interact_action = climb_down_action
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_lower_interaction_interacted(player, interactive_object) -> void:
@@ -69,3 +70,11 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	var player = body as Character
 	if player and player.climbing:
 		player.exit_climb()
+
+
+func _on_bottom_tile_detector_area_tone_changed(tone) -> void:
+	lower_tone = tone
+
+
+func _on_top_tile_detector_area_tone_changed(tone) -> void:
+	upper_tone = tone
