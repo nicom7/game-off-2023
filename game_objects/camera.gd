@@ -50,7 +50,7 @@ func set_target_zoom(value: Vector2, instant: bool = false) -> void:
 func _ready() -> void:
 	set_target_node(_target_node, true)
 	set_target_zoom(_target_zoom, true)
-	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -60,10 +60,10 @@ func _process(delta: float) -> void:
 func _update_position(delta: float) -> void:
 	if _target_node == null:
 		return
-		
+
 	if _previous_pos == Vector2.ZERO:
 		_previous_pos = _target_node.global_position
-		
+
 	var cursor = position_easing.sample_baked(_pos_cursor)
 	global_position.x = remap(cursor, 0, 1, _previous_pos.x, _target_node.global_position.x)
 	global_position.y = remap(cursor, 0, 1, _previous_pos.y, _target_node.global_position.y)

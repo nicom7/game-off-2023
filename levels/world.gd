@@ -5,7 +5,7 @@ extends Node2D
 		if stage_count != value:
 			stage_count = value
 			_update_stages()
-		
+
 var player_tone: Globals.Tone
 @export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
@@ -22,16 +22,16 @@ func _setup_boundaries():
 			var ps: PlatformSet = c as PlatformSet
 			if ps:
 				_bounding_rect = _bounding_rect.merge(ps.get_bounding_rect())
-	
+
 	# Use center of overview rect as camera center
 	%CameraCenter.global_position = _bounding_rect.get_center()
-	
+
 	# Adjust camera zoom to view all level
 	_overview_zoom = Vector2(get_viewport_rect().size.x / _bounding_rect.size.x, get_viewport_rect().size.y / _bounding_rect.size.y)
-	
+
 	# Preserve aspect ratio
 	_overview_zoom = Vector2.ONE * minf(_overview_zoom.x, _overview_zoom.y)
-	
+
 	_camera.set_target_node(%CameraCenter, true)
 	_camera.set_target_zoom(_overview_zoom, true)
 	_camera.zoom = _overview_zoom
@@ -40,20 +40,20 @@ func _setup_walls() -> void:
 	$Environment/Walls/Floor.global_position = _bounding_rect.end
 	$Environment/Walls/LeftWall.global_position = _bounding_rect.position
 	$Environment/Walls/RightWall.global_position = _bounding_rect.end
-	
+
 func _setup_stages() -> void:
 	_stages = $Environment/Stages.get_children()
-	
+
 func _update_stages() -> void:
 	if not is_node_ready():
 		return
-		
+
 	for s in _stages:
 		$Environment/Stages.remove_child(s)
-		
+
 	for i in stage_count:
 		$Environment/Stages.add_child(_stages[i])
-	
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_setup_stages()

@@ -7,13 +7,13 @@ extends Node2D
 		if upper_tone != value:
 			upper_tone = value
 			_update_upper_tone()
-			
+
 @export var lower_tone: Globals.Tone = Globals.Tone.A:
 	set(value):
 		if lower_tone != value:
 			lower_tone = value
 			_update_lower_tone()
-			
+
 @export_range(2, 99) var size: int = 2:
 	set(value):
 		size = value
@@ -24,27 +24,27 @@ var climb_down_action: String
 
 func _update_upper_tone() -> void:
 	climb_up_action = Globals.get_action_from_tone(upper_tone)
-	
+
 func _update_lower_tone() -> void:
 	climb_down_action = Globals.get_action_from_tone(lower_tone)
-	
+
 func _update_size():
 	if !is_node_ready():
 		return
-		
+
 	var sprite_size: Vector2 = %Ladder.texture.get_size()
 	sprite_size.y *= size
 	%Ladder.region_rect = Rect2(Vector2.ZERO, sprite_size)
 	%Area2D.scale.y = size
 	%BottomPivot.position.y = sprite_size.y
-	
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_size()
 	_update_upper_tone()
 	_update_lower_tone()
-	
+
 	$BottomPivot/LowerInteraction.interact_action = climb_up_action
 	$TopPivot/UpperInteraction.interact_action = climb_down_action
 
@@ -55,13 +55,13 @@ func _process(delta: float) -> void:
 
 func _on_lower_interaction_interacted(player, interactive_object) -> void:
 	if player and not player.climbing:
-		player.global_position = interactive_object.global_position	
+		player.global_position = interactive_object.global_position
 		player.enter_climb(self)
 
 
 func _on_upper_interaction_interacted(player, interactive_object) -> void:
 	if player and not player.climbing:
-		player.global_position = interactive_object.global_position	
+		player.global_position = interactive_object.global_position
 		player.enter_climb(self)
 
 

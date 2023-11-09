@@ -8,7 +8,7 @@ extends Node
 		if pitch != value:
 			pitch = value
 			_update_pitch()
-			
+
 ## Note playback duration in seconds. Set to 0 or less for infinite duration (until stopped manually).
 @export var duration: float = 0
 
@@ -62,9 +62,9 @@ func stop():
 func _update_pitch():
 	if not is_node_ready():
 		return
-		
+
 	$AudioStreamPlayer.pitch_scale = pitch
-	
+
 func _ready():
 	_update_pitch()
 
@@ -81,7 +81,7 @@ func _update_envelope():
 				current_phase = EnvelopePhase.SUSTAIN
 			else:
 				player.volume_db = linear_to_db(attack_curve.sample_baked(relative_time))
-				
+
 		EnvelopePhase.RELEASE:
 			var relative_time = remap(cursor, phase_start_cursor, phase_start_cursor + release_duration, 0, 1)
 			if relative_time > 1:
@@ -89,19 +89,19 @@ func _update_envelope():
 				queue_free()
 			else:
 				player.volume_db = linear_to_db(_get_volume(relative_time, release_curve))
-				
+
 		EnvelopePhase.SUSTAIN:
 			player.volume_db = linear_to_db(sustain_volume)
-			
-		
+
+
 func _get_volume(time: float, curve: Curve) -> float:
 	var relative_vol = curve.sample_baked(time)
 	var v0 = curve.sample_baked(0)
 	var v1 = curve.sample_baked(1)
-	
+
 	relative_vol = remap(relative_vol, v0, v1, phase_start_volume, v1)
 	return relative_vol
-	
+
 func _fill_buffer():
 	if !playback:
 		return
