@@ -11,23 +11,23 @@ var player_tone: Globals.Tone
 var ambient_note_player: NotePlayer
 
 @onready var _camera: Camera2D = %Camera
-var _overview_rect: Rect2
+var _bounding_rect: Rect2
 var _overview_zoom: Vector2
 
 var _stages: Array[Node] = []
 
-func _setup_overview():
+func _setup_boundaries():
 	for i in stage_count:
 		for c in _stages[i].get_children():
 			var ps: PlatformSet = c as PlatformSet
 			if ps:
-				_overview_rect = _overview_rect.merge(ps.get_bounding_rect())
+				_bounding_rect = _bounding_rect.merge(ps.get_bounding_rect())
 	
 	# Use center of overview rect as camera center
-	%CameraCenter.global_position = _overview_rect.get_center()
+	%CameraCenter.global_position = _bounding_rect.get_center()
 	
 	# Adjust camera zoom to view all level
-	_overview_zoom = Vector2(get_viewport_rect().size.x / _overview_rect.size.x, get_viewport_rect().size.y / _overview_rect.size.y)
+	_overview_zoom = Vector2(get_viewport_rect().size.x / _bounding_rect.size.x, get_viewport_rect().size.y / _bounding_rect.size.y)
 	
 	# Preserve aspect ratio
 	_overview_zoom = Vector2.ONE * minf(_overview_zoom.x, _overview_zoom.y)
@@ -35,6 +35,11 @@ func _setup_overview():
 	_camera.set_target_node(%CameraCenter, true)
 	_camera.set_target_zoom(_overview_zoom, true)
 	_camera.zoom = _overview_zoom
+
+func _setup_walls() -> void:
+	$Environment/Walls/Floor.global_position = _bounding_rect.end
+	$Environment/Walls/LeftWall.global_position = _bounding_rect.position
+	$Environment/Walls/RightWall.global_position = _bounding_rect.end
 	
 func _setup_stages() -> void:
 	_stages = $Environment/Stages.get_children()
@@ -53,7 +58,8 @@ func _update_stages() -> void:
 func _ready() -> void:
 	_setup_stages()
 	_update_stages()
-	_setup_overview()
+	_setup_boundaries()
+	_setup_walls()
 	%BlockSequence.start()
 
 

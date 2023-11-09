@@ -14,7 +14,7 @@ extends Node2D
 			lower_tone = value
 			_update_lower_tone()
 			
-@export_range(2, 10) var size: int = 2:
+@export_range(2, 99) var size: int = 2:
 	set(value):
 		size = value
 		_update_size()
