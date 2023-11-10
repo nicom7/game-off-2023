@@ -74,6 +74,7 @@ drag_bottom_margin = 0.05
 target_node_path = NodePath("../CameraCenter")
 move_speed = 1.4
 position_easing = SubResource("Curve_1888p")
+target_zoom = Vector2(0.25, 0.25)
 zoom_easing = SubResource("Curve_q2det")
 
 [node name="Stage0" type="Node2D" parent="Environment/Stages" index="0"]
@@ -488,7 +489,7 @@ size = 8
 switch_blocks = [NodePath("../../Environment/Stages/Stage0/PlatformSet/SwitchBlock"), NodePath("../../Environment/Stages/Stage1/PlatformSet/SwitchBlock")]
 
 [node name="LevelInfoProvider" parent="." index="6"]
-stage_count = 4
+stage_count_max = 4
 notes_per_stage_max = 2
 notes = Array[int]([2, 3, 4, 5, 6, 0, 1])
 

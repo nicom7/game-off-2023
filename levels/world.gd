@@ -1,11 +1,5 @@
 extends Node2D
 
-@export_range(1, 7) var stage_count: int = 7:
-	set(value):
-		if stage_count != value:
-			stage_count = value
-			_update_stages()
-
 var player_tone: Globals.Tone
 @export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
@@ -16,12 +10,20 @@ var _overview_zoom: Vector2
 
 var _stages: Array[Node] = []
 
+func _get_platform_sets(stage: Node) -> Array[PlatformSet]:
+	var platform_sets: Array[PlatformSet] = []
+	for c in stage.get_children():
+		var ps: PlatformSet = c as PlatformSet
+		if ps:
+			platform_sets.append(ps)
+
+	return platform_sets
+
 func _setup_boundaries():
-	for i in stage_count:
-		for c in _stages[i].get_children():
-			var ps: PlatformSet = c as PlatformSet
-			if ps:
-				_bounding_rect = _bounding_rect.merge(ps.get_bounding_rect())
+	for i in $Environment/Stages.get_child_count():
+		var sets = _get_platform_sets(_stages[i])
+		for ps in sets:
+			_bounding_rect = _bounding_rect.merge(ps.get_bounding_rect())
 
 	# Use center of overview rect as camera center
 	%CameraCenter.global_position = _bounding_rect.get_center()
@@ -51,7 +53,13 @@ func _update_stages() -> void:
 	for s in _stages:
 		$Environment/Stages.remove_child(s)
 
-	for i in stage_count:
+	var stage_notes: Dictionary = $LevelInfoProvider.stage_notes
+	for i in stage_notes.size():
+		var platform_sets = _get_platform_sets(_stages[i])
+		for ps in platform_sets:
+			_stages[i].remove_child(ps)
+		for j in stage_notes[i].size():
+			_stages[i].add_child(platform_sets[j])
 		$Environment/Stages.add_child(_stages[i])
 
 # Called when the node enters the scene tree for the first time.
