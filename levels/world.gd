@@ -59,6 +59,7 @@ func _update_stages() -> void:
 		for ps in platform_sets:
 			_stages[i].remove_child(ps)
 		for j in stage_notes[i].size():
+			platform_sets[j].tone = stage_notes[i][j]
 			_stages[i].add_child(platform_sets[j])
 		$Environment/Stages.add_child(_stages[i])
 

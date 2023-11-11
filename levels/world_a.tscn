@@ -116,7 +116,6 @@ process_mode = 4
 [node name="PlatformSet" parent="Environment/Stages/Stage1" index="0" instance=ExtResource("4_6fqpl")]
 position = Vector2(432, 336)
 tone = 4
-lower_tone = 2
 
 [node name="BoundingRect" parent="Environment/Stages/Stage1/PlatformSet" index="0"]
 position = Vector2(120, -48)
@@ -139,14 +138,9 @@ modulate = Color(0, 1, 1, 1)
 position = Vector2(120, -126)
 tone = 4
 
-[node name="Ladder" parent="Environment/Stages/Stage1/PlatformSet" index="3"]
-upper_tone = 4
-lower_tone = 2
-
 [node name="PlatformSet2" parent="Environment/Stages/Stage1" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(1344, 336)
 tone = 4
-lower_tone = 2
 
 [node name="BoundingRect" parent="Environment/Stages/Stage1/PlatformSet2" index="0"]
 position = Vector2(-192, -48)
@@ -170,15 +164,12 @@ tone = 4
 
 [node name="Ladder" parent="Environment/Stages/Stage1/PlatformSet2" index="3"]
 position = Vector2(-48, 0)
-upper_tone = 4
-lower_tone = 2
 
 [node name="Stage2" type="Node2D" parent="Environment/Stages" index="2"]
 
 [node name="PlatformSet" parent="Environment/Stages/Stage2" index="0" instance=ExtResource("4_6fqpl")]
 position = Vector2(672, 144)
 tone = 6
-lower_tone = 4
 
 [node name="BoundingRect" parent="Environment/Stages/Stage2/PlatformSet" index="0"]
 position = Vector2(-48, -48)
@@ -201,14 +192,9 @@ modulate = Color(1, 0, 1, 1)
 position = Vector2(-264, -126)
 tone = 6
 
-[node name="Ladder" parent="Environment/Stages/Stage2/PlatformSet" index="3"]
-upper_tone = 6
-lower_tone = 4
-
 [node name="PlatformSet2" parent="Environment/Stages/Stage2" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(1440, 144)
 tone = 6
-lower_tone = 4
 
 [node name="BoundingRect" parent="Environment/Stages/Stage2/PlatformSet2" index="0"]
 position = Vector2(-96, -48)
@@ -232,15 +218,12 @@ tone = 6
 
 [node name="Ladder" parent="Environment/Stages/Stage2/PlatformSet2" index="3"]
 position = Vector2(-336, 0)
-upper_tone = 6
-lower_tone = 4
 
 [node name="Stage3" type="Node2D" parent="Environment/Stages" index="3"]
 
 [node name="PlatformSet" parent="Environment/Stages/Stage3" index="0" instance=ExtResource("4_6fqpl")]
 position = Vector2(912, -48)
 tone = 5
-lower_tone = 4
 
 [node name="BoundingRect" parent="Environment/Stages/Stage3/PlatformSet" index="0"]
 position = Vector2(-264, -48)
@@ -265,18 +248,11 @@ tone = 5
 
 [node name="Ladder2" parent="Environment/Stages/Stage3/PlatformSet" index="3" instance=ExtResource("5_salg1")]
 position = Vector2(-624, 0)
-upper_tone = 5
-lower_tone = 4
 size = 4
-
-[node name="Ladder" parent="Environment/Stages/Stage3/PlatformSet" index="4"]
-upper_tone = 5
-lower_tone = 4
 
 [node name="PlatformSet2" parent="Environment/Stages/Stage3" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(2016, -48)
 tone = 5
-lower_tone = 2
 
 [node name="BoundingRect" parent="Environment/Stages/Stage3/PlatformSet2" index="0"]
 position = Vector2(-360, -48)
@@ -301,8 +277,6 @@ tone = 5
 
 [node name="Ladder" parent="Environment/Stages/Stage3/PlatformSet2" index="3"]
 position = Vector2(-336, 0)
-upper_tone = 5
-lower_tone = 2
 size = 12
 
 [node name="Stage4" type="Node2D" parent="Environment/Stages" index="4"]
@@ -310,7 +284,6 @@ size = 12
 [node name="PlatformSet" parent="Environment/Stages/Stage4" index="0" instance=ExtResource("4_6fqpl")]
 position = Vector2(528, -240)
 tone = 6
-lower_tone = 5
 
 [node name="BoundingRect" parent="Environment/Stages/Stage4/PlatformSet" index="0"]
 position = Vector2(0, -48)
@@ -333,14 +306,9 @@ modulate = Color(1, 0, 1, 1)
 position = Vector2(-192, -126)
 tone = 6
 
-[node name="Ladder" parent="Environment/Stages/Stage4/PlatformSet" index="3"]
-upper_tone = 6
-lower_tone = 5
-
 [node name="PlatformSet2" parent="Environment/Stages/Stage4" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(1392, -240)
 tone = 6
-lower_tone = 5
 
 [node name="BoundingRect" parent="Environment/Stages/Stage4/PlatformSet2" index="0"]
 position = Vector2(0, -48)
@@ -364,14 +332,11 @@ tone = 6
 
 [node name="Ladder" parent="Environment/Stages/Stage4/PlatformSet2" index="3"]
 position = Vector2(144, 0)
-upper_tone = 6
-lower_tone = 5
 
 [node name="Stage5" type="Node2D" parent="Environment/Stages" index="5"]
 
 [node name="PlatformSet" parent="Environment/Stages/Stage5" index="0" instance=ExtResource("4_6fqpl")]
 position = Vector2(912, -432)
-lower_tone = 5
 
 [node name="BoundingRect" parent="Environment/Stages/Stage5/PlatformSet" index="0"]
 position = Vector2(-120, -48)
@@ -392,12 +357,10 @@ position = Vector2(-432, -126)
 
 [node name="Ladder" parent="Environment/Stages/Stage5/PlatformSet" index="3"]
 position = Vector2(144, 0)
-lower_tone = 5
 size = 8
 
 [node name="PlatformSet2" parent="Environment/Stages/Stage5" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(1344, -432)
-lower_tone = 0
 
 [node name="BoundingRect" parent="Environment/Stages/Stage5/PlatformSet2" index="0"]
 position = Vector2(-72, -48)
@@ -420,7 +383,6 @@ position = Vector2(-96, -126)
 process_mode = 4
 visible = false
 position = Vector2(144, 0)
-lower_tone = 0
 size = 8
 
 [node name="Stage6" type="Node2D" parent="Environment/Stages" index="6"]
@@ -428,7 +390,6 @@ size = 8
 [node name="PlatformSet" parent="Environment/Stages/Stage6" index="0" instance=ExtResource("4_6fqpl")]
 position = Vector2(816, -624)
 tone = 1
-lower_tone = 0
 
 [node name="BoundingRect" parent="Environment/Stages/Stage6/PlatformSet" index="0"]
 position = Vector2(0, -48)
@@ -453,8 +414,6 @@ tone = 1
 
 [node name="Ladder" parent="Environment/Stages/Stage6/PlatformSet" index="3"]
 position = Vector2(-192, 0)
-upper_tone = 1
-lower_tone = 0
 
 [node name="PlatformSet2" parent="Environment/Stages/Stage6" index="1" instance=ExtResource("4_6fqpl")]
 position = Vector2(1440, -624)
@@ -482,11 +441,7 @@ position = Vector2(48, -126)
 tone = 1
 
 [node name="Ladder" parent="Environment/Stages/Stage6/PlatformSet2" index="3"]
-upper_tone = 1
 size = 8
-
-[node name="BlockSequence" parent="GameObjects" index="0" node_paths=PackedStringArray("switch_blocks")]
-switch_blocks = [NodePath("../../Environment/Stages/Stage0/PlatformSet/SwitchBlock"), NodePath("../../Environment/Stages/Stage1/PlatformSet/SwitchBlock")]
 
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]

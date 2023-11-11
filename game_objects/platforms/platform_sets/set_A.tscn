@@ -7,7 +7,6 @@ size = Vector2(1152, 288)
 
 [node name="PlatformSet" instance=ExtResource("1_qcfxd")]
 tone = 2
-lower_tone = 1
 
 [node name="BoundingRect" parent="." index="0"]
 position = Vector2(576, -48)
@@ -32,5 +31,3 @@ tone = 2
 
 [node name="Ladder" parent="." index="3"]
 visible = false
-upper_tone = 2
-lower_tone = 1

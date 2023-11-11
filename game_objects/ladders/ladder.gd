@@ -2,16 +2,16 @@
 class_name Ladder
 extends Node2D
 
-@export var upper_tone: Globals.Tone = Globals.Tone.B:
+var _upper_tone: Globals.Tone = Globals.Tone.B:
 	set(value):
-		if upper_tone != value:
-			upper_tone = value
+		if _upper_tone != value:
+			_upper_tone = value
 			_update_upper_tone()
 
-@export var lower_tone: Globals.Tone = Globals.Tone.A:
+var _lower_tone: Globals.Tone = Globals.Tone.A:
 	set(value):
-		if lower_tone != value:
-			lower_tone = value
+		if _lower_tone != value:
+			_lower_tone = value
 			_update_lower_tone()
 
 @export_range(2, 99) var size: int = 2:
@@ -26,14 +26,14 @@ func _update_upper_tone() -> void:
 	if not is_node_ready() or Engine.is_editor_hint():
 		return
 
-	climb_up_action = Globals.get_action_from_tone(upper_tone)
+	climb_up_action = Globals.get_action_from_tone(_upper_tone)
 	$BottomPivot/LowerInteraction.interact_action = climb_up_action
 
 func _update_lower_tone() -> void:
 	if not is_node_ready() or Engine.is_editor_hint():
 		return
 
-	climb_down_action = Globals.get_action_from_tone(lower_tone)
+	climb_down_action = Globals.get_action_from_tone(_lower_tone)
 	$TopPivot/UpperInteraction.interact_action = climb_down_action
 
 func _update_size():
@@ -73,8 +73,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_bottom_tile_detector_area_tone_changed(tone) -> void:
-	lower_tone = tone
+	_lower_tone = tone
 
 
 func _on_top_tile_detector_area_tone_changed(tone) -> void:
-	upper_tone = tone
+	_upper_tone = tone

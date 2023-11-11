@@ -22,6 +22,9 @@ signal sequence_played(demo_sequence: bool)
 signal finished
 
 func start() -> void:
+	if switch_blocks.is_empty():
+		return
+
 	_set_blocks_enabled(false)
 	_sequence_state = SequenceState.DEMO
 	_play_sequence(range(switch_blocks.size()))
@@ -31,6 +34,9 @@ func _setup_blocks() -> void:
 		b.is_hit.connect(_on_block_is_hit)
 
 func _setup_next_sequence(reset: bool) -> void:
+	if switch_blocks.is_empty():
+		return
+
 	_sequence_cursor = 0
 	_set_blocks_enabled(false)
 

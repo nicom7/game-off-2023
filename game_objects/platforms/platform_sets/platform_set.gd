@@ -8,12 +8,6 @@ extends Node2D
 			tone = value
 			_update_tone()
 
-@export var lower_tone: Globals.Tone = Globals.Tone.G:
-	set(value):
-		if lower_tone != value:
-			lower_tone = value
-			_update_lower_tone()
-
 func get_bounding_rect() -> Rect2:
 	return $BoundingRect.global_transform * $BoundingRect.shape.get_rect()
 
@@ -37,9 +31,6 @@ func _update_tone() -> void:
 	if not is_node_ready():
 		return
 
-	for l in get_ladders():
-		l.upper_tone = tone
-
 	for sb in get_switch_blocks():
 		sb.tone = tone
 
@@ -49,17 +40,9 @@ func _update_tone() -> void:
 		tilemap.set_layer_enabled(layer, false)
 	tilemap.set_layer_enabled(tone + 1, true)
 
-func _update_lower_tone() -> void:
-	if not is_node_ready():
-		return
-
-	for l in get_ladders():
-		l.lower_tone = lower_tone
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_tone()
-	_update_lower_tone()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
