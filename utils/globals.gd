@@ -24,3 +24,14 @@ const tone_color: Array[Color] = [
 
 static func get_action_from_tone(tone: Tone) -> String:
 	return Tone.keys()[tone] + "_note"
+
+static func get_resources(res_dir: DirAccess) -> Array[Resource]:
+	var res: Array[Resource] = []
+	var file_paths = res_dir.get_files()
+
+	for path in file_paths:
+		if path.ends_with(".tres"):
+			var abs_path = res_dir.get_current_dir() + "/" + path
+			res.append(load(abs_path))
+
+	return res

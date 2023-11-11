@@ -1,3 +1,4 @@
+class_name LevelInfoProvider
 extends Node
 
 @export_range(1, 99) var stage_count_max: int = 7

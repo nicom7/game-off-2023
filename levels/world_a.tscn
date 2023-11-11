@@ -488,11 +488,6 @@ size = 8
 [node name="BlockSequence" parent="GameObjects" index="0" node_paths=PackedStringArray("switch_blocks")]
 switch_blocks = [NodePath("../../Environment/Stages/Stage0/PlatformSet/SwitchBlock"), NodePath("../../Environment/Stages/Stage1/PlatformSet/SwitchBlock")]
 
-[node name="LevelInfoProvider" parent="." index="6"]
-stage_count_max = 4
-notes_per_stage_max = 2
-notes = Array[int]([2, 3, 4, 5, 6, 0, 1])
-
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]
 [editable path="Environment/Stages/Stage1/PlatformSet"]

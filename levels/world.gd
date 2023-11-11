@@ -53,7 +53,7 @@ func _update_stages() -> void:
 	for s in _stages:
 		$Environment/Stages.remove_child(s)
 
-	var stage_notes: Dictionary = $LevelInfoProvider.stage_notes
+	var stage_notes: Dictionary = $RandomLevelGenerator.stage_notes
 	for i in stage_notes.size():
 		var platform_sets = _get_platform_sets(_stages[i])
 		for ps in platform_sets:
