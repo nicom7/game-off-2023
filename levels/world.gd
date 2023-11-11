@@ -63,6 +63,18 @@ func _update_stages() -> void:
 			_stages[i].add_child(platform_sets[j])
 		$Environment/Stages.add_child(_stages[i])
 
+func _start_ambient_note(tone: Globals.Tone) -> void:
+	_stop_ambient_note()
+	ambient_note_player = ambient_note_player_scene.instantiate()
+	ambient_note_player.tone = tone
+	add_child(ambient_note_player)
+	ambient_note_player.start()
+
+func _stop_ambient_note() -> void:
+	if ambient_note_player:
+		ambient_note_player.stop()
+		ambient_note_player = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_setup_stages()
@@ -79,18 +91,15 @@ func _process(delta: float) -> void:
 
 func _on_player_current_tone_changed(tone: Globals.Tone) -> void:
 	player_tone = tone
-	if ambient_note_player:
-		ambient_note_player.tone = player_tone
+	_stop_ambient_note()
+	_start_ambient_note(player_tone)
+
 
 func _on_player_on_floor_changed(value) -> void:
 	if value:
-		ambient_note_player = ambient_note_player_scene.instantiate()
-		ambient_note_player.tone = player_tone
-		add_child(ambient_note_player)
-		ambient_note_player.start()
+		_start_ambient_note(player_tone)
 	else:
-		ambient_note_player.stop()
-		ambient_note_player = null
+		_stop_ambient_note()
 
 
 func _on_block_sequence_finished() -> void:

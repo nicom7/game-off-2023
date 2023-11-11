@@ -43,7 +43,6 @@ var on_floor: bool = false:
 
 var climbing: bool = false
 var current_ladder: Ladder
-var current_floor_map: TileMap
 
 signal on_floor_changed(value: bool)
 signal jumped
