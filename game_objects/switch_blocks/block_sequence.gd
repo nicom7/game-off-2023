@@ -25,13 +25,15 @@ func start() -> void:
 	if switch_blocks.is_empty():
 		return
 
+	_setup_blocks()
 	_set_blocks_enabled(false)
 	_sequence_state = SequenceState.DEMO
 	_play_sequence(range(switch_blocks.size()))
 
 func _setup_blocks() -> void:
 	for b in switch_blocks:
-		b.is_hit.connect(_on_block_is_hit)
+		if not b.is_hit.is_connected(_on_block_is_hit):
+			b.is_hit.connect(_on_block_is_hit)
 
 func _setup_next_sequence(reset: bool) -> void:
 	if switch_blocks.is_empty():

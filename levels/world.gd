@@ -50,6 +50,8 @@ func _update_stages() -> void:
 	if not is_node_ready():
 		return
 
+	%BlockSequence.switch_blocks.clear()
+
 	for s in _stages:
 		$Environment/Stages.remove_child(s)
 
@@ -60,6 +62,7 @@ func _update_stages() -> void:
 			_stages[i].remove_child(ps)
 		for j in stage_notes[i].size():
 			platform_sets[j].tone = stage_notes[i][j]
+			%BlockSequence.switch_blocks.append_array(platform_sets[j].get_switch_blocks())
 			_stages[i].add_child(platform_sets[j])
 		$Environment/Stages.add_child(_stages[i])
 
