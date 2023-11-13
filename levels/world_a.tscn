@@ -445,7 +445,6 @@ size = 8
 
 [node name="RandomLevelGenerator" parent="." index="6"]
 note_count_min = 3
-note_count_max = 5
 
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]
