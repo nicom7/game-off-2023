@@ -443,11 +443,8 @@ tone = 1
 [node name="Ladder" parent="Environment/Stages/Stage6/PlatformSet2" index="3"]
 size = 8
 
-[node name="BlockSequence" parent="GameObjects" index="0"]
-sequence_length_max = 2
-
 [node name="RandomLevelGenerator" parent="." index="6"]
-note_count_max = 4
+note_count_min = 3
 
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]
