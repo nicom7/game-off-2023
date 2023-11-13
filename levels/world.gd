@@ -4,6 +4,9 @@ var player_tone: Globals.Tone
 @export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
 
+signal finished()
+var _finished: bool = false
+
 @onready var _camera: Camera2D = %Camera
 var _bounding_rect: Rect2
 var _overview_zoom: Vector2
@@ -67,6 +70,9 @@ func _update_stages() -> void:
 		$Environment/Stages.add_child(_stages[i])
 
 func _start_ambient_note(tone: Globals.Tone) -> void:
+	if _finished:
+		return
+
 	_stop_ambient_note()
 	ambient_note_player = ambient_note_player_scene.instantiate()
 	ambient_note_player.tone = tone
@@ -78,13 +84,19 @@ func _stop_ambient_note() -> void:
 		ambient_note_player.stop()
 		ambient_note_player = null
 
+func _fade_in() -> void:
+	$Transition.fade_in()
+
+func _fade_out() -> void:
+	$Transition.fade_out()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_setup_stages()
 	_update_stages()
 	_setup_boundaries()
 	_setup_walls()
-	%BlockSequence.start()
+	_fade_in()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -107,11 +119,13 @@ func _on_player_on_floor_changed(value) -> void:
 
 func _on_block_sequence_finished() -> void:
 	print("finished!")
-	%NewBlockSequenceTimer.start()
+	_finished = true
+	_stop_ambient_note()
+	_fade_out()
 
 
-func _on_new_block_sequence_timer_timeout() -> void:
-	%BlockSequence.start()
+func _on_finished_timer_timeout() -> void:
+	finished.emit()
 
 
 func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
@@ -128,3 +142,10 @@ func _on_block_sequence_sequence_finished(valid) -> void:
 	_camera.drag_vertical_enabled = false
 	_camera.set_target_node(%CameraCenter)
 	_camera.set_target_zoom(_overview_zoom)
+
+
+func _on_transition_finished(_anim_name: String) -> void:
+	if _finished:
+		finished.emit()
+	else:
+		%BlockSequence.start()
