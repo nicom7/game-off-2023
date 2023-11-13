@@ -1,7 +1,7 @@
 class_name InteractiveObject
 extends Area2D
 
-@export var interact_action: String
+var interact_action: String
 var entered_objects: Dictionary
 
 signal interacted(player: Character, interactive_object: InteractiveObject)

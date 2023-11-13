@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=8 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
 [ext_resource type="Script" path="res://game_objects/camera.gd" id="4_jd0f8"]
 [ext_resource type="PackedScene" uid="uid://dqk2pedcucgnw" path="res://characters/player/player.tscn" id="6_ahra0"]
 [ext_resource type="PackedScene" uid="uid://cfqdgrh4lw7pi" path="res://game_objects/switch_blocks/block_sequence.tscn" id="7_v4u45"]
+[ext_resource type="Script" path="res://levels/random_level_generator.gd" id="8_erwi1"]
 [ext_resource type="PackedScene" uid="uid://bxun5w5sv6twu" path="res://game_objects/walls/wall.tscn" id="9_w7oqa"]
 
 [node name="World" type="Node2D"]
@@ -48,6 +49,8 @@ rotation = 1.5708
 position = Vector2(1152, 288)
 rotation = -1.5708
 
+[node name="Stages" type="Node2D" parent="Environment"]
+
 [node name="GameObjects" type="Node2D" parent="."]
 
 [node name="BlockSequence" parent="GameObjects" instance=ExtResource("7_v4u45")]
@@ -57,6 +60,9 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
+
+[node name="RandomLevelGenerator" type="Node" parent="."]
+script = ExtResource("8_erwi1")
 
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
 [connection signal="on_floor_changed" from="Player" to="." method="_on_player_on_floor_changed"]
