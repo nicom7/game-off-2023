@@ -23,7 +23,7 @@ func generate() -> void:
 
 	notes_per_stage_max = randi_range(1, NOTES_PER_STAGE_COUNT_MAX)
 
-	var _stage_count_min = ceili(notes.size() / notes_per_stage_max)
+	var _stage_count_min = ceili(notes.size() / float(notes_per_stage_max))
 	var _stage_count_max = notes.size()
 
 	stage_count_max = randi_range(_stage_count_min, _stage_count_max)

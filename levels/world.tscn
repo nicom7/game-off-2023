@@ -24,6 +24,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:master_volume")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
 
 [sub_resource type="Animation" id="Animation_r6suw"]
 resource_name = "fade_in"
@@ -39,6 +51,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:master_volume")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2k50g"]
@@ -95,16 +119,12 @@ rotation = -1.5708
 [node name="BlockSequence" parent="GameObjects" instance=ExtResource("7_v4u45")]
 unique_name_in_owner = true
 
-[node name="FinishedTimer" type="Timer" parent="GameObjects"]
-unique_name_in_owner = true
-wait_time = 2.0
-one_shot = true
-
 [node name="RandomLevelGenerator" type="Node" parent="."]
 script = ExtResource("8_erwi1")
 
 [node name="Transition" type="CanvasLayer" parent="."]
 script = ExtResource("8_jvvbh")
+master_volume = -62.0
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
 anchors_preset = 15
@@ -112,7 +132,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.775)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
 libraries = {
@@ -124,5 +144,4 @@ libraries = {
 [connection signal="finished" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_finished"]
 [connection signal="sequence_finished" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_sequence_finished"]
 [connection signal="sequence_played" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_sequence_played"]
-[connection signal="timeout" from="GameObjects/FinishedTimer" to="." method="_on_finished_timer_timeout"]
 [connection signal="finished" from="Transition" to="." method="_on_transition_finished"]

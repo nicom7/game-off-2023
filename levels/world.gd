@@ -50,9 +50,6 @@ func _setup_stages() -> void:
 	_stages = $Environment/Stages.get_children()
 
 func _update_stages() -> void:
-	if not is_node_ready():
-		return
-
 	%BlockSequence.switch_blocks.clear()
 
 	for s in _stages:
@@ -120,12 +117,7 @@ func _on_player_on_floor_changed(value) -> void:
 func _on_block_sequence_finished() -> void:
 	print("finished!")
 	_finished = true
-	_stop_ambient_note()
 	_fade_out()
-
-
-func _on_finished_timer_timeout() -> void:
-	finished.emit()
 
 
 func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
