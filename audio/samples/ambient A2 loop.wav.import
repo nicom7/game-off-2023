@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bc0d0ou7fju5b"
+path="res://.godot/imported/ambient A2 loop.wav-136f4c7194e30bc8fa82965311de0c18.sample"
+
+[deps]
+
+source_file="res://audio/samples/ambient A2 loop.wav"
+dest_files=["res://.godot/imported/ambient A2 loop.wav-136f4c7194e30bc8fa82965311de0c18.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

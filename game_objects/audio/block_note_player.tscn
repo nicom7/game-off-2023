@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2igw674holmk"]
+[gd_scene load_steps=4 format=3 uid="uid://c2igw674holmk"]
 
 [ext_resource type="PackedScene" uid="uid://cdavtxyojmgkm" path="res://game_objects/audio/note_player.tscn" id="1_6mql1"]
+[ext_resource type="AudioStream" uid="uid://dk6j4r0rvx5nq" path="res://audio/samples/block hit A2 loop.wav" id="2_4nd3o"]
 
 [sub_resource type="Curve" id="Curve_2ck7q"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502326, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.557895), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.163265, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.557895), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [node name="NotePlayer" instance=ExtResource("1_6mql1")]
@@ -15,4 +16,5 @@ release_duration = 0.3
 attack_curve = SubResource("Curve_2ck7q")
 
 [node name="AudioStreamPlayer" parent="." index="0"]
+stream = ExtResource("2_4nd3o")
 bus = &"SFX"

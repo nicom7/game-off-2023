@@ -18,9 +18,9 @@ extends Node
 @export var attack_curve: Curve
 @export var release_curve: Curve
 
-var playback: AudioStreamGeneratorPlayback
+var playback: AudioStreamPlayback
 @onready var player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var sample_hz = player.stream.mix_rate
+@onready var sample_hz = player.stream.mix_rate if player.stream else 1.0
 @onready var sample_step = 1.0 / sample_hz
 var tone_frequencies: Array[float] = [220, 246.94, 261.63, 293.66, 329.63, 349.23, 392] # The frequency of the sound wave.
 var cursor = 0.0
@@ -63,7 +63,10 @@ func _update_pitch():
 	if not is_node_ready():
 		return
 
-	$AudioStreamPlayer.pitch_scale = pitch
+	if not playback is AudioStreamGeneratorPlayback:
+		$AudioStreamPlayer.pitch_scale = pitch * tone_frequencies[tone] / tone_frequencies[Globals.Tone.A]
+	else:
+		$AudioStreamPlayer.pitch_scale = pitch
 
 func _ready():
 	_update_pitch()
@@ -71,7 +74,10 @@ func _ready():
 func _process(delta: float) -> void:
 	if player.playing:
 		_update_envelope()
-		_fill_buffer()
+		if playback is AudioStreamGeneratorPlayback:
+			_fill_buffer()
+		else:
+			cursor = fmod(cursor + delta, 1000.0)
 
 func _update_envelope():
 	match current_phase:
@@ -103,16 +109,14 @@ func _get_volume(time: float, curve: Curve) -> float:
 	return relative_vol
 
 func _fill_buffer():
-	if !playback:
-		return
-
+	var gen_playback = playback as AudioStreamGeneratorPlayback
 	var f1 = tone_frequencies[tone]
 	var f2 = tone_frequencies[tone] * 2
-	var frames_available = playback.get_frames_available()
+	var frames_available = gen_playback.get_frames_available()
 #	print("fill buffer, ", frames_available)
 
 	for i in range(frames_available):
-		playback.push_frame(Vector2.ONE * (sin(TAU * f1 * cursor) * (1 - octave_ratio) + sin(TAU * f2 * cursor) * octave_ratio))
+		gen_playback.push_frame(Vector2.ONE * (sin(TAU * f1 * cursor) * (1 - octave_ratio) + sin(TAU * f2 * cursor) * octave_ratio))
 		cursor = fmod(cursor + sample_step, 1000.0)
 
 
