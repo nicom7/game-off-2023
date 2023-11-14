@@ -12,6 +12,17 @@ enum Tone
 	G,
 }
 
+enum ToneFlags
+{
+	A = 1,
+	B = 2,
+	C = 4,
+	D = 8,
+	E = 16,
+	F = 32,
+	G = 64,
+}
+
 const tone_color: Array[Color] = [
 	Color(1, 0, 0),
 	Color(1, 0.5, 0),

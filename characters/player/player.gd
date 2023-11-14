@@ -20,7 +20,6 @@ class InputActions:
 
 var _input_actions: Dictionary = {}
 const _scale: Array[String] = ["A", "B", "C", "D", "E", "F", "G"]
-const _note_actions: Array[String] = ["A_note", "B_note", "C_note", "D_note", "E_note", "F_note", "G_note"]
 var current_tone: Globals.Tone = Globals.Tone.A:
 	get:
 		return current_tone
