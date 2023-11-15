@@ -74,7 +74,7 @@ func _setup_input_actions():
 		var actions: InputActions = InputActions.new()
 		actions.move_left = "ui_left"
 		actions.move_right = "ui_right"
-		actions.jump = Globals.get_bitfield_from_notes([note])
+		actions.jump = Globals.get_bitfield_from_notes([note as Globals.Tone])
 
 		_input_actions[note] = actions
 
@@ -82,6 +82,8 @@ func _physics_process(delta: float) -> void:
 	_update_movement(delta)
 
 func _update_movement(delta: float) -> void:
+	on_floor = is_on_floor()
+
 	if climbing:
 		current_input_actions = InputActions.new()
 		current_input_actions.move_up = current_ladder.climb_up_notes
@@ -94,8 +96,6 @@ func _update_movement(delta: float) -> void:
 
 	if jumping:
 		# Handle jump
-		print("handle jump")
-
 		jumping = false
 		velocity.y = jump_speed
 	elif not on_floor:
@@ -119,15 +119,13 @@ func _update_movement(delta: float) -> void:
 
 	move_and_slide()
 
-func _update_jump(notes: int) -> void:
+func _update_jump(prev_notes: int, cur_notes: int) -> void:
 	if not climbing:
-		on_floor = is_on_floor()
-
-		if on_floor and notes == current_input_actions.jump:
+		# Prevent jumping if releasing a key that will lead to the jump notes, e.g. [5, 6] => [5]
+		if on_floor and prev_notes < cur_notes and cur_notes == current_input_actions.jump:
 			jumped.emit()
 
 func _on_jumped() -> void:
-	print("on jumped")
 	jumping = true
 	jump_note_player = jump_note_player_scene.instantiate()
 	jump_note_player.tone = current_tone
@@ -142,4 +140,4 @@ func _on_tile_detector_area_tone_changed(tone) -> void:
 func _on_keyboard_controller_notes_changed(prev_notes: int, cur_notes: int) -> void:
 	interact.emit(self, cur_notes)
 
-	_update_jump(cur_notes)
+	_update_jump(prev_notes, cur_notes)

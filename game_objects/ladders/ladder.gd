@@ -28,7 +28,7 @@ func _update_upper_tone() -> void:
 	if not is_node_ready() or Engine.is_editor_hint():
 		return
 
-	climb_up_notes = Globals.get_bitfield_from_notes([_lower_tone])
+	climb_up_notes = Globals.get_bitfield_from_notes([_upper_tone])
 	$BottomPivot/LowerInteraction.interact_notes = climb_up_notes
 
 func _update_lower_tone() -> void:
