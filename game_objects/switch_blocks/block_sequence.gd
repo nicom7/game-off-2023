@@ -87,11 +87,6 @@ func _ready() -> void:
 	_setup_blocks()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_sequence_timer_timeout() -> void:
 	_play_sequence(_current_sequence.slice(0, _current_sequence_end + 1))
 

@@ -15,10 +15,6 @@ func _destroy_world():
 func _ready() -> void:
 	_create_world()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_world_finished() -> void:
 	_destroy_world()
 	_create_world()

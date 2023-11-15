@@ -96,11 +96,6 @@ func _ready() -> void:
 	_fade_in()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_player_current_tone_changed(tone: Globals.Tone) -> void:
 	player_tone = tone
 	_stop_ambient_note()
@@ -129,7 +124,7 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 		_camera.set_target_zoom(Vector2.ONE)
 
 
-func _on_block_sequence_sequence_finished(valid) -> void:
+func _on_block_sequence_sequence_finished(_valid) -> void:
 	_camera.drag_horizontal_enabled = false
 	_camera.drag_vertical_enabled = false
 	_camera.set_target_node(%CameraCenter)

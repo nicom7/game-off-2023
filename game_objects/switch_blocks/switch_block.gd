@@ -53,11 +53,6 @@ func _ready() -> void:
 	_update_block()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_hit_detection_body_entered(body: Node2D) -> void:
 	body_entered.emit(body)
 

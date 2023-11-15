@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	AudioServer.set_bus_volume_db(0, master_volume)
 
 func _on_finished(anim_name: String) -> void:
