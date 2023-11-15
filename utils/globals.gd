@@ -36,6 +36,21 @@ const tone_color: Array[Color] = [
 static func get_action_from_tone(tone: Tone) -> String:
 	return Tone.keys()[tone] + "_note"
 
+static func get_notes_from_bitfield(notes: int) -> Array[Tone]:
+	var notes_array: Array[Tone] = []
+	for tone in Tone.size():
+		if notes & (1 << tone):
+			notes_array.append(tone)
+
+	return notes_array
+
+static func get_bitfield_from_notes(notes: Array[Tone]) -> int:
+	var bitfield: int = 0
+	for tone in notes:
+		bitfield |= (1 << tone)
+
+	return bitfield
+
 static func get_resources(res_dir: DirAccess) -> Array[Resource]:
 	var res: Array[Resource] = []
 	var file_paths = res_dir.get_files()

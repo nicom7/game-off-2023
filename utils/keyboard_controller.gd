@@ -10,13 +10,8 @@ signal notes_changed(prev: int, cur: int)
 @onready var _debounce_timer: Timer = $Timer
 var _new_notes: int = 0
 
-func get_notes_from_bitfield(notes: int) -> Array:
-	var notes_array: Array = []
-	for tone in Globals.Tone.size():
-		if notes & (1 << tone):
-			notes_array.append(tone)
-
-	return notes_array
+func get_action_strength(notes: int) -> float:
+	return 1.0 if current_notes == notes else 0.0
 
 func _input(event: InputEvent) -> void:
 	var new_notes: int = _new_notes
@@ -37,4 +32,4 @@ func _on_timer_timeout() -> void:
 	previous_notes = current_notes
 	current_notes = _new_notes
 	notes_changed.emit(previous_notes, current_notes)
-	print(get_notes_from_bitfield(previous_notes), " => ", get_notes_from_bitfield(current_notes))
+	print(Globals.get_notes_from_bitfield(previous_notes), " => ", Globals.get_notes_from_bitfield(current_notes))

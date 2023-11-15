@@ -14,9 +14,12 @@ var jump_note_player: NotePlayer
 class InputActions:
 	var move_left: String
 	var move_right: String
-	var move_up: String
-	var move_down: String
-	var jump: String
+	## Notes bitfield for the climb up action
+	var move_up: int
+	## Notes bitfield for the climb down action
+	var move_down: int
+	## Notes bitfield for the jump action
+	var jump: int
 
 var _input_actions: Dictionary = {}
 const _scale: Array[String] = ["A", "B", "C", "D", "E", "F", "G"]
@@ -41,7 +44,9 @@ var on_floor: bool = false:
 			on_floor_changed.emit(on_floor)
 
 var climbing: bool = false
+var jumping: bool = false
 var current_ladder: Ladder
+var current_input_actions: InputActions
 
 signal on_floor_changed(value: bool)
 signal jumped
@@ -63,58 +68,50 @@ func _ready() -> void:
 	_setup_input_actions()
 
 func _setup_input_actions():
+	KeyboardController.notes_changed.connect(_on_keyboard_controller_notes_changed)
 	_input_actions.clear()
-	for note in _scale.size():
+	for note in Globals.Tone.size():
 		var actions: InputActions = InputActions.new()
 		actions.move_left = "ui_left"
 		actions.move_right = "ui_right"
-		actions.jump = _scale[note] + "_note"
+		actions.jump = Globals.get_bitfield_from_notes([note])
 
 		_input_actions[note] = actions
 
 func _physics_process(delta: float) -> void:
 	_update_movement(delta)
 
-func _input(event: InputEvent):
-	for tone in Globals.Tone.size():
-		var action = Globals.get_action_from_tone(tone)
-		if event.is_action_pressed(action):
-			interact.emit(self, action)
-			return
-
 func _update_movement(delta: float) -> void:
-	var current_input_actions: InputActions
-
-	on_floor = is_on_floor()
-
 	if climbing:
 		current_input_actions = InputActions.new()
-		current_input_actions.move_up = current_ladder.climb_up_action
-		current_input_actions.move_down = current_ladder.climb_down_action
+		current_input_actions.move_up = current_ladder.climb_up_notes
+		current_input_actions.move_down = current_ladder.climb_down_notes
 	else:
 		current_input_actions = _input_actions[current_tone]
-
-	if not climbing:
-		if on_floor and Input.is_action_just_pressed(current_input_actions.jump):
-			# Handle Jump.
-			jumped.emit()
-			velocity.y = jump_speed
-		elif not on_floor:
-			# Add the gravity.
-			velocity.y += gravity * delta
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 
+	if jumping:
+		# Handle jump
+		print("handle jump")
+
+		jumping = false
+		velocity.y = jump_speed
+	elif not on_floor:
+		# Add the gravity.
+		velocity.y += gravity * delta
+
 	if climbing:
-		var direction := Input.get_axis(current_input_actions.move_up, current_input_actions.move_down)
+#		var direction := Input.get_axis(current_input_actions.move_up, current_input_actions.move_down)
+		var direction: float = KeyboardController.get_action_strength(current_input_actions.move_down) - KeyboardController.get_action_strength(current_input_actions.move_up)
 		if direction:
 			velocity.y = direction * speed
 		else:
 			velocity.y = move_toward(velocity.y, 0, speed)
 		velocity.x = 0
 	else:
-		var direction := Input.get_axis(current_input_actions.move_left, current_input_actions.move_right)
+		var direction: float = Input.get_axis(current_input_actions.move_left, current_input_actions.move_right)
 		if direction:
 			velocity.x = direction * speed
 		else:
@@ -122,7 +119,16 @@ func _update_movement(delta: float) -> void:
 
 	move_and_slide()
 
+func _update_jump(notes: int) -> void:
+	if not climbing:
+		on_floor = is_on_floor()
+
+		if on_floor and notes == current_input_actions.jump:
+			jumped.emit()
+
 func _on_jumped() -> void:
+	print("on jumped")
+	jumping = true
 	jump_note_player = jump_note_player_scene.instantiate()
 	jump_note_player.tone = current_tone
 	add_child(jump_note_player)
@@ -131,3 +137,9 @@ func _on_jumped() -> void:
 
 func _on_tile_detector_area_tone_changed(tone) -> void:
 	current_tone = tone
+
+
+func _on_keyboard_controller_notes_changed(prev_notes: int, cur_notes: int) -> void:
+	interact.emit(self, cur_notes)
+
+	_update_jump(cur_notes)

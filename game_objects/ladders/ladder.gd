@@ -19,22 +19,24 @@ var _lower_tone: Globals.Tone = Globals.Tone.A:
 		size = value
 		_update_size()
 
-var climb_up_action: String
-var climb_down_action: String
+## Notes bitfield for the climb up action
+var climb_up_notes: int
+## Notes bitfield for the climb down action
+var climb_down_notes: int
 
 func _update_upper_tone() -> void:
 	if not is_node_ready() or Engine.is_editor_hint():
 		return
 
-	climb_up_action = Globals.get_action_from_tone(_upper_tone)
-	$BottomPivot/LowerInteraction.interact_action = climb_up_action
+	climb_up_notes = Globals.get_bitfield_from_notes([_lower_tone])
+	$BottomPivot/LowerInteraction.interact_notes = climb_up_notes
 
 func _update_lower_tone() -> void:
 	if not is_node_ready() or Engine.is_editor_hint():
 		return
 
-	climb_down_action = Globals.get_action_from_tone(_lower_tone)
-	$TopPivot/UpperInteraction.interact_action = climb_down_action
+	climb_down_notes = Globals.get_bitfield_from_notes([_lower_tone])
+	$TopPivot/UpperInteraction.interact_notes = climb_down_notes
 
 func _update_size():
 	if not is_node_ready():
