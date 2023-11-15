@@ -48,6 +48,8 @@ var jumping: bool = false
 var current_ladder: Ladder
 var current_input_actions: InputActions
 
+@onready var _keyboard_controller: KeyboardController = $KeyboardController
+
 signal on_floor_changed(value: bool)
 signal jumped
 signal interact(player: Character, action: String)
@@ -68,7 +70,7 @@ func _ready() -> void:
 	_setup_input_actions()
 
 func _setup_input_actions():
-	KeyboardController.notes_changed.connect(_on_keyboard_controller_notes_changed)
+	_keyboard_controller.notes_changed.connect(_on_keyboard_controller_notes_changed)
 	_input_actions.clear()
 	for note in Globals.Tone.size():
 		var actions: InputActions = InputActions.new()
@@ -104,7 +106,7 @@ func _update_movement(delta: float) -> void:
 
 	if climbing:
 #		var direction := Input.get_axis(current_input_actions.move_up, current_input_actions.move_down)
-		var direction: float = KeyboardController.get_action_strength(current_input_actions.move_down) - KeyboardController.get_action_strength(current_input_actions.move_up)
+		var direction: float = _keyboard_controller.get_action_strength(current_input_actions.move_down) - _keyboard_controller.get_action_strength(current_input_actions.move_up)
 		if direction:
 			velocity.y = direction * speed
 		else:

@@ -4,6 +4,8 @@ var player_tone: Globals.Tone
 @export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
 
+@export var tutorial: bool = false
+
 signal finished()
 var _finished: bool = false
 
@@ -60,7 +62,13 @@ func _update_stages() -> void:
 	for s in _stages:
 		$Environment/Stages.remove_child(s)
 
-	var stage_notes: Dictionary = $RandomLevelGenerator.stage_notes
+	var stage_notes: Dictionary
+	if tutorial:
+		stage_notes[0] = [Globals.Tone.C]
+		stage_notes[1] = [Globals.Tone.G]
+	else:
+		stage_notes = $RandomLevelGenerator.stage_notes
+
 	for i in stage_notes.size():
 		var platform_sets = _get_platform_sets(_stages[i])
 		for ps in platform_sets:

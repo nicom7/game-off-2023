@@ -1,3 +1,4 @@
+class_name KeyboardController
 extends Node
 
 ## Bitfield of ToneFlags for previously pressed notes
