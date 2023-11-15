@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdln3x7xjsumb"]
+
+[ext_resource type="Script" path="res://utils/keyboard_controller.gd" id="1_pminf"]
+
+[node name="KeyboardController" type="Node"]
+script = ExtResource("1_pminf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.02
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

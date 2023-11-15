@@ -19,6 +19,10 @@ config/icon="res://sprites/icon.svg"
 
 buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
+[autoload]
+
+KeyboardController="*res://utils/keyboard_controller.tscn"
+
 [debug]
 
 gdscript/warnings/shadowed_variable=2
