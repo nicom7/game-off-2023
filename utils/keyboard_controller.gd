@@ -32,4 +32,4 @@ func _on_timer_timeout() -> void:
 	previous_notes = current_notes
 	current_notes = _new_notes
 	notes_changed.emit(previous_notes, current_notes)
-	print(Globals.get_notes_from_bitfield(previous_notes), " => ", Globals.get_notes_from_bitfield(current_notes))
+#	print(Globals.get_notes_from_bitfield(previous_notes), " => ", Globals.get_notes_from_bitfield(current_notes))

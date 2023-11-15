@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=17 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
@@ -7,7 +7,50 @@
 [ext_resource type="PackedScene" uid="uid://cfqdgrh4lw7pi" path="res://game_objects/switch_blocks/block_sequence.tscn" id="7_v4u45"]
 [ext_resource type="Script" path="res://levels/random_level_generator.gd" id="8_erwi1"]
 [ext_resource type="Script" path="res://levels/transition.gd" id="8_jvvbh"]
+[ext_resource type="FontFile" uid="uid://xycvan2inrdw" path="res://fonts/RussoOne-Regular.ttf" id="8_nlhro"]
 [ext_resource type="PackedScene" uid="uid://bxun5w5sv6twu" path="res://game_objects/walls/wall.tscn" id="9_w7oqa"]
+
+[sub_resource type="FontVariation" id="FontVariation_6e5sn"]
+base_font = ExtResource("8_nlhro")
+variation_embolden = -0.75
+
+[sub_resource type="Animation" id="Animation_1ut3m"]
+resource_name = "fade_in"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_usx6i"]
+resource_name = "fade_out"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43tb3"]
+_data = {
+"fade_in": SubResource("Animation_1ut3m"),
+"fade_out": SubResource("Animation_usx6i")
+}
 
 [sub_resource type="Animation" id="Animation_r6suw"]
 resource_name = "fade_in"
@@ -118,9 +161,50 @@ rotation = -1.5708
 
 [node name="BlockSequence" parent="GameObjects" instance=ExtResource("7_v4u45")]
 unique_name_in_owner = true
+sequence_length_max = 2
 
 [node name="RandomLevelGenerator" type="Node" parent="."]
 script = ExtResource("8_erwi1")
+note_count_max = 3
+
+[node name="Title" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Title" type="VBoxContainer" parent="Title"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Title/Title"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.8, 0.941176, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.105882, 0.196078, 0.243137, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 6
+theme_override_fonts/font = SubResource("FontVariation_6e5sn")
+theme_override_font_sizes/font_size = 100
+text = "Musikeys"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Control" type="Control" parent="Title/Title"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title"]
+autoplay = "fade_in"
+libraries = {
+"": SubResource("AnimationLibrary_43tb3")
+}
+
+[node name="Timer" type="Timer" parent="Title"]
+wait_time = 12.0
+one_shot = true
 
 [node name="Transition" type="CanvasLayer" parent="."]
 script = ExtResource("8_jvvbh")
@@ -142,4 +226,5 @@ libraries = {
 [connection signal="finished" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_finished"]
 [connection signal="sequence_finished" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_sequence_finished"]
 [connection signal="sequence_played" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_sequence_played"]
+[connection signal="timeout" from="Title/Timer" to="." method="_on_title_timer_timeout"]
 [connection signal="finished" from="Transition" to="." method="_on_transition_finished"]

@@ -14,6 +14,7 @@ func _destroy_world():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_create_world()
+	_world.show_title()
 
 func _on_world_finished() -> void:
 	_destroy_world()
