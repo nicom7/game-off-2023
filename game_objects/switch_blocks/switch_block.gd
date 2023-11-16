@@ -45,8 +45,8 @@ func _update_block() -> void:
 	if not is_node_ready():
 		return
 
-	modulate = Globals.tone_color[tone]
-	$Block/Tone.frame = tone
+	modulate = Globals.TONE_COLOR[tone]
+	$Block/ToneLabel.text = Globals.get_label_from_tone(tone)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
