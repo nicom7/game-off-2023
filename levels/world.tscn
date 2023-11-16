@@ -166,8 +166,6 @@ rotation = -1.5708
 
 [node name="BlockSequence" parent="GameObjects" instance=ExtResource("7_v4u45")]
 unique_name_in_owner = true
-randomize_sequence = false
-current_sequence = [0, 0, 1, 1]
 
 [node name="RandomLevelGenerator" type="Node" parent="."]
 script = ExtResource("8_erwi1")

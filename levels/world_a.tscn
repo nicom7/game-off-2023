@@ -56,6 +56,7 @@ size = Vector2(480, 288)
 size = Vector2(288, 288)
 
 [node name="World" instance=ExtResource("1_dlj7h")]
+tutorial = false
 
 [node name="Player" parent="." index="0"]
 position = Vector2(48, 456)
@@ -445,6 +446,7 @@ size = 8
 
 [node name="RandomLevelGenerator" parent="." index="6"]
 note_count_min = 3
+note_count_max = 4
 
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]
