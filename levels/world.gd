@@ -136,9 +136,10 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 		_camera.set_target_node(%Player)
 		_camera.set_target_zoom(Vector2.ONE)
 
-	if demo_sequence and tutorial:
-		$BlockSequenceTutorial.show()
-		$BlockSequenceTutorial.next_step()
+		if tutorial:
+			$MovementTutorial.hide()
+			$BlockSequenceTutorial.show()
+
 
 func _on_block_sequence_sequence_finished(_valid) -> void:
 	_camera.drag_horizontal_enabled = false
@@ -162,5 +163,4 @@ func _on_title_timer_timeout() -> void:
 
 
 func _on_movement_tutorial_finished() -> void:
-	$MovementTutorial.hide()
 	%BlockSequence.start()
