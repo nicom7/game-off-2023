@@ -23,7 +23,7 @@ enum ToneFlags
 	G = 64,
 }
 
-const tone_color: Array[Color] = [
+const TONE_COLOR: Array[Color] = [
 	Color(1, 0, 0),
 	Color(1, 0.5, 0),
 	Color(1, 1, 0),
@@ -33,8 +33,13 @@ const tone_color: Array[Color] = [
 	Color(1, 0, 1),
 ]
 
+const ACTION_SUFFIX: String = "_note"
+
+static func get_label_from_tone(tone: Tone) -> String:
+	return Tone.keys()[tone]
+
 static func get_action_from_tone(tone: Tone) -> String:
-	return Tone.keys()[tone] + "_note"
+	return get_label_from_tone(tone) + ACTION_SUFFIX
 
 static func get_notes_from_bitfield(notes: int) -> Array[Tone]:
 	var notes_array: Array[Tone] = []
