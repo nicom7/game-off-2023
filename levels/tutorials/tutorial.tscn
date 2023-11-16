@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cl3xtxe0p8dms"]
+
+[node name="Tutorial" type="CanvasLayer"]
+
+[node name="Step" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="Step"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Step"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "STEP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Step"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true

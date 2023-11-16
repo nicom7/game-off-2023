@@ -81,6 +81,7 @@ shape = SubResource("RectangleShape2D_qwe2d")
 
 [node name="HitDetection" type="Area2D" parent="."]
 position = Vector2(24, 48)
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetection"]
 position = Vector2(0, -24)

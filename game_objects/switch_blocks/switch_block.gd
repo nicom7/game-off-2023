@@ -62,9 +62,6 @@ func _on_body_entered(body: Node2D) -> void:
 		if character.velocity.y < 0:
 			# Hit from below
 			hit()
-		else:
-			# Hit from above (landed on)
-			character.current_tone = tone
 
 
 func _on_note_player_timer_timeout() -> void:

@@ -4,6 +4,9 @@ var player_tone: Globals.Tone
 @export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
 
+@export var level_info_provider: LevelInfoProvider
+@export var tutorial: bool = false
+
 signal finished()
 var _finished: bool = false
 
@@ -60,7 +63,10 @@ func _update_stages() -> void:
 	for s in _stages:
 		$Environment/Stages.remove_child(s)
 
-	var stage_notes: Dictionary = $RandomLevelGenerator.stage_notes
+	var stage_notes: Dictionary
+	if level_info_provider:
+		stage_notes = level_info_provider.stage_notes
+
 	for i in stage_notes.size():
 		var platform_sets = _get_platform_sets(_stages[i])
 		for ps in platform_sets:
@@ -128,6 +134,10 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 		_camera.set_target_node(%Player)
 		_camera.set_target_zoom(Vector2.ONE)
 
+		if tutorial:
+			$MovementTutorial.hide()
+			$BlockSequenceTutorial.show()
+
 
 func _on_block_sequence_sequence_finished(_valid) -> void:
 	_camera.drag_horizontal_enabled = false
@@ -139,9 +149,16 @@ func _on_block_sequence_sequence_finished(_valid) -> void:
 func _on_transition_finished(_anim_name: String) -> void:
 	if _finished:
 		finished.emit()
+	elif tutorial:
+		$MovementTutorial.show()
+		$MovementTutorial.next_step()
 	else:
 		%BlockSequence.start()
 
 
 func _on_title_timer_timeout() -> void:
 	$Title/AnimationPlayer.play("fade_out")
+
+
+func _on_movement_tutorial_finished() -> void:
+	%BlockSequence.start()

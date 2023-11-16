@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqk2pedcucgnw"]
+[gd_scene load_steps=7 format=3 uid="uid://dqk2pedcucgnw"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_qb0pk"]
 [ext_resource type="PackedScene" uid="uid://c18g0su4mfuqt" path="res://game_objects/audio/jump_note_player.tscn" id="2_fw7sl"]
 [ext_resource type="Texture2D" uid="uid://d00tklro00aow" path="res://sprites/icon.svg" id="3_2e4b4"]
 [ext_resource type="PackedScene" uid="uid://7y3jaf7ow5yt" path="res://game_objects/tile_detector_area.tscn" id="4_cq6e0"]
+[ext_resource type="PackedScene" uid="uid://cdln3x7xjsumb" path="res://utils/keyboard_controller.tscn" id="5_7ussj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao35p"]
 radius = 12.0
@@ -23,6 +24,8 @@ texture = ExtResource("3_2e4b4")
 
 [node name="TileDetectorArea" parent="." instance=ExtResource("4_cq6e0")]
 position = Vector2(0, 30)
+
+[node name="KeyboardController" parent="." instance=ExtResource("5_7ussj")]
 
 [connection signal="jumped" from="." to="." method="_on_jumped"]
 [connection signal="tone_changed" from="TileDetectorArea" to="." method="_on_tile_detector_area_tone_changed"]

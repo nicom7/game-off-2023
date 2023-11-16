@@ -2,6 +2,9 @@ extends Node
 
 @export var switch_blocks: Array[SwitchBlock] = []
 @export_range(1, 99) var sequence_length_max: int = 7
+@export var randomize_sequence: bool = true
+## The current block sequence as a list of block indexes (0 is the first platform block, 1 is the second, etc.)
+@export var current_sequence: PackedInt32Array = []
 
 enum SequenceState
 {
@@ -11,7 +14,6 @@ enum SequenceState
 	FINISHED,
 }
 
-var _current_sequence: Array[int] = []
 var _sequence_cursor: int = 0
 
 var _current_sequence_end: int = 0
@@ -43,9 +45,10 @@ func _setup_next_sequence(reset: bool) -> void:
 	_set_blocks_enabled(false)
 
 	if reset:
-		_current_sequence.clear()
-		for i in sequence_length_max:
-			_current_sequence.append(randi_range(0, switch_blocks.size() - 1))
+		if randomize_sequence:
+			current_sequence.clear()
+			for i in sequence_length_max:
+				current_sequence.append(randi_range(0, switch_blocks.size() - 1))
 
 		_current_sequence_end = 0
 	else:
@@ -65,7 +68,7 @@ func _play_sequence(blocks: Array) -> void:
 	sequence_played.emit(_sequence_state == SequenceState.DEMO)
 
 func _validate_block(block: SwitchBlock) -> bool:
-	var valid = switch_blocks[_current_sequence[_sequence_cursor]] == block
+	var valid = switch_blocks[current_sequence[_sequence_cursor]] == block
 	return valid
 
 func _set_all_blocks_valid() -> void:
@@ -88,7 +91,7 @@ func _ready() -> void:
 
 
 func _on_sequence_timer_timeout() -> void:
-	_play_sequence(_current_sequence.slice(0, _current_sequence_end + 1))
+	_play_sequence(current_sequence.slice(0, _current_sequence_end + 1))
 
 
 func _on_sequence_played(_demo_sequence: bool) -> void:
@@ -99,7 +102,7 @@ func _on_sequence_played(_demo_sequence: bool) -> void:
 		SequenceState.PLAYBACK:
 			_sequence_state = SequenceState.RECORD
 			_set_blocks_enabled(true)
-			_set_block_valid(_current_sequence[_sequence_cursor])
+			_set_block_valid(current_sequence[_sequence_cursor])
 
 
 func _on_block_is_hit(block: SwitchBlock) -> void:
@@ -109,7 +112,7 @@ func _on_block_is_hit(block: SwitchBlock) -> void:
 			if _sequence_cursor < _current_sequence_end:
 				# Next block in sequence
 				_sequence_cursor += 1
-				_set_block_valid(_current_sequence[_sequence_cursor])
+				_set_block_valid(current_sequence[_sequence_cursor])
 			else:
 				# Sequence finished; next sequence or success
 				sequence_finished.emit(true)
