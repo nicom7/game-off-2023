@@ -1,11 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=19 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
 [ext_resource type="Script" path="res://game_objects/camera.gd" id="4_jd0f8"]
 [ext_resource type="PackedScene" uid="uid://dqk2pedcucgnw" path="res://characters/player/player.tscn" id="6_ahra0"]
 [ext_resource type="PackedScene" uid="uid://cfqdgrh4lw7pi" path="res://game_objects/switch_blocks/block_sequence.tscn" id="7_v4u45"]
-[ext_resource type="Script" path="res://levels/random_level_generator.gd" id="8_erwi1"]
 [ext_resource type="Script" path="res://levels/transition.gd" id="8_jvvbh"]
 [ext_resource type="FontFile" uid="uid://xycvan2inrdw" path="res://fonts/RussoOne-Regular.ttf" id="8_qmhdu"]
 [ext_resource type="PackedScene" uid="uid://3g8p8lr6vvim" path="res://levels/tutorials/movement_tutorial.tscn" id="9_r74hu"]
@@ -166,10 +165,6 @@ rotation = -1.5708
 
 [node name="BlockSequence" parent="GameObjects" instance=ExtResource("7_v4u45")]
 unique_name_in_owner = true
-
-[node name="RandomLevelGenerator" type="Node" parent="."]
-script = ExtResource("8_erwi1")
-note_count_max = 3
 
 [node name="Title" type="CanvasLayer" parent="."]
 

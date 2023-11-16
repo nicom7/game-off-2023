@@ -1,13 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dysxf1d1ubejx"]
+[gd_scene load_steps=3 format=3 uid="uid://dysxf1d1ubejx"]
 
 [ext_resource type="PackedScene" uid="uid://bgmrmwu61uqnt" path="res://levels/world_a.tscn" id="1_ljgbv"]
+[ext_resource type="Script" path="res://levels/level_info_provider.gd" id="2_5bp36"]
 
-[node name="World" instance=ExtResource("1_ljgbv")]
+[node name="World" node_paths=PackedStringArray("level_info_provider") instance=ExtResource("1_ljgbv")]
+level_info_provider = NodePath("LevelInfoProvider")
 tutorial = true
 
 [node name="BlockSequence" parent="GameObjects" index="0"]
 randomize_sequence = false
 current_sequence = [0, 0, 1, 1]
+
+[node name="LevelInfoProvider" type="Node" parent="." index="10"]
+script = ExtResource("2_5bp36")
+notes = Array[int]([2, 6])
 
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]
