@@ -136,6 +136,9 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 		_camera.set_target_node(%Player)
 		_camera.set_target_zoom(Vector2.ONE)
 
+	if demo_sequence and tutorial:
+		$BlockSequenceTutorial.show()
+		$BlockSequenceTutorial.next_step()
 
 func _on_block_sequence_sequence_finished(_valid) -> void:
 	_camera.drag_horizontal_enabled = false
@@ -148,11 +151,16 @@ func _on_transition_finished(_anim_name: String) -> void:
 	if _finished:
 		finished.emit()
 	elif tutorial:
-		$Tutorial.show()
-		$Tutorial.next_step()
+		$MovementTutorial.show()
+		$MovementTutorial.next_step()
 	else:
 		%BlockSequence.start()
 
 
 func _on_title_timer_timeout() -> void:
 	$Title/AnimationPlayer.play("fade_out")
+
+
+func _on_movement_tutorial_finished() -> void:
+	$MovementTutorial.hide()
+	%BlockSequence.start()

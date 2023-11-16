@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://3g8p8lr6vvim"]
+
+[ext_resource type="Script" path="res://levels/tutorials/movement_tutorial.gd" id="1_1gq7j"]
+
+[node name="MovementTutorial" type="CanvasLayer"]
+script = ExtResource("1_1gq7j")
+
+[node name="Step" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="Step"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Step"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "STEP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Step"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true

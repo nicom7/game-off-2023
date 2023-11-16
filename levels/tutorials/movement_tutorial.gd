@@ -1,6 +1,4 @@
-extends CanvasLayer
-
-signal finished
+extends Tutorial
 
 enum Step
 {
@@ -22,20 +20,11 @@ var _texts: PackedStringArray = [
 	"Press W to climb down",
 	"Hold W to reach the C platform",
 ]
-var _step: int = -1
 var _player_tone: Globals.Tone
 var _player_on_floor: bool = false
 
-func current_step():
-	return _step
-
-func next_step():
-	_step += 1
-	if _step >= Step.keys().size():
-		$Step/Label.text = "Well done!"
-		finished.emit()
-	else:
-		$Step/Label.text = _texts[_step]
+func _get_texts() -> PackedStringArray:
+	return _texts
 
 func _on_player_jumped(_notes) -> void:
 	match _step:
@@ -45,9 +34,6 @@ func _on_player_jumped(_notes) -> void:
 		Step.G_JUMP:
 			if _player_tone == Globals.Tone.G:
 				next_step()
-
-func _on_player_interact(_player, _notes) -> void:
-	pass # Replace with function body.
 
 
 func _on_player_current_tone_changed(tone) -> void:

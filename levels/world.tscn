@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=20 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
@@ -8,8 +8,9 @@
 [ext_resource type="Script" path="res://levels/random_level_generator.gd" id="8_erwi1"]
 [ext_resource type="Script" path="res://levels/transition.gd" id="8_jvvbh"]
 [ext_resource type="FontFile" uid="uid://xycvan2inrdw" path="res://fonts/RussoOne-Regular.ttf" id="8_qmhdu"]
-[ext_resource type="Script" path="res://levels/tutorial.gd" id="9_86l4n"]
+[ext_resource type="PackedScene" uid="uid://3g8p8lr6vvim" path="res://levels/tutorials/movement_tutorial.tscn" id="9_r74hu"]
 [ext_resource type="PackedScene" uid="uid://bxun5w5sv6twu" path="res://game_objects/walls/wall.tscn" id="9_w7oqa"]
+[ext_resource type="PackedScene" uid="uid://cxx0afmq53b6v" path="res://levels/tutorials/block_sequence_tutorial.tscn" id="10_jr664"]
 
 [sub_resource type="FontVariation" id="FontVariation_j6yj0"]
 base_font = ExtResource("8_qmhdu")
@@ -120,6 +121,7 @@ _data = {
 [node name="World" type="Node2D"]
 script = ExtResource("1_u7smd")
 ambient_note_player_scene = ExtResource("2_573sm")
+tutorial = true
 
 [node name="Player" parent="." instance=ExtResource("6_ahra0")]
 unique_name_in_owner = true
@@ -211,35 +213,11 @@ libraries = {
 wait_time = 12.0
 one_shot = true
 
-[node name="Tutorial" type="CanvasLayer" parent="."]
+[node name="MovementTutorial" parent="." instance=ExtResource("9_r74hu")]
 visible = false
-script = ExtResource("9_86l4n")
 
-[node name="Step" type="VBoxContainer" parent="Tutorial"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control2" type="Control" parent="Tutorial/Step"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="Tutorial/Step"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "STEP"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control" type="Control" parent="Tutorial/Step"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Timer" type="Timer" parent="Tutorial"]
-wait_time = 12.0
-one_shot = true
+[node name="BlockSequenceTutorial" parent="." instance=ExtResource("10_jr664")]
+visible = false
 
 [node name="Transition" type="CanvasLayer" parent="."]
 script = ExtResource("8_jvvbh")
@@ -257,14 +235,15 @@ libraries = {
 }
 
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
-[connection signal="current_tone_changed" from="Player" to="Tutorial" method="_on_player_current_tone_changed"]
-[connection signal="direction_changed" from="Player" to="Tutorial" method="_on_player_direction_changed"]
-[connection signal="interact" from="Player" to="Tutorial" method="_on_player_interact"]
-[connection signal="jumped" from="Player" to="Tutorial" method="_on_player_jumped"]
+[connection signal="current_tone_changed" from="Player" to="MovementTutorial" method="_on_player_current_tone_changed"]
+[connection signal="direction_changed" from="Player" to="MovementTutorial" method="_on_player_direction_changed"]
+[connection signal="jumped" from="Player" to="MovementTutorial" method="_on_player_jumped"]
 [connection signal="on_floor_changed" from="Player" to="." method="_on_player_on_floor_changed"]
-[connection signal="on_floor_changed" from="Player" to="Tutorial" method="_on_player_on_floor_changed"]
+[connection signal="on_floor_changed" from="Player" to="MovementTutorial" method="_on_player_on_floor_changed"]
 [connection signal="finished" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_finished"]
 [connection signal="sequence_finished" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_sequence_finished"]
+[connection signal="sequence_finished" from="GameObjects/BlockSequence" to="BlockSequenceTutorial" method="_on_block_sequence_sequence_finished"]
 [connection signal="sequence_played" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_sequence_played"]
 [connection signal="timeout" from="Title/Timer" to="." method="_on_title_timer_timeout"]
+[connection signal="finished" from="MovementTutorial" to="." method="_on_movement_tutorial_finished"]
 [connection signal="finished" from="Transition" to="." method="_on_transition_finished"]
