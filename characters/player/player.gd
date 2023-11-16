@@ -49,10 +49,12 @@ var current_ladder: Ladder
 var current_input_actions: InputActions
 
 @onready var _keyboard_controller: KeyboardController = $KeyboardController
+var _previous_direction: Vector2
 
 signal on_floor_changed(value: bool)
-signal jumped
-signal interact(player: Character, action: String)
+signal direction_changed(direction: float)
+signal jumped(notes: int)
+signal interact(player: Character, notes: int)
 
 func enter_climb(ladder: Ladder) -> void:
 	if not climbing:
@@ -104,20 +106,25 @@ func _update_movement(delta: float) -> void:
 		# Add the gravity.
 		velocity.y += gravity * delta
 
+	var direction: Vector2 = Vector2.ZERO
+
 	if climbing:
-#		var direction := Input.get_axis(current_input_actions.move_up, current_input_actions.move_down)
-		var direction: float = _keyboard_controller.get_action_strength(current_input_actions.move_down) - _keyboard_controller.get_action_strength(current_input_actions.move_up)
-		if direction:
-			velocity.y = direction * speed
+		direction.y = _keyboard_controller.get_action_strength(current_input_actions.move_down) - _keyboard_controller.get_action_strength(current_input_actions.move_up)
+		if direction.y:
+			velocity.y = direction.y * speed
 		else:
 			velocity.y = move_toward(velocity.y, 0, speed)
 		velocity.x = 0
 	else:
-		var direction: float = Input.get_axis(current_input_actions.move_left, current_input_actions.move_right)
-		if direction:
-			velocity.x = direction * speed
+		direction.x = Input.get_axis(current_input_actions.move_left, current_input_actions.move_right)
+		if direction.x:
+			velocity.x = direction.x * speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
+
+	if direction != _previous_direction:
+		direction_changed.emit(direction)
+		_previous_direction = direction
 
 	move_and_slide()
 
@@ -125,9 +132,9 @@ func _update_jump(prev_notes: int, cur_notes: int) -> void:
 	if not climbing:
 		# Prevent jumping if releasing a key that will lead to the jump notes, e.g. [5, 6] => [5]
 		if on_floor and prev_notes < cur_notes and cur_notes == current_input_actions.jump:
-			jumped.emit()
+			jumped.emit(cur_notes)
 
-func _on_jumped() -> void:
+func _on_jumped(_notes: int) -> void:
 	jumping = true
 	jump_note_player = jump_note_player_scene.instantiate()
 	jump_note_player.tone = current_tone

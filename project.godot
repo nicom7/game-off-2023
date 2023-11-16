@@ -27,6 +27,10 @@ gdscript/warnings/shadowed_variable=2
 
 project/assembly_name="Game Off 2023"
 
+[gui]
+
+theme/custom="res://themes/theme.tres"
+
 [input]
 
 A_note={

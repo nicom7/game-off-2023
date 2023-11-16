@@ -12,3 +12,7 @@ func _on_body_entered(body: Node2D) -> void:
 				var tone = (l - 1) as Globals.Tone
 				tone_changed.emit(tone)
 				break
+	else:
+		var switch_block: SwitchBlock = body as SwitchBlock
+		if switch_block:
+			tone_changed.emit(switch_block.tone)

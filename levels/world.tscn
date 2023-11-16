@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=19 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
@@ -7,12 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://cfqdgrh4lw7pi" path="res://game_objects/switch_blocks/block_sequence.tscn" id="7_v4u45"]
 [ext_resource type="Script" path="res://levels/random_level_generator.gd" id="8_erwi1"]
 [ext_resource type="Script" path="res://levels/transition.gd" id="8_jvvbh"]
-[ext_resource type="FontFile" uid="uid://xycvan2inrdw" path="res://fonts/RussoOne-Regular.ttf" id="8_nlhro"]
+[ext_resource type="FontFile" uid="uid://xycvan2inrdw" path="res://fonts/RussoOne-Regular.ttf" id="8_qmhdu"]
+[ext_resource type="Script" path="res://levels/tutorial.gd" id="9_86l4n"]
 [ext_resource type="PackedScene" uid="uid://bxun5w5sv6twu" path="res://game_objects/walls/wall.tscn" id="9_w7oqa"]
 
-[sub_resource type="FontVariation" id="FontVariation_6e5sn"]
-base_font = ExtResource("8_nlhro")
+[sub_resource type="FontVariation" id="FontVariation_j6yj0"]
+base_font = ExtResource("8_qmhdu")
 variation_embolden = -0.75
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_424g2"]
 
 [sub_resource type="Animation" id="Animation_1ut3m"]
 resource_name = "fade_in"
@@ -168,7 +171,6 @@ script = ExtResource("8_erwi1")
 note_count_max = 3
 
 [node name="Title" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Title" type="VBoxContainer" parent="Title"]
 modulate = Color(1, 1, 1, 0)
@@ -178,15 +180,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Title/Title"]
+[node name="Control2" type="Control" parent="Title/Title"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.8, 0.941176, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.105882, 0.196078, 0.243137, 1)
+size_flags_stretch_ratio = 0.25
+
+[node name="Label" type="Label" parent="Title/Title"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 6
-theme_override_fonts/font = SubResource("FontVariation_6e5sn")
+theme_override_fonts/font = SubResource("FontVariation_j6yj0")
 theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_424g2")
 text = "Musikeys"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -197,12 +203,41 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Title"]
-autoplay = "fade_in"
 libraries = {
 "": SubResource("AnimationLibrary_43tb3")
 }
 
 [node name="Timer" type="Timer" parent="Title"]
+wait_time = 12.0
+one_shot = true
+
+[node name="Tutorial" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("9_86l4n")
+
+[node name="Step" type="VBoxContainer" parent="Tutorial"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="Tutorial/Step"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Tutorial/Step"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "STEP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Tutorial/Step"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Timer" type="Timer" parent="Tutorial"]
 wait_time = 12.0
 one_shot = true
 
@@ -222,7 +257,12 @@ libraries = {
 }
 
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
+[connection signal="current_tone_changed" from="Player" to="Tutorial" method="_on_player_current_tone_changed"]
+[connection signal="direction_changed" from="Player" to="Tutorial" method="_on_player_direction_changed"]
+[connection signal="interact" from="Player" to="Tutorial" method="_on_player_interact"]
+[connection signal="jumped" from="Player" to="Tutorial" method="_on_player_jumped"]
 [connection signal="on_floor_changed" from="Player" to="." method="_on_player_on_floor_changed"]
+[connection signal="on_floor_changed" from="Player" to="Tutorial" method="_on_player_on_floor_changed"]
 [connection signal="finished" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_finished"]
 [connection signal="sequence_finished" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_sequence_finished"]
 [connection signal="sequence_played" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_sequence_played"]

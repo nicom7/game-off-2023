@@ -147,6 +147,9 @@ func _on_block_sequence_sequence_finished(_valid) -> void:
 func _on_transition_finished(_anim_name: String) -> void:
 	if _finished:
 		finished.emit()
+	elif tutorial:
+		$Tutorial.show()
+		$Tutorial.next_step()
 	else:
 		%BlockSequence.start()
 
