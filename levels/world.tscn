@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=21 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
@@ -10,6 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://dpg5fwcr50ioc" path="res://levels/tutorials/movement_tutorial.tscn" id="9_r74hu"]
 [ext_resource type="PackedScene" uid="uid://bxun5w5sv6twu" path="res://game_objects/walls/wall.tscn" id="9_w7oqa"]
 [ext_resource type="PackedScene" uid="uid://bkol8urwsl85l" path="res://levels/tutorials/block_sequence_tutorial.tscn" id="10_jr664"]
+
+[sub_resource type="Curve" id="Curve_1888p"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_q2det"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="FontVariation" id="FontVariation_j6yj0"]
 base_font = ExtResource("8_qmhdu")
@@ -138,11 +146,16 @@ position = Vector2(576, 312)
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
 position_smoothing_speed = 4.0
-drag_left_margin = 0.1
-drag_top_margin = 0.1
-drag_right_margin = 0.1
-drag_bottom_margin = 0.1
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
 script = ExtResource("4_jd0f8")
+target_node_path = NodePath("../CameraCenter")
+move_speed = 1.4
+position_easing = SubResource("Curve_1888p")
+target_zoom = Vector2(0.25, 0.25)
+zoom_easing = SubResource("Curve_q2det")
 
 [node name="Environment" type="Node2D" parent="."]
 
