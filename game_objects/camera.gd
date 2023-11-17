@@ -19,8 +19,8 @@ extends Camera2D
 @export var zoom_easing: Curve = Curve.new()
 
 var _zoom_cursor: float = 0
-var _previous_zoom: Vector2 = Vector2.ONE
-var _target_zoom: Vector2 = Vector2.ONE
+@onready var _previous_zoom: Vector2 = zoom
+@onready var _target_zoom: Vector2 = zoom
 
 var _pos_cursor: float = 0
 var _previous_pos: Vector2 = Vector2.ZERO

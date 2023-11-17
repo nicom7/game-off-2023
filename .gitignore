@@ -6,3 +6,4 @@ exports/*
 exports/html/*
 !exports/html/serve.py
 !exports/html/run.bat
+exports/windows/*

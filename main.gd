@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var play_tutorial: bool = true
+
 var world_scene: PackedScene = preload("res://levels/world_a.tscn")
 var world_tutorial_scene: PackedScene = preload("res://levels/tutorials/world_tutorial.tscn")
 var _world: Node2D
@@ -14,7 +16,7 @@ func _destroy_world():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_create_world(true)
+	_create_world(play_tutorial)
 	_world.show_title()
 
 func _on_world_finished() -> void:

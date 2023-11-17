@@ -6,6 +6,7 @@ var ambient_note_player: NotePlayer
 
 @export var level_info_provider: LevelInfoProvider
 @export var tutorial: bool = false
+@export var player_camera_zoom: Vector2 = Vector2.ONE
 
 signal finished()
 var _finished: bool = false
@@ -132,7 +133,7 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 		_camera.drag_horizontal_enabled = true
 		_camera.drag_vertical_enabled = true
 		_camera.set_target_node(%Player)
-		_camera.set_target_zoom(Vector2.ONE)
+		_camera.set_target_zoom(player_camera_zoom)
 
 		if tutorial:
 			$MovementTutorial.hide()
