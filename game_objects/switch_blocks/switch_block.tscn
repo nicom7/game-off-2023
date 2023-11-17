@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbwx5x1x0vi2d"]
+[gd_scene load_steps=13 format=3 uid="uid://dbwx5x1x0vi2d"]
 
 [ext_resource type="Script" path="res://game_objects/switch_blocks/switch_block.gd" id="1_22t1h"]
 [ext_resource type="PackedScene" uid="uid://c2igw674holmk" path="res://game_objects/audio/block_note_player.tscn" id="2_32ohu"]
 [ext_resource type="Texture2D" uid="uid://bfxbquwrra8m" path="res://sprites/block.png" id="2_ueuwi"]
+[ext_resource type="Theme" uid="uid://cs15umpslf7mq" path="res://themes/tone_label.tres" id="4_p2540"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwe2d"]
 size = Vector2(48, 48)
@@ -97,7 +98,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 36
+theme = ExtResource("4_p2540")
 text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1

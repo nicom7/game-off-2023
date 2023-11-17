@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://btccwmjkek1ng"]
 
 [ext_resource type="Script" path="res://game_objects/platforms/platform_sets/platform_set.gd" id="1_ec12g"]
-[ext_resource type="TileSet" uid="uid://bm8j5kvkieyqj" path="res://tilesets/environment.tres" id="2_mb8jr"]
+[ext_resource type="PackedScene" uid="uid://cb5gnjmcn586k" path="res://game_objects/platforms/platform.tscn" id="2_jg3vq"]
 [ext_resource type="PackedScene" uid="uid://dbwx5x1x0vi2d" path="res://game_objects/switch_blocks/switch_block.tscn" id="2_qslti"]
 [ext_resource type="PackedScene" uid="uid://knuujq4ac74r" path="res://game_objects/ladders/ladder.tscn" id="4_i4kyn"]
 
@@ -16,60 +16,7 @@ position = Vector2(24, -48)
 shape = SubResource("RectangleShape2D_cmjku")
 disabled = true
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("2_mb8jr")
-format = 2
-layer_0/name = "Platform"
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 2)
-layer_1/name = "A"
-layer_1/enabled = true
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 2)
-layer_2/name = "B"
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(0, 2, 0, 65536, 2, 2)
-layer_3/name = "C"
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array(0, 3, 0, 65536, 3, 2)
-layer_4/name = "D"
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array(65536, 4, 2, 0, 4, 0)
-layer_5/name = "E"
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array(65536, 5, 2, 0, 5, 0)
-layer_6/name = "F"
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array(65536, 6, 2, 0, 6, 0)
-layer_7/name = "G"
-layer_7/enabled = false
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array(65536, 7, 2, 0, 7, 0)
+[node name="Platform" parent="." instance=ExtResource("2_jg3vq")]
 
 [node name="SwitchBlock" parent="." instance=ExtResource("2_qslti")]
 position = Vector2(0, -126)

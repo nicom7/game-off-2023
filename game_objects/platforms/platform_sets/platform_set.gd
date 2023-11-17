@@ -27,6 +27,14 @@ func get_ladders() -> Array[Ladder]:
 
 	return ladders
 
+func get_platforms() -> Array[Platform]:
+	var platforms: Array[Platform] = []
+	for c in get_children():
+		if c is Platform:
+			platforms.append(c as Platform)
+
+	return platforms
+
 func _update_tone() -> void:
 	if not is_node_ready():
 		return
@@ -34,11 +42,8 @@ func _update_tone() -> void:
 	for sb in get_switch_blocks():
 		sb.tone = tone
 
-	var tilemap: TileMap = $TileMap
-	# Skip layer 0 (Platform layer)
-	for layer in range(1, tilemap.get_layers_count()):
-		tilemap.set_layer_enabled(layer, false)
-	tilemap.set_layer_enabled(tone + 1, true)
+	for p in get_platforms():
+		p.tone = tone
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
