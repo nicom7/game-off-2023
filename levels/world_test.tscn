@@ -15,9 +15,8 @@ point_count = 2
 
 [node name="World" instance=ExtResource("1_yd2v3")]
 
-[node name="Player" parent="." index="0" node_paths=PackedStringArray("current_floor_map")]
+[node name="Player" parent="." index="0"]
 position = Vector2(48, 456)
-current_floor_map = NodePath("../Environment/Platforms")
 
 [node name="CameraCenter" parent="." index="2"]
 position = Vector2(576, -96)
@@ -55,44 +54,30 @@ layer_2/tile_data = PackedInt32Array(786432, 65539, 2, 786433, 131075, 2, 786434
 
 [node name="Ladder" parent="GameObjects" index="0" instance=ExtResource("3_3vftg")]
 position = Vector2(432, 336)
-upper_tone = null
-lower_tone = null
 size = 4
 
 [node name="Ladder2" parent="GameObjects" index="1" instance=ExtResource("3_3vftg")]
 position = Vector2(672, 144)
-upper_tone = null
-lower_tone = null
 size = 4
 
 [node name="Ladder3" parent="GameObjects" index="2" instance=ExtResource("3_3vftg")]
 position = Vector2(288, -48)
-upper_tone = null
-lower_tone = null
 size = 4
 
 [node name="Ladder4" parent="GameObjects" index="3" instance=ExtResource("3_3vftg")]
 position = Vector2(912, -48)
-upper_tone = null
-lower_tone = null
 size = 4
 
 [node name="Ladder7" parent="GameObjects" index="4" instance=ExtResource("3_3vftg")]
 position = Vector2(528, -240)
-upper_tone = null
-lower_tone = null
 size = 4
 
 [node name="Ladder5" parent="GameObjects" index="5" instance=ExtResource("3_3vftg")]
 position = Vector2(1056, -432)
-upper_tone = null
-lower_tone = null
 size = 8
 
 [node name="Ladder6" parent="GameObjects" index="6" instance=ExtResource("3_3vftg")]
 position = Vector2(624, -624)
-upper_tone = null
-lower_tone = null
 size = 4
 
 [node name="TestBlocks" type="Node2D" parent="GameObjects" index="7"]
