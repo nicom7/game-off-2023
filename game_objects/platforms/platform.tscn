@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://game_objects/platforms/platform.gd" id="2_5wvgf"]
 [ext_resource type="Theme" uid="uid://cs15umpslf7mq" path="res://themes/tone_label.tres" id="2_vku24"]
 
-[node name="TileMap" type="TileMap"]
+[node name="Platform" type="TileMap"]
 modulate = Color(1, 0, 0, 1)
 tile_set = ExtResource("1_ge6jh")
 format = 2

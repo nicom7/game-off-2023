@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bgmrmwu61uqnt"]
+[gd_scene load_steps=23 format=3 uid="uid://bgmrmwu61uqnt"]
 
 [ext_resource type="PackedScene" uid="uid://b7huf0srkra04" path="res://levels/world.tscn" id="1_dlj7h"]
 [ext_resource type="PackedScene" uid="uid://bhxpfwjuuirp5" path="res://game_objects/platforms/platform_sets/set_A.tscn" id="3_6tf3d"]
 [ext_resource type="PackedScene" uid="uid://btccwmjkek1ng" path="res://game_objects/platforms/platform_sets/platform_set.tscn" id="4_6fqpl"]
+[ext_resource type="PackedScene" uid="uid://cb5gnjmcn586k" path="res://game_objects/platforms/platform.tscn" id="4_dpbpj"]
 [ext_resource type="Script" path="res://levels/random_level_generator.gd" id="5_0k853"]
 [ext_resource type="PackedScene" uid="uid://knuujq4ac74r" path="res://game_objects/ladders/ladder.tscn" id="5_salg1"]
 
@@ -88,57 +89,6 @@ position = Vector2(0, 528)
 [node name="BoundingRect" parent="Environment/Stages/Stage0/PlatformSet" index="0"]
 shape = SubResource("RectangleShape2D_j14s7")
 
-[node name="TileMap" parent="Environment/Stages/Stage0/PlatformSet" index="1"]
-layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 196608, 0, 65537, 196608, 2)
-layer_1/name = "A"
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = "B"
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = "C"
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = "D"
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = "E"
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = "F"
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = "G"
-layer_7/enabled = false
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
-
 [node name="Ladder" parent="Environment/Stages/Stage0/PlatformSet" index="3"]
 process_mode = 4
 
@@ -149,56 +99,9 @@ position = Vector2(1152, 528)
 position = Vector2(312, -48)
 shape = SubResource("RectangleShape2D_kcawv")
 
-[node name="TileMap" parent="Environment/Stages/Stage0/PlatformSet2" index="1"]
-layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 196608, 0, 65537, 196608, 2)
-layer_1/name = "A"
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = "B"
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = "C"
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = "D"
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = "E"
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = "F"
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = "G"
-layer_7/enabled = false
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
+[node name="Platform" parent="Environment/Stages/Stage0/PlatformSet2" index="1"]
+layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 131072, 0, 65541, 131072, 2, 6, 131072, 0, 65542, 131072, 2, 7, 131072, 0, 65543, 131072, 2, 8, 131072, 0, 65544, 131072, 2, 9, 131072, 0, 65545, 131072, 2, 10, 131072, 0, 65546, 131072, 2, 11, 131072, 0, 65547, 131072, 2, 12, 196608, 0, 65548, 196608, 2)
+size = Vector2i(13, 2)
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage0/PlatformSet2" index="2"]
 position = Vector2(384, -126)
@@ -216,57 +119,12 @@ tone = 4
 position = Vector2(120, -48)
 shape = SubResource("RectangleShape2D_ax677")
 
-[node name="TileMap" parent="Environment/Stages/Stage1/PlatformSet" index="1"]
-layer_1/name = ""
-layer_1/enabled = false
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = true
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = false
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
+[node name="Platform" parent="Environment/Stages/Stage1/PlatformSet" index="1"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-48, 0)
+layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 131072, 0, 65541, 131072, 2, 6, 196608, 0, 65542, 196608, 2)
+size = Vector2i(7, 2)
+tone = 4
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage1/PlatformSet" index="2"]
 modulate = Color(0, 1, 1, 1)
@@ -281,57 +139,12 @@ tone = 4
 position = Vector2(-192, -48)
 shape = SubResource("RectangleShape2D_d7xp7")
 
-[node name="TileMap" parent="Environment/Stages/Stage1/PlatformSet2" index="1"]
-layer_1/name = ""
-layer_1/enabled = false
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = true
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = false
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
+[node name="Platform" parent="Environment/Stages/Stage1/PlatformSet2" index="1"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-96, 0)
+layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 196608, 0, 65539, 196608, 2)
+size = Vector2i(4, 2)
+tone = 4
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage1/PlatformSet2" index="2"]
 modulate = Color(0, 1, 1, 1)
@@ -339,6 +152,13 @@ tone = 4
 
 [node name="Ladder" parent="Environment/Stages/Stage1/PlatformSet2" index="3"]
 position = Vector2(-48, 0)
+
+[node name="Platform2" parent="Environment/Stages/Stage1/PlatformSet2" index="4" instance=ExtResource("4_dpbpj")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-480, 0)
+layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 196608, 0, 65541, 196608, 2)
+size = Vector2i(6, 2)
+tone = 4
 
 [node name="Stage2" type="Node2D" parent="Environment/Stages" index="2"]
 
@@ -350,57 +170,9 @@ tone = 6
 position = Vector2(-48, -48)
 shape = SubResource("RectangleShape2D_0xqdp")
 
-[node name="TileMap" parent="Environment/Stages/Stage2/PlatformSet" index="1"]
-layer_1/name = ""
-layer_1/enabled = false
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = true
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
+[node name="Platform" parent="Environment/Stages/Stage2/PlatformSet" index="1"]
+modulate = Color(1, 0, 1, 1)
+tone = 6
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage2/PlatformSet" index="2"]
 modulate = Color(1, 0, 1, 1)
@@ -415,57 +187,9 @@ tone = 6
 position = Vector2(-96, -48)
 shape = SubResource("RectangleShape2D_12tri")
 
-[node name="TileMap" parent="Environment/Stages/Stage2/PlatformSet2" index="1"]
-layer_1/name = ""
-layer_1/enabled = false
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = true
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
+[node name="Platform" parent="Environment/Stages/Stage2/PlatformSet2" index="1"]
+modulate = Color(1, 0, 1, 1)
+tone = 6
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage2/PlatformSet2" index="2"]
 modulate = Color(1, 0, 1, 1)
@@ -484,57 +208,9 @@ tone = 5
 position = Vector2(-264, -48)
 shape = SubResource("RectangleShape2D_s0sa1")
 
-[node name="TileMap" parent="Environment/Stages/Stage3/PlatformSet" index="1"]
-layer_1/name = ""
-layer_1/enabled = false
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = true
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = false
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
+[node name="Platform" parent="Environment/Stages/Stage3/PlatformSet" index="1"]
+modulate = Color(0, 0.5, 1, 1)
+tone = 5
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage3/PlatformSet" index="2"]
 modulate = Color(0, 0.5, 1, 1)
@@ -553,57 +229,9 @@ tone = 5
 position = Vector2(-360, -48)
 shape = SubResource("RectangleShape2D_x82ws")
 
-[node name="TileMap" parent="Environment/Stages/Stage3/PlatformSet2" index="1"]
-layer_1/name = ""
-layer_1/enabled = false
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = true
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = false
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
+[node name="Platform" parent="Environment/Stages/Stage3/PlatformSet2" index="1"]
+modulate = Color(0, 0.5, 1, 1)
+tone = 5
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage3/PlatformSet2" index="2"]
 modulate = Color(0, 0.5, 1, 1)
@@ -624,57 +252,9 @@ tone = 6
 position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_futcy")
 
-[node name="TileMap" parent="Environment/Stages/Stage4/PlatformSet" index="1"]
-layer_1/name = ""
-layer_1/enabled = false
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = true
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
+[node name="Platform" parent="Environment/Stages/Stage4/PlatformSet" index="1"]
+modulate = Color(1, 0, 1, 1)
+tone = 6
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage4/PlatformSet" index="2"]
 modulate = Color(1, 0, 1, 1)
@@ -689,57 +269,9 @@ tone = 6
 position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_lhxmy")
 
-[node name="TileMap" parent="Environment/Stages/Stage4/PlatformSet2" index="1"]
-layer_1/name = ""
-layer_1/enabled = false
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = true
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
+[node name="Platform" parent="Environment/Stages/Stage4/PlatformSet2" index="1"]
+modulate = Color(1, 0, 1, 1)
+tone = 6
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage4/PlatformSet2" index="2"]
 modulate = Color(1, 0, 1, 1)
@@ -757,58 +289,6 @@ position = Vector2(912, -432)
 position = Vector2(-120, -48)
 shape = SubResource("RectangleShape2D_hvnr2")
 
-[node name="TileMap" parent="Environment/Stages/Stage5/PlatformSet" index="1"]
-layer_1/name = ""
-layer_1/enabled = true
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = false
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
-
 [node name="SwitchBlock" parent="Environment/Stages/Stage5/PlatformSet" index="2"]
 position = Vector2(-432, -126)
 
@@ -822,58 +302,6 @@ position = Vector2(1344, -432)
 [node name="BoundingRect" parent="Environment/Stages/Stage5/PlatformSet2" index="0"]
 position = Vector2(-72, -48)
 shape = SubResource("RectangleShape2D_2aqpr")
-
-[node name="TileMap" parent="Environment/Stages/Stage5/PlatformSet2" index="1"]
-layer_1/name = ""
-layer_1/enabled = true
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = false
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = false
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage5/PlatformSet2" index="2"]
 position = Vector2(-96, -126)
@@ -894,57 +322,9 @@ tone = 1
 position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_5qrl7")
 
-[node name="TileMap" parent="Environment/Stages/Stage6/PlatformSet" index="1"]
-layer_1/name = ""
-layer_1/enabled = false
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = true
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = false
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
+[node name="Platform" parent="Environment/Stages/Stage6/PlatformSet" index="1"]
+modulate = Color(1, 0.5, 0, 1)
+tone = 1
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage6/PlatformSet" index="2"]
 modulate = Color(1, 0.5, 0, 1)
@@ -962,57 +342,9 @@ tone = 1
 position = Vector2(96, -48)
 shape = SubResource("RectangleShape2D_ykiij")
 
-[node name="TileMap" parent="Environment/Stages/Stage6/PlatformSet2" index="1"]
-layer_1/name = ""
-layer_1/enabled = false
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = true
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = ""
-layer_3/enabled = false
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
-layer_4/name = ""
-layer_4/enabled = false
-layer_4/modulate = Color(1, 1, 1, 1)
-layer_4/y_sort_enabled = false
-layer_4/y_sort_origin = 0
-layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array()
-layer_5/name = ""
-layer_5/enabled = false
-layer_5/modulate = Color(1, 1, 1, 1)
-layer_5/y_sort_enabled = false
-layer_5/y_sort_origin = 0
-layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array()
-layer_6/name = ""
-layer_6/enabled = false
-layer_6/modulate = Color(1, 1, 1, 1)
-layer_6/y_sort_enabled = false
-layer_6/y_sort_origin = 0
-layer_6/z_index = 0
-layer_6/tile_data = PackedInt32Array()
-layer_7/name = ""
-layer_7/enabled = false
-layer_7/modulate = Color(1, 1, 1, 1)
-layer_7/y_sort_enabled = false
-layer_7/y_sort_origin = 0
-layer_7/z_index = 0
-layer_7/tile_data = PackedInt32Array()
-tone = 0
+[node name="Platform" parent="Environment/Stages/Stage6/PlatformSet2" index="1"]
+modulate = Color(1, 0.5, 0, 1)
+tone = 1
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage6/PlatformSet2" index="2"]
 modulate = Color(1, 0.5, 0, 1)
@@ -1021,6 +353,9 @@ tone = 1
 
 [node name="Ladder" parent="Environment/Stages/Stage6/PlatformSet2" index="3"]
 size = 8
+
+[node name="Transition" parent="." index="9"]
+visible = false
 
 [node name="RandomLevelGenerator" type="Node" parent="." index="10"]
 script = ExtResource("5_0k853")

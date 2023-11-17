@@ -16,8 +16,7 @@ position = Vector2(24, -48)
 shape = SubResource("RectangleShape2D_cmjku")
 disabled = true
 
-[node name="TileMap" parent="." instance=ExtResource("2_jg3vq")]
-tone = null
+[node name="Platform" parent="." instance=ExtResource("2_jg3vq")]
 
 [node name="SwitchBlock" parent="." instance=ExtResource("2_qslti")]
 position = Vector2(0, -126)
