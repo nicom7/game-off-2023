@@ -51,7 +51,7 @@ static func get_all_tone_actions() -> PackedStringArray:
 	return actions
 
 ## Replace all occurences of {...} with the 1st corresponding key label occurence for the specified action in curly braces
-static func format_input_actions(str: String) -> String:
+static func format_input_actions(string: String) -> String:
 	if _inputs.is_empty():
 		# Lazy-initialization of _inputs dictionary
 		var tone_actions: PackedStringArray = get_all_tone_actions()
@@ -61,7 +61,7 @@ static func format_input_actions(str: String) -> String:
 			var kc: Key = DisplayServer.keyboard_get_keycode_from_physical(ev.physical_keycode)
 			_inputs[action] = String.chr(kc)
 
-	return str.format(_inputs)
+	return string.format(_inputs)
 
 static func get_notes_from_bitfield(notes: int) -> Array[Tone]:
 	var notes_array: Array[Tone] = []
