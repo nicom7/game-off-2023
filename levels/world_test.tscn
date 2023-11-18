@@ -22,12 +22,6 @@ position = Vector2(48, 456)
 position = Vector2(576, -96)
 
 [node name="Camera" parent="." index="3"]
-drag_left_margin = 0.05
-drag_top_margin = 0.05
-drag_right_margin = 0.05
-drag_bottom_margin = 0.05
-target_node_path = NodePath("../CameraCenter")
-move_speed = 1.4
 position_easing = SubResource("Curve_1888p")
 zoom_easing = SubResource("Curve_q2det")
 
