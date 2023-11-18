@@ -22,7 +22,6 @@ var playback: AudioStreamPlayback
 @onready var player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var sample_hz = player.stream.mix_rate if player.stream else 1.0
 @onready var sample_step = 1.0 / sample_hz
-var tone_frequencies: Array[float] = [220, 246.94, 261.63, 293.66, 329.63, 349.23, 392] # The frequency of the sound wave.
 var cursor = 0.0
 var phase_start_cursor = 0.0
 var phase_start_volume = 0.0
@@ -64,7 +63,7 @@ func _update_pitch():
 		return
 
 	if not playback is AudioStreamGeneratorPlayback:
-		$AudioStreamPlayer.pitch_scale = pitch * tone_frequencies[tone] / tone_frequencies[Globals.Tone.A]
+		$AudioStreamPlayer.pitch_scale = pitch * Globals.TONE_FREQUENCIES[tone] / Globals.TONE_FREQUENCIES[Globals.Tone.A]
 	else:
 		$AudioStreamPlayer.pitch_scale = pitch
 
@@ -110,8 +109,8 @@ func _get_volume(time: float, curve: Curve) -> float:
 
 func _fill_buffer():
 	var gen_playback = playback as AudioStreamGeneratorPlayback
-	var f1 = tone_frequencies[tone]
-	var f2 = tone_frequencies[tone] * 2
+	var f1 = Globals.TONE_FREQUENCIES[tone]
+	var f2 = Globals.TONE_FREQUENCIES[tone] * 2
 	var frames_available = gen_playback.get_frames_available()
 #	print("fill buffer, ", frames_available)
 
