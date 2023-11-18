@@ -4,7 +4,8 @@ extends LevelInfoProvider
 @export var note_count_min: int = 2
 @export var note_count_max: int = 7
 
-const NOTES_PER_STAGE_COUNT_MAX: int = 2
+const NOTES_PER_STAGE_MAX: int = 2
+const STAGE_COUNT_MAX: int = 7
 
 var _scales: Dictionary = {}
 
@@ -21,10 +22,13 @@ func generate() -> void:
 	var valid_scales = _scales[note_count]
 	notes = valid_scales.pick_random()
 
-	notes_per_stage_max = randi_range(1, NOTES_PER_STAGE_COUNT_MAX)
+	var _notes_per_stage_max = NOTES_PER_STAGE_MAX
+	var _notes_per_stage_min = clampi(ceili(notes.size() / (STAGE_COUNT_MAX as float)), 1, _notes_per_stage_max)
 
-	var _stage_count_min = ceili(notes.size() / float(notes_per_stage_max))
-	var _stage_count_max = notes.size()
+	notes_per_stage_max = randi_range(_notes_per_stage_min, _notes_per_stage_max)
+
+	var _stage_count_max = STAGE_COUNT_MAX
+	var _stage_count_min = clampi(ceili(notes.size() / (notes_per_stage_max as float)), 1, _stage_count_max)
 
 	stage_count_max = randi_range(_stage_count_min, _stage_count_max)
 

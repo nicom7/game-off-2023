@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ul1oby72du11"]
+
+[ext_resource type="Script" path="res://utils/config.gd" id="1_kkqhc"]
+
+[node name="Config" type="Node"]
+script = ExtResource("1_kkqhc")
+tone_colors = Array[Color]([Color(1, 0.407843, 0.337255, 1), Color(1, 0.8, 0, 1), Color(0.941176, 1, 0, 1), Color(0, 1, 0.5, 1), Color(0, 0.833333, 1, 1), Color(0.32, 0.467333, 1, 1), Color(1, 0, 1, 1), Color(1, 0.466667, 0, 1), Color(0.5, 1, 0, 1), Color(0, 1, 1, 1), Color(0.611765, 0.454902, 1, 1), Color(1, 0, 0.5, 1)])

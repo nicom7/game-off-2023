@@ -17,36 +17,6 @@ enum Tone
 	GS,
 }
 
-const TONE_FREQUENCIES: Array[float] = [
-	220,
-	246.94,
-	261.63,
-	293.66,
-	329.63,
-	349.23,
-	392,
-	233.08,
-	277.18,
-	311.13,
-	369.99,
-	415.3
-]
-
-const TONE_COLORS: Array[Color] = [
-	Color(1, 0, 0),		# A
-	Color(1, 0.5, 0),	# B
-	Color(1, 1, 0),		# C
-	Color(0, 1, 0),		# D
-	Color(0, 1, 1),		# E
-	Color(0, 0.5, 1),	# F
-	Color(1, 0, 1),		# G
-	Color(1, 0.75, 0),	# A#
-	Color(0.5, 1, 0),	# C#
-	Color(0, 1, 0.5),	# D#
-	Color(0.5, 0, 1),	# F#
-	Color(1, 0, 0.5),	# G#
-]
-
 const ACTION_SUFFIX: String = "_note"
 
 static var _inputs: Dictionary = {}

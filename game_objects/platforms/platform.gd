@@ -39,7 +39,7 @@ func _update_tone() -> void:
 	if not is_node_ready():
 		return
 
-	modulate = Globals.TONE_COLORS[tone]
+	modulate = Config.tone_colors[tone]
 	var label = Globals.get_label_from_tone(tone)
 	%LeftPivot/Label.text = label
 	%RightPivot/Label.text = label

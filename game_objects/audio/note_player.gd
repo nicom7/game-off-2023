@@ -63,7 +63,7 @@ func _update_pitch():
 		return
 
 	if not playback is AudioStreamGeneratorPlayback:
-		$AudioStreamPlayer.pitch_scale = pitch * Globals.TONE_FREQUENCIES[tone] / Globals.TONE_FREQUENCIES[Globals.Tone.A]
+		$AudioStreamPlayer.pitch_scale = pitch * Config.tone_frequencies[tone] / Config.tone_frequencies[Globals.Tone.A]
 	else:
 		$AudioStreamPlayer.pitch_scale = pitch
 
@@ -109,8 +109,8 @@ func _get_volume(time: float, curve: Curve) -> float:
 
 func _fill_buffer():
 	var gen_playback = playback as AudioStreamGeneratorPlayback
-	var f1 = Globals.TONE_FREQUENCIES[tone]
-	var f2 = Globals.TONE_FREQUENCIES[tone] * 2
+	var f1 = Config.tone_frequencies[tone]
+	var f2 = Config.tone_frequencies[tone] * 2
 	var frames_available = gen_playback.get_frames_available()
 #	print("fill buffer, ", frames_available)
 

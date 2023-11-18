@@ -45,7 +45,7 @@ func _update_block() -> void:
 	if not is_node_ready():
 		return
 
-	modulate = Globals.TONE_COLORS[tone]
+	modulate = Config.tone_colors[tone]
 	$Block/ToneLabel.text = Globals.get_label_from_tone(tone)
 
 # Called when the node enters the scene tree for the first time.
