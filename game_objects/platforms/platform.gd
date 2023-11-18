@@ -41,8 +41,8 @@ func _update_tone() -> void:
 
 	modulate = Config.tone_colors[tone]
 	var label = Globals.get_label_from_tone(tone)
-	%LeftPivot/Label.text = label
-	%RightPivot/Label.text = label
+	%LeftLabel.text = label
+	%RightLabel.text = label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
