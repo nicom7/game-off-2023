@@ -410,6 +410,8 @@ size = 8
 
 [node name="RandomLevelGenerator" type="Node" parent="." index="10"]
 script = ExtResource("5_0k853")
+note_count_min = 12
+note_count_max = 12
 
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]

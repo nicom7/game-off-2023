@@ -29,3 +29,18 @@ extends Node
 	Color(0.5, 0, 1),	# F#	270
 	Color(1, 0, 0.5),	# G#	330
 ]
+
+@export var tone_labels: PackedStringArray = [
+	"A",
+	"B",
+	"C",
+	"D",
+	"E",
+	"F",
+	"G",
+	"A♯",
+	"C♯",
+	"D♯",
+	"F♯",
+	"G♯",
+]
