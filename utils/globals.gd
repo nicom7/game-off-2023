@@ -57,8 +57,9 @@ static func format_input_actions(str: String) -> String:
 		var tone_actions: PackedStringArray = get_all_tone_actions()
 
 		for action in tone_actions:
-			var ev = InputMap.action_get_events(action)[0]
-			_inputs[action] = String.chr(ev.unicode).to_upper()
+			var ev: InputEventKey = InputMap.action_get_events(action)[0] as InputEventKey
+			var kc: Key = DisplayServer.keyboard_get_keycode_from_physical(ev.physical_keycode)
+			_inputs[action] = String.chr(kc)
 
 	return str.format(_inputs)
 
