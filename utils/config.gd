@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 @export var tone_frequencies: Array[float] = [

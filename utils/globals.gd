@@ -22,6 +22,10 @@ const ACTION_SUFFIX: String = "_note"
 static var _inputs: Dictionary = {}
 
 static func get_label_from_tone(tone: Tone) -> String:
+	if Config.is_node_ready():
+		return Config.tone_labels[tone]
+
+	printerr("Config node is not ready")
 	return Tone.keys()[tone]
 
 static func get_action_from_tone(tone: Tone) -> String:

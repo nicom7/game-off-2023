@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://cs15umpslf7mq" path="res://themes/tone_label.tres" id="2_vku24"]
 
 [node name="Platform" type="TileMap"]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0.407843, 0.337255, 1)
 tile_set = ExtResource("1_ge6jh")
 format = 2
 layer_0/name = "Platform"
