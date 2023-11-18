@@ -13,18 +13,28 @@ enum Step
 
 var _texts: PackedStringArray = [
 	"Hold → or ← to move",
-	"Press W to jump",
-	"Press Y to climb up the ladder",
-	"Hold Y to reach the G platform",
-	"Press Y to jump",
-	"Press W to climb down",
-	"Hold W to reach the C platform",
+	"Press {C_note} to jump",
+	"Press {G_note} to climb up the ladder",
+	"Hold {G_note} to reach the G platform",
+	"Press {G_note} to jump",
+	"Press {C_note} to climb down",
+	"Hold {C_note} to reach the C platform",
 ]
 var _player_tone: Globals.Tone
 var _player_on_floor: bool = false
 
 func _get_texts() -> PackedStringArray:
 	return _texts
+
+func _setup_texts() -> void:
+	var new_texts: PackedStringArray = []
+	for t in _texts:
+		new_texts.append(Globals.format_input_actions(t))
+
+	_texts = new_texts
+
+func _ready() -> void:
+	_setup_texts()
 
 func _on_player_jumped(_notes) -> void:
 	match _step:
