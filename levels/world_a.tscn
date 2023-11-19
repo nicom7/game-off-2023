@@ -101,14 +101,14 @@ position = Vector2(120, -48)
 shape = SubResource("RectangleShape2D_ax677")
 
 [node name="Platform" parent="Environment/Stages/Stage1/PlatformSet" index="1"]
-modulate = Color(0, 1, 1, 1)
+modulate = Color(0, 0.833333, 1, 1)
 position = Vector2(-48, 0)
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 131072, 0, 65541, 131072, 2, 6, 196608, 0, 65542, 196608, 2)
 size = Vector2i(7, 2)
 tone = 4
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage1/PlatformSet" index="2"]
-modulate = Color(0, 1, 1, 1)
+modulate = Color(0, 0.833333, 1, 1)
 position = Vector2(120, -126)
 tone = 4
 
@@ -121,21 +121,21 @@ position = Vector2(-192, -48)
 shape = SubResource("RectangleShape2D_d7xp7")
 
 [node name="Platform" parent="Environment/Stages/Stage1/PlatformSet2" index="1"]
-modulate = Color(0, 1, 1, 1)
+modulate = Color(0, 0.833333, 1, 1)
 position = Vector2(-96, 0)
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 196608, 0, 65539, 196608, 2)
 size = Vector2i(4, 2)
 tone = 4
 
 [node name="Platform2" parent="Environment/Stages/Stage1/PlatformSet2" index="2" instance=ExtResource("4_dpbpj")]
-modulate = Color(0, 1, 1, 1)
+modulate = Color(0, 0.833333, 1, 1)
 position = Vector2(-480, 0)
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 196608, 0, 65541, 196608, 2)
 size = Vector2i(6, 2)
 tone = 4
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage1/PlatformSet2" index="3"]
-modulate = Color(0, 1, 1, 1)
+modulate = Color(0, 0.833333, 1, 1)
 tone = 4
 
 [node name="Ladder" parent="Environment/Stages/Stage1/PlatformSet2" index="4"]
@@ -209,28 +209,28 @@ position = Vector2(-264, -48)
 shape = SubResource("RectangleShape2D_s0sa1")
 
 [node name="Platform" parent="Environment/Stages/Stage3/PlatformSet" index="1"]
-modulate = Color(0, 0.5, 1, 1)
+modulate = Color(0.32, 0.467333, 1, 1)
 position = Vector2(-768, 0)
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 196608, 0, 65540, 196608, 2)
 size = Vector2i(5, 2)
 tone = 5
 
 [node name="Platform2" parent="Environment/Stages/Stage3/PlatformSet" index="2" instance=ExtResource("4_dpbpj")]
-modulate = Color(0, 0.5, 1, 1)
+modulate = Color(0.32, 0.467333, 1, 1)
 position = Vector2(-96, 0)
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 131072, 0, 65541, 131072, 2, 6, 196608, 0, 65542, 196608, 2)
 size = Vector2i(7, 2)
 tone = 5
 
 [node name="Platform3" parent="Environment/Stages/Stage3/PlatformSet" index="3" instance=ExtResource("4_dpbpj")]
-modulate = Color(0, 0.5, 1, 1)
+modulate = Color(0.32, 0.467333, 1, 1)
 position = Vector2(-432, 0)
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 196608, 0, 65539, 196608, 2)
 size = Vector2i(4, 2)
 tone = 5
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage3/PlatformSet" index="4"]
-modulate = Color(0, 0.5, 1, 1)
+modulate = Color(0.32, 0.467333, 1, 1)
 position = Vector2(48, -126)
 tone = 5
 
@@ -247,13 +247,13 @@ position = Vector2(120, -48)
 shape = SubResource("RectangleShape2D_x82ws")
 
 [node name="Platform" parent="Environment/Stages/Stage3/PlatformSet2" index="1"]
-modulate = Color(0, 0.5, 1, 1)
+modulate = Color(0.32, 0.467333, 1, 1)
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 196608, 0, 65540, 196608, 2)
 size = Vector2i(5, 2)
 tone = 5
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage3/PlatformSet2" index="2"]
-modulate = Color(0, 0.5, 1, 1)
+modulate = Color(0.32, 0.467333, 1, 1)
 position = Vector2(192, -126)
 tone = 5
 
@@ -363,14 +363,14 @@ position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_5qrl7")
 
 [node name="Platform" parent="Environment/Stages/Stage6/PlatformSet" index="1"]
-modulate = Color(1, 0.5, 0, 1)
+modulate = Color(1, 0.8, 0, 1)
 position = Vector2(-240, 0)
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 131072, 0, 65541, 131072, 2, 6, 131072, 0, 65542, 131072, 2, 7, 131072, 0, 65543, 131072, 2, 8, 131072, 0, 65544, 131072, 2, 9, 196608, 0, 65545, 196608, 2)
 size = Vector2i(10, 2)
 tone = 1
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage6/PlatformSet" index="2"]
-modulate = Color(1, 0.5, 0, 1)
+modulate = Color(1, 0.8, 0, 1)
 position = Vector2(-48, -126)
 tone = 1
 
@@ -386,14 +386,14 @@ position = Vector2(96, -48)
 shape = SubResource("RectangleShape2D_ykiij")
 
 [node name="Platform" parent="Environment/Stages/Stage6/PlatformSet2" index="1"]
-modulate = Color(1, 0.5, 0, 1)
+modulate = Color(1, 0.8, 0, 1)
 position = Vector2(-48, 0)
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 196608, 0, 65541, 196608, 2)
 size = Vector2i(6, 2)
 tone = 1
 
 [node name="SwitchBlock" parent="Environment/Stages/Stage6/PlatformSet2" index="2"]
-modulate = Color(1, 0.5, 0, 1)
+modulate = Color(1, 0.8, 0, 1)
 position = Vector2(48, -126)
 tone = 1
 
@@ -402,8 +402,8 @@ size = 8
 
 [node name="RandomLevelGenerator" type="Node" parent="." index="10"]
 script = ExtResource("5_0k853")
-note_count_min = 3
-note_count_max = 4
+note_count_min = 12
+note_count_max = 12
 
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]

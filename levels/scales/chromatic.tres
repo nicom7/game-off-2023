@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ScaleInfo" load_steps=2 format=3 uid="uid://ctla1daquvl60"]
+
+[ext_resource type="Script" path="res://levels/scale_info.gd" id="1_7nrvx"]
+
+[resource]
+script = ExtResource("1_7nrvx")
+notes = Array[int]([2, 8, 3, 9, 4, 5, 10, 6, 11, 0, 7, 1])

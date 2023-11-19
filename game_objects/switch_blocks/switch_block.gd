@@ -45,13 +45,22 @@ func _update_block() -> void:
 	if not is_node_ready():
 		return
 
-	modulate = Globals.TONE_COLOR[tone]
-	$Block/ToneLabel.text = Globals.get_label_from_tone(tone)
+	modulate = Config.tone_colors[tone]
+	var label = Globals.get_label_from_tone(tone)
+	var tone_label: Label = %ToneLabel
+
+	tone_label.text = label
+
+func _update_tone_label() -> void:
+	%ToneLabel.scale = Vector2.ONE / remap(maxi(%ToneLabel.text.length(), 1), 1, 2, 1, 1.25)
+	%ToneLabel.pivot_offset = %ToneLabel.size / 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_block()
 
+func _process(delta: float) -> void:
+	_update_tone_label()
 
 func _on_hit_detection_body_entered(body: Node2D) -> void:
 	body_entered.emit(body)

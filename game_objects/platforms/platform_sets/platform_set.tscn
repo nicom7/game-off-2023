@@ -17,8 +17,10 @@ shape = SubResource("RectangleShape2D_cmjku")
 disabled = true
 
 [node name="Platform" parent="." instance=ExtResource("2_jg3vq")]
+modulate = Color(1, 0.407843, 0.337255, 1)
 
 [node name="SwitchBlock" parent="." instance=ExtResource("2_qslti")]
+modulate = Color(1, 0.407843, 0.337255, 1)
 position = Vector2(0, -126)
 
 [node name="Ladder" parent="." instance=ExtResource("4_i4kyn")]

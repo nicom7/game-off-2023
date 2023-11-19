@@ -71,7 +71,7 @@ _data = {
 }
 
 [node name="SwitchBlock" type="StaticBody2D"]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0.407843, 0.337255, 1)
 script = ExtResource("1_22t1h")
 block_note_player_scene = ExtResource("2_32ohu")
 
@@ -93,11 +93,13 @@ texture = ExtResource("2_ueuwi")
 centered = false
 
 [node name="ToneLabel" type="Label" parent="Block"]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(24, 24)
 theme = ExtResource("4_p2540")
 text = "A"
 horizontal_alignment = 1

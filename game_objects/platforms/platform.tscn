@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://cs15umpslf7mq" path="res://themes/tone_label.tres" id="2_vku24"]
 
 [node name="Platform" type="TileMap"]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0.407843, 0.337255, 1)
 tile_set = ExtResource("1_ge6jh")
 format = 2
 layer_0/name = "Platform"
@@ -19,33 +19,44 @@ position = Vector2(0, 96)
 [node name="LeftPivot" type="Node2D" parent="BottomPivot"]
 unique_name_in_owner = true
 
-[node name="Label" type="Label" parent="BottomPivot/LeftPivot"]
+[node name="MarginContainer" type="MarginContainer" parent="BottomPivot/LeftPivot"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -48.0
-offset_right = 48.0
+offset_right = 42.0
 grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="LeftLabel" type="Label" parent="BottomPivot/LeftPivot/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme = ExtResource("2_vku24")
 text = "A"
-horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="RightPivot" type="Node2D" parent="BottomPivot"]
 unique_name_in_owner = true
 position = Vector2(96, 0)
 
-[node name="Label" type="Label" parent="BottomPivot/RightPivot"]
+[node name="MarginContainer" type="MarginContainer" parent="BottomPivot/RightPivot"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -48.0
+offset_left = -42.0
 offset_top = -48.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="RightLabel" type="Label" parent="BottomPivot/RightPivot/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme = ExtResource("2_vku24")
 text = "A"
-horizontal_alignment = 1
-vertical_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 2

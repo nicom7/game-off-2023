@@ -10,34 +10,22 @@ enum Tone
 	E,
 	F,
 	G,
+	AS,
+	CS,
+	DS,
+	FS,
+	GS,
 }
-
-enum ToneFlags
-{
-	A = 1,
-	B = 2,
-	C = 4,
-	D = 8,
-	E = 16,
-	F = 32,
-	G = 64,
-}
-
-const TONE_COLOR: Array[Color] = [
-	Color(1, 0, 0),
-	Color(1, 0.5, 0),
-	Color(1, 1, 0),
-	Color(0, 1, 0),
-	Color(0, 1, 1),
-	Color(0, 0.5, 1),
-	Color(1, 0, 1),
-]
 
 const ACTION_SUFFIX: String = "_note"
 
 static var _inputs: Dictionary = {}
 
 static func get_label_from_tone(tone: Tone) -> String:
+	if Config.is_node_ready():
+		return Config.tone_labels[tone]
+
+	printerr("Config node is not ready")
 	return Tone.keys()[tone]
 
 static func get_action_from_tone(tone: Tone) -> String:
