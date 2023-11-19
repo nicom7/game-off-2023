@@ -4,16 +4,16 @@ extends Object
 enum Tone
 {
 	A,
+	AS,
 	B,
 	C,
+	CS,
 	D,
+	DS,
 	E,
 	F,
-	G,
-	AS,
-	CS,
-	DS,
 	FS,
+	G,
 	GS,
 }
 
@@ -37,6 +37,9 @@ static func get_all_tone_actions() -> PackedStringArray:
 		actions.append(get_action_from_tone(tone))
 
 	return actions
+
+static func get_note_from_degree(degree: int, tonic: Tone) -> Tone:
+	return posmod(tonic + degree, Tone.size())
 
 ## Replace all occurences of {...} with the 1st corresponding key label occurence for the specified action in curly braces
 static func format_input_actions(string: String) -> String:

@@ -59,7 +59,7 @@ func _update_tone_label() -> void:
 func _ready() -> void:
 	_update_block()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_update_tone_label()
 
 func _on_hit_detection_body_entered(body: Node2D) -> void:

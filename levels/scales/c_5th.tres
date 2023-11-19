@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_lfkt3")
-notes = Array[int]([2, 6])
+tonic = 3
+degrees = Array[int]([0, 7])
+notes = Array[int]([])
