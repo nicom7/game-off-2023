@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfbbc1lm3doy7"]
 
 [ext_resource type="PackedScene" uid="uid://cdavtxyojmgkm" path="res://game_objects/audio/note_player.tscn" id="1_a3wo5"]
-[ext_resource type="AudioStream" uid="uid://bc0d0ou7fju5b" path="res://audio/samples/ambient A2 loop.wav" id="2_bs2s8"]
+[ext_resource type="AudioStream" uid="uid://cbuvwklsh3o8" path="res://audio/samples/Eyan C loop.wav" id="2_otelc"]
 
 [node name="NotePlayer" instance=ExtResource("1_a3wo5")]
-octave_ratio = 0.075
-release_duration = 4.0
+reference = 2
 
 [node name="AudioStreamPlayer" parent="." index="0"]
-stream = ExtResource("2_bs2s8")
+stream = ExtResource("2_otelc")
 bus = &"Ambient"
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

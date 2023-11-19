@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cbuvwklsh3o8"
+path="res://.godot/imported/Eyan C loop.wav-24ddd7c81e50ba9b9bc9f5c4cd4c3add.sample"
+
+[deps]
+
+source_file="res://audio/samples/Eyan C loop.wav"
+dest_files=["res://.godot/imported/Eyan C loop.wav-24ddd7c81e50ba9b9bc9f5c4cd4c3add.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=2
+edit/loop_begin=288792
+edit/loop_end=445737
+compress/mode=0

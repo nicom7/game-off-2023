@@ -1,7 +1,14 @@
 class_name NotePlayer
 extends Node
 
-@export var tone: Globals.Tone = Globals.Tone.A
+@export var tone: Globals.Tone = Globals.Tone.A:
+	set(value):
+		if tone != value:
+			tone = value
+			_update_pitch()
+
+@export var reference: Globals.Tone = Globals.Tone.A
+
 @export_range(0, 1) var octave_ratio: float = 0.25
 @export_range(0.01, 4) var pitch: float = 1:
 	set(value):
@@ -11,6 +18,14 @@ extends Node
 
 ## Note playback duration in seconds. Set to 0 or less for infinite duration (until stopped manually).
 @export var duration: float = 0
+@export var playing: bool = false:
+	set(value):
+		if playing != value:
+			playing = value
+			_update_playing()
+
+## True to keep the node active even after the stream player is finished, false to release it
+@export var keep_alive: bool = false
 
 @export_group("Envelope")
 @export var attack_duration: float = 0.1
@@ -44,6 +59,8 @@ const INV_SQRT_2 = sqrt(2.0) / 2
 const INV_SQRT_2_VEC = Vector2.ONE * INV_SQRT_2
 
 func start():
+	(player.stream as AudioStreamWAV).loop_mode = AudioStreamWAV.LOOP_FORWARD
+
 	player.volume_db = linear_to_db(0)
 	current_phase = EnvelopePhase.ATTACK
 	# Sustain volume is equal to last point of attack curve
@@ -55,6 +72,8 @@ func start():
 		$PlaybackTimer.start()
 
 func stop():
+	(player.stream as AudioStreamWAV).loop_mode = AudioStreamWAV.LOOP_DISABLED
+
 	current_phase = EnvelopePhase.RELEASE
 	phase_start_volume = db_to_linear(player.volume_db)
 
@@ -63,9 +82,18 @@ func _update_pitch():
 		return
 
 	if not playback is AudioStreamGeneratorPlayback:
-		$AudioStreamPlayer.pitch_scale = pitch * Config.tone_frequencies[tone] / Config.tone_frequencies[Globals.Tone.A]
+		$AudioStreamPlayer.pitch_scale = pitch * Config.tone_frequencies[tone] / Config.tone_frequencies[reference]
 	else:
 		$AudioStreamPlayer.pitch_scale = pitch
+
+func _update_playing():
+	if not is_node_ready():
+		return
+
+	if playing:
+		start()
+	else:
+		stop()
 
 func _ready():
 	_update_pitch()
@@ -91,7 +119,8 @@ func _update_envelope():
 			var relative_time = remap(cursor, phase_start_cursor, phase_start_cursor + release_duration, 0, 1)
 			if relative_time > 1:
 				player.stop()
-				queue_free()
+				if not keep_alive:
+					queue_free()
 			else:
 				player.volume_db = linear_to_db(_get_volume(relative_time, release_curve))
 
@@ -112,7 +141,6 @@ func _fill_buffer():
 	var f1 = Config.tone_frequencies[tone]
 	var f2 = Config.tone_frequencies[tone] * 2
 	var frames_available = gen_playback.get_frames_available()
-#	print("fill buffer, ", frames_available)
 
 	for i in range(frames_available):
 		gen_playback.push_frame(Vector2.ONE * (sin(TAU * f1 * cursor) * (1 - octave_ratio) + sin(TAU * f2 * cursor) * octave_ratio))
@@ -121,3 +149,8 @@ func _fill_buffer():
 
 func _on_playback_timer_timeout() -> void:
 	stop()
+
+
+func _on_audio_stream_player_finished() -> void:
+	if not keep_alive:
+		queue_free()
