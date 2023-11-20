@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b24jmtuqoaeq6"]
+[gd_scene load_steps=3 format=3 uid="uid://b24jmtuqoaeq6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dgxr5"]
+[ext_resource type="PackedScene" uid="uid://bjyrekj7d6cal" path="res://gui/hud.tscn" id="2_tqktt"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dgxr5")
+play_tutorial = false
+
+[node name="OptionsMenu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="HUD" parent="." instance=ExtResource("2_tqktt")]
+layer = 100
