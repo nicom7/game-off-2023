@@ -8,8 +8,12 @@ extends Node
 			_update_pitch()
 
 @export var reference: Globals.Tone = Globals.Tone.A
+@export var octave: int = 0:
+	set(value):
+		if octave != value:
+			octave = value
+			_update_pitch()
 
-@export_range(0, 1) var octave_ratio: float = 0.25
 @export_range(0.01, 4) var pitch: float = 1:
 	set(value):
 		if pitch != value:
@@ -18,6 +22,9 @@ extends Node
 
 ## Note playback duration in seconds. Set to 0 or less for infinite duration (until stopped manually).
 @export var duration: float = 0
+
+@export_group("Advanced")
+@export_range(0, 1) var octave_ratio: float = 0.25
 @export var playing: bool = false:
 	set(value):
 		if playing != value:
@@ -81,10 +88,10 @@ func _update_pitch():
 	if not is_node_ready():
 		return
 
-	if not playback is AudioStreamGeneratorPlayback:
-		$AudioStreamPlayer.pitch_scale = pitch * Config.tone_frequencies[tone] / Config.tone_frequencies[reference]
+	if playback is AudioStreamGeneratorPlayback:
+		$AudioStreamPlayer.pitch_scale = (2.0 ** octave) * pitch
 	else:
-		$AudioStreamPlayer.pitch_scale = pitch
+		$AudioStreamPlayer.pitch_scale = (2.0 ** octave) * pitch * Config.tone_frequencies[tone] / Config.tone_frequencies[reference]
 
 func _update_playing():
 	if not is_node_ready():

@@ -8,6 +8,12 @@ extends Node2D
 			tone = value
 			_update_tone()
 
+@export var octave: int = 0:
+	set(value):
+		if octave != value:
+			octave = value
+			_update_tone()
+
 func get_bounding_rect() -> Rect2:
 	return $BoundingRect.global_transform * $BoundingRect.shape.get_rect()
 
@@ -41,9 +47,11 @@ func _update_tone() -> void:
 
 	for sb in get_switch_blocks():
 		sb.tone = tone
+		sb.octave = octave
 
 	for p in get_platforms():
 		p.tone = tone
+		p.octave = octave
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

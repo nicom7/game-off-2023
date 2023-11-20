@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_2wk1a")
-notes = Array[int]([2, 4, 6, 0])
+tonic = 3
+degrees = Array[int]([0, 4, 7, 9])
+notes = Array[int]([])

@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_bqmot")
-notes = Array[int]([2, 9, 6])
+tonic = 3
+degrees = Array[int]([0, 3, 7])
+notes = Array[int]([])
