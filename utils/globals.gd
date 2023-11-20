@@ -39,7 +39,7 @@ static func get_all_tone_actions() -> PackedStringArray:
 	return actions
 
 static func get_note_from_degree(degree: int, tonic: Tone) -> Tone:
-	return posmod(tonic + degree, Tone.size())
+	return posmod(tonic + degree, Tone.size()) as Tone
 
 ## Replace all occurences of {...} with the 1st corresponding key label occurence for the specified action in curly braces
 static func format_input_actions(string: String) -> String:
