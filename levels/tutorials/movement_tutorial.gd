@@ -46,7 +46,7 @@ func _on_player_jumped(_notes) -> void:
 				next_step()
 
 
-func _on_player_current_tone_changed(tone, _octave) -> void:
+func _on_player_current_tone_changed(tone) -> void:
 	_player_tone = tone
 
 

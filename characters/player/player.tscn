@@ -28,4 +28,5 @@ position = Vector2(0, 30)
 [node name="KeyboardController" parent="." instance=ExtResource("5_7ussj")]
 
 [connection signal="jumped" from="." to="." method="_on_jumped"]
+[connection signal="octave_changed" from="TileDetectorArea" to="." method="_on_tile_detector_area_octave_changed"]
 [connection signal="tone_changed" from="TileDetectorArea" to="." method="_on_tile_detector_area_tone_changed"]

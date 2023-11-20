@@ -74,9 +74,9 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player.exit_climb()
 
 
-func _on_bottom_tile_detector_area_tone_changed(tone, _octave) -> void:
+func _on_bottom_tile_detector_area_tone_changed(tone) -> void:
 	_lower_tone = tone
 
 
-func _on_top_tile_detector_area_tone_changed(tone, _octave) -> void:
+func _on_top_tile_detector_area_tone_changed(tone) -> void:
 	_upper_tone = tone

@@ -96,7 +96,7 @@ func _update_stages() -> void:
 func _adjust_octave(highest_tone: Globals.Tone, highest_octave: int) -> void:
 	var octave_offset: int = 0
 
-	if highest_octave > 0 and highest_tone > Globals.Tone.size() / 2:
+	if highest_octave > 0 and highest_tone > Globals.Tone.B:
 		# Transpose one octave lower to avoid too high frequencies
 		octave_offset -= 1
 
@@ -136,12 +136,16 @@ func _ready() -> void:
 	_fade_in()
 
 
-func _on_player_current_tone_changed(tone: Globals.Tone, octave: int) -> void:
+func _on_player_current_tone_changed(tone: Globals.Tone) -> void:
 	player_tone = tone
-	player_octave = octave
 	_stop_ambient_note()
 	_start_ambient_note(player_tone, player_octave)
 
+
+func _on_player_current_octave_changed(octave: int) -> void:
+	player_octave = octave
+	_stop_ambient_note()
+	_start_ambient_note(player_tone, player_octave)
 
 func _on_player_on_floor_changed(value) -> void:
 	if value:

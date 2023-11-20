@@ -241,6 +241,7 @@ libraries = {
 "": SubResource("AnimationLibrary_2k50g")
 }
 
+[connection signal="current_octave_changed" from="Player" to="." method="_on_player_current_octave_changed"]
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
 [connection signal="current_tone_changed" from="Player" to="MovementTutorial" method="_on_player_current_tone_changed"]
 [connection signal="direction_changed" from="Player" to="MovementTutorial" method="_on_player_direction_changed"]

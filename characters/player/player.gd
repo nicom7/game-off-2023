@@ -29,17 +29,18 @@ var current_tone: Globals.Tone = Globals.Tone.A:
 	set(value):
 		if current_tone != value:
 			current_tone = value
-			current_tone_changed.emit(current_tone, current_octave)
+			current_tone_changed.emit(current_tone)
 
-var current_octave: Globals.Tone = Globals.Tone.A:
+var current_octave: int = 0:
 	get:
 		return current_octave
 	set(value):
 		if current_octave != value:
 			current_octave = value
-			current_tone_changed.emit(current_tone, current_octave)
+			current_octave_changed.emit(current_octave)
 
-signal current_tone_changed(tone: Globals.Tone, octave: int)
+signal current_tone_changed(tone: Globals.Tone)
+signal current_octave_changed(octave: int)
 
 var on_floor: bool = false:
 	get:
@@ -151,8 +152,11 @@ func _on_jumped(_notes: int) -> void:
 	jump_note_player.start()
 
 
-func _on_tile_detector_area_tone_changed(tone, octave) -> void:
+func _on_tile_detector_area_tone_changed(tone) -> void:
 	current_tone = tone
+
+
+func _on_tile_detector_area_octave_changed(octave) -> void:
 	current_octave = octave
 
 
