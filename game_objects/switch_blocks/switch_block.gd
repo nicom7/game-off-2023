@@ -11,6 +11,7 @@ signal body_entered(body: Node2D)
 			tone = value
 			_update_block()
 
+@export var octave: int = 0
 @export var hit_valid: bool = true
 
 @export var block_note_player_scene: PackedScene
@@ -35,6 +36,7 @@ func hit() -> void:
 	$AnimationPlayer.play("hit_valid" if _cur_hit_valid else "hit_invalid")
 	block_note_player = block_note_player_scene.instantiate()
 	block_note_player.tone = tone
+	block_note_player.octave = octave
 	block_note_player.pitch = 4.0 if _cur_hit_valid else 0.7
 	add_child(block_note_player)
 	block_note_player.start()
@@ -75,6 +77,7 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_note_player_timer_timeout() -> void:
 	block_note_player = block_note_player_scene.instantiate()
 	block_note_player.tone = tone
+	block_note_player.octave = octave
 	block_note_player.pitch = 2.0 if _cur_hit_valid else 0.6
 	add_child(block_note_player)
 	block_note_player.start()

@@ -1,6 +1,8 @@
 extends Node2D
 
 var player_tone: Globals.Tone
+var player_octave: int
+
 @export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
 
@@ -68,23 +70,49 @@ func _update_stages() -> void:
 	if level_info_provider:
 		stage_notes = level_info_provider.stage_notes
 
+	var prev_tone: Globals.Tone = Globals.Tone.A
+	var cur_octave: int = 0
+
 	for i in stage_notes.size():
 		var platform_sets = _get_platform_sets(_stages[i])
 		for ps in platform_sets:
 			_stages[i].remove_child(ps)
 		for j in stage_notes[i].size():
-			platform_sets[j].tone = stage_notes[i][j]
+			var cur_tone = stage_notes[i][j]
+			if cur_tone < prev_tone:
+				# Increase octave if tone is less than previous tone
+				cur_octave += 1
+
+			platform_sets[j].tone = cur_tone
+			platform_sets[j].octave += cur_octave
+			prev_tone = cur_tone
+
 			%BlockSequence.switch_blocks.append_array(platform_sets[j].get_switch_blocks())
 			_stages[i].add_child(platform_sets[j])
 		$Environment/Stages.add_child(_stages[i])
 
-func _start_ambient_note(tone: Globals.Tone) -> void:
+	_adjust_octave(prev_tone, cur_octave)
+
+func _adjust_octave(highest_tone: Globals.Tone, highest_octave: int) -> void:
+	var octave_offset: int = 0
+
+	if highest_octave > 0 and highest_tone > Globals.Tone.size() / 2:
+		# Transpose one octave lower to avoid too high frequencies
+		octave_offset -= 1
+
+	for s in _stages:
+		var platform_sets = _get_platform_sets(s)
+		for ps in platform_sets:
+			ps.octave += octave_offset
+
+func _start_ambient_note(tone: Globals.Tone, octave: int) -> void:
 	if _finished:
 		return
 
 	_stop_ambient_note()
 	ambient_note_player = ambient_note_player_scene.instantiate()
 	ambient_note_player.tone = tone
+	ambient_note_player.octave = octave
 	add_child(ambient_note_player)
 	ambient_note_player.start()
 
@@ -108,15 +136,16 @@ func _ready() -> void:
 	_fade_in()
 
 
-func _on_player_current_tone_changed(tone: Globals.Tone) -> void:
+func _on_player_current_tone_changed(tone: Globals.Tone, octave: int) -> void:
 	player_tone = tone
+	player_octave = octave
 	_stop_ambient_note()
-	_start_ambient_note(player_tone)
+	_start_ambient_note(player_tone, player_octave)
 
 
 func _on_player_on_floor_changed(value) -> void:
 	if value:
-		_start_ambient_note(player_tone)
+		_start_ambient_note(player_tone, player_octave)
 	else:
 		_stop_ambient_note()
 

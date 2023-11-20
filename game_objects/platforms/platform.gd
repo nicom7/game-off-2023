@@ -13,6 +13,8 @@ extends TileMap
 			tone = value
 			_update_tone()
 
+@export var octave: int = 0
+
 func _update_size():
 	if not is_node_ready():
 		return
