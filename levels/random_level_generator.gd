@@ -6,6 +6,8 @@ extends LevelInfoProvider
 
 ## Will choose a random tonic note if scale degrees are included in the scale info resource
 @export var random_tonic: bool = true
+## Will choose a random inversion for the scale (e.g. [0, 4, 7, 10] => [4, 7, 10, 0])
+@export var random_inversion: bool = true
 
 const NOTES_PER_STAGE_MAX: int = 2
 const STAGE_COUNT_MAX: int = 7
@@ -50,7 +52,9 @@ func _load_scales() -> void:
 			if not _degrees.is_empty():
 				if random_tonic:
 					si.tonic = randi_range(0, Globals.Tone.size() - 1) as Globals.Tone
-				si.notes = _get_notes_from_degrees(_degrees, si.tonic)
+				if random_inversion:
+					si.inversion = randi_range(0, _degrees.size() - 1)
+				si.notes = _get_notes_from_degrees(_degrees, si.tonic, si.inversion)
 
 			var _notes = si.notes
 			if not _scales.has(_notes.size()):
@@ -59,10 +63,11 @@ func _load_scales() -> void:
 
 	print(_scales)
 
-func _get_notes_from_degrees(degrees: Array[int], tonic: Globals.Tone) -> Array[Globals.Tone]:
+func _get_notes_from_degrees(degrees: Array[int], tonic: Globals.Tone, inversion: int) -> Array[Globals.Tone]:
 	var _notes: Array[Globals.Tone] = []
-	for d in degrees:
-		_notes.append(Globals.get_note_from_degree(d, tonic))
+	for i in degrees.size():
+		var offset_idx = (i + inversion) % degrees.size()
+		_notes.append(Globals.get_note_from_degree(degrees[offset_idx], tonic))
 
 	return _notes
 

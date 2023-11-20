@@ -6,4 +6,5 @@
 script = ExtResource("1_hmub1")
 tonic = 3
 degrees = Array[int]([0, 2, 4, 5, 7, 9, 10])
+inversion = 0
 notes = Array[int]([])
