@@ -1,12 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=19 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
 [ext_resource type="Script" path="res://game_objects/camera.gd" id="4_jd0f8"]
 [ext_resource type="PackedScene" uid="uid://dqk2pedcucgnw" path="res://characters/player/player.tscn" id="6_ahra0"]
+[ext_resource type="PackedScene" uid="uid://cclbjlc3hx2lv" path="res://gui/title_label.tscn" id="7_ho8lt"]
 [ext_resource type="PackedScene" uid="uid://cfqdgrh4lw7pi" path="res://game_objects/switch_blocks/block_sequence.tscn" id="7_v4u45"]
 [ext_resource type="Script" path="res://levels/transition.gd" id="8_jvvbh"]
-[ext_resource type="FontFile" uid="uid://xycvan2inrdw" path="res://fonts/RussoOne-Regular.ttf" id="8_qmhdu"]
 [ext_resource type="PackedScene" uid="uid://dpg5fwcr50ioc" path="res://levels/tutorials/movement_tutorial.tscn" id="9_r74hu"]
 [ext_resource type="PackedScene" uid="uid://bxun5w5sv6twu" path="res://game_objects/walls/wall.tscn" id="9_w7oqa"]
 [ext_resource type="PackedScene" uid="uid://bkol8urwsl85l" path="res://levels/tutorials/block_sequence_tutorial.tscn" id="10_jr664"]
@@ -18,12 +18,6 @@ point_count = 2
 [sub_resource type="Curve" id="Curve_q2det"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="FontVariation" id="FontVariation_j6yj0"]
-base_font = ExtResource("8_qmhdu")
-variation_embolden = -0.75
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_424g2"]
 
 [sub_resource type="Animation" id="Animation_1ut3m"]
 resource_name = "fade_in"
@@ -194,18 +188,8 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
 
-[node name="Label" type="Label" parent="Title/Title"]
+[node name="Label" parent="Title/Title" instance=ExtResource("7_ho8lt")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/shadow_offset_x = 4
-theme_override_constants/shadow_offset_y = 6
-theme_override_fonts/font = SubResource("FontVariation_j6yj0")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxEmpty_424g2")
-text = "Musikeys"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
 
 [node name="Control" type="Control" parent="Title/Title"]
 layout_mode = 2

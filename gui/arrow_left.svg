@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="10"
+   viewBox="0 0 9 10"
+   width="9"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="arrow_left.svg"
+   inkscape:version="1.3.1 (91b66b0783, 2023-11-16)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#bfbfbf"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="47.6875"
+     inkscape:cx="5.0013106"
+     inkscape:cy="5.0013106"
+     inkscape:window-width="1280"
+     inkscape:window-height="971"
+     inkscape:window-x="-8"
+     inkscape:window-y="46"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     d="M 8,5 H 1 L 5,9 M 1,5 5,1"
+     fill="none"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-width="2"
+     stroke="#e0e0e0"
+     id="path1"
+     style="stroke:#ffffff;stroke-opacity:1" />
+</svg>
