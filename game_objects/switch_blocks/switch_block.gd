@@ -36,7 +36,6 @@ func hit() -> void:
 	block_note_player = block_note_player_scene.instantiate()
 	block_note_player.tone = tone
 	block_note_player.pitch = 4.0 if _cur_hit_valid else 0.7
-	block_note_player.octave_ratio = 0
 	add_child(block_note_player)
 	block_note_player.start()
 	$NotePlayerTimer.start()
@@ -77,6 +76,5 @@ func _on_note_player_timer_timeout() -> void:
 	block_note_player = block_note_player_scene.instantiate()
 	block_note_player.tone = tone
 	block_note_player.pitch = 2.0 if _cur_hit_valid else 0.6
-	block_note_player.octave_ratio = 0.2
 	add_child(block_note_player)
 	block_note_player.start()
