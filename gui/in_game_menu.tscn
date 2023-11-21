@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl5x0vjmi2ghe"]
+[gd_scene load_steps=6 format=3 uid="uid://bl5x0vjmi2ghe"]
 
-[ext_resource type="PackedScene" uid="uid://d0d4pvp0xmvo" path="res://gui/icon_button.tscn" id="1_njumj"]
-[ext_resource type="Texture2D" uid="uid://dh78fywqogscx" path="res://gui/close.svg" id="3_v6brh"]
-[ext_resource type="PackedScene" uid="uid://cclbjlc3hx2lv" path="res://gui/title_label.tscn" id="4_8wst2"]
+[ext_resource type="PackedScene" uid="uid://c3tdc80a12d1i" path="res://gui/settings_menu_contents.tscn" id="1_0auyf"]
+[ext_resource type="PackedScene" uid="uid://dtkg6h1tpqsjo" path="res://gui/credits_menu_contents.tscn" id="3_ca555"]
+[ext_resource type="PackedScene" uid="uid://cdjugss3fcdq8" path="res://gui/in_game_menu_contents.tscn" id="3_nomb0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfgi4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eet7m"]
 
 [node name="InGameMenu" type="CanvasLayer"]
 
@@ -17,46 +21,19 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lfgi4")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_eet7m")
+tabs_visible = false
+
+[node name="InGameMenuContents" parent="MarginContainer/TabContainer" instance=ExtResource("3_nomb0")]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="SettingsMenuContents" parent="MarginContainer/TabContainer" instance=ExtResource("1_0auyf")]
+visible = false
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CreditsMenuContents" parent="MarginContainer/TabContainer" instance=ExtResource("3_ca555")]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CloseMenuBtn" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_njumj")]
-layout_mode = 2
-icon = ExtResource("3_v6brh")
-
-[node name="Label" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_8wst2")]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
-layout_mode = 2
-
-[node name="SettingsBtn" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Settings"
-
-[node name="CreditsBtn" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Credits"
-
-[node name="ExitBtn" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Exit"
-
-[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3

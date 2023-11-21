@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dbbx6qoakwes4"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dbbx6qoakwes4"]
 
 [ext_resource type="StyleBox" uid="uid://xk7j70i6c60g" path="res://themes/label_style_box.tres" id="1_ewmhr"]
 [ext_resource type="FontFile" uid="uid://xycvan2inrdw" path="res://fonts/RussoOne-Regular.ttf" id="2_dmeag"]
@@ -19,6 +19,10 @@ expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0f0gr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fy1k2"]
 
 [resource]
 default_font = ExtResource("2_dmeag")
@@ -42,3 +46,9 @@ Label/colors/font_shadow_color = Color(0.105882, 0.196078, 0.243137, 1)
 Label/constants/shadow_offset_x = 2
 Label/constants/shadow_offset_y = 3
 Label/styles/normal = ExtResource("1_ewmhr")
+RichTextLabel/colors/default_color = Color(0.8, 0.941176, 1, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.105882, 0.196078, 0.243137, 1)
+RichTextLabel/constants/shadow_offset_x = 2
+RichTextLabel/constants/shadow_offset_y = 3
+RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_0f0gr")
+RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_fy1k2")

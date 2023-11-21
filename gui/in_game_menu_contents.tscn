@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdjugss3fcdq8"]
+
+[ext_resource type="PackedScene" uid="uid://cclbjlc3hx2lv" path="res://gui/title_label.tscn" id="1_28tfd"]
+[ext_resource type="PackedScene" uid="uid://d0d4pvp0xmvo" path="res://gui/icon_button.tscn" id="1_fj4pd"]
+[ext_resource type="Texture2D" uid="uid://dh78fywqogscx" path="res://gui/close.svg" id="2_w8rnj"]
+
+[node name="Contents" type="VBoxContainer"]
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseMenuBtn" parent="Header" instance=ExtResource("1_fj4pd")]
+layout_mode = 2
+icon = ExtResource("2_w8rnj")
+
+[node name="Label" parent="." instance=ExtResource("1_28tfd")]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="SettingsBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="CreditsBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="ExitBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3

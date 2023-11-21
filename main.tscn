@@ -10,7 +10,7 @@ play_tutorial = false
 
 [node name="HUD" parent="." instance=ExtResource("2_tqktt")]
 layer = 100
+visible = false
 
 [node name="InGameMenu" parent="." instance=ExtResource("3_woyqp")]
 layer = 100
-visible = false

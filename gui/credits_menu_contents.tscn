@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtkg6h1tpqsjo"]
+
+[ext_resource type="PackedScene" uid="uid://d0d4pvp0xmvo" path="res://gui/icon_button.tscn" id="1_uv82w"]
+[ext_resource type="Texture2D" uid="uid://cp0q7hvev1hy0" path="res://gui/arrow_left.svg" id="2_p23lv"]
+[ext_resource type="PackedScene" uid="uid://cclbjlc3hx2lv" path="res://gui/title_label.tscn" id="3_6bau6"]
+[ext_resource type="Texture2D" uid="uid://dll7e71ncbaea" path="res://gui/logo_large_color_dark.svg" id="4_i2agc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ufcp"]
+
+[node name="Contents" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="BackBtn" parent="Header" instance=ExtResource("1_uv82w")]
+layout_mode = 2
+icon = ExtResource("2_p23lv")
+
+[node name="Control" type="Control" parent="Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" parent="." instance=ExtResource("3_6bau6")]
+layout_mode = 2
+text = "Credits"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[center][font_size=32]MusiKeys[/font_size]
+
+Game Design & Art
+[font_size=20]
+Patricia Boutin
+Nicolas Comtois
+[/font_size]
+Audio & Programming
+[font_size=20]
+Nicolas Comtois
+[/font_size]
+Thanks for playing! :D[/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1ufcp")
+text = "Made with"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_i2agc")
+expand_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
