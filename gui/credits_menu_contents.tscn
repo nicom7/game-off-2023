@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cocwle1o0jur"]
+[gd_scene load_steps=10 format=3 uid="uid://cocwle1o0jur"]
 
 [ext_resource type="Script" path="res://gui/credits_menu_contents.gd" id="1_0yn2g"]
 [ext_resource type="PackedScene" uid="uid://d0d4pvp0xmvo" path="res://gui/icon_button.tscn" id="1_uv82w"]
 [ext_resource type="Texture2D" uid="uid://cp0q7hvev1hy0" path="res://gui/arrow_left.svg" id="2_p23lv"]
 [ext_resource type="PackedScene" uid="uid://cclbjlc3hx2lv" path="res://gui/title_label.tscn" id="3_6bau6"]
+[ext_resource type="Shortcut" uid="uid://ctl670m8ewyx" path="res://gui/esc_shortcut.tres" id="3_v2ujl"]
 [ext_resource type="Texture2D" uid="uid://dll7e71ncbaea" path="res://gui/logo_large_color_dark.svg" id="4_i2agc"]
 [ext_resource type="PackedScene" uid="uid://cs3b1fefwy1j8" path="res://gui/big_player.tscn" id="4_qdc18"]
 [ext_resource type="Script" path="res://gui/formatted_rich_text_label.gd" id="6_y4cu6"]
@@ -24,6 +25,7 @@ layout_mode = 2
 
 [node name="BackBtn" parent="Header" instance=ExtResource("1_uv82w")]
 layout_mode = 2
+shortcut = ExtResource("3_v2ujl")
 icon = ExtResource("2_p23lv")
 
 [node name="Control" type="Control" parent="Header"]

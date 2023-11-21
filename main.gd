@@ -19,16 +19,21 @@ func _ready() -> void:
 	_create_world(play_tutorial)
 	$HUD.show_title()
 
+
 func _on_world_finished() -> void:
 	_destroy_world()
 	_create_world(false)
 
 
 func _on_in_game_menu_closed() -> void:
+	get_tree().paused = false
 	$InGameMenu.hide()
 	$HUD.show()
+	$PostFX.hide()
 
 
 func _on_hud_igm_pressed() -> void:
+	get_tree().paused = true
 	$HUD.hide()
 	$InGameMenu.show()
+	$PostFX.show()

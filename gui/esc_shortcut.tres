@@ -1,0 +1,8 @@
+[gd_resource type="Shortcut" load_steps=2 format=3 uid="uid://ctl670m8ewyx"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_wkih6"]
+action = &"in_game_menu"
+pressed = true
+
+[resource]
+events = [SubResource("InputEventAction_wkih6")]

@@ -1,19 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://b24jmtuqoaeq6"]
+[gd_scene load_steps=8 format=3 uid="uid://b24jmtuqoaeq6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dgxr5"]
 [ext_resource type="PackedScene" uid="uid://bjyrekj7d6cal" path="res://gui/hud.tscn" id="2_tqktt"]
 [ext_resource type="PackedScene" uid="uid://bl5x0vjmi2ghe" path="res://gui/in_game_menu.tscn" id="3_woyqp"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="4_fxvtf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j61hb"]
+shader = ExtResource("4_fxvtf")
+shader_parameter/amount = 2.0
+
+[sub_resource type="Gradient" id="Gradient_hebpg"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3r7dh"]
+gradient = SubResource("Gradient_hebpg")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dgxr5")
 play_tutorial = false
 
 [node name="HUD" parent="." instance=ExtResource("2_tqktt")]
+process_mode = 3
 layer = 100
 
 [node name="InGameMenu" parent="." instance=ExtResource("3_woyqp")]
+process_mode = 3
 layer = 100
 visible = false
+
+[node name="PostFX" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 50
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="PostFX"]
+material = SubResource("ShaderMaterial_j61hb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3r7dh")
 
 [connection signal="igm_pressed" from="HUD" to="." method="_on_hud_igm_pressed"]
 [connection signal="closed" from="InGameMenu" to="." method="_on_in_game_menu_closed"]
