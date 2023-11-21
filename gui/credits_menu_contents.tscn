@@ -38,16 +38,46 @@ size_flags_stretch_ratio = 0.5
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1ufcp")
+bbcode_enabled = true
+text = "[center]Sound design using
+[font_size=36][color=orange]SURGE XT[/color][/font_size]
+
+[font_size=20]https://surge-synthesizer.github.io/[/font_size][/center]"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_i2agc")
+expand_mode = 5
+
 [node name="Control" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "[center][font_size=32]MusiKeys[/font_size]
-
+text = "[center][font_size=32]MusiKeys[/font_size][font_size=20]
+© 2023 by nicom7
+[/font_size]
 Game Design & Art
 [font_size=20]
 Patricia Boutin
@@ -61,30 +91,30 @@ Thanks for playing! :D[/center]"
 fit_content = true
 autowrap_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control2" type="Control" parent="HBoxContainer/HBoxContainer"]
+[node name="Control2" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control2" type="Control" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Control2" type="Control" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1ufcp")
 text = "Made with"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_i2agc")
 expand_mode = 5
