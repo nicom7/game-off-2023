@@ -14,6 +14,8 @@ config/name="MusiKeys"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://sprites/icon.svg"
+config/copyright="Copyright © 2023"
+config/company="nicom7"
 
 [audio]
 
