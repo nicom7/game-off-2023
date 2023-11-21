@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cocwle1o0jur"]
+[gd_scene load_steps=9 format=3 uid="uid://cocwle1o0jur"]
 
+[ext_resource type="Script" path="res://gui/credits_menu_contents.gd" id="1_0yn2g"]
 [ext_resource type="PackedScene" uid="uid://d0d4pvp0xmvo" path="res://gui/icon_button.tscn" id="1_uv82w"]
 [ext_resource type="Texture2D" uid="uid://cp0q7hvev1hy0" path="res://gui/arrow_left.svg" id="2_p23lv"]
 [ext_resource type="PackedScene" uid="uid://cclbjlc3hx2lv" path="res://gui/title_label.tscn" id="3_6bau6"]
@@ -16,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+script = ExtResource("1_0yn2g")
 
 [node name="Header" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -128,3 +130,5 @@ expand_mode = 5
 [node name="Footer" type="Control" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
+
+[connection signal="pressed" from="Header/BackBtn" to="." method="_on_back_btn_pressed"]

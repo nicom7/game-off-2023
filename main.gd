@@ -17,8 +17,18 @@ func _destroy_world():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_create_world(play_tutorial)
-	_world.show_title()
+	$HUD.show_title()
 
 func _on_world_finished() -> void:
 	_destroy_world()
 	_create_world(false)
+
+
+func _on_in_game_menu_closed() -> void:
+	$InGameMenu.hide()
+	$HUD.show()
+
+
+func _on_hud_igm_pressed() -> void:
+	$HUD.hide()
+	$InGameMenu.show()

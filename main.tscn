@@ -10,7 +10,10 @@ play_tutorial = false
 
 [node name="HUD" parent="." instance=ExtResource("2_tqktt")]
 layer = 100
-visible = false
 
 [node name="InGameMenu" parent="." instance=ExtResource("3_woyqp")]
 layer = 100
+visible = false
+
+[connection signal="igm_pressed" from="HUD" to="." method="_on_hud_igm_pressed"]
+[connection signal="closed" from="InGameMenu" to="." method="_on_in_game_menu_closed"]

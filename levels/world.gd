@@ -19,10 +19,6 @@ var _overview_zoom: Vector2
 
 var _stages: Array[Node] = []
 
-func show_title() -> void:
-	$Title.show()
-	$Title/AnimationPlayer.play("fade_in")
-	$Title/Timer.start()
 
 func _get_platform_sets(stage: Node) -> Array[PlatformSet]:
 	var platform_sets: Array[PlatformSet] = []
@@ -188,10 +184,6 @@ func _on_transition_finished(_anim_name: String) -> void:
 		$MovementTutorial.next_step()
 	else:
 		%BlockSequence.start()
-
-
-func _on_title_timer_timeout() -> void:
-	$Title/AnimationPlayer.play("fade_out")
 
 
 func _on_movement_tutorial_finished() -> void:
