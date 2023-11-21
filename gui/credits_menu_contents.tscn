@@ -1,16 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cocwle1o0jur"]
+[gd_scene load_steps=8 format=3 uid="uid://cocwle1o0jur"]
 
 [ext_resource type="PackedScene" uid="uid://d0d4pvp0xmvo" path="res://gui/icon_button.tscn" id="1_uv82w"]
 [ext_resource type="Texture2D" uid="uid://cp0q7hvev1hy0" path="res://gui/arrow_left.svg" id="2_p23lv"]
 [ext_resource type="PackedScene" uid="uid://cclbjlc3hx2lv" path="res://gui/title_label.tscn" id="3_6bau6"]
 [ext_resource type="Texture2D" uid="uid://dll7e71ncbaea" path="res://gui/logo_large_color_dark.svg" id="4_i2agc"]
 [ext_resource type="PackedScene" uid="uid://cs3b1fefwy1j8" path="res://gui/big_player.tscn" id="4_qdc18"]
-[ext_resource type="Script" path="res://gui/formatted_label.gd" id="5_3vy56"]
 [ext_resource type="Script" path="res://gui/formatted_rich_text_label.gd" id="6_y4cu6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ufcp"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yvxto"]
 
 [node name="Contents" type="VBoxContainer"]
 anchors_preset = 15
@@ -56,7 +53,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1ufcp")
 bbcode_enabled = true
 text = "[center]Sound design using
-[font_size=36][color=orange]SURGE XT[/color][/font_size]
+[font_size=32][color=orange]SURGE XT[/color][/font_size]
 
 [font_size=20]https://surge-synthesizer.github.io/[/font_size][/center]"
 fit_content = true
@@ -79,20 +76,11 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="TitleLbl" type="Label" parent="Center/CreditsContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxEmpty_yvxto")
-text = "{application/config/name}"
-horizontal_alignment = 1
-script = ExtResource("5_3vy56")
-
 [node name="CreditsLbl" type="RichTextLabel" parent="Center/CreditsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "[center][font_size=32]{application/config/name}[/font_size][font_size=20]
+text = "[center][font_size=36]{application/config/name}[/font_size][font_size=20]
 
 {application/config/copyright} by {application/config/company}
 [/font_size]
