@@ -1,16 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqk2pedcucgnw"]
+[gd_scene load_steps=15 format=3 uid="uid://dqk2pedcucgnw"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_qb0pk"]
 [ext_resource type="PackedScene" uid="uid://c18g0su4mfuqt" path="res://game_objects/audio/jump_note_player.tscn" id="2_fw7sl"]
-[ext_resource type="Texture2D" uid="uid://d00tklro00aow" path="res://sprites/icon.svg" id="3_2e4b4"]
 [ext_resource type="PackedScene" uid="uid://7y3jaf7ow5yt" path="res://game_objects/tile_detector_area.tscn" id="4_cq6e0"]
 [ext_resource type="Texture2D" uid="uid://ds5vi0uu5up8m" path="res://sprites/music_boy/music_boy_small.png" id="4_wwmom"]
 [ext_resource type="PackedScene" uid="uid://cdln3x7xjsumb" path="res://utils/keyboard_controller.tscn" id="5_7ussj"]
 [ext_resource type="Texture2D" uid="uid://d3ov4gmomfllo" path="res://sprites/music_boy/music_boy_small_mask.png" id="5_fbxp7"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao35p"]
-radius = 12.0
-height = 48.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tparj"]
+radius = 17.0
+height = 34.0
 
 [sub_resource type="Animation" id="Animation_e1gmx"]
 resource_name = "bounce_center"
@@ -278,34 +277,30 @@ script = ExtResource("1_qb0pk")
 jump_note_player_scene = ExtResource("2_fw7sl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_ao35p")
+position = Vector2(0, 19)
+shape = SubResource("CapsuleShape2D_tparj")
 
 [node name="Visual" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Visual"]
-visible = false
-scale = Vector2(0.1875, 0.375)
-texture = ExtResource("3_2e4b4")
+scale = Vector2(1.5, 1.5)
 
 [node name="MusicBoy" type="Sprite2D" parent="Visual"]
+position = Vector2(4.5, 0)
 texture = ExtResource("4_wwmom")
 hframes = 4
 vframes = 3
-frame = 5
 region_rect = Rect2(-184, -112, 0, 8)
 
 [node name="MusicBoyMask" type="Sprite2D" parent="Visual"]
 clip_children = 2
+position = Vector2(4.5, 0)
 texture = ExtResource("5_fbxp7")
 hframes = 4
-frame = 1
 
 [node name="MusicBoy" type="Sprite2D" parent="Visual/MusicBoyMask"]
 modulate = Color(1, 0.517647, 0.176471, 1)
 texture = ExtResource("4_wwmom")
 hframes = 4
 vframes = 3
-frame = 5
 region_rect = Rect2(0, 0, 192, 48)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
@@ -316,7 +311,7 @@ libraries = {
 }
 
 [node name="TileDetectorArea" parent="." instance=ExtResource("4_cq6e0")]
-position = Vector2(0, 30)
+position = Vector2(0, 40)
 
 [node name="KeyboardController" parent="." instance=ExtResource("5_7ussj")]
 
