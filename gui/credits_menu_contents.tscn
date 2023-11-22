@@ -125,6 +125,7 @@ text = "Made with"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Center/RightSideContainer/GodotContainer"]
+texture_filter = 6
 layout_mode = 2
 texture = ExtResource("4_i2agc")
 expand_mode = 5

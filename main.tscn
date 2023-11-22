@@ -18,7 +18,6 @@ gradient = SubResource("Gradient_hebpg")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dgxr5")
-play_tutorial = false
 
 [node name="HUD" parent="." instance=ExtResource("2_tqktt")]
 process_mode = 3

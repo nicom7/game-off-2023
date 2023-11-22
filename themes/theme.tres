@@ -1,28 +1,17 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dbbx6qoakwes4"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dbbx6qoakwes4"]
 
 [ext_resource type="StyleBox" uid="uid://bkrv4uuuijk3k" path="res://themes/grabber_area_style_box.tres" id="1_ell4n"]
 [ext_resource type="StyleBox" uid="uid://xk7j70i6c60g" path="res://themes/label_style_box.tres" id="1_ewmhr"]
+[ext_resource type="StyleBox" uid="uid://bsjupwu55e5oe" path="res://themes/disabled_style_box.tres" id="1_jwmcq"]
 [ext_resource type="StyleBox" uid="uid://0y3um44b2ml6" path="res://themes/grabber_area_highlight_style_box.tres" id="2_7piud"]
 [ext_resource type="FontFile" uid="uid://xycvan2inrdw" path="res://fonts/RussoOne-Regular.ttf" id="2_dmeag"]
 [ext_resource type="StyleBox" uid="uid://c8mg1yqni3thy" path="res://themes/panel_container_style_box.tres" id="2_skcpo"]
 [ext_resource type="StyleBox" uid="uid://cf57xkki3vccu" path="res://themes/slider_style_box.tres" id="3_5j3xq"]
+[ext_resource type="StyleBox" uid="uid://peepy1jdoqgu" path="res://themes/hover_style_box.tres" id="3_nbv4h"]
+[ext_resource type="StyleBox" uid="uid://brsycjkfynjj1" path="res://themes/normal_style_box.tres" id="4_cbm25"]
+[ext_resource type="StyleBox" uid="uid://cd16edht5uqat" path="res://themes/pressed_style_box.tres" id="5_ekmhj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spth8"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_10hq7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0f0gr"]
 
@@ -44,7 +33,11 @@ Button/colors/icon_hover_color = Color(0.768, 0.9024, 0.96, 1)
 Button/colors/icon_hover_pressed_color = Color(0.8, 0.941176, 1, 1)
 Button/colors/icon_normal_color = Color(0.8, 0.941176, 1, 1)
 Button/colors/icon_pressed_color = Color(0.8, 0.941176, 1, 1)
-Button/styles/focus = SubResource("StyleBoxFlat_spth8")
+Button/styles/disabled = ExtResource("1_jwmcq")
+Button/styles/focus = SubResource("StyleBoxEmpty_10hq7")
+Button/styles/hover = ExtResource("3_nbv4h")
+Button/styles/normal = ExtResource("4_cbm25")
+Button/styles/pressed = ExtResource("5_ekmhj")
 HSlider/constants/center_grabber = 0
 HSlider/constants/grabber_offset = 0
 HSlider/styles/grabber_area = ExtResource("1_ell4n")

@@ -11,9 +11,12 @@ tutorial = true
 randomize_sequence = false
 current_sequence = [0, 0, 1, 1]
 
+[node name="Transition" parent="." index="8"]
+master_volume = 0.0
+
 [node name="LevelInfoProvider" type="Node" parent="." index="10"]
 script = ExtResource("2_5bp36")
-notes = Array[int]([2, 6])
+notes = Array[int]([3, 10])
 
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]
