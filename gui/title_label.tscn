@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cclbjlc3hx2lv"]
+
+[ext_resource type="FontFile" uid="uid://xycvan2inrdw" path="res://fonts/RussoOne-Regular.ttf" id="1_4ktfk"]
+[ext_resource type="Script" path="res://gui/formatted_label.gd" id="2_eb4at"]
+
+[sub_resource type="FontVariation" id="FontVariation_j6yj0"]
+base_font = ExtResource("1_4ktfk")
+variation_embolden = -0.75
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_424g2"]
+
+[node name="Label" type="Label"]
+size_flags_horizontal = 4
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 6
+theme_override_fonts/font = SubResource("FontVariation_j6yj0")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_424g2")
+text = "{application/config/name}"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+script = ExtResource("2_eb4at")

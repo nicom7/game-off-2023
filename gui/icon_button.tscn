@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0d4pvp0xmvo"]
+
+[ext_resource type="Texture2D" uid="uid://cw585exmdlmc3" path="res://gui/options.svg" id="1_ifu60"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p2kwu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cs7wn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8m5b4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6yke4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oacdr"]
+
+[node name="Button" type="Button"]
+texture_filter = 6
+custom_minimum_size = Vector2(48, 48)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p2kwu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cs7wn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8m5b4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6yke4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oacdr")
+icon = ExtResource("1_ifu60")
+flat = true
+icon_alignment = 1
+expand_icon = true

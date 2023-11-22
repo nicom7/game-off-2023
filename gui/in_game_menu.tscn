@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl5x0vjmi2ghe"]
+
+[ext_resource type="PackedScene" uid="uid://c3tdc80a12d1i" path="res://gui/settings_menu_contents.tscn" id="1_0auyf"]
+[ext_resource type="Script" path="res://gui/in_game_menu.gd" id="1_mtm3p"]
+[ext_resource type="PackedScene" uid="uid://cocwle1o0jur" path="res://gui/credits_menu_contents.tscn" id="3_ca555"]
+[ext_resource type="PackedScene" uid="uid://cdjugss3fcdq8" path="res://gui/in_game_menu_contents.tscn" id="3_nomb0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfgi4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eet7m"]
+
+[node name="InGameMenu" type="CanvasLayer"]
+script = ExtResource("1_mtm3p")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lfgi4")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_eet7m")
+tabs_visible = false
+
+[node name="InGameMenuContents" parent="MarginContainer/TabContainer" instance=ExtResource("3_nomb0")]
+layout_mode = 2
+
+[node name="SettingsMenuContents" parent="MarginContainer/TabContainer" instance=ExtResource("1_0auyf")]
+visible = false
+layout_mode = 2
+
+[node name="CreditsMenuContents" parent="MarginContainer/TabContainer" instance=ExtResource("3_ca555")]
+visible = false
+layout_mode = 2
+
+[connection signal="close_pressed" from="MarginContainer/TabContainer/InGameMenuContents" to="." method="_on_in_game_menu_contents_close_pressed"]
+[connection signal="credits_pressed" from="MarginContainer/TabContainer/InGameMenuContents" to="." method="_on_in_game_menu_contents_credits_pressed"]
+[connection signal="exit_pressed" from="MarginContainer/TabContainer/InGameMenuContents" to="." method="_on_in_game_menu_contents_exit_pressed"]
+[connection signal="settings_pressed" from="MarginContainer/TabContainer/InGameMenuContents" to="." method="_on_in_game_menu_contents_settings_pressed"]
+[connection signal="back_pressed" from="MarginContainer/TabContainer/SettingsMenuContents" to="." method="_on_settings_menu_contents_back_pressed"]
+[connection signal="back_pressed" from="MarginContainer/TabContainer/CreditsMenuContents" to="." method="_on_credits_menu_contents_back_pressed"]

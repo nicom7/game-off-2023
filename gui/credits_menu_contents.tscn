@@ -1,0 +1,137 @@
+[gd_scene load_steps=10 format=3 uid="uid://cocwle1o0jur"]
+
+[ext_resource type="Script" path="res://gui/credits_menu_contents.gd" id="1_0yn2g"]
+[ext_resource type="PackedScene" uid="uid://d0d4pvp0xmvo" path="res://gui/icon_button.tscn" id="1_uv82w"]
+[ext_resource type="Texture2D" uid="uid://cp0q7hvev1hy0" path="res://gui/arrow_left.svg" id="2_p23lv"]
+[ext_resource type="PackedScene" uid="uid://cclbjlc3hx2lv" path="res://gui/title_label.tscn" id="3_6bau6"]
+[ext_resource type="Shortcut" uid="uid://ctl670m8ewyx" path="res://gui/esc_shortcut.tres" id="3_v2ujl"]
+[ext_resource type="Texture2D" uid="uid://dll7e71ncbaea" path="res://gui/logo_large_color_dark.svg" id="4_i2agc"]
+[ext_resource type="PackedScene" uid="uid://cs3b1fefwy1j8" path="res://gui/big_player.tscn" id="4_qdc18"]
+[ext_resource type="Script" path="res://gui/formatted_rich_text_label.gd" id="6_y4cu6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ufcp"]
+
+[node name="Contents" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_0yn2g")
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="BackBtn" parent="Header" instance=ExtResource("1_uv82w")]
+layout_mode = 2
+shortcut = ExtResource("3_v2ujl")
+icon = ExtResource("2_p23lv")
+
+[node name="Control" type="Control" parent="Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Center" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftSideContainer" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="Center/LeftSideContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="BigPlayer" parent="Center/LeftSideContainer" instance=ExtResource("4_qdc18")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SurgeXTContainer" type="VBoxContainer" parent="Center/LeftSideContainer"]
+layout_mode = 2
+
+[node name="SurgeXTLbl" type="RichTextLabel" parent="Center/LeftSideContainer/SurgeXTContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1ufcp")
+bbcode_enabled = true
+text = "[center]Sound design using
+[font_size=32][color=orange]SURGE XT[/color][/font_size]
+
+[font_size=20]https://surge-synthesizer.github.io/[/font_size][/center]"
+fit_content = true
+
+[node name="Control" type="Control" parent="Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="CreditsContainer" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+
+[node name="CreditsLabel" parent="Center/CreditsContainer" instance=ExtResource("3_6bau6")]
+layout_mode = 2
+text = "Credits"
+
+[node name="Control" type="Control" parent="Center/CreditsContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="CreditsLbl" type="RichTextLabel" parent="Center/CreditsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[center][font_size=36]{application/config/name}[/font_size][font_size=20]
+
+{application/config/copyright} by {application/config/company}
+[/font_size]
+Game Design & Art
+[font_size=20]
+Patricia Boutin
+Nicolas Comtois
+[/font_size]
+Audio & Programming
+[font_size=20]
+Nicolas Comtois
+[/font_size]
+Thanks for playing! :D[/center]"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("6_y4cu6")
+
+[node name="Control2" type="Control" parent="Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="RightSideContainer" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="Center/RightSideContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GodotContainer" type="VBoxContainer" parent="Center/RightSideContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Center/RightSideContainer/GodotContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1ufcp")
+text = "Made with"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Center/RightSideContainer/GodotContainer"]
+texture_filter = 6
+layout_mode = 2
+texture = ExtResource("4_i2agc")
+expand_mode = 5
+
+[node name="Footer" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="Header/BackBtn" to="." method="_on_back_btn_pressed"]

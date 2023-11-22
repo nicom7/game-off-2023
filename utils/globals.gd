@@ -54,6 +54,17 @@ static func format_input_actions(string: String) -> String:
 
 	return string.format(_inputs)
 
+## Replace project setting configs in curly braces with their corresponding values
+static func format_project_settings(string: String) -> String:
+	var settings: Dictionary = {}
+
+	var tokens: PackedStringArray = string.split("{", false)
+	for i in tokens.size():
+		tokens[i] = tokens[i].get_slice("}", 0)
+		settings[tokens[i]] = ProjectSettings.get_setting(tokens[i])
+
+	return string.format(settings)
+
 static func get_notes_from_bitfield(notes: int) -> Array[Tone]:
 	var notes_array: Array[Tone] = []
 	for tone in Tone.size():
