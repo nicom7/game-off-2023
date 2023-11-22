@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cs3b1fefwy1j8"]
 
 [ext_resource type="Script" path="res://gui/big_player.gd" id="1_2xdkr"]
-[ext_resource type="Texture2D" uid="uid://jrx0717s6a" path="res://sprites/music_boy_gros.png" id="1_h3wwo"]
-[ext_resource type="Texture2D" uid="uid://cli2e4qk0qqyq" path="res://sprites/music_boy_gros_mask.png" id="3_3heqg"]
+[ext_resource type="Texture2D" uid="uid://jrx0717s6a" path="res://sprites/music_boy/music_boy_gros.png" id="2_b8i2n"]
+[ext_resource type="Texture2D" uid="uid://cli2e4qk0qqyq" path="res://sprites/music_boy/music_boy_gros_mask.png" id="3_w0obc"]
 
 [sub_resource type="Animation" id="Animation_e1gmx"]
 resource_name = "bounce"
@@ -65,18 +65,18 @@ position = Vector2(576, 324)
 
 [node name="MusicBoyGros2" type="Sprite2D" parent="Node2D"]
 position = Vector2(16, 0)
-texture = ExtResource("1_h3wwo")
+texture = ExtResource("2_b8i2n")
 hframes = 4
 
 [node name="MusicBoyMask" type="Sprite2D" parent="Node2D"]
 clip_children = 2
 position = Vector2(16, 0)
-texture = ExtResource("3_3heqg")
+texture = ExtResource("3_w0obc")
 hframes = 4
 
 [node name="MusicBoyGros" type="Sprite2D" parent="Node2D/MusicBoyMask"]
 modulate = Color(1, 0.517647, 0.176471, 1)
-texture = ExtResource("1_h3wwo")
+texture = ExtResource("2_b8i2n")
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]

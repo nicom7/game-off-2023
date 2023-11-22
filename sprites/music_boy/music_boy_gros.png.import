@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jrx0717s6a"
-path="res://.godot/imported/music_boy_gros.png-544735911a0a219e10b73be28c92ff84.ctex"
+path="res://.godot/imported/music_boy_gros.png-aadd88842b9638fe41e627501255466b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/music_boy_gros.png"
-dest_files=["res://.godot/imported/music_boy_gros.png-544735911a0a219e10b73be28c92ff84.ctex"]
+source_file="res://sprites/music_boy/music_boy_gros.png"
+dest_files=["res://.godot/imported/music_boy_gros.png-aadd88842b9638fe41e627501255466b.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

@@ -1,26 +1,106 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqk2pedcucgnw"]
+[gd_scene load_steps=11 format=3 uid="uid://dqk2pedcucgnw"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_qb0pk"]
 [ext_resource type="PackedScene" uid="uid://c18g0su4mfuqt" path="res://game_objects/audio/jump_note_player.tscn" id="2_fw7sl"]
 [ext_resource type="Texture2D" uid="uid://d00tklro00aow" path="res://sprites/icon.svg" id="3_2e4b4"]
 [ext_resource type="PackedScene" uid="uid://7y3jaf7ow5yt" path="res://game_objects/tile_detector_area.tscn" id="4_cq6e0"]
+[ext_resource type="Texture2D" uid="uid://ds5vi0uu5up8m" path="res://sprites/music_boy/music_boy_small.png" id="4_wwmom"]
 [ext_resource type="PackedScene" uid="uid://cdln3x7xjsumb" path="res://utils/keyboard_controller.tscn" id="5_7ussj"]
+[ext_resource type="Texture2D" uid="uid://d3ov4gmomfllo" path="res://sprites/music_boy/music_boy_small_mask.png" id="5_fbxp7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao35p"]
 radius = 12.0
 height = 48.0
 
+[sub_resource type="Animation" id="Animation_e1gmx"]
+resource_name = "bounce"
+length = 0.500013
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicBoyMask/MusicBoy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicBoy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MusicBoyMask:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l0fga"]
+_data = {
+"bounce": SubResource("Animation_e1gmx")
+}
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
+texture_filter = 1
 script = ExtResource("1_qb0pk")
 jump_note_player_scene = ExtResource("2_fw7sl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ao35p")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+visible = false
 scale = Vector2(0.1875, 0.375)
 texture = ExtResource("3_2e4b4")
+
+[node name="MusicBoy" type="Sprite2D" parent="Visual"]
+texture = ExtResource("4_wwmom")
+hframes = 4
+frame = 1
+region_enabled = true
+region_rect = Rect2(0, 0, 192, 48)
+
+[node name="MusicBoyMask" type="Sprite2D" parent="Visual"]
+clip_children = 2
+texture = ExtResource("5_fbxp7")
+hframes = 4
+frame = 1
+
+[node name="MusicBoy" type="Sprite2D" parent="Visual/MusicBoyMask"]
+modulate = Color(1, 0.517647, 0.176471, 1)
+texture = ExtResource("4_wwmom")
+hframes = 4
+frame = 1
+region_enabled = true
+region_rect = Rect2(0, 0, 192, 48)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
+autoplay = "bounce"
+libraries = {
+"": SubResource("AnimationLibrary_l0fga")
+}
 
 [node name="TileDetectorArea" parent="." instance=ExtResource("4_cq6e0")]
 position = Vector2(0, 30)
