@@ -27,17 +27,23 @@ func _on_world_finished() -> void:
 
 
 func _on_in_game_menu_closed() -> void:
-	get_tree().paused = false
-	AudioServer.set_bus_volume_db(0, _master_volume)
 	$InGameMenu.hide()
 	$HUD.show()
 	$PostFX.hide()
 
+	AudioServer.set_bus_volume_db(0, _master_volume)
+	await get_tree().create_timer(0.05).timeout
+
+	get_tree().paused = false
+
 
 func _on_hud_igm_pressed() -> void:
 	get_tree().paused = true
+
 	_master_volume = AudioServer.get_bus_volume_db(0)
-	AudioServer.set_bus_volume_db(0, 0)
 	$HUD.hide()
 	$InGameMenu.show()
 	$PostFX.show()
+
+	await get_tree().create_timer(0.05).timeout
+	AudioServer.set_bus_volume_db(0, 0)

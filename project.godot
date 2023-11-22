@@ -23,6 +23,7 @@ buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
 [autoload]
 
+VersionInfo="*res://addons/gitversion/version_info.gd"
 Config="*res://utils/config.tscn"
 
 [debug]
@@ -32,6 +33,10 @@ gdscript/warnings/shadowed_variable=2
 [dotnet]
 
 project/assembly_name="Game Off 2023"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gitversion/plugin.cfg")
 
 [gui]
 
