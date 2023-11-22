@@ -70,22 +70,32 @@ size_flags_stretch_ratio = 0.25
 [node name="CreditsContainer" type="VBoxContainer" parent="Center"]
 layout_mode = 2
 
-[node name="CreditsLabel" parent="Center/CreditsContainer" instance=ExtResource("3_6bau6")]
+[node name="CreditsLbl" parent="Center/CreditsContainer" instance=ExtResource("3_6bau6")]
 layout_mode = 2
 text = "Credits"
 
 [node name="Control" type="Control" parent="Center/CreditsContainer"]
-custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="CreditsLbl" type="RichTextLabel" parent="Center/CreditsContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Center/CreditsContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Center/CreditsContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CreditsInfoLbl" type="RichTextLabel" parent="Center/CreditsContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "[center][font_size=36]{application/config/name}[/font_size][font_size=20]
+text = "[center][font_size=36]{application/config/name}[/font_size]
 
+[font_size=16]version {application/config/version}
 {application/config/copyright} by {application/config/company}
 [/font_size]
 Game Design & Art
@@ -129,9 +139,5 @@ texture_filter = 6
 layout_mode = 2
 texture = ExtResource("4_i2agc")
 expand_mode = 5
-
-[node name="Footer" type="Control" parent="."]
-layout_mode = 2
-size_flags_vertical = 3
 
 [connection signal="pressed" from="Header/BackBtn" to="." method="_on_back_btn_pressed"]

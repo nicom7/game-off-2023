@@ -8,3 +8,4 @@ exports/html/*
 !exports/html/run.bat
 exports/windows/*
 reference
+version.cfg

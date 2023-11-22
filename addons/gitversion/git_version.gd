@@ -13,7 +13,7 @@ func updateVersion():
 	var exit_code: int = OS.execute("git", ["describe", "--long", "--always"], output)
 #	print("exit code: ", exit_code, " output: ", output)
 
-	if exit_code == 0 and !output.is_empty():
+	if exit_code == 0 and not output.is_empty():
 		var version = (output[0] as String).trim_suffix("\n")
 
 		var config = ConfigFile.new()
