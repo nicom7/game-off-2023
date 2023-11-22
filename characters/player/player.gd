@@ -147,14 +147,25 @@ func _update_jump(prev_notes: int, cur_notes: int) -> void:
 
 func _update_animations() -> void:
 	var anim_pos  = %AnimationPlayer.current_animation_position
-	if velocity.x > 0:
-		%AnimationPlayer.current_animation = "bounce_right"
-	elif velocity.x < 0:
-		%AnimationPlayer.current_animation = "bounce_left"
+
+	if velocity.y != 0:
+		if velocity.x > 0:
+			%AnimationPlayer.current_animation = "jump_right"
+		elif velocity.x < 0:
+			%AnimationPlayer.current_animation = "jump_left"
+		else:
+			%AnimationPlayer.current_animation = "jump_center"
 	else:
-		%AnimationPlayer.current_animation = "bounce_center"
+		if velocity.x > 0:
+			%AnimationPlayer.current_animation = "bounce_right"
+		elif velocity.x < 0:
+			%AnimationPlayer.current_animation = "bounce_left"
+		else:
+			%AnimationPlayer.current_animation = "bounce_center"
 
 	%AnimationPlayer.seek(anim_pos)
+
+#	print("current anim = ", %AnimationPlayer.current_animation, " ", %AnimationPlayer.current_animation_position)
 
 func _on_jumped(_notes: int) -> void:
 	jumping = true

@@ -5,6 +5,7 @@ extends Node
 @export var randomize_sequence: bool = true
 ## The current block sequence as a list of block indexes (0 is the first platform block, 1 is the second, etc.)
 @export var current_sequence: PackedInt32Array = []
+@export var active: bool = true
 
 enum SequenceState
 {
@@ -24,7 +25,7 @@ signal sequence_played(demo_sequence: bool)
 signal finished
 
 func start() -> void:
-	if switch_blocks.is_empty():
+	if not active or switch_blocks.is_empty():
 		return
 
 	_setup_blocks()

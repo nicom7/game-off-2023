@@ -44,9 +44,10 @@ func _setup_boundaries():
 	# Preserve aspect ratio
 	_overview_zoom = Vector2.ONE * minf(_overview_zoom.x, _overview_zoom.y)
 
-	_camera.set_target_node(%CameraCenter, true)
-	_camera.set_target_zoom(_overview_zoom, true)
-	_camera.zoom = _overview_zoom
+	if %BlockSequence.active:
+		_set_overview_camera(true)
+	else:
+		_set_player_camera(true)
 
 func _setup_walls() -> void:
 	$Environment/Walls/Floor.global_position = _bounding_rect.end
@@ -123,6 +124,19 @@ func _fade_in() -> void:
 func _fade_out() -> void:
 	$Transition.fade_out()
 
+func _set_player_camera(instant: bool = false) -> void:
+	_camera.position_smoothing_enabled = true
+	_camera.drag_horizontal_enabled = true
+	_camera.drag_vertical_enabled = true
+	_camera.set_target_node(%Player, instant)
+	_camera.set_target_zoom(player_camera_zoom, instant)
+
+func _set_overview_camera(instant: bool = false) -> void:
+	_camera.drag_horizontal_enabled = false
+	_camera.drag_vertical_enabled = false
+	_camera.set_target_node(%CameraCenter, instant)
+	_camera.set_target_zoom(_overview_zoom, instant)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_setup_stages()
@@ -158,11 +172,7 @@ func _on_block_sequence_finished() -> void:
 
 func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 	if !demo_sequence:
-		_camera.position_smoothing_enabled = true
-		_camera.drag_horizontal_enabled = true
-		_camera.drag_vertical_enabled = true
-		_camera.set_target_node(%Player)
-		_camera.set_target_zoom(player_camera_zoom)
+		_set_player_camera()
 
 		if tutorial:
 			$MovementTutorial.hide()
@@ -170,10 +180,7 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 
 
 func _on_block_sequence_sequence_finished(_valid) -> void:
-	_camera.drag_horizontal_enabled = false
-	_camera.drag_vertical_enabled = false
-	_camera.set_target_node(%CameraCenter)
-	_camera.set_target_zoom(_overview_zoom)
+	_set_overview_camera()
 
 
 func _on_transition_finished(_anim_name: String) -> void:
