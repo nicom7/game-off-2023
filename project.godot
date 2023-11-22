@@ -33,6 +33,10 @@ gdscript/warnings/shadowed_variable=2
 
 project/assembly_name="Game Off 2023"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gitversion/plugin.cfg")
+
 [gui]
 
 theme/custom="res://themes/theme.tres"
