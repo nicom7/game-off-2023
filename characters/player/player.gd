@@ -135,6 +135,8 @@ func _update_movement(delta: float) -> void:
 		direction_changed.emit(direction)
 		_previous_direction = direction
 
+	_update_animations()
+
 	move_and_slide()
 
 func _update_jump(prev_notes: int, cur_notes: int) -> void:
@@ -142,6 +144,28 @@ func _update_jump(prev_notes: int, cur_notes: int) -> void:
 		# Prevent jumping if releasing a key that will lead to the jump notes, e.g. [5, 6] => [5]
 		if on_floor and prev_notes < cur_notes and cur_notes == current_input_actions.jump:
 			jumped.emit(cur_notes)
+
+func _update_animations() -> void:
+	var anim_pos  = %AnimationPlayer.current_animation_position
+
+	if velocity.y != 0:
+		if velocity.x > 0:
+			%AnimationPlayer.current_animation = "jump_right"
+		elif velocity.x < 0:
+			%AnimationPlayer.current_animation = "jump_left"
+		else:
+			%AnimationPlayer.current_animation = "jump_center"
+	else:
+		if velocity.x > 0:
+			%AnimationPlayer.current_animation = "bounce_right"
+		elif velocity.x < 0:
+			%AnimationPlayer.current_animation = "bounce_left"
+		else:
+			%AnimationPlayer.current_animation = "bounce_center"
+
+	%AnimationPlayer.seek(anim_pos)
+
+#	print("current anim = ", %AnimationPlayer.current_animation, " ", %AnimationPlayer.current_animation_position)
 
 func _on_jumped(_notes: int) -> void:
 	jumping = true

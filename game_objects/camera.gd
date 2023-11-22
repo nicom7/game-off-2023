@@ -46,6 +46,9 @@ func set_target_zoom(value: Vector2, instant: bool = false) -> void:
 		else:
 			_zoom_cursor = 1 - _zoom_cursor
 
+	if instant:
+		zoom = value
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_target_node(_target_node, true)
