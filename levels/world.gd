@@ -170,14 +170,16 @@ func _ready() -> void:
 
 func _on_player_current_tone_changed(tone: Globals.Tone) -> void:
 	player_tone = tone
-	_stop_ambient_note()
-	_start_ambient_note(player_tone, player_octave)
+	if $Player.is_on_floor():
+		_stop_ambient_note()
+		_start_ambient_note(player_tone, player_octave)
 
 
 func _on_player_current_octave_changed(octave: int) -> void:
 	player_octave = octave
-	_stop_ambient_note()
-	_start_ambient_note(player_tone, player_octave)
+	if $Player.is_on_floor():
+		_stop_ambient_note()
+		_start_ambient_note(player_tone, player_octave)
 
 func _on_player_on_floor_changed(value) -> void:
 	if value:

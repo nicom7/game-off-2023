@@ -1,14 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://7y3jaf7ow5yt"]
+[gd_scene load_steps=4 format=3 uid="uid://7y3jaf7ow5yt"]
 
 [ext_resource type="Script" path="res://game_objects/tile_detector_area.gd" id="1_3681d"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v2tak"]
-radius = 2.0
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7iu3d"]
+b = Vector2(0, 4)
 
-[node name="TileDetectorArea" type="Area2D"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7p3te"]
+a = Vector2(-5, 4)
+b = Vector2(5, 4)
+
+[node name="TileDetectorArea" type="Node2D"]
 script = ExtResource("1_3681d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_v2tak")
+[node name="CenterArea2D" type="Area2D" parent="."]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterArea2D"]
+shape = SubResource("SegmentShape2D_7iu3d")
+
+[node name="BaseArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseArea2D"]
+shape = SubResource("SegmentShape2D_7p3te")
+
+[connection signal="body_entered" from="CenterArea2D" to="." method="_on_center_area_2d_body_entered"]
+[connection signal="body_entered" from="BaseArea2D" to="." method="_on_base_area_2d_body_entered"]

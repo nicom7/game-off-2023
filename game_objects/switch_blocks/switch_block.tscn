@@ -72,6 +72,7 @@ _data = {
 
 [node name="SwitchBlock" type="StaticBody2D"]
 modulate = Color(1, 0.407843, 0.337255, 1)
+collision_mask = 3
 script = ExtResource("1_22t1h")
 block_note_player_scene = ExtResource("2_32ohu")
 
@@ -81,6 +82,7 @@ shape = SubResource("RectangleShape2D_qwe2d")
 
 [node name="HitDetection" type="Area2D" parent="."]
 position = Vector2(24, 48)
+collision_mask = 3
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetection"]
