@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=11 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
 [ext_resource type="Script" path="res://game_objects/camera.gd" id="4_jd0f8"]
 [ext_resource type="PackedScene" uid="uid://dqk2pedcucgnw" path="res://characters/player/player.tscn" id="6_ahra0"]
 [ext_resource type="PackedScene" uid="uid://cfqdgrh4lw7pi" path="res://game_objects/switch_blocks/block_sequence.tscn" id="7_v4u45"]
-[ext_resource type="Script" path="res://levels/transition.gd" id="8_jvvbh"]
 [ext_resource type="PackedScene" uid="uid://dpg5fwcr50ioc" path="res://levels/tutorials/movement_tutorial.tscn" id="9_r74hu"]
 [ext_resource type="PackedScene" uid="uid://bxun5w5sv6twu" path="res://game_objects/walls/wall.tscn" id="9_w7oqa"]
 [ext_resource type="PackedScene" uid="uid://bkol8urwsl85l" path="res://levels/tutorials/block_sequence_tutorial.tscn" id="10_jr664"]
@@ -18,72 +17,9 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Animation" id="Animation_r6suw"]
-resource_name = "fade_in"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:master_volume")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-80.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_7o5kq"]
-resource_name = "fade_out"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:master_volume")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -80.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2k50g"]
-_data = {
-"fade_in": SubResource("Animation_r6suw"),
-"fade_out": SubResource("Animation_7o5kq")
-}
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_u7smd")
 ambient_note_player_scene = ExtResource("2_573sm")
-tutorial = true
 
 [node name="Player" parent="." instance=ExtResource("6_ahra0")]
 unique_name_in_owner = true
@@ -140,21 +76,6 @@ visible = false
 [node name="BlockSequenceTutorial" parent="." instance=ExtResource("10_jr664")]
 visible = false
 
-[node name="Transition" type="CanvasLayer" parent="."]
-script = ExtResource("8_jvvbh")
-
-[node name="ColorRect" type="ColorRect" parent="Transition"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
-libraries = {
-"": SubResource("AnimationLibrary_2k50g")
-}
-
 [connection signal="current_octave_changed" from="Player" to="." method="_on_player_current_octave_changed"]
 [connection signal="current_tone_changed" from="Player" to="." method="_on_player_current_tone_changed"]
 [connection signal="current_tone_changed" from="Player" to="MovementTutorial" method="_on_player_current_tone_changed"]
@@ -169,4 +90,3 @@ libraries = {
 [connection signal="sequence_played" from="GameObjects/BlockSequence" to="." method="_on_block_sequence_sequence_played"]
 [connection signal="sequence_played" from="GameObjects/BlockSequence" to="BlockSequenceTutorial" method="_on_block_sequence_sequence_played"]
 [connection signal="finished" from="MovementTutorial" to="." method="_on_movement_tutorial_finished"]
-[connection signal="finished" from="Transition" to="." method="_on_transition_finished"]

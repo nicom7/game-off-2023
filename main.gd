@@ -9,6 +9,7 @@ var _master_volume: float
 
 func _create_world(tutorial: bool):
 	_world = (world_tutorial_scene if tutorial else world_scene).instantiate()
+	_world.current_state = World.GameState.INTRO
 	_world.finished.connect(_on_world_finished, CONNECT_DEFERRED)
 	add_child(_world)
 
@@ -19,11 +20,11 @@ func _destroy_world():
 func _ready() -> void:
 	_create_world(play_tutorial)
 	$HUD.show_title()
+	$Transition.fade_in()
 
 
 func _on_world_finished() -> void:
-	_destroy_world()
-	_create_world(false)
+	$Transition.fade_out()
 
 
 func _on_in_game_menu_closed() -> void:
@@ -47,3 +48,13 @@ func _on_hud_igm_pressed() -> void:
 
 	await get_tree().create_timer(0.05).timeout
 	AudioServer.set_bus_volume_db(0, 0)
+
+
+func _on_transition_finished(anim_name) -> void:
+	match anim_name:
+		"fade_in":
+			_world.current_state = World.GameState.PLAYING
+		"fade_out":
+			_destroy_world()
+			_create_world(false)
+			$Transition.fade_in()

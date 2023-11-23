@@ -50,7 +50,6 @@ size = Vector2(288, 288)
 
 [node name="World" node_paths=PackedStringArray("level_info_provider") instance=ExtResource("1_dlj7h")]
 level_info_provider = NodePath("RandomLevelGenerator")
-tutorial = false
 
 [node name="Player" parent="." index="0"]
 position = Vector2(48, 456)
@@ -79,6 +78,7 @@ size = Vector2i(24, 2)
 position = Vector2(96, -126)
 
 [node name="Ladder" parent="Environment/Stages/Stage0/PlatformSet" index="3"]
+process_mode = 4
 visible = false
 
 [node name="PlatformSet2" parent="Environment/Stages/Stage0" index="1" instance=ExtResource("4_6fqpl")]
@@ -97,6 +97,7 @@ size = Vector2i(13, 2)
 position = Vector2(336, -126)
 
 [node name="Ladder" parent="Environment/Stages/Stage0/PlatformSet2" index="3"]
+process_mode = 4
 visible = false
 
 [node name="Stage1" type="Node2D" parent="Environment/Stages" index="1"]
@@ -343,10 +344,7 @@ position = Vector2(48, -126)
 [node name="Ladder" parent="Environment/Stages/Stage6/PlatformSet2" index="3"]
 size = 8
 
-[node name="ColorRect" parent="Transition" index="0"]
-color = Color(0, 0, 0, 0)
-
-[node name="RandomLevelGenerator" type="Node" parent="." index="10"]
+[node name="RandomLevelGenerator" type="Node" parent="." index="8"]
 script = ExtResource("5_0k853")
 note_count_min = 3
 note_count_max = 5
