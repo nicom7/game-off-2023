@@ -62,3 +62,7 @@ func _on_transition_finished(anim_name) -> void:
 			_destroy_world()
 			_create_world(false)
 			$Transition.fade_in()
+
+
+func _on_hud_skip_tutorial_pressed() -> void:
+	_world.current_state = World.GameState.FINISHED

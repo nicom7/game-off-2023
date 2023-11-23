@@ -128,4 +128,5 @@ wait_time = 12.0
 one_shot = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Header/IGMBtn" to="." method="_on_igm_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Footer/SkipTutorialBtn" to="." method="_on_skip_tutorial_btn_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_title_timer_timeout"]

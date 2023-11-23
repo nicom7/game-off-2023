@@ -6,6 +6,7 @@ extends CanvasLayer
 		_update_skip_tutorial()
 
 signal igm_pressed()
+signal skip_tutorial_pressed()
 
 
 func show_title() -> void:
@@ -29,3 +30,7 @@ func _on_igm_btn_pressed() -> void:
 
 func _on_title_timer_timeout() -> void:
 	$AnimationPlayer.play("fade_out")
+
+
+func _on_skip_tutorial_btn_pressed() -> void:
+	skip_tutorial_pressed.emit()
