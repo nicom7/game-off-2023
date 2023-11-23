@@ -33,7 +33,6 @@ var _overview_zoom: Vector2
 var _stages: Array[Node] = []
 
 func _start() -> void:
-	print("start!")
 	if tutorial:
 		$MovementTutorial.show()
 		$MovementTutorial.next_step()
@@ -83,7 +82,11 @@ func _update_current_state() -> void:
 
 	match current_state:
 		GameState.PLAYING:
+			print("start!")
 			_start()
+		GameState.FINISHED:
+			print("finished!")
+			finished.emit()
 
 func _update_stages() -> void:
 	%BlockSequence.switch_blocks.clear()
@@ -185,9 +188,7 @@ func _on_player_on_floor_changed(value) -> void:
 
 
 func _on_block_sequence_finished() -> void:
-	print("finished!")
 	current_state = GameState.FINISHED
-	finished.emit()
 
 
 func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
