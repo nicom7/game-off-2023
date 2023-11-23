@@ -123,6 +123,12 @@ in_game_menu={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Ladder"
+
 [physics]
 
 common/physics_ticks_per_second=120
