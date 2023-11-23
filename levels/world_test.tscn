@@ -79,69 +79,67 @@ process_mode = 4
 visible = false
 
 [node name="SwitchBlockA" parent="GameObjects/TestBlocks" index="0" instance=ExtResource("4_eotp7")]
-modulate = Color(1, 0.407843, 0.337255, 1)
 position = Vector2(48, 384)
 
 [node name="SwitchBlockB" parent="GameObjects/TestBlocks" index="1" instance=ExtResource("4_eotp7")]
-modulate = Color(1, 0.8, 0, 1)
+modulate = Color(1, 0.466667, 0, 1)
 position = Vector2(96, 384)
 tone = 1
 
 [node name="SwitchBlockC" parent="GameObjects/TestBlocks" index="2" instance=ExtResource("4_eotp7")]
-modulate = Color(0.941176, 1, 0, 1)
+modulate = Color(1, 0.8, 0, 1)
 position = Vector2(144, 384)
 tone = 2
 
 [node name="SwitchBlockD" parent="GameObjects/TestBlocks" index="3" instance=ExtResource("4_eotp7")]
-modulate = Color(0, 1, 0.5, 1)
+modulate = Color(0.941176, 1, 0, 1)
 position = Vector2(192, 384)
 tone = 3
 
 [node name="SwitchBlockE" parent="GameObjects/TestBlocks" index="4" instance=ExtResource("4_eotp7")]
-modulate = Color(0, 0.833333, 1, 1)
+modulate = Color(0.5, 1, 0, 1)
 position = Vector2(240, 384)
 tone = 4
 
 [node name="SwitchBlockF" parent="GameObjects/TestBlocks" index="5" instance=ExtResource("4_eotp7")]
-modulate = Color(0.32, 0.467333, 1, 1)
+modulate = Color(0, 1, 0.5, 1)
 position = Vector2(288, 384)
 tone = 5
 
 [node name="SwitchBlockG" parent="GameObjects/TestBlocks" index="6" instance=ExtResource("4_eotp7")]
-modulate = Color(1, 0, 1, 1)
+modulate = Color(0, 1, 1, 1)
 position = Vector2(336, 384)
 tone = 6
 
 [node name="SwitchBlockC" parent="GameObjects/BlockSequence" index="2" instance=ExtResource("4_eotp7")]
-modulate = Color(0.941176, 1, 0, 1)
+modulate = Color(1, 0.8, 0, 1)
 position = Vector2(144, 402)
 tone = 2
 
 [node name="SwitchBlockD" parent="GameObjects/BlockSequence" index="3" instance=ExtResource("4_eotp7")]
-modulate = Color(0, 1, 0.5, 1)
+modulate = Color(0.941176, 1, 0, 1)
 position = Vector2(552, 210)
 tone = 3
 
 [node name="SwitchBlockE" parent="GameObjects/BlockSequence" index="4" instance=ExtResource("4_eotp7")]
-modulate = Color(0, 0.833333, 1, 1)
+modulate = Color(0.5, 1, 0, 1)
 position = Vector2(408, 18)
 tone = 4
 
 [node name="SwitchBlockF" parent="GameObjects/BlockSequence" index="5" instance=ExtResource("4_eotp7")]
-modulate = Color(0.32, 0.467333, 1, 1)
+modulate = Color(0, 1, 0.5, 1)
 position = Vector2(960, -174)
 tone = 5
 
 [node name="SwitchBlockG" parent="GameObjects/BlockSequence" index="6" instance=ExtResource("4_eotp7")]
-modulate = Color(1, 0, 1, 1)
+modulate = Color(0, 1, 1, 1)
 position = Vector2(336, -366)
 tone = 6
 
 [node name="SwitchBlockA" parent="GameObjects/BlockSequence" index="7" instance=ExtResource("4_eotp7")]
-modulate = Color(1, 0.407843, 0.337255, 1)
 position = Vector2(480, -558)
 
 [node name="SwitchBlockB" parent="GameObjects/BlockSequence" index="8" instance=ExtResource("4_eotp7")]
-modulate = Color(1, 0.8, 0, 1)
+modulate = Color(1, 0.466667, 0, 1)
 position = Vector2(768, -750)
 tone = 1

@@ -1,3 +1,4 @@
+class_name World
 extends Node2D
 
 var player_tone: Globals.Tone
@@ -10,8 +11,20 @@ var ambient_note_player: NotePlayer
 @export var tutorial: bool = false
 @export var player_camera_zoom: Vector2 = Vector2.ONE
 
+enum GameState
+{
+	INTRO,
+	PLAYING,
+	FINISHED
+}
+
+var current_state: GameState = GameState.PLAYING:
+	set(value):
+		if current_state != value:
+			current_state = value
+			_update_current_state()
+
 signal finished()
-var _finished: bool = false
 
 @onready var _camera: Camera2D = %Camera
 var _bounding_rect: Rect2
@@ -19,6 +32,13 @@ var _overview_zoom: Vector2
 
 var _stages: Array[Node] = []
 
+func _start() -> void:
+	print("start!")
+	if tutorial:
+		$MovementTutorial.show()
+		$MovementTutorial.next_step()
+	else:
+		%BlockSequence.start()
 
 func _get_platform_sets(stage: Node) -> Array[PlatformSet]:
 	var platform_sets: Array[PlatformSet] = []
@@ -56,6 +76,14 @@ func _setup_walls() -> void:
 
 func _setup_stages() -> void:
 	_stages = $Environment/Stages.get_children()
+
+func _update_current_state() -> void:
+	if not is_node_ready():
+		return
+
+	match current_state:
+		GameState.PLAYING:
+			_start()
 
 func _update_stages() -> void:
 	%BlockSequence.switch_blocks.clear()
@@ -103,9 +131,6 @@ func _adjust_octave(highest_tone: Globals.Tone, highest_octave: int) -> void:
 			ps.octave += octave_offset
 
 func _start_ambient_note(tone: Globals.Tone, octave: int) -> void:
-	if _finished:
-		return
-
 	_stop_ambient_note()
 	ambient_note_player = ambient_note_player_scene.instantiate()
 	ambient_note_player.tone = tone
@@ -117,12 +142,6 @@ func _stop_ambient_note() -> void:
 	if ambient_note_player:
 		ambient_note_player.stop()
 		ambient_note_player = null
-
-func _fade_in() -> void:
-	$Transition.fade_in()
-
-func _fade_out() -> void:
-	$Transition.fade_out()
 
 func _set_player_camera(instant: bool = false) -> void:
 	_camera.position_smoothing_enabled = true
@@ -143,7 +162,7 @@ func _ready() -> void:
 	_update_stages()
 	_setup_boundaries()
 	_setup_walls()
-	_fade_in()
+	_update_current_state()
 
 
 func _on_player_current_tone_changed(tone: Globals.Tone) -> void:
@@ -159,6 +178,7 @@ func _on_player_current_octave_changed(octave: int) -> void:
 
 func _on_player_on_floor_changed(value) -> void:
 	if value:
+#		await get_tree().create_timer(2).timeout
 		_start_ambient_note(player_tone, player_octave)
 	else:
 		_stop_ambient_note()
@@ -166,8 +186,8 @@ func _on_player_on_floor_changed(value) -> void:
 
 func _on_block_sequence_finished() -> void:
 	print("finished!")
-	_finished = true
-	_fade_out()
+	current_state = GameState.FINISHED
+	finished.emit()
 
 
 func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
@@ -181,16 +201,6 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 
 func _on_block_sequence_sequence_finished(_valid) -> void:
 	_set_overview_camera()
-
-
-func _on_transition_finished(_anim_name: String) -> void:
-	if _finished:
-		finished.emit()
-	elif tutorial:
-		$MovementTutorial.show()
-		$MovementTutorial.next_step()
-	else:
-		%BlockSequence.start()
 
 
 func _on_movement_tutorial_finished() -> void:
