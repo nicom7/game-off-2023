@@ -73,9 +73,6 @@ func _setup_walls() -> void:
 	$Environment/Walls/LeftWall.global_position = _bounding_rect.position
 	$Environment/Walls/RightWall.global_position = _bounding_rect.end
 
-func _setup_stages() -> void:
-	_stages = $Environment/Stages.get_children()
-
 func _update_current_state() -> void:
 	if not is_node_ready():
 		return
@@ -88,9 +85,10 @@ func _update_current_state() -> void:
 			print("finished!")
 			finished.emit()
 
-func _update_stages() -> void:
+func _setup_stages() -> void:
 	%BlockSequence.switch_blocks.clear()
 
+	_stages = $Environment/Stages.get_children()
 	for s in _stages:
 		$Environment/Stages.remove_child(s)
 
@@ -134,6 +132,9 @@ func _adjust_octave(highest_tone: Globals.Tone, highest_octave: int) -> void:
 			ps.octave += octave_offset
 
 func _start_ambient_note(tone: Globals.Tone, octave: int) -> void:
+	if not is_inside_tree():
+		return
+
 	_stop_ambient_note()
 	ambient_note_player = ambient_note_player_scene.instantiate()
 	ambient_note_player.tone = tone
@@ -162,7 +163,6 @@ func _set_overview_camera(instant: bool = false) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_setup_stages()
-	_update_stages()
 	_setup_boundaries()
 	_setup_walls()
 	_update_current_state()
@@ -181,7 +181,6 @@ func _on_player_current_octave_changed(octave: int) -> void:
 
 func _on_player_on_floor_changed(value) -> void:
 	if value:
-#		await get_tree().create_timer(2).timeout
 		_start_ambient_note(player_tone, player_octave)
 	else:
 		_stop_ambient_note()
