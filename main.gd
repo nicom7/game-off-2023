@@ -6,6 +6,7 @@ var world_scene: PackedScene = preload("res://levels/world_a.tscn")
 var world_tutorial_scene: PackedScene = preload("res://levels/tutorials/world_tutorial.tscn")
 var _world: Node2D
 var _master_volume: float
+@onready var _tutorial_active = play_tutorial
 
 func _create_world(tutorial: bool):
 	_world = (world_tutorial_scene if tutorial else world_scene).instantiate()
@@ -24,6 +25,8 @@ func _ready() -> void:
 
 
 func _on_world_finished() -> void:
+	_tutorial_active = false
+	$HUD.skip_tutorial_visible = false
 	$Transition.fade_out()
 
 
@@ -54,6 +57,7 @@ func _on_transition_finished(anim_name) -> void:
 	match anim_name:
 		"fade_in":
 			_world.current_state = World.GameState.PLAYING
+			$HUD.skip_tutorial_visible = _tutorial_active
 		"fade_out":
 			_destroy_world()
 			_create_world(false)
