@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jrx0717s6a"
-path="res://.godot/imported/music_boy_gros.png-aadd88842b9638fe41e627501255466b.ctex"
+uid="uid://c7pux752c6ktx"
+path="res://.godot/imported/music_boy_big.png-9cf599dbd590fed68711711ceb281ad7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/music_boy/music_boy_gros.png"
-dest_files=["res://.godot/imported/music_boy_gros.png-aadd88842b9638fe41e627501255466b.ctex"]
+source_file="res://sprites/music_boy/music_boy_big.png"
+dest_files=["res://.godot/imported/music_boy_big.png-9cf599dbd590fed68711711ceb281ad7.ctex"]
 
 [params]
 
