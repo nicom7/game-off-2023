@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cli2e4qk0qqyq"
-path="res://.godot/imported/music_boy_gros_mask.png-0d4a8dac43ef053d89f8fa2e92c50dd9.ctex"
+uid="uid://w4ek1vv1bu6g"
+path="res://.godot/imported/music_boy_big_mask.png-d6f0efc56ab5432a000e1a620b6bba6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/music_boy/music_boy_gros_mask.png"
-dest_files=["res://.godot/imported/music_boy_gros_mask.png-0d4a8dac43ef053d89f8fa2e92c50dd9.ctex"]
+source_file="res://sprites/music_boy/music_boy_big_mask.png"
+dest_files=["res://.godot/imported/music_boy_big_mask.png-d6f0efc56ab5432a000e1a620b6bba6e.ctex"]
 
 [params]
 

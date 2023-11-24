@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cs3b1fefwy1j8"]
 
 [ext_resource type="Script" path="res://gui/big_player.gd" id="1_2xdkr"]
-[ext_resource type="Texture2D" uid="uid://jrx0717s6a" path="res://sprites/music_boy/music_boy_gros.png" id="2_b8i2n"]
-[ext_resource type="Texture2D" uid="uid://cli2e4qk0qqyq" path="res://sprites/music_boy/music_boy_gros_mask.png" id="3_w0obc"]
+[ext_resource type="Texture2D" uid="uid://c7pux752c6ktx" path="res://sprites/music_boy/music_boy_big.png" id="2_74rbf"]
+[ext_resource type="Texture2D" uid="uid://w4ek1vv1bu6g" path="res://sprites/music_boy/music_boy_big_mask.png" id="3_b52d3"]
 
 [sub_resource type="Animation" id="Animation_e1gmx"]
 resource_name = "bounce"
@@ -12,7 +12,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MusicBoyMask/MusicBoyGros:frame")
+tracks/0/path = NodePath("MusicBoyMask/MusicBoyBig:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MusicBoyGros2:frame")
+tracks/1/path = NodePath("MusicBoyBig:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -63,20 +63,20 @@ script = ExtResource("1_2xdkr")
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(576, 324)
 
-[node name="MusicBoyGros2" type="Sprite2D" parent="Node2D"]
+[node name="MusicBoyBig" type="Sprite2D" parent="Node2D"]
 position = Vector2(16, 0)
-texture = ExtResource("2_b8i2n")
+texture = ExtResource("2_74rbf")
 hframes = 4
 
 [node name="MusicBoyMask" type="Sprite2D" parent="Node2D"]
 clip_children = 2
 position = Vector2(16, 0)
-texture = ExtResource("3_w0obc")
+texture = ExtResource("3_b52d3")
 hframes = 4
 
-[node name="MusicBoyGros" type="Sprite2D" parent="Node2D/MusicBoyMask"]
+[node name="MusicBoyBig" type="Sprite2D" parent="Node2D/MusicBoyMask"]
 modulate = Color(1, 0.517647, 0.176471, 1)
-texture = ExtResource("2_b8i2n")
+texture = ExtResource("2_74rbf")
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
