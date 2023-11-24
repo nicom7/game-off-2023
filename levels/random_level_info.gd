@@ -4,11 +4,19 @@ extends LevelInfo
 @export var note_count_min: int = 2
 @export var note_count_max: int = 7
 
+## Maximum number of stages
+@export_range(1, Globals.STAGE_COUNT_MAX) var stage_count_max: int = Globals.STAGE_COUNT_MAX
+## Maximum number of notes per stage
+@export_range(1, Globals.NOTES_PER_STAGE_MAX) var notes_per_stage_max: int = Globals.NOTES_PER_STAGE_MAX
+
 ## Will choose a random tonic note if scale degrees are included in the scale info resource
 @export var random_tonic: bool = true
 ## Will choose a random inversion for the scale (e.g. [0, 4, 7, 10] => [4, 7, 10, 0])
 @export var random_inversion: bool = true
 
+@export_dir var scales_folder_path: String = "res://levels/scales/"
+
+# TODO: Move to RandomLevelGenerator
 var _scales: Dictionary = {}
 
 func _generate() -> void:
@@ -22,7 +30,7 @@ func _generate() -> void:
 	scale_keys = scale_keys.slice(beg_idx, end_idx)
 	var note_count = scale_keys.pick_random()
 	var valid_scales = _scales[note_count]
-	notes = valid_scales.pick_random()
+	var notes = valid_scales.pick_random()
 
 	var _notes_per_stage_max = notes_per_stage_max
 	var _notes_per_stage_min = clampi(ceili(notes.size() / (stage_count_max as float)), 1, _notes_per_stage_max)
@@ -34,11 +42,8 @@ func _generate() -> void:
 
 	stage_count_max = randi_range(_stage_count_min, _stage_count_max)
 
-
-func _load_scales() -> void:
-	_scales.clear()
-
-	var dir: DirAccess = DirAccess.open("res://levels/scales/")
+func _load_scales():
+	var dir: DirAccess = DirAccess.open(scales_folder_path)
 	var resources = Globals.get_resources(dir)
 
 	for r in resources:
@@ -73,3 +78,4 @@ func _update_stage_notes() -> void:
 	_generate()
 
 	super._update_stage_notes()
+# END TODO

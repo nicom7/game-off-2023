@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="ScaleInfo" load_steps=2 format=3 uid="uid://cnyxmh6h8ky6g"]
 
-[ext_resource type="Script" path="res://levels/scale_info.gd" id="1_expgv"]
+[ext_resource type="Script" path="res://levels/scale_info.gd" id="1_ts1hr"]
 
 [resource]
-script = ExtResource("1_expgv")
+script = ExtResource("1_ts1hr")
 tonic = 3
 degrees = Array[int]([0, 2, 7])
+inversion = 0
 notes = Array[int]([])

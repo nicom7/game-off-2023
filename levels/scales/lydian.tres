@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="ScaleInfo" load_steps=2 format=3 uid="uid://dljl7fx8qyd58"]
-
-[ext_resource type="Script" path="res://levels/scale_info.gd" id="1_j6owb"]
-
-[resource]
-script = ExtResource("1_j6owb")
-tonic = 3
-degrees = Array[int]([0, 2, 4, 6, 7, 9, 11])
-notes = Array[int]([])

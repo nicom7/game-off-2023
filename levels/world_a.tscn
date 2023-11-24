@@ -6,11 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cb5gnjmcn586k" path="res://game_objects/platforms/platform.tscn" id="4_dpbpj"]
 [ext_resource type="PackedScene" uid="uid://knuujq4ac74r" path="res://game_objects/ladders/ladder.tscn" id="5_salg1"]
 
-[sub_resource type="Resource" id="Resource_0ebve"]
+[sub_resource type="Resource" id="Resource_recfb"]
 script = ExtResource("2_bu883")
-stage_count_max = 1
-notes_per_stage_max = 2
-notes = Array[int]([5, 3])
+stage_count_max = 2
+notes_per_stage_max = 1
+notes = Array[int]([0, 2])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3iscd"]
 size = Vector2(1152, 288)
@@ -55,7 +55,7 @@ size = Vector2(480, 288)
 size = Vector2(288, 288)
 
 [node name="World" instance=ExtResource("1_dlj7h")]
-level_info = SubResource("Resource_0ebve")
+level_info = SubResource("Resource_recfb")
 
 [node name="Player" parent="." index="0"]
 position = Vector2(48, 456)
