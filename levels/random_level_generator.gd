@@ -9,12 +9,9 @@ extends LevelInfoProvider
 ## Will choose a random inversion for the scale (e.g. [0, 4, 7, 10] => [4, 7, 10, 0])
 @export var random_inversion: bool = true
 
-const NOTES_PER_STAGE_MAX: int = 2
-const STAGE_COUNT_MAX: int = 7
-
 var _scales: Dictionary = {}
 
-func generate() -> void:
+func _generate() -> void:
 	var scale_keys: Array = _scales.keys()
 
 	scale_keys.sort()
@@ -27,12 +24,12 @@ func generate() -> void:
 	var valid_scales = _scales[note_count]
 	notes = valid_scales.pick_random()
 
-	var _notes_per_stage_max = NOTES_PER_STAGE_MAX
-	var _notes_per_stage_min = clampi(ceili(notes.size() / (STAGE_COUNT_MAX as float)), 1, _notes_per_stage_max)
+	var _notes_per_stage_max = notes_per_stage_max
+	var _notes_per_stage_min = clampi(ceili(notes.size() / (stage_count_max as float)), 1, _notes_per_stage_max)
 
 	notes_per_stage_max = randi_range(_notes_per_stage_min, _notes_per_stage_max)
 
-	var _stage_count_max = STAGE_COUNT_MAX
+	var _stage_count_max = stage_count_max
 	var _stage_count_min = clampi(ceili(notes.size() / (notes_per_stage_max as float)), 1, _stage_count_max)
 
 	stage_count_max = randi_range(_stage_count_min, _stage_count_max)
@@ -74,6 +71,6 @@ func _get_notes_from_degrees(degrees: Array[int], tonic: Globals.Tone, inversion
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_load_scales()
-	generate()
+	_generate()
 
 	super._ready()

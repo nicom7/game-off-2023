@@ -19,6 +19,9 @@ enum Tone
 
 const ACTION_SUFFIX: String = "_note"
 
+const STAGE_COUNT_MAX: int = 7
+const NOTES_PER_STAGE_MAX: int = 2
+
 static var _inputs: Dictionary = {}
 
 static func get_label_from_tone(tone: Tone) -> String:

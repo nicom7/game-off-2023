@@ -10,6 +10,8 @@ var _master_volume: float
 
 func _create_world(tutorial: bool):
 	_world = (world_tutorial_scene if tutorial else world_scene).instantiate()
+	if not tutorial:
+		_world.level_info_provider = $LevelManager.get_current_level_provider()
 	_world.current_state = World.GameState.INTRO
 	_world.finished.connect(_on_world_finished, CONNECT_DEFERRED)
 	add_child(_world)
@@ -25,6 +27,8 @@ func _ready() -> void:
 
 
 func _on_world_finished() -> void:
+	if _tutorial_active:
+		$LevelManager.current_level = 0
 	_tutorial_active = false
 	$HUD.skip_tutorial_visible = false
 	$Transition.fade_out()
@@ -60,6 +64,7 @@ func _on_transition_finished(anim_name) -> void:
 			$HUD.skip_tutorial_visible = _tutorial_active
 		"fade_out":
 			_destroy_world()
+			$LevelManager.current_level += 1
 			_create_world(false)
 			$Transition.fade_in()
 
