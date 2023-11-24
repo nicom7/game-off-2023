@@ -7,7 +7,7 @@ var player_octave: int
 @export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
 
-@export var level_info_provider: LevelInfoProvider
+@export var level_info: LevelInfo
 @export var tutorial: bool = false
 @export var player_camera_zoom: Vector2 = Vector2.ONE
 
@@ -93,8 +93,8 @@ func _setup_stages() -> void:
 		$Environment/Stages.remove_child(s)
 
 	var stage_notes: Dictionary
-	if level_info_provider:
-		stage_notes = level_info_provider.stage_notes
+	if level_info:
+		stage_notes = level_info.stage_notes
 
 	var prev_tone: Globals.Tone = Globals.Tone.A
 	var cur_octave: int = 0

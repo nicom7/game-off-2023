@@ -1,5 +1,5 @@
-class_name RandomLevelGenerator
-extends LevelInfoProvider
+class_name RandomLevelInfo
+extends LevelInfo
 
 @export var note_count_min: int = 2
 @export var note_count_max: int = 7
@@ -68,9 +68,8 @@ func _get_notes_from_degrees(degrees: Array[int], tonic: Globals.Tone, inversion
 
 	return _notes
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _update_stage_notes() -> void:
 	_load_scales()
 	_generate()
 
-	super._ready()
+	super._update_stage_notes()

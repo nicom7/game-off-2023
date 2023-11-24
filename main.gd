@@ -4,14 +4,15 @@ extends Node2D
 
 var world_scene: PackedScene = preload("res://levels/world_a.tscn")
 var world_tutorial_scene: PackedScene = preload("res://levels/tutorials/world_tutorial.tscn")
-var _world: Node2D
+var _world: World
 var _master_volume: float
 @onready var _tutorial_active = play_tutorial
+@onready var _level_manager: LevelManager = $LevelManager
 
 func _create_world(tutorial: bool):
 	_world = (world_tutorial_scene if tutorial else world_scene).instantiate()
 	if not tutorial:
-		_world.level_info_provider = $LevelManager.get_current_level_provider()
+		_world.level_info = _level_manager.get_current_level_info()
 	_world.current_state = World.GameState.INTRO
 	_world.finished.connect(_on_world_finished, CONNECT_DEFERRED)
 	add_child(_world)
