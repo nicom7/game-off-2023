@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b24jmtuqoaeq6"]
+[gd_scene load_steps=18 format=3 uid="uid://b24jmtuqoaeq6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dgxr5"]
 [ext_resource type="PackedScene" uid="uid://bjyrekj7d6cal" path="res://gui/hud.tscn" id="2_tqktt"]
@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bl5x0vjmi2ghe" path="res://gui/in_game_menu.tscn" id="3_woyqp"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="4_fxvtf"]
 [ext_resource type="Script" path="res://levels/level_manager.gd" id="6_10awd"]
-[ext_resource type="Resource" uid="uid://dyyllvl3fnydj" path="res://levels/level_infos/levels_1_to_4.tres" id="7_hraan"]
-[ext_resource type="Script" path="res://levels/random_level_generator.gd" id="8_06ye0"]
+[ext_resource type="Script" path="res://levels/random_level_info.gd" id="7_2r6pw"]
+[ext_resource type="Script" path="res://levels/basic_level_info.gd" id="7_jd65n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j61hb"]
 shader = ExtResource("4_fxvtf")
@@ -82,6 +82,28 @@ _data = {
 "fade_out": SubResource("Animation_7o5kq")
 }
 
+[sub_resource type="Resource" id="Resource_5iq2v"]
+script = ExtResource("7_2r6pw")
+note_count_min = 2
+note_count_max = 7
+random_tonic = false
+random_inversion = true
+scales_folder_path = "res://levels/scales/no_accidentals"
+stage_count_max = 7
+notes_per_stage_max = 2
+
+[sub_resource type="Resource" id="Resource_8t16e"]
+script = ExtResource("7_jd65n")
+notes = Array[int]([3, 5])
+stage_count_max = 7
+notes_per_stage_max = 1
+
+[sub_resource type="Resource" id="Resource_s7y5n"]
+script = ExtResource("7_jd65n")
+notes = Array[int]([7, 8])
+stage_count_max = 7
+notes_per_stage_max = 2
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dgxr5")
 play_tutorial = false
@@ -129,10 +151,7 @@ visible = false
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("6_10awd")
-level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_hraan"), ExtResource("7_hraan"), ExtResource("7_hraan"), ExtResource("7_hraan")])
-
-[node name="RandomLevelGenerator" type="Node" parent="LevelManager"]
-script = ExtResource("8_06ye0")
+level_infos = Array[Resource("res://levels/level_info.gd")]([SubResource("Resource_5iq2v"), SubResource("Resource_8t16e"), SubResource("Resource_s7y5n")])
 
 [connection signal="finished" from="Transition" to="." method="_on_transition_finished"]
 [connection signal="igm_pressed" from="HUD" to="." method="_on_hud_igm_pressed"]

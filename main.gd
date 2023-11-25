@@ -12,7 +12,7 @@ var _master_volume: float
 func _create_world(tutorial: bool):
 	_world = (world_tutorial_scene if tutorial else world_scene).instantiate()
 	if not tutorial:
-		_world.level_info = _level_manager.get_current_level_info()
+		_world.level_provider = _level_manager.get_current_level_provider()
 	_world.current_state = World.GameState.INTRO
 	_world.finished.connect(_on_world_finished, CONNECT_DEFERRED)
 	add_child(_world)
