@@ -54,6 +54,7 @@ script = ExtResource("6_708ue")
 notes = Array[int]([0, 5, 7])
 stage_count_max = 7
 notes_per_stage_max = 1
+sequence_length_max = 4
 
 [node name="World" node_paths=PackedStringArray("level_provider") instance=ExtResource("1_dlj7h")]
 level_provider = NodePath("BasicLevelProvider")

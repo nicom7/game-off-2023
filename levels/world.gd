@@ -95,6 +95,7 @@ func _setup_stages() -> void:
 	var stage_notes: Dictionary
 	if level_provider:
 		stage_notes = level_provider.stage_notes
+		%BlockSequence.sequence_length_max = level_provider.sequence_length_max
 
 	var prev_tone: Globals.Tone = Globals.Tone.A
 	var cur_octave: int = 0

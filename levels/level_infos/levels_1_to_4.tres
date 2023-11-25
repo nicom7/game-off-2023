@@ -11,3 +11,4 @@ random_inversion = true
 scales_folder_path = "res://levels/scales/no_accidentals"
 stage_count_max = 3
 notes_per_stage_max = 1
+sequence_length_max = 4

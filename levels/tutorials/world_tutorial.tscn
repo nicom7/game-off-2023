@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bgmrmwu61uqnt" path="res://levels/world_a.tscn" id="1_ljgbv"]
 
-[node name="World2" instance=ExtResource("1_ljgbv")]
-level_info = null
+[node name="World" instance=ExtResource("1_ljgbv")]
 tutorial = true
 
 [node name="BlockSequence" parent="GameObjects" index="0"]
+sequence_length_max = 4
 randomize_sequence = false
 current_sequence = [0, 0, 1, 1]
 

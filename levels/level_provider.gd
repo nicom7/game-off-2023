@@ -1,6 +1,7 @@
 class_name LevelProvider
 extends Node
 
+@export_range(1, 99) var sequence_length_max: int = 4
 var stage_notes: Dictionary:
 	get:
 		return _stage_notes

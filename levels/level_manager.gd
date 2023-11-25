@@ -32,6 +32,7 @@ func _create_level_provider(level_info: LevelInfo) -> LevelProvider:
 		provider = BasicLevelProvider.new()
 		provider.level_info = level_info
 
+	provider.sequence_length_max = level_info.sequence_length_max
 	provider.initialize()
 
 	return provider

@@ -4,7 +4,6 @@
 
 [node name="BlockSequence" type="Node"]
 script = ExtResource("1_4kgpu")
-sequence_length_max = 4
 
 [node name="SequenceTimer" type="Timer" parent="."]
 wait_time = 2.5
