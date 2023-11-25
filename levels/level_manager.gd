@@ -33,6 +33,7 @@ func _create_level_provider(level_info: LevelInfo) -> LevelProvider:
 		provider.level_info = level_info
 
 	provider.sequence_length_max = level_info.sequence_length_max
+	provider.level_scene_path = level_info.level_scene_path
 	provider.initialize()
 
 	return provider

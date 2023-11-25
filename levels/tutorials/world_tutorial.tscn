@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dysxf1d1ubejx"]
+[gd_scene load_steps=3 format=3 uid="uid://dysxf1d1ubejx"]
 
 [ext_resource type="PackedScene" uid="uid://bgmrmwu61uqnt" path="res://levels/world_a.tscn" id="1_ljgbv"]
+[ext_resource type="Resource" uid="uid://cvfdhx5boqxuj" path="res://levels/level_infos/level_tutorial.tres" id="2_37hjy"]
 
 [node name="World" instance=ExtResource("1_ljgbv")]
 tutorial = true
@@ -9,6 +10,9 @@ tutorial = true
 sequence_length_max = 4
 randomize_sequence = false
 current_sequence = [0, 0, 1, 1]
+
+[node name="BasicLevelProvider" parent="." index="8"]
+level_info = ExtResource("2_37hjy")
 
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]

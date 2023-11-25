@@ -2,17 +2,15 @@ extends Node2D
 
 @export var play_tutorial: bool = true
 
-var world_scene: PackedScene = preload("res://levels/world_a.tscn")
-var world_tutorial_scene: PackedScene = preload("res://levels/tutorials/world_tutorial.tscn")
 var _world: World
 var _master_volume: float
 @onready var _tutorial_active = play_tutorial
 @onready var _level_manager: LevelManager = $LevelManager
 
-func _create_world(tutorial: bool):
-	_world = (world_tutorial_scene if tutorial else world_scene).instantiate()
-	if not tutorial:
-		_world.level_provider = _level_manager.get_current_level_provider()
+func _create_world(_tutorial: bool):
+	var provider: LevelProvider = _level_manager.get_current_level_provider()
+	_world = load(provider.level_scene_path).instantiate()
+	_world.level_provider = provider
 	_world.current_state = World.GameState.INTRO
 	_world.finished.connect(_on_world_finished, CONNECT_DEFERRED)
 	add_child(_world)
@@ -28,8 +26,6 @@ func _ready() -> void:
 
 
 func _on_world_finished() -> void:
-	if _tutorial_active:
-		$LevelManager.current_level = 0
 	_tutorial_active = false
 	$HUD.skip_tutorial_visible = false
 	$Transition.fade_out()

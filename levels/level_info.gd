@@ -7,3 +7,5 @@ extends Resource
 @export_range(1, Globals.NOTES_PER_STAGE_MAX) var notes_per_stage_max: int = Globals.NOTES_PER_STAGE_MAX
 ## Maximum length of the block sequence to generate
 @export_range(1, 99) var sequence_length_max: int = 4
+## The path of the scene to use for the level
+@export_file var level_scene_path: String = "res://levels/world_a.tscn"
