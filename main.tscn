@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b24jmtuqoaeq6"]
+[gd_scene load_steps=24 format=3 uid="uid://b24jmtuqoaeq6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dgxr5"]
 [ext_resource type="PackedScene" uid="uid://bjyrekj7d6cal" path="res://gui/hud.tscn" id="2_tqktt"]
@@ -7,7 +7,15 @@
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="4_fxvtf"]
 [ext_resource type="Script" path="res://levels/level_manager.gd" id="6_10awd"]
 [ext_resource type="Script" path="res://levels/random_level_info.gd" id="7_2r6pw"]
-[ext_resource type="Script" path="res://levels/basic_level_info.gd" id="7_jd65n"]
+[ext_resource type="Resource" uid="uid://bk7diaeenvhba" path="res://levels/level_infos/levels_1_to_4.tres" id="7_swa47"]
+[ext_resource type="Resource" uid="uid://dairla6s3rwbv" path="res://levels/level_infos/levels_5_to_8.tres" id="9_0vo6u"]
+[ext_resource type="Resource" uid="uid://d2jd4h4e80b8y" path="res://levels/level_infos/levels_13_to_16.tres" id="10_dypps"]
+[ext_resource type="Resource" uid="uid://cscbvfqkb11j7" path="res://levels/level_infos/levels_9_to_12.tres" id="10_v8k3x"]
+[ext_resource type="Resource" uid="uid://l1g6ee6cn32r" path="res://levels/level_infos/levels_17_to_20.tres" id="11_e8qcc"]
+[ext_resource type="Resource" uid="uid://4medl6mrpng1" path="res://levels/level_infos/levels_21_to_24.tres" id="12_hm2f0"]
+[ext_resource type="Resource" uid="uid://hhlbue0uxe3j" path="res://levels/level_infos/levels_25_to_28.tres" id="13_a5w1c"]
+[ext_resource type="Resource" uid="uid://dvj6luy8yapbd" path="res://levels/level_infos/levels_29_to_32.tres" id="14_tvlkx"]
+[ext_resource type="Resource" uid="uid://vb68stjnq17" path="res://levels/level_infos/levels_33_to_36.tres" id="15_uux5b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j61hb"]
 shader = ExtResource("4_fxvtf")
@@ -82,25 +90,13 @@ _data = {
 "fade_out": SubResource("Animation_7o5kq")
 }
 
-[sub_resource type="Resource" id="Resource_5iq2v"]
+[sub_resource type="Resource" id="Resource_4iyos"]
 script = ExtResource("7_2r6pw")
-note_count_min = 2
-note_count_max = 7
-random_tonic = false
+note_count_min = 5
+note_count_max = 12
+random_tonic = true
 random_inversion = true
-scales_folder_path = "res://levels/scales/no_accidentals"
-stage_count_max = 7
-notes_per_stage_max = 2
-
-[sub_resource type="Resource" id="Resource_8t16e"]
-script = ExtResource("7_jd65n")
-notes = Array[int]([3, 5])
-stage_count_max = 7
-notes_per_stage_max = 1
-
-[sub_resource type="Resource" id="Resource_s7y5n"]
-script = ExtResource("7_jd65n")
-notes = Array[int]([7, 8])
+scales_folder_path = "res://levels/scales/"
 stage_count_max = 7
 notes_per_stage_max = 2
 
@@ -151,7 +147,7 @@ visible = false
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("6_10awd")
-level_infos = Array[Resource("res://levels/level_info.gd")]([SubResource("Resource_5iq2v"), SubResource("Resource_8t16e"), SubResource("Resource_s7y5n")])
+level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_4iyos")])
 
 [connection signal="finished" from="Transition" to="." method="_on_transition_finished"]
 [connection signal="igm_pressed" from="HUD" to="." method="_on_hud_igm_pressed"]
