@@ -1,13 +1,17 @@
 extends Node2D
 
-@export var play_tutorial: bool = true
+@export_group("Debug")
+@export var skip_current_level: bool = false:
+	set(value):
+		if value and OS.has_feature("debug") and is_node_ready():
+			_on_hud_skip_tutorial_pressed()
 
 var _world: World
 var _master_volume: float
-@onready var _tutorial_active = play_tutorial
 @onready var _level_manager: LevelManager = $LevelManager
 
-func _create_world(_tutorial: bool):
+
+func _create_world():
 	var provider: LevelProvider = _level_manager.get_current_level_provider()
 	_world = load(provider.level_scene_path).instantiate()
 	_world.level_provider = provider
@@ -20,13 +24,12 @@ func _destroy_world():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_create_world(play_tutorial)
+	_create_world()
 	$HUD.show_title()
 	$Transition.fade_in()
 
 
 func _on_world_finished() -> void:
-	_tutorial_active = false
 	$HUD.skip_tutorial_visible = false
 	$Transition.fade_out()
 
@@ -58,11 +61,11 @@ func _on_transition_finished(anim_name) -> void:
 	match anim_name:
 		"fade_in":
 			_world.current_state = World.GameState.PLAYING
-			$HUD.skip_tutorial_visible = _tutorial_active
+			$HUD.skip_tutorial_visible = _world.tutorial
 		"fade_out":
 			_destroy_world()
 			$LevelManager.current_level += 1
-			_create_world(false)
+			_create_world()
 			$Transition.fade_in()
 
 
