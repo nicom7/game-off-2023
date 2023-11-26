@@ -353,9 +353,6 @@ position = Vector2(48, -126)
 [node name="Ladder" parent="Environment/Stages/Stage6/PlatformSet2" index="3"]
 size = 8
 
-[node name="BlockSequence" parent="GameObjects" index="0"]
-sequence_length_max = 1
-
 [node name="BasicLevelProvider" type="Node" parent="." index="6"]
 script = ExtResource("5_jamvv")
 level_info = SubResource("Resource_hdtum")

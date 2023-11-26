@@ -1,7 +1,7 @@
 extends Node
 
 @export var switch_blocks: Array[SwitchBlock] = []
-@export_range(1, 99) var sequence_length_max: int = 4
+@export_range(1, 99) var sequence_length_max: int = Globals.SEQUENCE_LENGTH_MAX
 @export var randomize_sequence: bool = true
 ## The current block sequence as a list of block indexes (0 is the first platform block, 1 is the second, etc.)
 @export var current_sequence: Array[int] = []

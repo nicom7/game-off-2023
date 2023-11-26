@@ -1,7 +1,7 @@
 class_name LevelProvider
 extends Node
 
-@export_range(1, 99) var sequence_length_max: int = 4
+@export_range(1, 99) var sequence_length_max: int = Globals.SEQUENCE_LENGTH_MAX
 @export_file var level_scene_path: String = "res://levels/world_a.tscn"
 var stage_notes: Dictionary:
 	get:

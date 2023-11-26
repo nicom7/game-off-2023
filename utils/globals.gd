@@ -21,6 +21,7 @@ const ACTION_SUFFIX: String = "_note"
 
 const STAGE_COUNT_MAX: int = 7
 const NOTES_PER_STAGE_MAX: int = 2
+const SEQUENCE_LENGTH_MAX: int = 4
 
 static var _inputs: Dictionary = {}
 

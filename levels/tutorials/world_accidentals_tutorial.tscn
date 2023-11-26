@@ -10,7 +10,6 @@ script = ExtResource("2_xgyky")
 tutorial = true
 
 [node name="BlockSequence" parent="GameObjects" index="0"]
-sequence_length_max = 4
 randomize_sequence = false
 current_sequence = Array[int]([0, 1, 2, 3])
 
