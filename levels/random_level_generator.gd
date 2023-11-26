@@ -1,47 +1,46 @@
 class_name RandomLevelGenerator
-extends LevelInfoProvider
+extends LevelProvider
 
-@export var note_count_min: int = 2
-@export var note_count_max: int = 7
-
-## Will choose a random tonic note if scale degrees are included in the scale info resource
-@export var random_tonic: bool = true
-## Will choose a random inversion for the scale (e.g. [0, 4, 7, 10] => [4, 7, 10, 0])
-@export var random_inversion: bool = true
-
-const NOTES_PER_STAGE_MAX: int = 2
-const STAGE_COUNT_MAX: int = 7
+@export var level_info: RandomLevelInfo
 
 var _scales: Dictionary = {}
 
-func generate() -> void:
+func initialize() -> void:
+	generate()
+
+func generate() -> Array[Globals.Tone]:
+	_load_scales()
+	var notes = _generate_notes()
+	_update_stage_notes(level_info.stage_count_max, level_info.notes_per_stage_max, notes)
+	return notes
+
+func _generate_notes() -> Array[Globals.Tone]:
 	var scale_keys: Array = _scales.keys()
 
 	scale_keys.sort()
 
-	var beg_idx = scale_keys.bsearch(note_count_min)
-	var end_idx = scale_keys.bsearch(note_count_max, false)
+	var beg_idx = scale_keys.bsearch(level_info.note_count_min)
+	var end_idx = scale_keys.bsearch(level_info.note_count_max, false)
 
 	scale_keys = scale_keys.slice(beg_idx, end_idx)
 	var note_count = scale_keys.pick_random()
 	var valid_scales = _scales[note_count]
-	notes = valid_scales.pick_random()
+	var notes = valid_scales.pick_random()
 
-	var _notes_per_stage_max = NOTES_PER_STAGE_MAX
-	var _notes_per_stage_min = clampi(ceili(notes.size() / (STAGE_COUNT_MAX as float)), 1, _notes_per_stage_max)
+	var _notes_per_stage_max = level_info.notes_per_stage_max
+	var _notes_per_stage_min = clampi(ceili(notes.size() / (level_info.stage_count_max as float)), 1, _notes_per_stage_max)
 
-	notes_per_stage_max = randi_range(_notes_per_stage_min, _notes_per_stage_max)
+	level_info.notes_per_stage_max = randi_range(_notes_per_stage_min, _notes_per_stage_max)
 
-	var _stage_count_max = STAGE_COUNT_MAX
-	var _stage_count_min = clampi(ceili(notes.size() / (notes_per_stage_max as float)), 1, _stage_count_max)
+	var _stage_count_max = level_info.stage_count_max
+	var _stage_count_min = clampi(ceili(notes.size() / (level_info.notes_per_stage_max as float)), 1, _stage_count_max)
 
-	stage_count_max = randi_range(_stage_count_min, _stage_count_max)
+	level_info.stage_count_max = randi_range(_stage_count_min, _stage_count_max)
 
+	return notes
 
-func _load_scales() -> void:
-	_scales.clear()
-
-	var dir: DirAccess = DirAccess.open("res://levels/scales/")
+func _load_scales():
+	var dir: DirAccess = DirAccess.open(level_info.scales_folder_path)
 	var resources = Globals.get_resources(dir)
 
 	for r in resources:
@@ -50,9 +49,9 @@ func _load_scales() -> void:
 
 			var _degrees = si.degrees
 			if not _degrees.is_empty():
-				if random_tonic:
+				if level_info.random_tonic:
 					si.tonic = randi_range(0, Globals.Tone.size() - 1) as Globals.Tone
-				if random_inversion:
+				if level_info.random_inversion:
 					si.inversion = randi_range(0, _degrees.size() - 1)
 				si.notes = _get_notes_from_degrees(_degrees, si.tonic, si.inversion)
 
@@ -70,10 +69,3 @@ func _get_notes_from_degrees(degrees: Array[int], tonic: Globals.Tone, inversion
 		_notes.append(Globals.get_note_from_degree(degrees[offset_idx], tonic))
 
 	return _notes
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	_load_scales()
-	generate()
-
-	super._ready()

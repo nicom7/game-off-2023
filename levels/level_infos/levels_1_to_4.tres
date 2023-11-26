@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RandomLevelInfo" load_steps=2 format=3 uid="uid://bk7diaeenvhba"]
+
+[ext_resource type="Script" path="res://levels/random_level_info.gd" id="1_fwt1g"]
+
+[resource]
+script = ExtResource("1_fwt1g")
+note_count_min = 3
+note_count_max = 3
+random_tonic = false
+random_inversion = true
+scales_folder_path = "res://levels/scales/no_accidentals"
+stage_count_max = 3
+notes_per_stage_max = 1
+sequence_length_max = 4

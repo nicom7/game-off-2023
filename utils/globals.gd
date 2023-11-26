@@ -19,6 +19,10 @@ enum Tone
 
 const ACTION_SUFFIX: String = "_note"
 
+const STAGE_COUNT_MAX: int = 7
+const NOTES_PER_STAGE_MAX: int = 2
+const SEQUENCE_LENGTH_MAX: int = 4
+
 static var _inputs: Dictionary = {}
 
 static func get_label_from_tone(tone: Tone) -> String:
@@ -82,8 +86,16 @@ static func get_bitfield_from_notes(notes: Array[Tone]) -> int:
 
 static func get_resources(res_dir: DirAccess) -> Array[Resource]:
 	var res: Array[Resource] = []
-	var file_paths = res_dir.get_files()
 
+	# Get resources from subfolders recursively
+	var folder_paths = res_dir.get_directories()
+	for path in folder_paths:
+		var abs_path = res_dir.get_current_dir() + "/" + path
+		var dir: DirAccess = DirAccess.open(abs_path)
+		res.append_array(get_resources(dir))
+
+	# Get resources from current folder files
+	var file_paths = res_dir.get_files()
 	for path in file_paths:
 		if path.ends_with(".tres"):
 			var abs_path = res_dir.get_current_dir() + "/" + path

@@ -1,19 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://dysxf1d1ubejx"]
+[gd_scene load_steps=6 format=3 uid="uid://dysxf1d1ubejx"]
 
 [ext_resource type="PackedScene" uid="uid://bgmrmwu61uqnt" path="res://levels/world_a.tscn" id="1_ljgbv"]
-[ext_resource type="Script" path="res://levels/level_info_provider.gd" id="2_5bp36"]
+[ext_resource type="Resource" uid="uid://cvfdhx5boqxuj" path="res://levels/level_infos/level_tutorial.tres" id="2_37hjy"]
+[ext_resource type="Script" path="res://levels/tutorials/world_tutorial.gd" id="2_pjsk4"]
+[ext_resource type="PackedScene" uid="uid://dpg5fwcr50ioc" path="res://levels/tutorials/movement_tutorial.tscn" id="2_u3fj2"]
+[ext_resource type="PackedScene" uid="uid://bkol8urwsl85l" path="res://levels/tutorials/block_sequence_tutorial.tscn" id="3_b0efg"]
 
-[node name="World" node_paths=PackedStringArray("level_info_provider") instance=ExtResource("1_ljgbv")]
-level_info_provider = NodePath("LevelInfoProvider")
+[node name="World" instance=ExtResource("1_ljgbv")]
+script = ExtResource("2_pjsk4")
 tutorial = true
 
 [node name="BlockSequence" parent="GameObjects" index="0"]
 randomize_sequence = false
-current_sequence = [0, 0, 1, 1]
+current_sequence = Array[int]([0, 0, 1, 1])
 
-[node name="LevelInfoProvider" type="Node" parent="." index="10"]
-script = ExtResource("2_5bp36")
-notes = Array[int]([3, 10])
+[node name="BasicLevelProvider" parent="." index="6"]
+level_info = ExtResource("2_37hjy")
+
+[node name="MovementTutorial" parent="." index="7" instance=ExtResource("2_u3fj2")]
+visible = false
+
+[node name="BlockSequenceTutorial" parent="." index="8" instance=ExtResource("3_b0efg")]
+visible = false
+
+[connection signal="current_tone_changed" from="Player" to="MovementTutorial" method="_on_player_current_tone_changed"]
+[connection signal="direction_changed" from="Player" to="MovementTutorial" method="_on_player_direction_changed"]
+[connection signal="jumped" from="Player" to="MovementTutorial" method="_on_player_jumped"]
+[connection signal="on_floor_changed" from="Player" to="MovementTutorial" method="_on_player_on_floor_changed"]
+[connection signal="finished" from="GameObjects/BlockSequence" to="BlockSequenceTutorial" method="_on_block_sequence_finished"]
+[connection signal="sequence_finished" from="GameObjects/BlockSequence" to="BlockSequenceTutorial" method="_on_block_sequence_sequence_finished"]
+[connection signal="sequence_played" from="GameObjects/BlockSequence" to="BlockSequenceTutorial" method="_on_block_sequence_sequence_played"]
+[connection signal="finished" from="MovementTutorial" to="." method="_on_movement_tutorial_finished"]
 
 [editable path="Environment/Stages/Stage0/PlatformSet"]
 [editable path="Environment/Stages/Stage0/PlatformSet2"]

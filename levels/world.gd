@@ -7,7 +7,7 @@ var player_octave: int
 @export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
 
-@export var level_info_provider: LevelInfoProvider
+@export var level_provider: LevelProvider
 @export var tutorial: bool = false
 @export var player_camera_zoom: Vector2 = Vector2.ONE
 
@@ -33,11 +33,7 @@ var _overview_zoom: Vector2
 var _stages: Array[Node] = []
 
 func _start() -> void:
-	if tutorial:
-		$MovementTutorial.show()
-		$MovementTutorial.next_step()
-	else:
-		%BlockSequence.start()
+	%BlockSequence.start()
 
 func _get_platform_sets(stage: Node) -> Array[PlatformSet]:
 	var platform_sets: Array[PlatformSet] = []
@@ -93,8 +89,9 @@ func _setup_stages() -> void:
 		$Environment/Stages.remove_child(s)
 
 	var stage_notes: Dictionary
-	if level_info_provider:
-		stage_notes = level_info_provider.stage_notes
+	if level_provider:
+		stage_notes = level_provider.stage_notes
+		%BlockSequence.sequence_length_max = level_provider.sequence_length_max
 
 	var prev_tone: Globals.Tone = Globals.Tone.A
 	var cur_octave: int = 0
@@ -196,14 +193,6 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 	if !demo_sequence:
 		_set_player_camera()
 
-		if tutorial:
-			$MovementTutorial.hide()
-			$BlockSequenceTutorial.show()
-
 
 func _on_block_sequence_sequence_finished(_valid) -> void:
 	_set_overview_camera()
-
-
-func _on_movement_tutorial_finished() -> void:
-	%BlockSequence.start()

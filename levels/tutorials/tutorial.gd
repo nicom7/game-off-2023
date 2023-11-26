@@ -1,6 +1,7 @@
 class_name Tutorial
 extends Node
 
+@export var show_congrats: bool = true
 signal finished
 
 var _step: int = -1
@@ -11,7 +12,8 @@ func current_step() -> int:
 func set_step(step: int) -> void:
 	_step = step
 	if _step >= _get_texts().size():
-		$Step/Label.text = "Well done!"
+		if show_congrats:
+			$Step/Label.text = "Well done!"
 		finished.emit()
 	elif _step >= 0:
 		$Step/Label.text = _get_texts()[_step]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ScaleInfo" load_steps=2 format=3 uid="uid://c68qfrm1lajoc"]
+
+[ext_resource type="Script" path="res://levels/scale_info.gd" id="1_8msmu"]
+
+[resource]
+script = ExtResource("1_8msmu")
+tonic = 3
+degrees = Array[int]([0, 4, 7])
+inversion = 0
+notes = Array[int]([])

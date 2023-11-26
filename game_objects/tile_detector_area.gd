@@ -20,7 +20,7 @@ func _on_center_area_2d_body_entered(body: Node2D) -> void:
 	_update_overlapping_body(body)
 
 
-func _on_base_area_2d_body_entered(body: Node2D) -> void:
+func _on_base_area_2d_body_entered(_body: Node2D) -> void:
 	var overlapping_bodies = $BaseArea2D.get_overlapping_bodies()
 	if overlapping_bodies.size() == 1:
 		_update_overlapping_body(overlapping_bodies[0])

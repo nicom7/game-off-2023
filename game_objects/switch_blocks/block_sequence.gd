@@ -1,10 +1,10 @@
 extends Node
 
 @export var switch_blocks: Array[SwitchBlock] = []
-@export_range(1, 99) var sequence_length_max: int = 7
+@export_range(1, 99) var sequence_length_max: int = Globals.SEQUENCE_LENGTH_MAX
 @export var randomize_sequence: bool = true
 ## The current block sequence as a list of block indexes (0 is the first platform block, 1 is the second, etc.)
-@export var current_sequence: PackedInt32Array = []
+@export var current_sequence: Array[int] = []
 @export var active: bool = true
 
 enum SequenceState
@@ -32,6 +32,9 @@ func start() -> void:
 	_set_blocks_enabled(false)
 	_sequence_state = SequenceState.DEMO
 	_play_sequence(range(switch_blocks.size()))
+
+func get_current_sequence_end() -> int:
+	return _current_sequence_end
 
 func _setup_blocks() -> void:
 	for b in switch_blocks:
