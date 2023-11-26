@@ -14,7 +14,7 @@ enum Step
 var _texts: PackedStringArray = [
 	"Hold → or ← to move",
 	"Press {C_note} to jump",
-	"Press {G_note} to climb up the ladder",
+	"Press {G_note} to climb up the stairs",
 	"Hold {G_note} to reach the G platform",
 	"Press {G_note} to jump",
 	"Press {C_note} to climb down",
