@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvb58jpgw1brt"]
+
+[ext_resource type="PackedScene" uid="uid://dpg5fwcr50ioc" path="res://levels/tutorials/movement_tutorial.tscn" id="1_iuso8"]
+[ext_resource type="Script" path="res://levels/tutorials/accidentals_tutorial.gd" id="2_dwt3t"]
+
+[node name="AccidentalsTutorial" instance=ExtResource("1_iuso8")]
+script = ExtResource("2_dwt3t")

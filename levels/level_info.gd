@@ -8,4 +8,4 @@ extends Resource
 ## Maximum length of the block sequence to generate
 @export_range(1, 99) var sequence_length_max: int = 4
 ## The path of the scene to use for the level
-@export_file var level_scene_path: String = "res://levels/world_a.tscn"
+@export_file("*.tscn") var level_scene_path: String = "res://levels/world_a.tscn"

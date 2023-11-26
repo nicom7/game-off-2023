@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://crcuux6dw4pla"]
+
+[ext_resource type="PackedScene" uid="uid://bgmrmwu61uqnt" path="res://levels/world_a.tscn" id="1_ig3ju"]
+[ext_resource type="Script" path="res://levels/tutorials/world_accidentals_tutorial.gd" id="2_xgyky"]
+[ext_resource type="Resource" uid="uid://b5g0767blh1hv" path="res://levels/level_infos/level_accidentals_tutorial.tres" id="3_3ftxb"]
+[ext_resource type="PackedScene" uid="uid://bvb58jpgw1brt" path="res://levels/tutorials/accidentals_tutorial.tscn" id="5_drfpy"]
+
+[node name="World" instance=ExtResource("1_ig3ju")]
+script = ExtResource("2_xgyky")
+
+[node name="BlockSequence" parent="GameObjects" index="0"]
+sequence_length_max = 4
+randomize_sequence = false
+current_sequence = Array[int]([0, 1, 2, 3])
+
+[node name="BasicLevelProvider" parent="." index="6"]
+level_info = ExtResource("3_3ftxb")
+
+[node name="AccidentalsTutorial" parent="." index="7" instance=ExtResource("5_drfpy")]
+visible = false
+
+[connection signal="sequence_finished" from="GameObjects/BlockSequence" to="AccidentalsTutorial" method="_on_block_sequence_sequence_finished"]
+
+[editable path="Environment/Stages/Stage0/PlatformSet"]
+[editable path="Environment/Stages/Stage0/PlatformSet2"]
+[editable path="Environment/Stages/Stage1/PlatformSet"]
+[editable path="Environment/Stages/Stage1/PlatformSet2"]
+[editable path="Environment/Stages/Stage2/PlatformSet"]
+[editable path="Environment/Stages/Stage2/PlatformSet2"]
+[editable path="Environment/Stages/Stage3/PlatformSet"]
+[editable path="Environment/Stages/Stage3/PlatformSet2"]
+[editable path="Environment/Stages/Stage4/PlatformSet"]
+[editable path="Environment/Stages/Stage4/PlatformSet2"]
+[editable path="Environment/Stages/Stage5/PlatformSet"]
+[editable path="Environment/Stages/Stage5/PlatformSet2"]
+[editable path="Environment/Stages/Stage6/PlatformSet"]
+[editable path="Environment/Stages/Stage6/PlatformSet2"]

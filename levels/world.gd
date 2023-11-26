@@ -33,11 +33,7 @@ var _overview_zoom: Vector2
 var _stages: Array[Node] = []
 
 func _start() -> void:
-	if tutorial:
-		$MovementTutorial.show()
-		$MovementTutorial.next_step()
-	else:
-		%BlockSequence.start()
+	%BlockSequence.start()
 
 func _get_platform_sets(stage: Node) -> Array[PlatformSet]:
 	var platform_sets: Array[PlatformSet] = []
@@ -197,14 +193,6 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 	if !demo_sequence:
 		_set_player_camera()
 
-		if tutorial:
-			$MovementTutorial.hide()
-			$BlockSequenceTutorial.show()
-
 
 func _on_block_sequence_sequence_finished(_valid) -> void:
 	_set_overview_camera()
-
-
-func _on_movement_tutorial_finished() -> void:
-	%BlockSequence.start()

@@ -10,10 +10,10 @@
 [ext_resource type="Resource" uid="uid://cvfdhx5boqxuj" path="res://levels/level_infos/level_tutorial.tres" id="7_og115"]
 [ext_resource type="Resource" uid="uid://bk7diaeenvhba" path="res://levels/level_infos/levels_1_to_4.tres" id="7_swa47"]
 [ext_resource type="Resource" uid="uid://dairla6s3rwbv" path="res://levels/level_infos/levels_5_to_8.tres" id="9_0vo6u"]
-[ext_resource type="Resource" uid="uid://bg4cf38vg741s" path="res://levels/level_infos/level_13_tutorial.tres" id="10_3q8ox"]
 [ext_resource type="Resource" uid="uid://d2jd4h4e80b8y" path="res://levels/level_infos/levels_13_to_16.tres" id="10_dypps"]
 [ext_resource type="Resource" uid="uid://cscbvfqkb11j7" path="res://levels/level_infos/levels_9_to_12.tres" id="10_v8k3x"]
 [ext_resource type="Resource" uid="uid://l1g6ee6cn32r" path="res://levels/level_infos/levels_17_to_20.tres" id="11_e8qcc"]
+[ext_resource type="Resource" uid="uid://b5g0767blh1hv" path="res://levels/level_infos/level_accidentals_tutorial.tres" id="11_xqxel"]
 [ext_resource type="Resource" uid="uid://4medl6mrpng1" path="res://levels/level_infos/levels_21_to_24.tres" id="12_hm2f0"]
 [ext_resource type="Resource" uid="uid://hhlbue0uxe3j" path="res://levels/level_infos/levels_25_to_28.tres" id="13_a5w1c"]
 [ext_resource type="Resource" uid="uid://dvj6luy8yapbd" path="res://levels/level_infos/levels_29_to_32.tres" id="14_tvlkx"]
@@ -150,7 +150,7 @@ visible = false
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("6_10awd")
-level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_og115"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_3q8ox"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_4iyos")])
+level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_og115"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("11_xqxel"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_4iyos")])
 
 [connection signal="finished" from="Transition" to="." method="_on_transition_finished"]
 [connection signal="igm_pressed" from="HUD" to="." method="_on_hud_igm_pressed"]
