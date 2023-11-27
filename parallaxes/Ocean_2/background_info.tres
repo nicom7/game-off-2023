@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BackgroundInfo" load_steps=2 format=3 uid="uid://dk7ua0nnhgo7k"]
+
+[ext_resource type="Script" path="res://parallaxes/background_info.gd" id="1_r3v8y"]
+
+[resource]
+script = ExtResource("1_r3v8y")
+parallax_scales = Array[Vector2]([Vector2(0.02, 0.02), Vector2(0.05, 0.02), Vector2(0.05, 0.02)])
