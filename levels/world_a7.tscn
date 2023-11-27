@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfr0appdof8qf"]
+
+[ext_resource type="PackedScene" uid="uid://bgmrmwu61uqnt" path="res://levels/world_a.tscn" id="1_bmxsn"]
+
+[node name="World" instance=ExtResource("1_bmxsn")]
+
+[node name="Background" parent="." index="0"]
+background = 6
+
+[editable path="Environment/Stages/Stage0/PlatformSet"]
+[editable path="Environment/Stages/Stage0/PlatformSet2"]
+[editable path="Environment/Stages/Stage1/PlatformSet"]
+[editable path="Environment/Stages/Stage1/PlatformSet2"]
+[editable path="Environment/Stages/Stage2/PlatformSet"]
+[editable path="Environment/Stages/Stage2/PlatformSet2"]
+[editable path="Environment/Stages/Stage3/PlatformSet"]
+[editable path="Environment/Stages/Stage3/PlatformSet2"]
+[editable path="Environment/Stages/Stage4/PlatformSet"]
+[editable path="Environment/Stages/Stage4/PlatformSet2"]
+[editable path="Environment/Stages/Stage5/PlatformSet"]
+[editable path="Environment/Stages/Stage5/PlatformSet2"]
+[editable path="Environment/Stages/Stage6/PlatformSet"]
+[editable path="Environment/Stages/Stage6/PlatformSet2"]

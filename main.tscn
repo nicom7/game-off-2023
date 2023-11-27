@@ -102,7 +102,7 @@ scales_folder_path = "res://levels/scales/"
 stage_count_max = 7
 notes_per_stage_max = 2
 sequence_length_max = 4
-level_scene_path = "res://levels/world_a.tscn"
+level_scene_path = "res://levels/world_a6.tscn"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dgxr5")

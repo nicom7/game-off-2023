@@ -10,6 +10,9 @@
 script = ExtResource("2_pjsk4")
 tutorial = true
 
+[node name="Background" parent="." index="0"]
+background = 1
+
 [node name="MovementTutorial" parent="." index="6" instance=ExtResource("2_u3fj2")]
 visible = false
 

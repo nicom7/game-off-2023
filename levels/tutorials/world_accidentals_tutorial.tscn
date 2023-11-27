@@ -9,6 +9,9 @@
 script = ExtResource("2_xgyky")
 tutorial = true
 
+[node name="Background" parent="." index="0"]
+background = 5
+
 [node name="AccidentalsTutorial" parent="." index="6" instance=ExtResource("5_drfpy")]
 visible = false
 

@@ -12,3 +12,4 @@ scales_folder_path = "res://levels/scales/"
 stage_count_max = 3
 notes_per_stage_max = 2
 sequence_length_max = 8
+level_scene_path = "res://levels/world_a3.tscn"
