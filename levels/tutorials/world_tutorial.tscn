@@ -10,14 +10,14 @@
 script = ExtResource("2_pjsk4")
 tutorial = true
 
-[node name="BasicLevelProvider" parent="." index="6"]
+[node name="MovementTutorial" parent="." index="6" instance=ExtResource("2_u3fj2")]
+visible = false
+
+[node name="BlockSequenceTutorial" parent="." index="7" instance=ExtResource("3_b0efg")]
+visible = false
+
+[node name="BasicLevelProvider" parent="." index="8"]
 level_info = ExtResource("2_37hjy")
-
-[node name="MovementTutorial" parent="." index="7" instance=ExtResource("2_u3fj2")]
-visible = false
-
-[node name="BlockSequenceTutorial" parent="." index="8" instance=ExtResource("3_b0efg")]
-visible = false
 
 [node name="BlockSequence" parent="GameObjects" index="0"]
 randomize_sequence = false

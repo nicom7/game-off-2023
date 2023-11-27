@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7huf0srkra04"]
+[gd_scene load_steps=10 format=3 uid="uid://b7huf0srkra04"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_u7smd"]
 [ext_resource type="PackedScene" uid="uid://bfbbc1lm3doy7" path="res://game_objects/audio/ambient_note_player.tscn" id="2_573sm"]
-[ext_resource type="Texture2D" uid="uid://dvobjuqmsimxc" path="res://parallaxes/Ocean_1/1.png" id="3_ntxxk"]
+[ext_resource type="PackedScene" uid="uid://bky1t6pbpw2kp" path="res://parallaxes/background.tscn" id="3_ojp7i"]
 [ext_resource type="Script" path="res://game_objects/camera.gd" id="4_jd0f8"]
-[ext_resource type="Texture2D" uid="uid://xewexd2rap2s" path="res://parallaxes/Ocean_1/2.png" id="5_hyk5i"]
-[ext_resource type="Texture2D" uid="uid://s2v1bt8tw10b" path="res://parallaxes/Ocean_1/3.png" id="6_5pgc0"]
 [ext_resource type="PackedScene" uid="uid://dqk2pedcucgnw" path="res://characters/player/player.tscn" id="6_ahra0"]
 [ext_resource type="PackedScene" uid="uid://cfqdgrh4lw7pi" path="res://game_objects/switch_blocks/block_sequence.tscn" id="7_v4u45"]
 [ext_resource type="PackedScene" uid="uid://bxun5w5sv6twu" path="res://game_objects/walls/wall.tscn" id="9_w7oqa"]
@@ -22,65 +20,7 @@ point_count = 2
 script = ExtResource("1_u7smd")
 ambient_note_player_scene = ExtResource("2_573sm")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -50
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
-offset = Vector2(0, -50)
-scale = Vector2(2.3, 2.3)
-transform = Transform2D(2.3, 0, 0, 2.3, 0, -50)
-scroll_ignore_camera_zoom = true
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.02, 0.02)
-motion_mirroring = Vector2(1152, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
-texture_filter = 3
-texture = ExtResource("3_ntxxk")
-centered = false
-region_rect = Rect2(2306, 4, 1095, 613)
-
-[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
-texture_filter = 3
-texture = ExtResource("3_ntxxk")
-centered = false
-offset = Vector2(-576, 0)
-region_rect = Rect2(2306, 4, 1095, 613)
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.04, 0.02)
-motion_mirroring = Vector2(1152, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
-texture_filter = 3
-texture = ExtResource("5_hyk5i")
-centered = false
-region_rect = Rect2(2306, 4, 1095, 613)
-
-[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
-texture_filter = 3
-texture = ExtResource("5_hyk5i")
-centered = false
-offset = Vector2(-576, 0)
-region_rect = Rect2(2306, 4, 1095, 613)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.08, 0.02)
-motion_mirroring = Vector2(1152, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer3"]
-texture_filter = 3
-texture = ExtResource("6_5pgc0")
-centered = false
-region_rect = Rect2(2306, 4, 1095, 613)
-
-[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer3"]
-texture_filter = 3
-texture = ExtResource("6_5pgc0")
-centered = false
-offset = Vector2(-576, 0)
-region_rect = Rect2(2306, 4, 1095, 613)
+[node name="Background" parent="." instance=ExtResource("3_ojp7i")]
 
 [node name="Player" parent="." instance=ExtResource("6_ahra0")]
 unique_name_in_owner = true

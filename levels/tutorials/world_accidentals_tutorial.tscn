@@ -9,11 +9,11 @@
 script = ExtResource("2_xgyky")
 tutorial = true
 
-[node name="BasicLevelProvider" parent="." index="6"]
-level_info = ExtResource("3_3ftxb")
-
-[node name="AccidentalsTutorial" parent="." index="7" instance=ExtResource("5_drfpy")]
+[node name="AccidentalsTutorial" parent="." index="6" instance=ExtResource("5_drfpy")]
 visible = false
+
+[node name="BasicLevelProvider" parent="." index="7"]
+level_info = ExtResource("3_3ftxb")
 
 [node name="BlockSequence" parent="GameObjects" index="0"]
 randomize_sequence = false
