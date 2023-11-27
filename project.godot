@@ -30,6 +30,10 @@ Config="*res://utils/config.tscn"
 
 gdscript/warnings/shadowed_variable=2
 
+[display]
+
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="Game Off 2023"

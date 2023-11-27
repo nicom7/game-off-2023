@@ -51,7 +51,7 @@ size = Vector2(288, 288)
 
 [sub_resource type="Resource" id="Resource_hdtum"]
 script = ExtResource("6_708ue")
-notes = Array[int]([0, 5, 7])
+notes = Array[int]([0, 5, 7, 8, 10, 2, 3])
 stage_count_max = 7
 notes_per_stage_max = 1
 sequence_length_max = 4
