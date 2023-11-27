@@ -17,7 +17,8 @@ func get_current_level_provider() -> LevelProvider:
 	if current_level < 0 or current_level >= _level_providers.size():
 		return null
 
-	return _level_providers[current_level]
+	var li: LevelInfo = level_infos[current_level]
+	return _create_level_provider(li) if li.regenerate else _level_providers[current_level]
 
 func _update_current_level() -> void:
 	if is_node_ready():
