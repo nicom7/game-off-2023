@@ -24,13 +24,12 @@ const DEFAULT_BACKGROUND_INFO: BackgroundInfo = preload("res://parallaxes/defaul
 
 func _ready() -> void:
 	_update_sprites()
-	pass
 
 func _update_sprites() -> void:
 	if not is_node_ready():
 		return
 
-	var background_info: BackgroundInfo = DEFAULT_BACKGROUND_INFO
+	var background_info: BackgroundInfo = DEFAULT_BACKGROUND_INFO.duplicate()
 
 	var background_name = (Background.keys()[background] as String).to_lower()
 	var dir = DirAccess.open("res://parallaxes/" + background_name)
@@ -40,8 +39,6 @@ func _update_sprites() -> void:
 		var custom_background_info = resources[0] as BackgroundInfo
 		for i in custom_background_info.parallax_scales.size():
 			background_info.parallax_scales[i] = custom_background_info.parallax_scales[i]
-
-	print(background_info.parallax_scales)
 
 	var layers = %ParallaxBackground.get_children()
 	for i in layers.size():
