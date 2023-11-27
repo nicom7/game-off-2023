@@ -23,12 +23,12 @@
 shader = ExtResource("4_fxvtf")
 shader_parameter/amount = 2.0
 
-[sub_resource type="Gradient" id="Gradient_hebpg"]
+[sub_resource type="Gradient" id="Gradient_4wmm2"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3r7dh"]
-gradient = SubResource("Gradient_hebpg")
+gradient = SubResource("Gradient_4wmm2")
 
 [sub_resource type="Animation" id="Animation_r6suw"]
 resource_name = "fade_in"

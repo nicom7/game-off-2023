@@ -10,7 +10,7 @@ signal skip_tutorial_pressed()
 
 
 func show_title() -> void:
-	$Title.show()
+	%Title.show()
 	$AnimationPlayer.play("fade_in")
 	$Timer.start()
 

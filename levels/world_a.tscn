@@ -60,13 +60,13 @@ level_scene_path = "res://levels/world_a.tscn"
 [node name="World" node_paths=PackedStringArray("level_provider") instance=ExtResource("1_dlj7h")]
 level_provider = NodePath("BasicLevelProvider")
 
-[node name="Player" parent="." index="0"]
+[node name="Player" parent="." index="1"]
 position = Vector2(48, 456)
 
-[node name="Overview" parent="." index="1"]
+[node name="Overview" parent="." index="2"]
 visible = true
 
-[node name="CameraCenter" parent="." index="2"]
+[node name="CameraCenter" parent="." index="3"]
 position = Vector2(576, -96)
 
 [node name="Stage0" type="Node2D" parent="Environment/Stages" index="0"]

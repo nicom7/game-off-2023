@@ -9,15 +9,15 @@
 script = ExtResource("2_xgyky")
 tutorial = true
 
-[node name="BlockSequence" parent="GameObjects" index="0"]
-randomize_sequence = false
-current_sequence = Array[int]([0, 1, 2, 3])
-
 [node name="BasicLevelProvider" parent="." index="6"]
 level_info = ExtResource("3_3ftxb")
 
 [node name="AccidentalsTutorial" parent="." index="7" instance=ExtResource("5_drfpy")]
 visible = false
+
+[node name="BlockSequence" parent="GameObjects" index="0"]
+randomize_sequence = false
+current_sequence = Array[int]([0, 1, 2, 3])
 
 [connection signal="sequence_finished" from="GameObjects/BlockSequence" to="AccidentalsTutorial" method="_on_block_sequence_sequence_finished"]
 
