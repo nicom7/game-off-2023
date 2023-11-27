@@ -49,7 +49,7 @@ size_flags_stretch_ratio = 0.25
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SurgeXTContainer" type="VBoxContainer" parent="Center/LeftSideContainer"]
+[node name="SurgeXTContainer" type="PanelContainer" parent="Center/LeftSideContainer"]
 layout_mode = 2
 
 [node name="SurgeXTLbl" type="RichTextLabel" parent="Center/LeftSideContainer/SurgeXTContainer"]
@@ -89,7 +89,11 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
+[node name="ScrollContainer" type="ScrollContainer" parent="Center/CreditsContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
 [node name="CreditsInfoLbl" type="RichTextLabel" parent="Center/CreditsContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(420, 420)
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
@@ -107,8 +111,11 @@ Audio & Programming
 [font_size=20]
 Nicolas Comtois
 [/font_size]
+Additional Art
+[font_size=20]
+craftpix.net
+[/font_size]
 Thanks for playing! :D[/center]"
-fit_content = true
 autowrap_mode = 0
 script = ExtResource("6_y4cu6")
 
@@ -125,16 +132,19 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GodotContainer" type="VBoxContainer" parent="Center/RightSideContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Center/RightSideContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Center/RightSideContainer/GodotContainer"]
+[node name="GodotContainer" type="VBoxContainer" parent="Center/RightSideContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Center/RightSideContainer/PanelContainer/GodotContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1ufcp")
 text = "Made with"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Center/RightSideContainer/GodotContainer"]
+[node name="TextureRect" type="TextureRect" parent="Center/RightSideContainer/PanelContainer/GodotContainer"]
 texture_filter = 6
 layout_mode = 2
 texture = ExtResource("4_i2agc")
