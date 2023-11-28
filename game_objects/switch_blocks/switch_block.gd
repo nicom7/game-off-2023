@@ -46,7 +46,10 @@ func _update_block() -> void:
 	if not is_node_ready():
 		return
 
-	modulate = Config.tone_colors[tone]
+	var tone_color = Config.tone_colors[tone]
+	%Block.self_modulate = tone_color
+	%ToneLabel.self_modulate = tone_color.lightened(Globals.LIGHT_COLOR_AMOUNT)
+	%HitVFX.self_modulate = tone_color.lightened(Globals.LIGHT_COLOR_AMOUNT)
 	var label = Globals.get_label_from_tone(tone)
 	var tone_label: Label = %ToneLabel
 

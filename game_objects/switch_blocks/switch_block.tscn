@@ -71,7 +71,6 @@ _data = {
 }
 
 [node name="SwitchBlock" type="StaticBody2D"]
-modulate = Color(1, 0.407843, 0.337255, 1)
 collision_mask = 3
 script = ExtResource("1_22t1h")
 block_note_player_scene = ExtResource("2_32ohu")
@@ -90,12 +89,15 @@ position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_v1sty")
 
 [node name="Block" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 1, 1)
 clip_children = 2
 texture = ExtResource("2_ueuwi")
 centered = false
 
 [node name="ToneLabel" type="Label" parent="Block"]
 unique_name_in_owner = true
+self_modulate = Color(1, 0.721569, 1, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -108,7 +110,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HitVFX" type="Sprite2D" parent="Block"]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.717647, 1, 1)
 position = Vector2(24, 24)
 texture = SubResource("GradientTexture1D_egq61")
 region_enabled = true

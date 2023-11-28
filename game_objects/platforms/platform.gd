@@ -46,9 +46,9 @@ func _update_tone() -> void:
 
 	var label = Globals.get_label_from_tone(tone)
 	%LeftLabel.text = label
-	%LeftLabel.self_modulate = tone_color.lightened(0.5)
+	%LeftLabel.self_modulate = tone_color.lightened(Globals.LIGHT_COLOR_AMOUNT)
 	%RightLabel.text = label
-	%RightLabel.self_modulate = tone_color.lightened(0.5)
+	%RightLabel.self_modulate = tone_color.lightened(Globals.LIGHT_COLOR_AMOUNT)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
