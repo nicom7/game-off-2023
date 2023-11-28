@@ -3,6 +3,10 @@ extends CharacterBody2D
 
 @export var speed: float = 300.0
 @export var jump_speed: float = -400.0
+@export_color_no_alpha var color: Color = Color.WHITE:
+	set(value):
+		color = value
+		_update_color()
 
 @export var jump_note_player_scene: PackedScene
 
@@ -29,6 +33,7 @@ var current_tone: Globals.Tone = Globals.Tone.A:
 	set(value):
 		if current_tone != value:
 			current_tone = value
+			color = Config.tone_colors[current_tone]
 			current_tone_changed.emit(current_tone)
 
 var current_octave: int = 0:
@@ -76,6 +81,10 @@ func exit_climb() -> void:
 		climbing = false
 		current_ladder = null
 #		print("exit climb")
+
+func _update_color():
+	if is_node_ready():
+		%MusicBoy.modulate = color
 
 func _ready() -> void:
 	_setup_input_actions()

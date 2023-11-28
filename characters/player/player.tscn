@@ -295,7 +295,7 @@ texture = ExtResource("5_fbxp7")
 hframes = 4
 
 [node name="MusicBoy" type="Sprite2D" parent="Visual/MusicBoyMask"]
-modulate = Color(1, 0.517647, 0.176471, 1)
+unique_name_in_owner = true
 texture = ExtResource("4_wwmom")
 hframes = 4
 vframes = 3
