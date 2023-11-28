@@ -11,6 +11,11 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var jump_note_player: NotePlayer
 
+var color: Color = Color.WHITE:
+	set(value):
+		color = value
+		_update_color()
+
 class InputActions:
 	var move_left: String
 	var move_right: String
@@ -29,6 +34,7 @@ var current_tone: Globals.Tone = Globals.Tone.A:
 	set(value):
 		if current_tone != value:
 			current_tone = value
+			color = Config.tone_colors[current_tone]
 			current_tone_changed.emit(current_tone)
 
 var current_octave: int = 0:
@@ -76,6 +82,10 @@ func exit_climb() -> void:
 		climbing = false
 		current_ladder = null
 #		print("exit climb")
+
+func _update_color():
+	if is_node_ready():
+		%MusicBoy.modulate = color
 
 func _ready() -> void:
 	_setup_input_actions()

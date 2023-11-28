@@ -2,6 +2,21 @@
 class_name Ladder
 extends Node2D
 
+@export_range(2, 99) var size: int = 2:
+	set(value):
+		size = value
+		_update_size()
+
+var color: Color = Color.WHITE:
+	set(value):
+		color = value
+		_update_color()
+
+## Notes bitfield for the climb up action
+var climb_up_notes: int
+## Notes bitfield for the climb down action
+var climb_down_notes: int
+
 var _upper_tone: Globals.Tone = Globals.Tone.B:
 	set(value):
 		if _upper_tone != value:
@@ -13,16 +28,6 @@ var _lower_tone: Globals.Tone = Globals.Tone.A:
 		if _lower_tone != value:
 			_lower_tone = value
 			_update_lower_tone()
-
-@export_range(2, 99) var size: int = 2:
-	set(value):
-		size = value
-		_update_size()
-
-## Notes bitfield for the climb up action
-var climb_up_notes: int
-## Notes bitfield for the climb down action
-var climb_down_notes: int
 
 func _update_upper_tone() -> void:
 	if not is_node_ready() or Engine.is_editor_hint():
@@ -47,6 +52,10 @@ func _update_size():
 	%Ladder.region_rect = Rect2(Vector2.ZERO, sprite_size)
 	%Area2D.scale.y = size
 	%BottomPivot.position.y = sprite_size.y
+
+func _update_color():
+	if is_node_ready():
+		%Ladder.modulate = color
 
 
 # Called when the node enters the scene tree for the first time.
