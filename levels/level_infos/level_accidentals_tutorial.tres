@@ -7,5 +7,5 @@ script = ExtResource("1_shx1k")
 notes = Array[int]([6, 10, 11, 1])
 stage_count_max = 2
 notes_per_stage_max = 2
-sequence_length_max = 6
+sequence_length_max = 4
 level_scene_path = "res://levels/tutorials/world_accidentals_tutorial.tscn"
