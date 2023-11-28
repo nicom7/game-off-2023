@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl5x0vjmi2ghe"]
+[gd_scene load_steps=8 format=3 uid="uid://bl5x0vjmi2ghe"]
 
 [ext_resource type="PackedScene" uid="uid://c3tdc80a12d1i" path="res://gui/settings_menu_contents.tscn" id="1_0auyf"]
 [ext_resource type="Script" path="res://gui/in_game_menu.gd" id="1_mtm3p"]
 [ext_resource type="PackedScene" uid="uid://cocwle1o0jur" path="res://gui/credits_menu_contents.tscn" id="3_ca555"]
 [ext_resource type="PackedScene" uid="uid://cdjugss3fcdq8" path="res://gui/in_game_menu_contents.tscn" id="3_nomb0"]
+[ext_resource type="Theme" uid="uid://cre75m8csvoum" path="res://themes/dialog_theme.tres" id="5_j0khv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfgi4"]
 
@@ -41,9 +42,23 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="AcceptDialog" type="ConfirmationDialog" parent="."]
+transparent_bg = true
+title = "Confirm"
+initial_position = 2
+size = Vector2i(663, 100)
+unresizable = true
+always_on_top = true
+popup_window = true
+theme = ExtResource("5_j0khv")
+ok_button_text = "Yes"
+dialog_text = "Your progress will be lost! Do you want to exit?"
+cancel_button_text = "No"
+
 [connection signal="close_pressed" from="MarginContainer/TabContainer/InGameMenuContents" to="." method="_on_in_game_menu_contents_close_pressed"]
 [connection signal="credits_pressed" from="MarginContainer/TabContainer/InGameMenuContents" to="." method="_on_in_game_menu_contents_credits_pressed"]
 [connection signal="exit_pressed" from="MarginContainer/TabContainer/InGameMenuContents" to="." method="_on_in_game_menu_contents_exit_pressed"]
 [connection signal="settings_pressed" from="MarginContainer/TabContainer/InGameMenuContents" to="." method="_on_in_game_menu_contents_settings_pressed"]
 [connection signal="back_pressed" from="MarginContainer/TabContainer/SettingsMenuContents" to="." method="_on_settings_menu_contents_back_pressed"]
 [connection signal="back_pressed" from="MarginContainer/TabContainer/CreditsMenuContents" to="." method="_on_credits_menu_contents_back_pressed"]
+[connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]

@@ -27,8 +27,12 @@ func _on_in_game_menu_contents_credits_pressed() -> void:
 
 
 func _on_in_game_menu_contents_exit_pressed() -> void:
-	get_tree().quit()
+	$AcceptDialog.show()
 
 
 func _on_in_game_menu_contents_close_pressed() -> void:
 	closed.emit()
+
+
+func _on_accept_dialog_confirmed() -> void:
+	get_tree().quit()
