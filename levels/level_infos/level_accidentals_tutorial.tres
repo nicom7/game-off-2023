@@ -9,3 +9,4 @@ stage_count_max = 2
 notes_per_stage_max = 2
 sequence_length_max = 4
 level_scene_path = "res://levels/tutorials/world_accidentals_tutorial.tscn"
+regenerate = false

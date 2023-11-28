@@ -153,6 +153,9 @@ libraries = {
 "": SubResource("AnimationLibrary_2k50g")
 }
 
+[node name="FadeOutTimer" type="Timer" parent="Transition"]
+one_shot = true
+
 [node name="HUD" parent="." instance=ExtResource("2_tqktt")]
 process_mode = 3
 layer = 100
@@ -167,6 +170,7 @@ script = ExtResource("6_10awd")
 level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_og115"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("11_xqxel"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_qn6nn"), SubResource("Resource_4iyos")])
 
 [connection signal="finished" from="Transition" to="." method="_on_transition_finished"]
+[connection signal="timeout" from="Transition/FadeOutTimer" to="." method="_on_fade_out_timer_timeout"]
 [connection signal="igm_pressed" from="HUD" to="." method="_on_hud_igm_pressed"]
 [connection signal="skip_tutorial_pressed" from="HUD" to="." method="_on_hud_skip_tutorial_pressed"]
 [connection signal="closed" from="InGameMenu" to="." method="_on_in_game_menu_closed"]
