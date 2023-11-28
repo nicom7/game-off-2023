@@ -31,7 +31,7 @@ func _ready() -> void:
 
 func _on_world_finished() -> void:
 	$HUD.skip_tutorial_visible = false
-	$Transition.fade_out()
+	$Transition/FadeOutTimer.start()
 
 
 func _on_in_game_menu_closed() -> void:
@@ -71,3 +71,7 @@ func _on_transition_finished(anim_name) -> void:
 
 func _on_hud_skip_tutorial_pressed() -> void:
 	_world.current_state = World.GameState.FINISHED
+
+
+func _on_fade_out_timer_timeout() -> void:
+	$Transition.fade_out()

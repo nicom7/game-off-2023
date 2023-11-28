@@ -22,5 +22,5 @@ func _setup_texts() -> void:
 func _ready() -> void:
 	_setup_texts()
 
-func _on_block_sequence_sequence_finished(valid) -> void:
+func _on_block_sequence_sequence_finished(_valid) -> void:
 	next_step()
