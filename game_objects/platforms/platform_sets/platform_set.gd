@@ -53,6 +53,9 @@ func _update_tone() -> void:
 		p.tone = tone
 		p.octave = octave
 
+	for l in get_ladders():
+		l.color = Config.tone_colors[tone].lightened(0.5)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_tone()

@@ -41,10 +41,14 @@ func _update_tone() -> void:
 	if not is_node_ready():
 		return
 
-	modulate = Config.tone_colors[tone]
+	var tone_color = Config.tone_colors[tone]
+	self.set_layer_modulate(0, tone_color)
+
 	var label = Globals.get_label_from_tone(tone)
 	%LeftLabel.text = label
+	%LeftLabel.self_modulate = tone_color.lightened(0.5)
 	%RightLabel.text = label
+	%RightLabel.self_modulate = tone_color.lightened(0.5)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

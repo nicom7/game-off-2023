@@ -3,10 +3,6 @@ extends CharacterBody2D
 
 @export var speed: float = 300.0
 @export var jump_speed: float = -400.0
-@export_color_no_alpha var color: Color = Color.WHITE:
-	set(value):
-		color = value
-		_update_color()
 
 @export var jump_note_player_scene: PackedScene
 
@@ -14,6 +10,11 @@ extends CharacterBody2D
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var jump_note_player: NotePlayer
+
+var color: Color = Color.WHITE:
+	set(value):
+		color = value
+		_update_color()
 
 class InputActions:
 	var move_left: String
