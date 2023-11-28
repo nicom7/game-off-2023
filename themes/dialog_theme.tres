@@ -1,0 +1,75 @@
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://cre75m8csvoum"]
+
+[ext_resource type="StyleBox" uid="uid://bsjupwu55e5oe" path="res://themes/disabled_style_box.tres" id="1_o1xwx"]
+[ext_resource type="StyleBox" uid="uid://peepy1jdoqgu" path="res://themes/hover_style_box.tres" id="2_2rx1x"]
+[ext_resource type="StyleBox" uid="uid://brsycjkfynjj1" path="res://themes/normal_style_box.tres" id="3_wfj13"]
+[ext_resource type="StyleBox" uid="uid://cd16edht5uqat" path="res://themes/pressed_style_box.tres" id="4_mdopo"]
+[ext_resource type="StyleBox" uid="uid://bkrv4uuuijk3k" path="res://themes/grabber_area_style_box.tres" id="5_0v40d"]
+[ext_resource type="StyleBox" uid="uid://0y3um44b2ml6" path="res://themes/grabber_area_highlight_style_box.tres" id="6_m44tw"]
+[ext_resource type="StyleBox" uid="uid://cf57xkki3vccu" path="res://themes/slider_style_box.tres" id="7_i88qb"]
+[ext_resource type="StyleBox" uid="uid://xk7j70i6c60g" path="res://themes/label_style_box.tres" id="8_hspoa"]
+[ext_resource type="StyleBox" uid="uid://ca6n45p4l5ue3" path="res://themes/window_embedded_border_style_box.tres" id="9_svpda"]
+[ext_resource type="FontFile" uid="uid://xycvan2inrdw" path="res://fonts/RussoOne-Regular.ttf" id="10_4u7ae"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1opa"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.25, 0.25, 0.25, 1)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_10hq7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cfp7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0f0gr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fy1k2"]
+
+[resource]
+default_font = ExtResource("10_4u7ae")
+default_font_size = 24
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_g1opa")
+Button/colors/font_color = Color(0.768, 0.9024, 0.96, 1)
+Button/colors/font_disabled_color = Color(0.705882, 0.827451, 0.878431, 0.501961)
+Button/colors/font_focus_color = Color(0.768, 0.9024, 0.96, 1)
+Button/colors/font_hover_color = Color(0.768, 0.9024, 0.96, 1)
+Button/colors/font_hover_pressed_color = Color(0.8, 0.941176, 1, 1)
+Button/colors/font_outline_color = Color(0.8, 0.941176, 1, 1)
+Button/colors/font_pressed_color = Color(0.8, 0.941176, 1, 1)
+Button/colors/icon_disabled_color = Color(0.705882, 0.827451, 0.878431, 0.501961)
+Button/colors/icon_focus_color = Color(0.768, 0.9024, 0.96, 1)
+Button/colors/icon_hover_color = Color(0.768, 0.9024, 0.96, 1)
+Button/colors/icon_hover_pressed_color = Color(0.8, 0.941176, 1, 1)
+Button/colors/icon_normal_color = Color(0.8, 0.941176, 1, 1)
+Button/colors/icon_pressed_color = Color(0.8, 0.941176, 1, 1)
+Button/styles/disabled = ExtResource("1_o1xwx")
+Button/styles/focus = SubResource("StyleBoxEmpty_10hq7")
+Button/styles/hover = ExtResource("2_2rx1x")
+Button/styles/normal = ExtResource("3_wfj13")
+Button/styles/pressed = ExtResource("4_mdopo")
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/styles/grabber_area = ExtResource("5_0v40d")
+HSlider/styles/grabber_area_highlight = ExtResource("6_m44tw")
+HSlider/styles/slider = ExtResource("7_i88qb")
+Label/colors/font_color = Color(0.8, 0.941176, 1, 1)
+Label/colors/font_shadow_color = Color(0.105882, 0.196078, 0.243137, 1)
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 3
+Label/styles/normal = ExtResource("8_hspoa")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_6cfp7")
+RichTextLabel/colors/default_color = Color(0.8, 0.941176, 1, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.105882, 0.196078, 0.243137, 1)
+RichTextLabel/constants/shadow_offset_x = 2
+RichTextLabel/constants/shadow_offset_y = 3
+RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_0f0gr")
+RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_fy1k2")
+Window/colors/title_color = Color(0.8, 0.941176, 1, 1)
+Window/styles/embedded_border = ExtResource("9_svpda")
