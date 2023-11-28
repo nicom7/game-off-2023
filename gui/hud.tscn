@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjyrekj7d6cal"]
+[gd_scene load_steps=11 format=3 uid="uid://bjyrekj7d6cal"]
 
 [ext_resource type="Script" path="res://gui/hud.gd" id="1_g3w1t"]
 [ext_resource type="PackedScene" uid="uid://d0d4pvp0xmvo" path="res://gui/icon_button.tscn" id="1_jofjt"]
@@ -10,6 +10,8 @@ blend_mode = 4
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_pcn2m"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g71of"]
 
 [sub_resource type="Animation" id="Animation_1ut3m"]
 resource_name = "fade_in"
@@ -77,6 +79,7 @@ _data = {
 script = ExtResource("1_g3w1t")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.88)
 material = SubResource("CanvasItemMaterial_ydja5")
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,6 +96,7 @@ size = Vector2i(1152, 648)
 
 [node name="Title" type="VBoxContainer" parent="SubViewport"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.88)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -108,6 +112,15 @@ size_flags_stretch_ratio = 0.25
 
 [node name="Label" parent="SubViewport/Title" instance=ExtResource("3_hd6d2")]
 layout_mode = 2
+
+[node name="ThanksLbl" type="Label" parent="SubViewport/Title"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g71of")
+text = "Thank you for playing!"
+horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="SubViewport/Title"]
 layout_mode = 2

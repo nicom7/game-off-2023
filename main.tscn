@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b24jmtuqoaeq6"]
+[gd_scene load_steps=28 format=3 uid="uid://b24jmtuqoaeq6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dgxr5"]
 [ext_resource type="PackedScene" uid="uid://bjyrekj7d6cal" path="res://gui/hud.tscn" id="2_tqktt"]
@@ -108,7 +108,20 @@ regenerate = false
 [sub_resource type="Resource" id="Resource_4iyos"]
 script = ExtResource("7_2r6pw")
 note_count_min = 5
-note_count_max = 12
+note_count_max = 7
+random_tonic = true
+random_inversion = true
+scales_folder_path = "res://levels/scales/"
+stage_count_max = 7
+notes_per_stage_max = 2
+sequence_length_max = 8
+level_scene_path = "res://levels/world_a6.tscn"
+regenerate = false
+
+[sub_resource type="Resource" id="Resource_gaviw"]
+script = ExtResource("7_2r6pw")
+note_count_min = 5
+note_count_max = 7
 random_tonic = true
 random_inversion = true
 scales_folder_path = "res://levels/scales/"
@@ -120,6 +133,7 @@ regenerate = true
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dgxr5")
+skip_current_level = true
 
 [node name="PostFX" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -167,7 +181,8 @@ visible = false
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("6_10awd")
-level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_og115"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("11_xqxel"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_qn6nn"), SubResource("Resource_4iyos")])
+level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_og115"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("11_xqxel"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_qn6nn"), SubResource("Resource_4iyos"), SubResource("Resource_gaviw")])
+current_level = 38
 
 [connection signal="finished" from="Transition" to="." method="_on_transition_finished"]
 [connection signal="timeout" from="Transition/FadeOutTimer" to="." method="_on_fade_out_timer_timeout"]

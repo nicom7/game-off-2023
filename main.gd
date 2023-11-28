@@ -17,6 +17,10 @@ func _create_world():
 	_world.level_provider = provider
 	_world.current_state = World.GameState.INTRO
 	_world.finished.connect(_on_world_finished, CONNECT_DEFERRED)
+	# Show "thanks" on last scripted level (1st random level)
+	if _level_manager.current_level == _level_manager.level_infos.size() - 2:
+		$HUD.thanks_visible = true
+		$HUD.show_title()
 	add_child(_world)
 
 func _destroy_world():
@@ -31,6 +35,7 @@ func _ready() -> void:
 
 func _on_world_finished() -> void:
 	$HUD.skip_tutorial_visible = false
+	$HUD.thanks_visible = false
 	$Transition/FadeOutTimer.start()
 
 
@@ -62,6 +67,7 @@ func _on_transition_finished(anim_name) -> void:
 		"fade_in":
 			_world.current_state = World.GameState.PLAYING
 			$HUD.skip_tutorial_visible = _world.tutorial
+
 		"fade_out":
 			_destroy_world()
 			$LevelManager.current_level += 1
