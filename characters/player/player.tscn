@@ -272,13 +272,14 @@ height = 36.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
-texture_filter = 1
+texture_filter = 3
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_qb0pk")
 jump_note_player_scene = ExtResource("2_fw7sl")
 
 [node name="Visual" type="Node2D" parent="."]
+position = Vector2(0, -15)
 
 [node name="MusicBoy" type="Sprite2D" parent="Visual"]
 position = Vector2(6, 0)
@@ -308,12 +309,12 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 22)
+position = Vector2(0, 7)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tparj")
 
 [node name="TileDetectorArea" parent="." instance=ExtResource("4_cq6e0")]
-position = Vector2(0, 36)
+position = Vector2(0, 21)
 scale = Vector2(3, 1)
 
 [node name="KeyboardController" parent="." instance=ExtResource("5_7ussj")]

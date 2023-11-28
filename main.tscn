@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b24jmtuqoaeq6"]
+[gd_scene load_steps=27 format=3 uid="uid://b24jmtuqoaeq6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dgxr5"]
 [ext_resource type="PackedScene" uid="uid://bjyrekj7d6cal" path="res://gui/hud.tscn" id="2_tqktt"]
@@ -23,12 +23,12 @@
 shader = ExtResource("4_fxvtf")
 shader_parameter/amount = 2.0
 
-[sub_resource type="Gradient" id="Gradient_hebpg"]
+[sub_resource type="Gradient" id="Gradient_4wmm2"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3r7dh"]
-gradient = SubResource("Gradient_hebpg")
+gradient = SubResource("Gradient_4wmm2")
 
 [sub_resource type="Animation" id="Animation_r6suw"]
 resource_name = "fade_in"
@@ -92,6 +92,19 @@ _data = {
 "fade_out": SubResource("Animation_7o5kq")
 }
 
+[sub_resource type="Resource" id="Resource_qn6nn"]
+script = ExtResource("7_2r6pw")
+note_count_min = 12
+note_count_max = 12
+random_tonic = true
+random_inversion = true
+scales_folder_path = "res://levels/scales/"
+stage_count_max = 7
+notes_per_stage_max = 2
+sequence_length_max = 8
+level_scene_path = "res://levels/world_a6.tscn"
+regenerate = false
+
 [sub_resource type="Resource" id="Resource_4iyos"]
 script = ExtResource("7_2r6pw")
 note_count_min = 5
@@ -101,8 +114,9 @@ random_inversion = true
 scales_folder_path = "res://levels/scales/"
 stage_count_max = 7
 notes_per_stage_max = 2
-sequence_length_max = 4
-level_scene_path = "res://levels/world_a.tscn"
+sequence_length_max = 8
+level_scene_path = "res://levels/world_a6.tscn"
+regenerate = true
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dgxr5")
@@ -150,7 +164,7 @@ visible = false
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("6_10awd")
-level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_og115"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("11_xqxel"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_4iyos")])
+level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_og115"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("11_xqxel"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_qn6nn"), SubResource("Resource_4iyos")])
 
 [connection signal="finished" from="Transition" to="." method="_on_transition_finished"]
 [connection signal="igm_pressed" from="HUD" to="." method="_on_hud_igm_pressed"]

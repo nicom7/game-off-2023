@@ -1,0 +1,197 @@
+[gd_resource type="SpriteFrames" load_steps=33 format=3 uid="uid://ey8awnjk0nl3"]
+
+[ext_resource type="Texture2D" uid="uid://dvobjuqmsimxc" path="res://parallaxes/Ocean_1/1.png" id="1_wn1jw"]
+[ext_resource type="Texture2D" uid="uid://xewexd2rap2s" path="res://parallaxes/Ocean_1/2.png" id="2_v2x0o"]
+[ext_resource type="Texture2D" uid="uid://s2v1bt8tw10b" path="res://parallaxes/Ocean_1/3.png" id="3_mdw8f"]
+[ext_resource type="Texture2D" uid="uid://bbbfduyblrhyk" path="res://parallaxes/Ocean_2/2.png" id="4_t00qx"]
+[ext_resource type="Texture2D" uid="uid://bfwemc4b7bno5" path="res://parallaxes/Ocean_2/3.png" id="5_il4a8"]
+[ext_resource type="Texture2D" uid="uid://b7o2vbxji7wjj" path="res://parallaxes/Ocean_2/4.png" id="6_s8gja"]
+[ext_resource type="Texture2D" uid="uid://clqgt07l4hgcy" path="res://parallaxes/Ocean_3/1.png" id="7_q2yxh"]
+[ext_resource type="Texture2D" uid="uid://qnbgtdqnvg1r" path="res://parallaxes/Ocean_3/2.png" id="8_f4ld6"]
+[ext_resource type="Texture2D" uid="uid://ceukr1fl3wfwq" path="res://parallaxes/Ocean_3/3.png" id="9_yf182"]
+[ext_resource type="Texture2D" uid="uid://crnkwoaefkhfn" path="res://parallaxes/Ocean_3/4.png" id="10_la5h2"]
+[ext_resource type="Texture2D" uid="uid://vau064do4ltw" path="res://parallaxes/Ocean_4/1.png" id="11_ytmjt"]
+[ext_resource type="Texture2D" uid="uid://bw75dokovs4jb" path="res://parallaxes/Ocean_4/2.png" id="12_tu1x0"]
+[ext_resource type="Texture2D" uid="uid://bvvihc7vc6c0o" path="res://parallaxes/Ocean_4/3.png" id="13_aq41g"]
+[ext_resource type="Texture2D" uid="uid://bk72xkk7njpo6" path="res://parallaxes/Ocean_4/4.png" id="14_uaxoj"]
+[ext_resource type="Texture2D" uid="uid://scsc0rvmxupf" path="res://parallaxes/Ocean_5/1.png" id="15_45w4u"]
+[ext_resource type="Texture2D" uid="uid://bdivxueylnfix" path="res://parallaxes/Ocean_5/2.png" id="16_65c7b"]
+[ext_resource type="Texture2D" uid="uid://dk1lo4enhv8t7" path="res://parallaxes/Ocean_5/3.png" id="17_x353a"]
+[ext_resource type="Texture2D" uid="uid://r6i82cmytcat" path="res://parallaxes/Ocean_5/4.png" id="18_d4ulr"]
+[ext_resource type="Texture2D" uid="uid://besu1bylq73oy" path="res://parallaxes/Ocean_6/1.png" id="19_12wkh"]
+[ext_resource type="Texture2D" uid="uid://hxni7qjo86r4" path="res://parallaxes/Ocean_6/2.png" id="20_8pmrl"]
+[ext_resource type="Texture2D" uid="uid://bltpgpep5ac3" path="res://parallaxes/Ocean_6/3.png" id="21_o2yo4"]
+[ext_resource type="Texture2D" uid="uid://earo0ljwyy3b" path="res://parallaxes/Ocean_6/4.png" id="22_37li0"]
+[ext_resource type="Texture2D" uid="uid://crjo857wvntbf" path="res://parallaxes/Ocean_7/1.png" id="23_3ns5c"]
+[ext_resource type="Texture2D" uid="uid://cfob1i3gi37be" path="res://parallaxes/Ocean_7/2.png" id="24_luec4"]
+[ext_resource type="Texture2D" uid="uid://dkkqvfduqar2w" path="res://parallaxes/Ocean_7/3.png" id="25_tuc26"]
+[ext_resource type="Texture2D" uid="uid://nogs5mg353d3" path="res://parallaxes/Ocean_7/4.png" id="26_gvad5"]
+[ext_resource type="Texture2D" uid="uid://by7c7axm1vrtw" path="res://parallaxes/Ocean_7/5.png" id="27_blvcw"]
+[ext_resource type="Texture2D" uid="uid://c0c11g4ttrvv3" path="res://parallaxes/Ocean_8/1.png" id="28_yhpar"]
+[ext_resource type="Texture2D" uid="uid://5c0kmoqymhd2" path="res://parallaxes/Ocean_8/2.png" id="29_phkts"]
+[ext_resource type="Texture2D" uid="uid://1f8pfhsgxavj" path="res://parallaxes/Ocean_8/3.png" id="30_4biwx"]
+[ext_resource type="Texture2D" uid="uid://cl37s27k2xt22" path="res://parallaxes/Ocean_8/4.png" id="31_72jm6"]
+[ext_resource type="Texture2D" uid="uid://djmkrum2ec3po" path="res://parallaxes/Ocean_8/5.png" id="32_yhgpy"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wn1jw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_v2x0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mdw8f")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"ocean_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_t00qx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_il4a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s8gja")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"ocean_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_q2yxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_f4ld6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yf182")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_la5h2")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"ocean_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ytmjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tu1x0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_aq41g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_uaxoj")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"ocean_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_45w4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_65c7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_x353a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_d4ulr")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"ocean_5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_12wkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_8pmrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_o2yo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_37li0")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"ocean_6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_3ns5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_luec4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_tuc26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_gvad5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_blvcw")
+}],
+"loop": true,
+"name": &"ocean_7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_yhpar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_phkts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_4biwx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_72jm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_yhgpy")
+}],
+"loop": true,
+"name": &"ocean_8",
+"speed": 5.0
+}]

@@ -9,3 +9,5 @@ extends Resource
 @export_range(1, 99) var sequence_length_max: int = Globals.SEQUENCE_LENGTH_MAX
 ## The path of the scene to use for the level
 @export_file("*.tscn") var level_scene_path: String = "res://levels/world_a.tscn"
+## True to create a new level provider (and different stage notes) each time it is queried via get_current_level_provider()
+@export var regenerate: bool = false
