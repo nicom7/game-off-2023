@@ -58,7 +58,7 @@ func _has_stage_notes(notes: Dictionary) -> bool:
 	var notes_hash = notes.hash()
 	for p in _level_providers:
 		if notes_hash == p.stage_notes.hash():
-			push_warning("stage notes already exists in list (", notes, " == ", p.stage_notes, ")")
+			push_warning("stage notes already exists in list (", notes, ")")
 			return true
 
 	return false

@@ -42,13 +42,13 @@ func _setup_texts() -> void:
 	for t in _texts:
 		new_texts.append(Globals.format_input_actions(t))
 
-	_texts = new_texts
+	_texts = new_texts.duplicate()
 
 	new_texts.clear()
 	for t in _texts_web:
 		new_texts.append(Globals.format_input_actions(t))
 
-	_texts_web = new_texts
+	_texts_web = new_texts.duplicate()
 
 func _ready() -> void:
 	_setup_texts()

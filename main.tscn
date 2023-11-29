@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b24jmtuqoaeq6"]
+[gd_scene load_steps=53 format=3 uid="uid://b24jmtuqoaeq6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dgxr5"]
 [ext_resource type="Material" uid="uid://dijyat7omg1fg" path="res://shaders/blur_material.tres" id="2_l5wfl"]
@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://hhlbue0uxe3j" path="res://levels/level_infos/levels_25_to_28.tres" id="13_a5w1c"]
 [ext_resource type="Resource" uid="uid://dvj6luy8yapbd" path="res://levels/level_infos/levels_29_to_32.tres" id="14_tvlkx"]
 [ext_resource type="Resource" uid="uid://vb68stjnq17" path="res://levels/level_infos/levels_33_to_36.tres" id="15_uux5b"]
+[ext_resource type="Resource" uid="uid://cl344rmbl5dg2" path="res://levels/level_infos/level_c_major.tres" id="17_qqbmw"]
 [ext_resource type="Resource" uid="uid://cq2qo3vej37in" path="res://levels/scales/no_accidentals/blues_major_pentatonic.tres" id="18_wdpug"]
 [ext_resource type="Resource" uid="uid://cmfsibugya1o" path="res://levels/scales/no_accidentals/ionian.tres" id="19_375dd"]
 [ext_resource type="Resource" uid="uid://cphl3kn807rbj" path="res://levels/scales/no_accidentals/major_pentatonic.tres" id="20_1ykna"]
@@ -201,7 +202,7 @@ visible = false
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("6_10awd")
-level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_og115"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("11_xqxel"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_qn6nn"), SubResource("Resource_4iyos"), SubResource("Resource_gaviw")])
+level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_og115"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("11_xqxel"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("17_qqbmw"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_qn6nn"), SubResource("Resource_4iyos"), SubResource("Resource_gaviw")])
 
 [connection signal="finished" from="Transition" to="." method="_on_transition_finished"]
 [connection signal="timeout" from="Transition/FadeOutTimer" to="." method="_on_fade_out_timer_timeout"]
