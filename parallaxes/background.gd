@@ -8,6 +8,8 @@ extends CanvasLayer
 		background = value
 		_update_sprites()
 
+@export var background_infos: Array[BackgroundInfo] = []
+
 enum Background
 {
 	OCEAN_1,
@@ -32,13 +34,11 @@ func _update_sprites() -> void:
 	var background_info: BackgroundInfo = DEFAULT_BACKGROUND_INFO.duplicate()
 
 	var background_name = (Background.keys()[background] as String).to_lower()
-	var dir = DirAccess.open("res://parallaxes/" + background_name)
-	var resources = Globals.get_resources(dir)
-	if not resources.is_empty():
-		# Use specified background info resource
-		var custom_background_info = resources[0] as BackgroundInfo
-		for i in custom_background_info.parallax_scales.size():
-			background_info.parallax_scales[i] = custom_background_info.parallax_scales[i]
+
+	# Use specified background info resource
+	var custom_background_info = background_infos[background]
+	for i in custom_background_info.parallax_scales.size():
+		background_info.parallax_scales[i] = custom_background_info.parallax_scales[i]
 
 	var layers = %ParallaxBackground.get_children()
 	for i in layers.size():

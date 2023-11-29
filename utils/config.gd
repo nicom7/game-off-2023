@@ -31,7 +31,11 @@ extends Node
 	Color(1, 0, 0.5),	# G#	330
 ]
 
-@export var tone_labels: PackedStringArray = [
+var tone_labels: PackedStringArray:
+	get:
+		return tone_labels_web if OS.has_feature("web") else tone_labels_desktop
+
+@export var tone_labels_desktop: PackedStringArray = [
 	"A",
 	"A♯",
 	"B",
@@ -44,4 +48,19 @@ extends Node
 	"F♯",
 	"G",
 	"G♯",
+]
+
+@export var tone_labels_web: PackedStringArray = [
+	"A",
+	"A#",
+	"B",
+	"C",
+	"C#",
+	"D",
+	"D#",
+	"E",
+	"F",
+	"F#",
+	"G",
+	"G#",
 ]

@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bky1t6pbpw2kp"]
+[gd_scene load_steps=7 format=3 uid="uid://bky1t6pbpw2kp"]
 
 [ext_resource type="Script" path="res://parallaxes/background.gd" id="1_lp6cl"]
 [ext_resource type="SpriteFrames" uid="uid://ey8awnjk0nl3" path="res://parallaxes/background_sprite_frames.tres" id="1_xc2j2"]
+[ext_resource type="Resource" uid="uid://bo5uef3t23xwl" path="res://parallaxes/default_background_info.tres" id="2_60g18"]
+[ext_resource type="Resource" uid="uid://dk7ua0nnhgo7k" path="res://parallaxes/Ocean_2/background_info.tres" id="3_3riwy"]
+[ext_resource type="Resource" uid="uid://cad0kclxyqgtj" path="res://parallaxes/Ocean_6/background_info.tres" id="4_imbhv"]
+[ext_resource type="Resource" uid="uid://qlktid4y1wiu" path="res://parallaxes/Ocean_7/background_info.tres" id="5_gxy4j"]
 
 [node name="Background" type="CanvasLayer"]
 script = ExtResource("1_lp6cl")
+background_infos = Array[Resource("res://parallaxes/background_info.gd")]([ExtResource("2_60g18"), ExtResource("3_3riwy"), ExtResource("2_60g18"), ExtResource("2_60g18"), ExtResource("2_60g18"), ExtResource("4_imbhv"), ExtResource("5_gxy4j"), ExtResource("2_60g18")])
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 unique_name_in_owner = true

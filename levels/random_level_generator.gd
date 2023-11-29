@@ -40,27 +40,22 @@ func _generate_notes() -> Array[Globals.Tone]:
 	return notes
 
 func _load_scales():
-	var dir: DirAccess = DirAccess.open(level_info.scales_folder_path)
-	var resources = Globals.get_resources(dir)
+	for si in level_info.scale_infos:
+		var scale_info = si.duplicate()
+		var _degrees = scale_info.degrees
+		if not _degrees.is_empty():
+			if level_info.random_tonic:
+				scale_info.tonic = randi_range(0, Globals.Tone.size() - 1) as Globals.Tone
+			if level_info.random_inversion:
+				scale_info.inversion = randi_range(0, _degrees.size() - 1)
+			scale_info.notes = _get_notes_from_degrees(_degrees, scale_info.tonic, scale_info.inversion)
 
-	for r in resources:
-		if r is ScaleInfo:
-			var si = r as ScaleInfo
+		var _notes = scale_info.notes
+		if not _scales.has(_notes.size()):
+			_scales[_notes.size()] = []
+		_scales[_notes.size()].append(_notes)
 
-			var _degrees = si.degrees
-			if not _degrees.is_empty():
-				if level_info.random_tonic:
-					si.tonic = randi_range(0, Globals.Tone.size() - 1) as Globals.Tone
-				if level_info.random_inversion:
-					si.inversion = randi_range(0, _degrees.size() - 1)
-				si.notes = _get_notes_from_degrees(_degrees, si.tonic, si.inversion)
-
-			var _notes = si.notes
-			if not _scales.has(_notes.size()):
-				_scales[_notes.size()] = []
-			_scales[_notes.size()].append(_notes)
-
-	print(_scales)
+#	print(_scales)
 
 func _get_notes_from_degrees(degrees: Array[int], tonic: Globals.Tone, inversion: int) -> Array[Globals.Tone]:
 	var _notes: Array[Globals.Tone] = []

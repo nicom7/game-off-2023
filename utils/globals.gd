@@ -34,7 +34,11 @@ static func get_label_from_tone(tone: Tone) -> String:
 	return Tone.keys()[tone]
 
 static func get_action_from_tone(tone: Tone) -> String:
-	return get_label_from_tone(tone) + ACTION_SUFFIX
+	if Config.is_node_ready():
+		return Config.tone_labels_desktop[tone] + ACTION_SUFFIX
+
+	printerr("Config node is not ready")
+	return Tone.keys()[tone] + ACTION_SUFFIX
 
 static func get_all_tone_actions() -> PackedStringArray:
 	var actions: PackedStringArray = []
@@ -84,22 +88,3 @@ static func get_bitfield_from_notes(notes: Array[Tone]) -> int:
 		bitfield |= (1 << tone)
 
 	return bitfield
-
-static func get_resources(res_dir: DirAccess) -> Array[Resource]:
-	var res: Array[Resource] = []
-
-	# Get resources from subfolders recursively
-	var folder_paths = res_dir.get_directories()
-	for path in folder_paths:
-		var abs_path = res_dir.get_current_dir() + "/" + path
-		var dir: DirAccess = DirAccess.open(abs_path)
-		res.append_array(get_resources(dir))
-
-	# Get resources from current folder files
-	var file_paths = res_dir.get_files()
-	for path in file_paths:
-		if path.ends_with(".tres"):
-			var abs_path = res_dir.get_current_dir() + "/" + path
-			res.append(load(abs_path))
-
-	return res

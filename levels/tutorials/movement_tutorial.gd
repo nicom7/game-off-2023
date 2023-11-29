@@ -20,18 +20,35 @@ var _texts: PackedStringArray = [
 	"Press {C_note} to climb down",
 	"Hold {C_note} to reach the C platform",
 ]
+
+var _texts_web: PackedStringArray = [
+	"Hold left or right arrow to move",
+	"Press {C_note} to jump",
+	"Press {G_note} to climb up the stairs",
+	"Hold {G_note} to reach the G platform",
+	"Press {G_note} to jump",
+	"Press {C_note} to climb down",
+	"Hold {C_note} to reach the C platform",
+]
+
 var _player_tone: Globals.Tone
 var _player_on_floor: bool = false
 
 func _get_texts() -> PackedStringArray:
-	return _texts
+	return _texts_web if OS.has_feature("web") else _texts
 
 func _setup_texts() -> void:
 	var new_texts: PackedStringArray = []
 	for t in _texts:
 		new_texts.append(Globals.format_input_actions(t))
 
-	_texts = new_texts
+	_texts = new_texts.duplicate()
+
+	new_texts.clear()
+	for t in _texts_web:
+		new_texts.append(Globals.format_input_actions(t))
+
+	_texts_web = new_texts.duplicate()
 
 func _ready() -> void:
 	_setup_texts()

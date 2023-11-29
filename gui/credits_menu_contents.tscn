@@ -59,7 +59,7 @@ bbcode_enabled = true
 text = "[center]Sound design using
 [font_size=32][color=orange]SURGE XT[/color][/font_size]
 
-[font_size=20]https://surge-synthesizer.github.io/[/font_size][/center]"
+[font_size=20]surge-synthesizer.github.io/[/font_size][/center]"
 fit_content = true
 
 [node name="Control" type="Control" parent="Center"]
@@ -127,10 +127,23 @@ size_flags_stretch_ratio = 0.25
 [node name="RightSideContainer" type="VBoxContainer" parent="Center"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 16
 
 [node name="Control2" type="Control" parent="Center/RightSideContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="PanelContainer2" type="PanelContainer" parent="Center/RightSideContainer"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="Center/RightSideContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1ufcp")
+bbcode_enabled = true
+text = "[center]Game website
+
+[font_size=20]nicom7.itch.io/musikeys[/font_size][/center]"
+fit_content = true
 
 [node name="PanelContainer" type="PanelContainer" parent="Center/RightSideContainer"]
 layout_mode = 2

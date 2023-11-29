@@ -1,6 +1,15 @@
-[gd_resource type="Resource" script_class="RandomLevelInfo" load_steps=2 format=3 uid="uid://bk7diaeenvhba"]
+[gd_resource type="Resource" script_class="RandomLevelInfo" load_steps=11 format=3 uid="uid://bk7diaeenvhba"]
 
 [ext_resource type="Script" path="res://levels/random_level_info.gd" id="1_fwt1g"]
+[ext_resource type="Resource" uid="uid://cq2qo3vej37in" path="res://levels/scales/no_accidentals/blues_major_pentatonic.tres" id="1_r4pb4"]
+[ext_resource type="Resource" uid="uid://cmfsibugya1o" path="res://levels/scales/no_accidentals/ionian.tres" id="2_w6wp1"]
+[ext_resource type="Resource" uid="uid://cphl3kn807rbj" path="res://levels/scales/no_accidentals/major_pentatonic.tres" id="3_ulfa3"]
+[ext_resource type="Resource" uid="uid://cnyxmh6h8ky6g" path="res://levels/scales/no_accidentals/p1_maj2_p5.tres" id="4_ugifw"]
+[ext_resource type="Resource" uid="uid://c68qfrm1lajoc" path="res://levels/scales/no_accidentals/p1_maj3_p5.tres" id="5_5otmv"]
+[ext_resource type="Resource" uid="uid://bn3j6huekby7l" path="res://levels/scales/no_accidentals/p1_maj3_p5_maj6.tres" id="6_4jrtk"]
+[ext_resource type="Resource" uid="uid://en044rmdngq2" path="res://levels/scales/no_accidentals/p1_maj3_p5_maj7.tres" id="7_jh2gh"]
+[ext_resource type="Resource" uid="uid://dtdlnk3712jt7" path="res://levels/scales/no_accidentals/p1_p4_p5.tres" id="8_74hs8"]
+[ext_resource type="Resource" uid="uid://dltis3n7ped7h" path="res://levels/scales/no_accidentals/p1_p5.tres" id="9_2fpc3"]
 
 [resource]
 script = ExtResource("1_fwt1g")
@@ -8,8 +17,9 @@ note_count_min = 3
 note_count_max = 3
 random_tonic = false
 random_inversion = true
-scales_folder_path = "res://levels/scales/no_accidentals"
+scale_infos = Array[Resource("res://levels/scale_info.gd")]([ExtResource("1_r4pb4"), ExtResource("2_w6wp1"), ExtResource("3_ulfa3"), ExtResource("4_ugifw"), ExtResource("5_5otmv"), ExtResource("6_4jrtk"), ExtResource("7_jh2gh"), ExtResource("8_74hs8"), ExtResource("9_2fpc3")])
 stage_count_max = 3
 notes_per_stage_max = 1
 sequence_length_max = 4
 level_scene_path = "res://levels/world_a2.tscn"
+regenerate = false

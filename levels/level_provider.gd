@@ -25,7 +25,7 @@ func _update_stage_notes(stage_count_max: int, notes_per_stage_max: int, notes: 
 		if remaining_notes.is_empty():
 			break
 
-	print(_stage_notes)
+#	print(_stage_notes)
 
 func _ready() -> void:
 	initialize()
