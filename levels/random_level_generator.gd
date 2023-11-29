@@ -54,7 +54,7 @@ func _load_scales():
 			_scales[_notes.size()] = []
 		_scales[_notes.size()].append(_notes)
 
-	print(_scales)
+#	print(_scales)
 
 func _get_notes_from_degrees(degrees: Array[int], tonic: Globals.Tone, inversion: int) -> Array[Globals.Tone]:
 	var _notes: Array[Globals.Tone] = []
