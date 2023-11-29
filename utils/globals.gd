@@ -34,7 +34,11 @@ static func get_label_from_tone(tone: Tone) -> String:
 	return Tone.keys()[tone]
 
 static func get_action_from_tone(tone: Tone) -> String:
-	return get_label_from_tone(tone) + ACTION_SUFFIX
+	if Config.is_node_ready():
+		return Config.tone_labels_desktop[tone] + ACTION_SUFFIX
+
+	printerr("Config node is not ready")
+	return Tone.keys()[tone] + ACTION_SUFFIX
 
 static func get_all_tone_actions() -> PackedStringArray:
 	var actions: PackedStringArray = []

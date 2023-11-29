@@ -9,8 +9,12 @@ var _texts: PackedStringArray = [
 	"To play sharp (♯) notes, use the row above the main keys.\n{C♯_note} key is note C♯, {D♯_note} key is note D♯ and so on."
 ]
 
+var _texts_web: PackedStringArray = [
+	"To play sharp (#) notes, use the row above the main keys.\n{C♯_note} key is note C#, {D♯_note} key is note D# and so on."
+]
+
 func _get_texts() -> PackedStringArray:
-	return _texts
+	return _texts_web if OS.has_feature("web") else _texts
 
 func _setup_texts() -> void:
 	var new_texts: PackedStringArray = []
@@ -18,6 +22,12 @@ func _setup_texts() -> void:
 		new_texts.append(Globals.format_input_actions(t))
 
 	_texts = new_texts
+
+	new_texts.clear()
+	for t in _texts_web:
+		new_texts.append(Globals.format_input_actions(t))
+
+	_texts_web = new_texts
 
 func _ready() -> void:
 	_setup_texts()
