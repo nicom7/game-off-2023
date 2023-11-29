@@ -84,22 +84,3 @@ static func get_bitfield_from_notes(notes: Array[Tone]) -> int:
 		bitfield |= (1 << tone)
 
 	return bitfield
-
-static func get_resources(res_dir: DirAccess) -> Array[Resource]:
-	var res: Array[Resource] = []
-
-	# Get resources from subfolders recursively
-	var folder_paths = res_dir.get_directories()
-	for path in folder_paths:
-		var abs_path = res_dir.get_current_dir() + "/" + path
-		var dir: DirAccess = DirAccess.open(abs_path)
-		res.append_array(get_resources(dir))
-
-	# Get resources from current folder files
-	var file_paths = res_dir.get_files()
-	for path in file_paths:
-		if path.ends_with(".tres"):
-			var abs_path = res_dir.get_current_dir() + "/" + path
-			res.append(load(abs_path))
-
-	return res

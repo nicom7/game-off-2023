@@ -32,9 +32,9 @@ var current_tone: Globals.Tone = Globals.Tone.A:
 	get:
 		return current_tone
 	set(value):
+		color = Config.tone_colors[current_tone]
 		if current_tone != value:
 			current_tone = value
-			color = Config.tone_colors[current_tone]
 			current_tone_changed.emit(current_tone)
 
 var current_octave: int = 0:
@@ -88,6 +88,7 @@ func _update_color():
 		%MusicBoy.modulate = color
 
 func _ready() -> void:
+	color = Config.tone_colors[current_tone]
 	_setup_input_actions()
 
 func _setup_input_actions():

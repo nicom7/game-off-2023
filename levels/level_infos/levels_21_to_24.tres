@@ -1,6 +1,31 @@
-[gd_resource type="Resource" script_class="RandomLevelInfo" load_steps=2 format=3 uid="uid://4medl6mrpng1"]
+[gd_resource type="Resource" script_class="RandomLevelInfo" load_steps=27 format=3 uid="uid://4medl6mrpng1"]
 
+[ext_resource type="Resource" uid="uid://cq2qo3vej37in" path="res://levels/scales/no_accidentals/blues_major_pentatonic.tres" id="1_3xvxh"]
 [ext_resource type="Script" path="res://levels/random_level_info.gd" id="1_cgvvr"]
+[ext_resource type="Resource" uid="uid://cmfsibugya1o" path="res://levels/scales/no_accidentals/ionian.tres" id="2_73ms7"]
+[ext_resource type="Resource" uid="uid://cphl3kn807rbj" path="res://levels/scales/no_accidentals/major_pentatonic.tres" id="3_vpgmf"]
+[ext_resource type="Resource" uid="uid://cnyxmh6h8ky6g" path="res://levels/scales/no_accidentals/p1_maj2_p5.tres" id="4_ixlqn"]
+[ext_resource type="Resource" uid="uid://c68qfrm1lajoc" path="res://levels/scales/no_accidentals/p1_maj3_p5.tres" id="5_2hinw"]
+[ext_resource type="Resource" uid="uid://bn3j6huekby7l" path="res://levels/scales/no_accidentals/p1_maj3_p5_maj6.tres" id="6_te5xf"]
+[ext_resource type="Resource" uid="uid://en044rmdngq2" path="res://levels/scales/no_accidentals/p1_maj3_p5_maj7.tres" id="7_toyqm"]
+[ext_resource type="Resource" uid="uid://dtdlnk3712jt7" path="res://levels/scales/no_accidentals/p1_p4_p5.tres" id="8_we8nr"]
+[ext_resource type="Resource" uid="uid://dltis3n7ped7h" path="res://levels/scales/no_accidentals/p1_p5.tres" id="9_icif3"]
+[ext_resource type="Resource" uid="uid://dclfo2koy6pk2" path="res://levels/scales/accidentals/augmented.tres" id="10_wxxi3"]
+[ext_resource type="Resource" uid="uid://d0e8ayq7wdlpg" path="res://levels/scales/accidentals/blues_minor_pentatonic.tres" id="11_iq6tt"]
+[ext_resource type="Resource" uid="uid://ctla1daquvl60" path="res://levels/scales/accidentals/chromatic.tres" id="12_rcl5i"]
+[ext_resource type="Resource" uid="uid://bgopvbqk5dxb0" path="res://levels/scales/accidentals/double_harmonic.tres" id="13_mkenf"]
+[ext_resource type="Resource" uid="uid://bh0ebwlcxvg8v" path="res://levels/scales/accidentals/harmonic_minor.tres" id="14_hdj56"]
+[ext_resource type="Resource" uid="uid://i5yowl5qkuxa" path="res://levels/scales/accidentals/melodic_minor.tres" id="15_ksegc"]
+[ext_resource type="Resource" uid="uid://bu6lrj236wv4w" path="res://levels/scales/accidentals/minor_pentatonic.tres" id="16_tt6bq"]
+[ext_resource type="Resource" uid="uid://buacs7hpjk5e2" path="res://levels/scales/accidentals/p1_maj3_a5.tres" id="17_fujxr"]
+[ext_resource type="Resource" uid="uid://rf5gd0meqkab" path="res://levels/scales/accidentals/p1_maj3_p5_min7.tres" id="18_dvbb2"]
+[ext_resource type="Resource" uid="uid://cidl727rgfdsl" path="res://levels/scales/accidentals/p1_min3_d5.tres" id="19_2egnq"]
+[ext_resource type="Resource" uid="uid://crkvgjoxujia8" path="res://levels/scales/accidentals/p1_min3_p5.tres" id="20_bn7ji"]
+[ext_resource type="Resource" uid="uid://dh5i8exu0dmab" path="res://levels/scales/accidentals/p1_min3_p5_maj6.tres" id="21_px2bg"]
+[ext_resource type="Resource" uid="uid://cjogetx8e1p1w" path="res://levels/scales/accidentals/p1_min3_p5_maj7.tres" id="22_xow32"]
+[ext_resource type="Resource" uid="uid://cwmgqw18imuj5" path="res://levels/scales/accidentals/p1_min3_p5_min7.tres" id="23_ybvlh"]
+[ext_resource type="Resource" uid="uid://dfnu6855bf140" path="res://levels/scales/accidentals/suspended_pentatonic.tres" id="24_081fd"]
+[ext_resource type="Resource" uid="uid://c6nhsyctqi6y3" path="res://levels/scales/accidentals/whole_tone.tres" id="25_3djun"]
 
 [resource]
 script = ExtResource("1_cgvvr")
@@ -8,8 +33,9 @@ note_count_min = 6
 note_count_max = 6
 random_tonic = false
 random_inversion = true
-scales_folder_path = "res://levels/scales/"
+scale_infos = Array[Resource("res://levels/scale_info.gd")]([ExtResource("1_3xvxh"), ExtResource("2_73ms7"), ExtResource("3_vpgmf"), ExtResource("4_ixlqn"), ExtResource("5_2hinw"), ExtResource("6_te5xf"), ExtResource("7_toyqm"), ExtResource("8_we8nr"), ExtResource("9_icif3"), ExtResource("10_wxxi3"), ExtResource("11_iq6tt"), ExtResource("12_rcl5i"), ExtResource("13_mkenf"), ExtResource("14_hdj56"), ExtResource("15_ksegc"), ExtResource("16_tt6bq"), ExtResource("17_fujxr"), ExtResource("18_dvbb2"), ExtResource("19_2egnq"), ExtResource("20_bn7ji"), ExtResource("21_px2bg"), ExtResource("22_xow32"), ExtResource("23_ybvlh"), ExtResource("24_081fd"), ExtResource("25_3djun")])
 stage_count_max = 3
 notes_per_stage_max = 2
 sequence_length_max = 6
 level_scene_path = "res://levels/world_a4.tscn"
+regenerate = false

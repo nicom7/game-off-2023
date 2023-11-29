@@ -9,4 +9,4 @@ extends LevelInfo
 ## Will choose a random inversion for the scale (e.g. [0, 4, 7, 10] => [4, 7, 10, 0])
 @export var random_inversion: bool = true
 
-@export_dir var scales_folder_path: String = "res://levels/scales/"
+@export var scale_infos: Array[ScaleInfo] = []

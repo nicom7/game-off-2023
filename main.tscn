@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b24jmtuqoaeq6"]
+[gd_scene load_steps=53 format=3 uid="uid://b24jmtuqoaeq6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dgxr5"]
 [ext_resource type="PackedScene" uid="uid://bjyrekj7d6cal" path="res://gui/hud.tscn" id="2_tqktt"]
@@ -18,6 +18,31 @@
 [ext_resource type="Resource" uid="uid://hhlbue0uxe3j" path="res://levels/level_infos/levels_25_to_28.tres" id="13_a5w1c"]
 [ext_resource type="Resource" uid="uid://dvj6luy8yapbd" path="res://levels/level_infos/levels_29_to_32.tres" id="14_tvlkx"]
 [ext_resource type="Resource" uid="uid://vb68stjnq17" path="res://levels/level_infos/levels_33_to_36.tres" id="15_uux5b"]
+[ext_resource type="Resource" uid="uid://cq2qo3vej37in" path="res://levels/scales/no_accidentals/blues_major_pentatonic.tres" id="18_wdpug"]
+[ext_resource type="Resource" uid="uid://cmfsibugya1o" path="res://levels/scales/no_accidentals/ionian.tres" id="19_375dd"]
+[ext_resource type="Resource" uid="uid://cphl3kn807rbj" path="res://levels/scales/no_accidentals/major_pentatonic.tres" id="20_1ykna"]
+[ext_resource type="Resource" uid="uid://cnyxmh6h8ky6g" path="res://levels/scales/no_accidentals/p1_maj2_p5.tres" id="21_l2rt3"]
+[ext_resource type="Resource" uid="uid://c68qfrm1lajoc" path="res://levels/scales/no_accidentals/p1_maj3_p5.tres" id="22_f0aur"]
+[ext_resource type="Resource" uid="uid://bn3j6huekby7l" path="res://levels/scales/no_accidentals/p1_maj3_p5_maj6.tres" id="23_icpk3"]
+[ext_resource type="Resource" uid="uid://en044rmdngq2" path="res://levels/scales/no_accidentals/p1_maj3_p5_maj7.tres" id="24_we8ay"]
+[ext_resource type="Resource" uid="uid://dtdlnk3712jt7" path="res://levels/scales/no_accidentals/p1_p4_p5.tres" id="25_sel56"]
+[ext_resource type="Resource" uid="uid://dltis3n7ped7h" path="res://levels/scales/no_accidentals/p1_p5.tres" id="26_8j8hq"]
+[ext_resource type="Resource" uid="uid://dclfo2koy6pk2" path="res://levels/scales/accidentals/augmented.tres" id="27_dk7fx"]
+[ext_resource type="Resource" uid="uid://d0e8ayq7wdlpg" path="res://levels/scales/accidentals/blues_minor_pentatonic.tres" id="28_deyo0"]
+[ext_resource type="Resource" uid="uid://ctla1daquvl60" path="res://levels/scales/accidentals/chromatic.tres" id="29_cu4kb"]
+[ext_resource type="Resource" uid="uid://bgopvbqk5dxb0" path="res://levels/scales/accidentals/double_harmonic.tres" id="30_1jv20"]
+[ext_resource type="Resource" uid="uid://bh0ebwlcxvg8v" path="res://levels/scales/accidentals/harmonic_minor.tres" id="31_acmfr"]
+[ext_resource type="Resource" uid="uid://i5yowl5qkuxa" path="res://levels/scales/accidentals/melodic_minor.tres" id="32_0wo1y"]
+[ext_resource type="Resource" uid="uid://bu6lrj236wv4w" path="res://levels/scales/accidentals/minor_pentatonic.tres" id="33_qtvj2"]
+[ext_resource type="Resource" uid="uid://buacs7hpjk5e2" path="res://levels/scales/accidentals/p1_maj3_a5.tres" id="34_f2anf"]
+[ext_resource type="Resource" uid="uid://rf5gd0meqkab" path="res://levels/scales/accidentals/p1_maj3_p5_min7.tres" id="35_50pp8"]
+[ext_resource type="Resource" uid="uid://cidl727rgfdsl" path="res://levels/scales/accidentals/p1_min3_d5.tres" id="36_pxh7t"]
+[ext_resource type="Resource" uid="uid://crkvgjoxujia8" path="res://levels/scales/accidentals/p1_min3_p5.tres" id="37_kknqh"]
+[ext_resource type="Resource" uid="uid://dh5i8exu0dmab" path="res://levels/scales/accidentals/p1_min3_p5_maj6.tres" id="38_rx6dy"]
+[ext_resource type="Resource" uid="uid://cjogetx8e1p1w" path="res://levels/scales/accidentals/p1_min3_p5_maj7.tres" id="39_j0x8n"]
+[ext_resource type="Resource" uid="uid://cwmgqw18imuj5" path="res://levels/scales/accidentals/p1_min3_p5_min7.tres" id="40_42jqr"]
+[ext_resource type="Resource" uid="uid://dfnu6855bf140" path="res://levels/scales/accidentals/suspended_pentatonic.tres" id="41_ktbga"]
+[ext_resource type="Resource" uid="uid://c6nhsyctqi6y3" path="res://levels/scales/accidentals/whole_tone.tres" id="42_4y3mq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j61hb"]
 shader = ExtResource("4_fxvtf")
@@ -98,7 +123,7 @@ note_count_min = 12
 note_count_max = 12
 random_tonic = true
 random_inversion = true
-scales_folder_path = "res://levels/scales/"
+scale_infos = Array[Resource("res://levels/scale_info.gd")]([ExtResource("18_wdpug"), ExtResource("19_375dd"), ExtResource("20_1ykna"), ExtResource("21_l2rt3"), ExtResource("22_f0aur"), ExtResource("23_icpk3"), ExtResource("24_we8ay"), ExtResource("25_sel56"), ExtResource("26_8j8hq"), ExtResource("27_dk7fx"), ExtResource("28_deyo0"), ExtResource("29_cu4kb"), ExtResource("30_1jv20"), ExtResource("31_acmfr"), ExtResource("32_0wo1y"), ExtResource("33_qtvj2"), ExtResource("34_f2anf"), ExtResource("35_50pp8"), ExtResource("36_pxh7t"), ExtResource("37_kknqh"), ExtResource("38_rx6dy"), ExtResource("39_j0x8n"), ExtResource("40_42jqr"), ExtResource("41_ktbga"), ExtResource("42_4y3mq")])
 stage_count_max = 7
 notes_per_stage_max = 2
 sequence_length_max = 8
@@ -111,7 +136,7 @@ note_count_min = 5
 note_count_max = 7
 random_tonic = true
 random_inversion = true
-scales_folder_path = "res://levels/scales/"
+scale_infos = Array[Resource("res://levels/scale_info.gd")]([ExtResource("18_wdpug"), ExtResource("19_375dd"), ExtResource("20_1ykna"), ExtResource("21_l2rt3"), ExtResource("22_f0aur"), ExtResource("23_icpk3"), ExtResource("24_we8ay"), ExtResource("25_sel56"), ExtResource("26_8j8hq"), ExtResource("27_dk7fx"), ExtResource("28_deyo0"), ExtResource("29_cu4kb"), ExtResource("30_1jv20"), ExtResource("31_acmfr"), ExtResource("32_0wo1y"), ExtResource("33_qtvj2"), ExtResource("34_f2anf"), ExtResource("35_50pp8"), ExtResource("36_pxh7t"), ExtResource("37_kknqh"), ExtResource("38_rx6dy"), ExtResource("39_j0x8n"), ExtResource("40_42jqr"), ExtResource("41_ktbga"), ExtResource("42_4y3mq")])
 stage_count_max = 7
 notes_per_stage_max = 2
 sequence_length_max = 8
@@ -124,7 +149,7 @@ note_count_min = 5
 note_count_max = 7
 random_tonic = true
 random_inversion = true
-scales_folder_path = "res://levels/scales/"
+scale_infos = Array[Resource("res://levels/scale_info.gd")]([ExtResource("18_wdpug"), ExtResource("19_375dd"), ExtResource("20_1ykna"), ExtResource("21_l2rt3"), ExtResource("22_f0aur"), ExtResource("23_icpk3"), ExtResource("24_we8ay"), ExtResource("25_sel56"), ExtResource("26_8j8hq"), ExtResource("27_dk7fx"), ExtResource("28_deyo0"), ExtResource("29_cu4kb"), ExtResource("30_1jv20"), ExtResource("31_acmfr"), ExtResource("32_0wo1y"), ExtResource("33_qtvj2"), ExtResource("34_f2anf"), ExtResource("35_50pp8"), ExtResource("36_pxh7t"), ExtResource("37_kknqh"), ExtResource("38_rx6dy"), ExtResource("39_j0x8n"), ExtResource("40_42jqr"), ExtResource("41_ktbga"), ExtResource("42_4y3mq")])
 stage_count_max = 7
 notes_per_stage_max = 2
 sequence_length_max = 8
