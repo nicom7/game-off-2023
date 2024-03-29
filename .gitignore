@@ -3,10 +3,10 @@
 Game Off 2023
 exports/*
 !exports/**/
-exports/html/*
+exports/*html*/*
 !exports/html/serve.py
 !exports/html/run.bat
-exports/windows/*
+exports/*win*/*
 reference
 version.cfg
 test
