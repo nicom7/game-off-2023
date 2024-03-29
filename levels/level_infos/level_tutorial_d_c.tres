@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BasicLevelInfo" load_steps=2 format=3 uid="uid://xbtv2efpt7yu"]
+
+[ext_resource type="Script" path="res://levels/basic_level_info.gd" id="1_01f10"]
+
+[resource]
+script = ExtResource("1_01f10")
+notes = Array[int]([3, 5])
+stage_count_max = 1
+notes_per_stage_max = 2
+sequence_length_max = 2
+level_scene_path = "res://levels/tutorials/world_tutorial.tscn"
+regenerate = false
