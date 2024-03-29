@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dbbx6qoakwes4"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dbbx6qoakwes4"]
 
 [ext_resource type="StyleBox" uid="uid://bkrv4uuuijk3k" path="res://themes/grabber_area_style_box.tres" id="1_ell4n"]
 [ext_resource type="StyleBox" uid="uid://xk7j70i6c60g" path="res://themes/label_style_box.tres" id="1_ewmhr"]
@@ -16,6 +16,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0f0gr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fy1k2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_opivc"]
 
 [resource]
 default_font = ExtResource("2_dmeag")
@@ -55,3 +57,4 @@ RichTextLabel/constants/shadow_offset_x = 2
 RichTextLabel/constants/shadow_offset_y = 3
 RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_0f0gr")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_fy1k2")
+TooltipPanel/styles/panel = SubResource("StyleBoxEmpty_opivc")

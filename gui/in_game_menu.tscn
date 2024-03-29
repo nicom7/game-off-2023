@@ -46,13 +46,13 @@ layout_mode = 2
 transparent_bg = true
 title = "Confirm"
 initial_position = 2
-size = Vector2i(663, 100)
+size = Vector2i(849, 100)
 unresizable = true
 always_on_top = true
 popup_window = true
 theme = ExtResource("5_j0khv")
 ok_button_text = "Yes"
-dialog_text = "Your progress will be lost! Do you want to exit?"
+dialog_text = "Your progress for this level will be lost! Do you really want to exit?"
 cancel_button_text = "No"
 
 [connection signal="close_pressed" from="MarginContainer/TabContainer/InGameMenuContents" to="." method="_on_in_game_menu_contents_close_pressed"]
