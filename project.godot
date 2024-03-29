@@ -25,6 +25,7 @@ buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
 VersionInfo="*res://addons/gitversion/version_info.gd"
 Config="*res://utils/config.tscn"
+GlobalSettings="*res://utils/global_settings.gd"
 
 [debug]
 

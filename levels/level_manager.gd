@@ -23,6 +23,7 @@ func get_current_level_provider() -> LevelProvider:
 func _update_current_level() -> void:
 	if is_node_ready():
 		_current_level = clampi(_current_level, 0, _level_providers.size() - 1)
+		GlobalSettings.set_setting("player", "current_level", _current_level)
 
 func _create_level_provider(level_info: LevelInfo) -> LevelProvider:
 	var provider: LevelProvider
@@ -64,5 +65,6 @@ func _has_stage_notes(notes: Dictionary) -> bool:
 	return false
 
 func _ready() -> void:
+	_current_level = GlobalSettings.get_setting("player", "current_level")
 	_generate_level_providers()
 	_update_current_level()
