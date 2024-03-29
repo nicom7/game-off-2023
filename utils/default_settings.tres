@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SettingsInfo" load_steps=2 format=3 uid="uid://tp01k05nhtih"]
+
+[ext_resource type="Script" path="res://utils/settings_info.gd" id="1_w40se"]
+
+[resource]
+script = ExtResource("1_w40se")
+values = {
+"global": {
+"ambient_volume": 0.25,
+"sfx_volume": 0.5
+},
+"player": {
+"current_level": 0
+}
+}
