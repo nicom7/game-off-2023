@@ -19,7 +19,7 @@ disabled = true
 [node name="Platform" parent="." instance=ExtResource("2_jg3vq")]
 
 [node name="SwitchBlock" parent="." instance=ExtResource("2_qslti")]
-position = Vector2(0, -126)
+position = Vector2(0, -128)
 
 [node name="Ladder" parent="." instance=ExtResource("4_i4kyn")]
 size = 4
