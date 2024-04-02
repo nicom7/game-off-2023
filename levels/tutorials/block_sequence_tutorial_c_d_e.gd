@@ -5,4 +5,5 @@ func _init_texts() -> void:
 		"Press {C_note} to jump and hit the C block",
 		"Replay the C, D sequence",
 		"Replay the C, D, E sequence",
+		"Replay the sequence",
 	])

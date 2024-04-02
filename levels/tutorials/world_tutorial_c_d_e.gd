@@ -1,6 +1,7 @@
 extends World
 
 func _start() -> void:
+	_set_player_camera()
 	$ClimbTutorial.show()
 	$ClimbTutorial.next_step()
 
@@ -14,4 +15,5 @@ func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 
 
 func _on_climb_tutorial_finished() -> void:
+	_set_overview_camera()
 	%BlockSequence.start()

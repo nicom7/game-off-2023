@@ -7,6 +7,6 @@ script = ExtResource("1_efo5x")
 notes = Array[int]([3, 5, 7])
 stage_count_max = 2
 notes_per_stage_max = 2
-sequence_length_max = 3
+sequence_length_max = 4
 level_scene_path = "res://levels/tutorials/world_tutorial_c_d_e.tscn"
 regenerate = false

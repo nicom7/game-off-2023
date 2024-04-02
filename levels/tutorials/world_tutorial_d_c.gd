@@ -1,6 +1,7 @@
 extends World
 
 func _start() -> void:
+	_set_overview_camera()
 	%BlockSequence.start()
 
 
