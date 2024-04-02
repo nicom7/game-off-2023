@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dysxf1d1ubejx"]
+[gd_scene load_steps=5 format=3 uid="uid://b5kd21pwsbcmx"]
 
-[ext_resource type="PackedScene" uid="uid://bgmrmwu61uqnt" path="res://levels/world_a.tscn" id="1_0gaco"]
-[ext_resource type="Script" path="res://levels/tutorials/world_tutorial_c_d.gd" id="2_vdxfk"]
-[ext_resource type="PackedScene" uid="uid://dpg5fwcr50ioc" path="res://levels/tutorials/movement_tutorial.tscn" id="3_mrnpr"]
-[ext_resource type="PackedScene" uid="uid://jh62n2k3pggc" path="res://levels/tutorials/jump_tutorial.tscn" id="4_xtckd"]
-[ext_resource type="PackedScene" uid="uid://7nkeolfhoipd" path="res://levels/tutorials/block_sequence_tutorial_c_d.tscn" id="5_f748v"]
-[ext_resource type="Resource" uid="uid://b3gv1i0ttbhog" path="res://levels/level_infos/level_tutorial_c_d.tres" id="5_mrjhh"]
+[ext_resource type="PackedScene" uid="uid://bgmrmwu61uqnt" path="res://levels/world_a.tscn" id="1_4pbjb"]
+[ext_resource type="Script" path="res://levels/tutorials/world_tutorial_d_c.gd" id="2_shlla"]
+[ext_resource type="PackedScene" uid="uid://dgimqip161h4b" path="res://levels/tutorials/block_sequence_tutorial_d_c.tscn" id="3_yfp6c"]
+[ext_resource type="Resource" uid="uid://xbtv2efpt7yu" path="res://levels/level_infos/level_tutorial_d_c.tres" id="6_a8cuq"]
 
-[node name="World" instance=ExtResource("1_0gaco")]
-script = ExtResource("2_vdxfk")
+[node name="World" instance=ExtResource("1_4pbjb")]
+script = ExtResource("2_shlla")
+ascending_notes = false
 tutorial = true
 
 [node name="Background" parent="." index="0"]
@@ -58,31 +57,16 @@ visible = false
 [node name="Stage6" parent="Environment/Stages" index="6"]
 visible = false
 
-[node name="MovementTutorial" parent="." index="6" instance=ExtResource("3_mrnpr")]
+[node name="BlockSequenceTutorial" parent="." index="6" instance=ExtResource("3_yfp6c")]
 visible = false
 
-[node name="JumpTutorial" parent="." index="7" instance=ExtResource("4_xtckd")]
-visible = false
-
-[node name="BlockSequenceTutorial" parent="." index="8" instance=ExtResource("5_f748v")]
-visible = false
-
-[node name="BasicLevelProvider" parent="." index="9"]
-level_info = ExtResource("5_mrjhh")
+[node name="BasicLevelProvider" parent="." index="7"]
+level_info = ExtResource("6_a8cuq")
 
 [node name="BlockSequence" parent="GameObjects" index="0"]
 randomize_sequence = false
 current_sequence = Array[int]([0, 0, 1, 1])
 
-[connection signal="current_tone_changed" from="Player" to="MovementTutorial" method="_on_player_current_tone_changed"]
-[connection signal="current_tone_changed" from="Player" to="JumpTutorial" method="_on_player_current_tone_changed"]
-[connection signal="direction_changed" from="Player" to="MovementTutorial" method="_on_player_direction_changed"]
-[connection signal="jumped" from="Player" to="MovementTutorial" method="_on_player_jumped"]
-[connection signal="jumped" from="Player" to="JumpTutorial" method="_on_player_jumped"]
-[connection signal="on_floor_changed" from="Player" to="MovementTutorial" method="_on_player_on_floor_changed"]
-[connection signal="on_floor_changed" from="Player" to="JumpTutorial" method="_on_player_on_floor_changed"]
-[connection signal="finished" from="MovementTutorial" to="." method="_on_movement_tutorial_finished"]
-[connection signal="finished" from="JumpTutorial" to="." method="_on_jump_tutorial_finished"]
 [connection signal="finished" from="GameObjects/BlockSequence" to="BlockSequenceTutorial" method="_on_block_sequence_finished"]
 [connection signal="sequence_finished" from="GameObjects/BlockSequence" to="BlockSequenceTutorial" method="_on_block_sequence_sequence_finished"]
 [connection signal="sequence_played" from="GameObjects/BlockSequence" to="BlockSequenceTutorial" method="_on_block_sequence_sequence_played"]

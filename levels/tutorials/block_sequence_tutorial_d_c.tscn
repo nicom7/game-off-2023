@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgimqip161h4b"]
+
+[ext_resource type="PackedScene" uid="uid://bkol8urwsl85l" path="res://levels/tutorials/block_sequence_tutorial.tscn" id="1_028bi"]
+[ext_resource type="Script" path="res://levels/tutorials/block_sequence_tutorial_d_c.gd" id="2_2gned"]
+
+[node name="BlockSequenceTutorialDC" instance=ExtResource("1_028bi")]
+script = ExtResource("2_2gned")

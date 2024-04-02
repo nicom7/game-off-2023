@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_01f10")
-notes = Array[int]([3, 5])
+notes = Array[int]([5, 3])
 stage_count_max = 1
 notes_per_stage_max = 2
-sequence_length_max = 2
-level_scene_path = "res://levels/tutorials/world_tutorial.tscn"
+sequence_length_max = 4
+level_scene_path = "res://levels/tutorials/world_tutorial_d_c.tscn"
 regenerate = false

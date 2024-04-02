@@ -7,6 +7,9 @@ var player_octave: int
 @export var ambient_note_player_scene: PackedScene
 var ambient_note_player: NotePlayer
 
+## Set to true to get ascending notes from 1st to last platform. Note octaves will be adjusted accordingly.
+@export var ascending_notes: bool = true
+
 @export var level_provider: LevelProvider
 @export var tutorial: bool = false
 @export var player_camera_zoom: Vector2 = Vector2.ONE
@@ -102,7 +105,7 @@ func _setup_stages() -> void:
 			_stages[i].remove_child(ps)
 		for j in stage_notes[i].size():
 			var cur_tone = stage_notes[i][j]
-			if cur_tone < prev_tone:
+			if ascending_notes and cur_tone < prev_tone:
 				# Increase octave if tone is less than previous tone
 				cur_octave += 1
 
