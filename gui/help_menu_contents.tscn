@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckefi334c3jxe"]
+
+[ext_resource type="Script" path="res://gui/help_menu_contents.gd" id="1_jj0rb"]
+[ext_resource type="PackedScene" uid="uid://d0d4pvp0xmvo" path="res://gui/icon_button.tscn" id="2_66jwe"]
+[ext_resource type="Shortcut" uid="uid://ctl670m8ewyx" path="res://gui/esc_shortcut.tres" id="3_gdia7"]
+[ext_resource type="Texture2D" uid="uid://cp0q7hvev1hy0" path="res://gui/arrow_left.svg" id="4_qemb7"]
+[ext_resource type="PackedScene" uid="uid://dvs0t35iffsu7" path="res://gui/piano_keyboard.tscn" id="6_hbhlb"]
+[ext_resource type="PackedScene" uid="uid://cclbjlc3hx2lv" path="res://gui/title_label.tscn" id="6_oe6mp"]
+[ext_resource type="PackedScene" uid="uid://cv2aa6gk3hxu2" path="res://gui/computer_keyboard.tscn" id="7_pi88r"]
+
+[node name="Contents" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_jj0rb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BackBtn" parent="VBoxContainer/Header" instance=ExtResource("2_66jwe")]
+layout_mode = 2
+shortcut = ExtResource("3_gdia7")
+icon = ExtResource("4_qemb7")
+
+[node name="Control" type="Control" parent="VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" parent="VBoxContainer" instance=ExtResource("6_oe6mp")]
+layout_mode = 2
+text = "Help"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="TabContainer" parent="CenterContainer"]
+layout_mode = 2
+tab_alignment = 1
+use_hidden_tabs_for_min_size = true
+
+[node name="Keyboard Layout" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/HBoxContainer/Keyboard Layout"]
+layout_mode = 2
+
+[node name="ComputerKeyboard" parent="CenterContainer/HBoxContainer/Keyboard Layout/CenterContainer" instance=ExtResource("7_pi88r")]
+layout_mode = 2
+
+[node name="Piano Layout" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/HBoxContainer/Piano Layout"]
+layout_mode = 2
+
+[node name="PianoKeyboard" parent="CenterContainer/HBoxContainer/Piano Layout/CenterContainer" instance=ExtResource("6_hbhlb")]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="VBoxContainer/Header/BackBtn" to="." method="_on_back_btn_pressed"]
