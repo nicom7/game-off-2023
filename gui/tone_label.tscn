@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf0cqk22hupd5"]
+
+[ext_resource type="Script" path="res://gui/tone_label.gd" id="1_pq2ay"]
+
+[node name="ToneLabel" type="CenterContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+script = ExtResource("1_pq2ay")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.970588, 1, 0.5, 1)
+layout_mode = 2
+text = "C"
+horizontal_alignment = 1
+vertical_alignment = 1
