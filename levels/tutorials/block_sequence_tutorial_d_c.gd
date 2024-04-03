@@ -1,9 +1,10 @@
 extends BlockSequenceTutorial
 
 func _init_texts() -> void:
+	const replay_str: = "Replay the sequence"
 	_texts.append_array([
 		"Press {D_note} to jump and hit the D block",
-		"Hit the D block twice to replay the sequence",
-		"Replay the D, D, C sequence",
-		"Replay the sequence",
+		replay_str,
+		replay_str,
+		replay_str,
 	])
