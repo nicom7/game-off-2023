@@ -1,0 +1,205 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvs0t35iffsu7"]
+
+[ext_resource type="Texture2D" uid="uid://qmh3tewjw4c6" path="res://sprites/piano_keyboard.png" id="1_pqa5y"]
+[ext_resource type="Script" path="res://gui/tone_label.gd" id="3_stx1b"]
+
+[node name="PianoKeyboard" type="Control"]
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_pqa5y")
+
+[node name="Label" type="Label" parent="TextureRect"]
+self_modulate = Color(0.970588, 1, 0.5, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 200.0
+offset_right = 39.0
+offset_bottom = 230.0
+text = "C"
+script = ExtResource("3_stx1b")
+tone = 3
+
+[node name="Label2" type="Label" parent="TextureRect"]
+self_modulate = Color(0.5, 1, 0.75, 1)
+layout_mode = 0
+offset_left = 56.0
+offset_top = 200.0
+offset_right = 89.0
+offset_bottom = 230.0
+text = "D"
+script = ExtResource("3_stx1b")
+tone = 5
+
+[node name="Label11" type="Label" parent="TextureRect"]
+self_modulate = Color(0.75, 1, 0.5, 1)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 104.0
+offset_right = 73.0
+offset_bottom = 137.0
+text = "C♯"
+script = ExtResource("3_stx1b")
+tone = 4
+
+[node name="Label12" type="Label" parent="TextureRect"]
+self_modulate = Color(0.5, 1, 1, 1)
+layout_mode = 0
+offset_left = 80.0
+offset_top = 104.0
+offset_right = 113.0
+offset_bottom = 134.0
+text = "D♯"
+script = ExtResource("3_stx1b")
+tone = 6
+
+[node name="Label3" type="Label" parent="TextureRect"]
+self_modulate = Color(0.5, 0.916667, 1, 1)
+layout_mode = 0
+offset_left = 104.0
+offset_top = 200.0
+offset_right = 135.0
+offset_bottom = 230.0
+text = "E"
+script = ExtResource("3_stx1b")
+tone = 7
+
+[node name="Label4" type="Label" parent="TextureRect"]
+self_modulate = Color(0.66, 0.733667, 1, 1)
+layout_mode = 0
+offset_left = 152.0
+offset_top = 200.0
+offset_right = 183.0
+offset_bottom = 230.0
+text = "F"
+script = ExtResource("3_stx1b")
+tone = 8
+
+[node name="Label5" type="Label" parent="TextureRect"]
+self_modulate = Color(1, 0.5, 1, 1)
+layout_mode = 0
+offset_left = 200.0
+offset_top = 200.0
+offset_right = 231.0
+offset_bottom = 230.0
+text = "G"
+script = ExtResource("3_stx1b")
+tone = 10
+
+[node name="Label6" type="Label" parent="TextureRect"]
+self_modulate = Color(1, 0.703921, 0.668628, 1)
+layout_mode = 0
+offset_left = 248.0
+offset_top = 200.0
+offset_right = 279.0
+offset_bottom = 230.0
+text = "A"
+script = ExtResource("3_stx1b")
+
+[node name="Label13" type="Label" parent="TextureRect"]
+self_modulate = Color(0.805883, 0.727451, 1, 1)
+layout_mode = 0
+offset_left = 176.0
+offset_top = 104.0
+offset_right = 207.0
+offset_bottom = 134.0
+text = "F♯"
+script = ExtResource("3_stx1b")
+tone = 9
+
+[node name="Label14" type="Label" parent="TextureRect"]
+self_modulate = Color(1, 0.5, 0.75, 1)
+layout_mode = 0
+offset_left = 224.0
+offset_top = 104.0
+offset_right = 257.0
+offset_bottom = 134.0
+text = "G♯"
+script = ExtResource("3_stx1b")
+tone = 11
+
+[node name="Label15" type="Label" parent="TextureRect"]
+self_modulate = Color(1, 0.733333, 0.5, 1)
+layout_mode = 0
+offset_left = 272.0
+offset_top = 104.0
+offset_right = 305.0
+offset_bottom = 134.0
+text = "A♯"
+script = ExtResource("3_stx1b")
+tone = 1
+
+[node name="Label7" type="Label" parent="TextureRect"]
+self_modulate = Color(1, 0.9, 0.5, 1)
+layout_mode = 0
+offset_left = 296.0
+offset_top = 200.0
+offset_right = 327.0
+offset_bottom = 230.0
+text = "B"
+script = ExtResource("3_stx1b")
+tone = 2
+
+[node name="Label8" type="Label" parent="TextureRect"]
+self_modulate = Color(0.970588, 1, 0.5, 1)
+layout_mode = 0
+offset_left = 344.0
+offset_top = 200.0
+offset_right = 375.0
+offset_bottom = 230.0
+text = "C"
+script = ExtResource("3_stx1b")
+tone = 3
+
+[node name="Label9" type="Label" parent="TextureRect"]
+self_modulate = Color(0.5, 1, 0.75, 1)
+layout_mode = 0
+offset_left = 392.0
+offset_top = 200.0
+offset_right = 423.0
+offset_bottom = 230.0
+text = "D"
+script = ExtResource("3_stx1b")
+tone = 5
+
+[node name="Label16" type="Label" parent="TextureRect"]
+self_modulate = Color(0.75, 1, 0.5, 1)
+layout_mode = 0
+offset_left = 368.0
+offset_top = 104.0
+offset_right = 399.0
+offset_bottom = 134.0
+text = "C♯"
+script = ExtResource("3_stx1b")
+tone = 4
+
+[node name="Label17" type="Label" parent="TextureRect"]
+self_modulate = Color(0.5, 1, 1, 1)
+layout_mode = 0
+offset_left = 416.0
+offset_top = 104.0
+offset_right = 449.0
+offset_bottom = 134.0
+text = "D♯"
+script = ExtResource("3_stx1b")
+tone = 6
+
+[node name="Label10" type="Label" parent="TextureRect"]
+self_modulate = Color(0.5, 0.916667, 1, 1)
+layout_mode = 0
+offset_left = 440.0
+offset_top = 200.0
+offset_right = 471.0
+offset_bottom = 230.0
+text = "E"
+script = ExtResource("3_stx1b")
+tone = 7
