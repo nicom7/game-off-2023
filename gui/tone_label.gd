@@ -13,7 +13,7 @@ extends CenterContainer
 		show_keys = value
 		if is_node_ready():
 			%ToneLabel.visible = not show_keys
-			%KeyLabel.visible = show_keys
+			%KeyCap.visible = show_keys
 
 
 func _update_labels() -> void:
