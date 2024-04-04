@@ -14,8 +14,16 @@ extends Node2D
 			octave = value
 			_update_tone()
 
+@export var show_keys: = false:
+	set(value):
+		if show_keys != value:
+			show_keys = value
+			_update_show_keys()
+
+
 func get_bounding_rect() -> Rect2:
 	return $BoundingRect.global_transform * $BoundingRect.shape.get_rect()
+
 
 func get_switch_blocks() -> Array[SwitchBlock]:
 	var switch_blocks: Array[SwitchBlock] = []
@@ -25,6 +33,7 @@ func get_switch_blocks() -> Array[SwitchBlock]:
 
 	return switch_blocks
 
+
 func get_ladders() -> Array[Ladder]:
 	var ladders: Array[Ladder] = []
 	for c in get_children():
@@ -33,6 +42,7 @@ func get_ladders() -> Array[Ladder]:
 
 	return ladders
 
+
 func get_platforms() -> Array[Platform]:
 	var platforms: Array[Platform] = []
 	for c in get_children():
@@ -40,6 +50,18 @@ func get_platforms() -> Array[Platform]:
 			platforms.append(c as Platform)
 
 	return platforms
+
+
+func _update_show_keys() -> void:
+	if not is_node_ready():
+		return
+
+	for sb in get_switch_blocks():
+		sb.show_keys = show_keys
+
+	for p in get_platforms():
+		p.show_keys = show_keys
+
 
 func _update_tone() -> void:
 	if not is_node_ready():
@@ -55,6 +77,7 @@ func _update_tone() -> void:
 
 	for l in get_ladders():
 		l.color = Config.tone_colors[tone].lightened(Globals.LIGHT_COLOR_AMOUNT)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

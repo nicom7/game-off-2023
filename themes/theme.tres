@@ -114,9 +114,9 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxbq7"]
-content_margin_left = 4.0
+content_margin_left = 8.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 8.0
 content_margin_bottom = 4.0
 bg_color = Color(0.105882, 0.196078, 0.243137, 0.0980392)
 corner_radius_top_left = 3
@@ -124,9 +124,9 @@ corner_radius_top_right = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ssi6"]
-content_margin_left = 4.0
+content_margin_left = 8.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 8.0
 content_margin_bottom = 4.0
 bg_color = Color(0, 0, 0, 0)
 corner_radius_top_left = 3
@@ -134,9 +134,9 @@ corner_radius_top_right = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhri5"]
-content_margin_left = 4.0
+content_margin_left = 8.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 8.0
 content_margin_bottom = 4.0
 bg_color = Color(0.47, 0.81, 0.96, 0.8)
 corner_radius_top_left = 3
@@ -144,9 +144,9 @@ corner_radius_top_right = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btlov"]
-content_margin_left = 4.0
+content_margin_left = 8.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 8.0
 content_margin_bottom = 4.0
 bg_color = Color(0.0588235, 0.188235, 0.219608, 0.701961)
 corner_radius_top_left = 3
@@ -154,11 +154,11 @@ corner_radius_top_right = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8d27"]
-content_margin_left = 4.0
+content_margin_left = 8.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 8.0
 content_margin_bottom = 4.0
-bg_color = Color(0.0627451, 0.192157, 0.219608, 0.501961)
+bg_color = Color(0.0627451, 0.192157, 0.219608, 0.25098)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_detail = 5
@@ -214,7 +214,7 @@ TabContainer/colors/font_disabled_color = Color(0.705882, 0.827451, 0.878431, 0.
 TabContainer/colors/font_hovered_color = Color(0.768627, 0.901961, 0.960784, 1)
 TabContainer/colors/font_outline_color = Color(0.8, 0.941176, 1, 1)
 TabContainer/colors/font_selected_color = Color(0.8, 0.941176, 1, 1)
-TabContainer/colors/font_unselected_color = Color(0.768627, 0.901961, 0.960784, 1)
+TabContainer/colors/font_unselected_color = Color(0.6, 0.705882, 0.74902, 1)
 TabContainer/constants/icon_max_width = 0
 TabContainer/constants/icon_separation = 4
 TabContainer/constants/outline_size = 0
