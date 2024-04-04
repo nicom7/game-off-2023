@@ -10,10 +10,9 @@ extends CenterContainer
 ## Display keyboard keys instead of tones
 @export var show_keys: = false:
 	set(value):
-		show_keys = value
-		if is_node_ready():
-			%ToneLabel.visible = not show_keys
-			%KeyCap.visible = show_keys
+		if show_keys != value:
+			show_keys = value
+			_update_show_keys()
 
 
 func _update_labels() -> void:
@@ -38,9 +37,16 @@ func _update_label_sizes() -> void:
 	%ToneLabel.pivot_offset = %ToneLabel.size / 2
 
 
+func _update_show_keys() -> void:
+	if is_node_ready():
+		%ToneLabel.visible = not show_keys
+		%KeyCap.visible = show_keys
+
+
 func _ready() -> void:
 	_update_labels()
 	_update_label_sizes()
+	_update_show_keys()
 
 
 func _process(_delta: float) -> void:
