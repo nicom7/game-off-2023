@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckefi334c3jxe"]
+[gd_scene load_steps=9 format=3 uid="uid://ckefi334c3jxe"]
 
 [ext_resource type="Script" path="res://gui/help_menu_contents.gd" id="1_jj0rb"]
 [ext_resource type="PackedScene" uid="uid://d0d4pvp0xmvo" path="res://gui/icon_button.tscn" id="2_66jwe"]
 [ext_resource type="Shortcut" uid="uid://ctl670m8ewyx" path="res://gui/esc_shortcut.tres" id="3_gdia7"]
 [ext_resource type="Texture2D" uid="uid://cp0q7hvev1hy0" path="res://gui/arrow_left.svg" id="4_qemb7"]
+[ext_resource type="Script" path="res://gui/tab_container.gd" id="6_6i3yl"]
 [ext_resource type="PackedScene" uid="uid://dvs0t35iffsu7" path="res://gui/piano_keyboard.tscn" id="6_hbhlb"]
 [ext_resource type="PackedScene" uid="uid://cclbjlc3hx2lv" path="res://gui/title_label.tscn" id="6_oe6mp"]
 [ext_resource type="PackedScene" uid="uid://cv2aa6gk3hxu2" path="res://gui/computer_keyboard.tscn" id="7_pi88r"]
@@ -44,25 +45,26 @@ size_flags_stretch_ratio = 0.5
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer" type="TabContainer" parent="CenterContainer"]
+[node name="TabContainer" type="TabContainer" parent="CenterContainer"]
 layout_mode = 2
 tab_alignment = 1
 use_hidden_tabs_for_min_size = true
+script = ExtResource("6_6i3yl")
 
-[node name="Keyboard Layout" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
+[node name="Keyboard Layout" type="MarginContainer" parent="CenterContainer/TabContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/HBoxContainer/Keyboard Layout"]
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/TabContainer/Keyboard Layout"]
 layout_mode = 2
 
-[node name="ComputerKeyboard" parent="CenterContainer/HBoxContainer/Keyboard Layout/CenterContainer" instance=ExtResource("7_pi88r")]
+[node name="ComputerKeyboard" parent="CenterContainer/TabContainer/Keyboard Layout/CenterContainer" instance=ExtResource("7_pi88r")]
 layout_mode = 2
 
-[node name="Piano Layout" type="MarginContainer" parent="CenterContainer/HBoxContainer"]
+[node name="Piano Layout" type="MarginContainer" parent="CenterContainer/TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 16
@@ -70,10 +72,10 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/HBoxContainer/Piano Layout"]
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/TabContainer/Piano Layout"]
 layout_mode = 2
 
-[node name="PianoKeyboard" parent="CenterContainer/HBoxContainer/Piano Layout/CenterContainer" instance=ExtResource("6_hbhlb")]
+[node name="PianoKeyboard" parent="CenterContainer/TabContainer/Piano Layout/CenterContainer" instance=ExtResource("6_hbhlb")]
 layout_mode = 2
 
 [node name="Control" type="Control" parent="."]
