@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://xi65titydc86"]
+
+[ext_resource type="PackedScene" uid="uid://bgmrmwu61uqnt" path="res://levels/world_a.tscn" id="1_46kmy"]
+[ext_resource type="Script" path="res://levels/tutorials/world_tutorial_c_d_e.gd" id="2_ee2nw"]
+[ext_resource type="Resource" uid="uid://cws2pig1pr6dg" path="res://levels/level_infos/level_tutorial_c_d_e.tres" id="3_t4emm"]
+[ext_resource type="PackedScene" uid="uid://ipm5a53ox0pb" path="res://levels/tutorials/climb_tutorial.tscn" id="4_gi722"]
+[ext_resource type="PackedScene" uid="uid://bkol8urwsl85l" path="res://levels/tutorials/block_sequence_tutorial.tscn" id="4_tdmlh"]
+[ext_resource type="Script" path="res://levels/tutorials/block_sequence_tutorial_c_d_e.gd" id="5_1r3vv"]
+
+[node name="World" instance=ExtResource("1_46kmy")]
+script = ExtResource("2_ee2nw")
+
+[node name="Background" parent="." index="0"]
+background = 1
+
+[node name="RightWall" parent="Environment/Walls" index="2"]
+position = Vector2(960, 288)
+
+[node name="BoundingRect" parent="Environment/Stages/Stage0/PlatformSet" index="0"]
+position = Vector2(240, -48)
+
+[node name="Platform" parent="Environment/Stages/Stage0/PlatformSet" index="1"]
+layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 131072, 0, 65541, 131072, 2, 6, 131072, 0, 65542, 131072, 2, 7, 131072, 0, 65543, 131072, 2, 8, 131072, 0, 65544, 131072, 2, 9, 131072, 0, 65545, 131072, 2, 10, 131072, 0, 65546, 131072, 2, 11, 196608, 0, 65547, 196608, 2)
+size = Vector2i(12, 2)
+
+[node name="SwitchBlock" parent="Environment/Stages/Stage0/PlatformSet" index="2"]
+position = Vector2(96, -128)
+
+[node name="PlatformSet2" parent="Environment/Stages/Stage0" index="1"]
+position = Vector2(624, 528)
+
+[node name="BoundingRect" parent="Environment/Stages/Stage0/PlatformSet2" index="0"]
+position = Vector2(144, -48)
+
+[node name="Platform" parent="Environment/Stages/Stage0/PlatformSet2" index="1"]
+layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 131072, 0, 65541, 131072, 2, 6, 131072, 0, 65542, 131072, 2, 7, 196608, 0, 65543, 196608, 2)
+size = Vector2i(8, 2)
+
+[node name="SwitchBlock" parent="Environment/Stages/Stage0/PlatformSet2" index="2"]
+position = Vector2(208, -128)
+
+[node name="SwitchBlock" parent="Environment/Stages/Stage1/PlatformSet" index="2"]
+position = Vector2(120, -128)
+
+[node name="Stage2" parent="Environment/Stages" index="2"]
+visible = false
+
+[node name="Stage3" parent="Environment/Stages" index="3"]
+visible = false
+
+[node name="Stage4" parent="Environment/Stages" index="4"]
+visible = false
+
+[node name="Stage5" parent="Environment/Stages" index="5"]
+visible = false
+
+[node name="Stage6" parent="Environment/Stages" index="6"]
+visible = false
+
+[node name="BasicLevelProvider" parent="." index="6"]
+level_info = ExtResource("3_t4emm")
+level_scene_path = "res://levels/tutorials/world_tutorial_c_d_e.gd"
+
+[node name="ClimbTutorial" parent="." index="7" instance=ExtResource("4_gi722")]
+visible = false
+
+[node name="BlockSequenceTutorial" parent="." index="8" instance=ExtResource("4_tdmlh")]
+visible = false
+script = ExtResource("5_1r3vv")
+
+[node name="BlockSequence" parent="GameObjects" index="0"]
+randomize_sequence = false
+current_sequence = Array[int]([0, 1, 2, 0])
+
+[connection signal="current_tone_changed" from="Player" to="ClimbTutorial" method="_on_player_current_tone_changed"]
+[connection signal="direction_changed" from="Player" to="ClimbTutorial" method="_on_player_direction_changed"]
+[connection signal="on_floor_changed" from="Player" to="ClimbTutorial" method="_on_player_on_floor_changed"]
+[connection signal="finished" from="ClimbTutorial" to="." method="_on_climb_tutorial_finished"]
+[connection signal="finished" from="GameObjects/BlockSequence" to="BlockSequenceTutorial" method="_on_block_sequence_finished"]
+[connection signal="sequence_finished" from="GameObjects/BlockSequence" to="BlockSequenceTutorial" method="_on_block_sequence_sequence_finished"]
+[connection signal="sequence_played" from="GameObjects/BlockSequence" to="BlockSequenceTutorial" method="_on_block_sequence_sequence_played"]
+
+[editable path="Environment/Stages/Stage0/PlatformSet"]
+[editable path="Environment/Stages/Stage0/PlatformSet2"]
+[editable path="Environment/Stages/Stage1/PlatformSet"]
+[editable path="Environment/Stages/Stage1/PlatformSet2"]
+[editable path="Environment/Stages/Stage2/PlatformSet"]
+[editable path="Environment/Stages/Stage2/PlatformSet2"]
+[editable path="Environment/Stages/Stage3/PlatformSet"]
+[editable path="Environment/Stages/Stage3/PlatformSet2"]
+[editable path="Environment/Stages/Stage4/PlatformSet"]
+[editable path="Environment/Stages/Stage4/PlatformSet2"]
+[editable path="Environment/Stages/Stage5/PlatformSet"]
+[editable path="Environment/Stages/Stage5/PlatformSet2"]
+[editable path="Environment/Stages/Stage6/PlatformSet"]
+[editable path="Environment/Stages/Stage6/PlatformSet2"]

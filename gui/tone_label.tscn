@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf0cqk22hupd5"]
+
+[ext_resource type="Script" path="res://gui/tone_label.gd" id="1_pq2ay"]
+[ext_resource type="Theme" uid="uid://cs15umpslf7mq" path="res://themes/tone_label.tres" id="2_s1orw"]
+[ext_resource type="StyleBox" uid="uid://cdeao5qokwdy8" path="res://themes/tone_label_style_box.tres" id="3_4bge3"]
+
+[node name="ToneLabel" type="CenterContainer"]
+use_top_left = true
+script = ExtResource("1_pq2ay")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 0.703921, 0.668628, 1)
+layout_mode = 2
+theme = ExtResource("2_s1orw")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_4bge3")
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1

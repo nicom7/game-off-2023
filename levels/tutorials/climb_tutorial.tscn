@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ipm5a53ox0pb"]
+
+[ext_resource type="PackedScene" uid="uid://cl3xtxe0p8dms" path="res://levels/tutorials/tutorial.tscn" id="1_qa3tq"]
+[ext_resource type="Script" path="res://levels/tutorials/climb_tutorial.gd" id="2_eiw41"]
+
+[node name="ClimbTutorial" instance=ExtResource("1_qa3tq")]
+script = ExtResource("2_eiw41")
+
+[node name="Timer" type="Timer" parent="." index="1"]
+wait_time = 12.0
+one_shot = true
+
+[connection signal="step_changed" from="." to="." method="_on_step_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

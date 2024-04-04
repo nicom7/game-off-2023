@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://jh62n2k3pggc"]
+
+[ext_resource type="PackedScene" uid="uid://cl3xtxe0p8dms" path="res://levels/tutorials/tutorial.tscn" id="1_2lajg"]
+[ext_resource type="Script" path="res://levels/tutorials/jump_tutorial.gd" id="2_tx11o"]
+
+[node name="JumpTutorial" instance=ExtResource("1_2lajg")]
+script = ExtResource("2_tx11o")
+
+[node name="Timer" type="Timer" parent="." index="1"]
+wait_time = 8.0
+one_shot = true
+
+[connection signal="step_changed" from="." to="." method="_on_step_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

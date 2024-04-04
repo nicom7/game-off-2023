@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b24jmtuqoaeq6"]
+[gd_scene load_steps=55 format=3 uid="uid://b24jmtuqoaeq6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dgxr5"]
 [ext_resource type="Material" uid="uid://dijyat7omg1fg" path="res://shaders/blur_material.tres" id="2_l5wfl"]
@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bl5x0vjmi2ghe" path="res://gui/in_game_menu.tscn" id="3_woyqp"]
 [ext_resource type="Script" path="res://levels/level_manager.gd" id="6_10awd"]
 [ext_resource type="Script" path="res://levels/random_level_info.gd" id="7_2r6pw"]
-[ext_resource type="Resource" uid="uid://cvfdhx5boqxuj" path="res://levels/level_infos/level_tutorial.tres" id="7_og115"]
+[ext_resource type="Resource" uid="uid://b3gv1i0ttbhog" path="res://levels/level_infos/level_tutorial_c_d.tres" id="7_6lnhu"]
 [ext_resource type="Resource" uid="uid://bk7diaeenvhba" path="res://levels/level_infos/levels_1_to_4.tres" id="7_swa47"]
+[ext_resource type="Resource" uid="uid://xbtv2efpt7yu" path="res://levels/level_infos/level_tutorial_d_c.tres" id="8_j0ghc"]
 [ext_resource type="Resource" uid="uid://dairla6s3rwbv" path="res://levels/level_infos/levels_5_to_8.tres" id="9_0vo6u"]
+[ext_resource type="Resource" uid="uid://cws2pig1pr6dg" path="res://levels/level_infos/level_tutorial_c_d_e.tres" id="9_tx7u8"]
 [ext_resource type="Resource" uid="uid://d2jd4h4e80b8y" path="res://levels/level_infos/levels_13_to_16.tres" id="10_dypps"]
 [ext_resource type="Resource" uid="uid://cscbvfqkb11j7" path="res://levels/level_infos/levels_9_to_12.tres" id="10_v8k3x"]
 [ext_resource type="Resource" uid="uid://l1g6ee6cn32r" path="res://levels/level_infos/levels_17_to_20.tres" id="11_e8qcc"]
@@ -202,7 +204,7 @@ visible = false
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("6_10awd")
-level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_og115"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("11_xqxel"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("17_qqbmw"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_qn6nn"), SubResource("Resource_4iyos"), SubResource("Resource_gaviw")])
+level_infos = Array[Resource("res://levels/level_info.gd")]([ExtResource("7_6lnhu"), ExtResource("8_j0ghc"), ExtResource("9_tx7u8"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("7_swa47"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("9_0vo6u"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("10_v8k3x"), ExtResource("11_xqxel"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("10_dypps"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("11_e8qcc"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("12_hm2f0"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("13_a5w1c"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("14_tvlkx"), ExtResource("17_qqbmw"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), ExtResource("15_uux5b"), SubResource("Resource_qn6nn"), SubResource("Resource_4iyos"), SubResource("Resource_gaviw")])
 
 [connection signal="finished" from="Transition" to="." method="_on_transition_finished"]
 [connection signal="timeout" from="Transition/FadeOutTimer" to="." method="_on_fade_out_timer_timeout"]

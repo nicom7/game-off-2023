@@ -1,17 +1,19 @@
 extends World
 
 func _start() -> void:
-	$MovementTutorial.show()
-	$MovementTutorial.next_step()
+	_set_player_camera()
+	$ClimbTutorial.show()
+	$ClimbTutorial.next_step()
 
 
 func _on_block_sequence_sequence_played(demo_sequence: bool) -> void:
 	super._on_block_sequence_sequence_played(demo_sequence)
 
 	if !demo_sequence:
-		$MovementTutorial.hide()
+		$ClimbTutorial.hide()
 		$BlockSequenceTutorial.show()
 
 
-func _on_movement_tutorial_finished() -> void:
+func _on_climb_tutorial_finished() -> void:
+	_set_overview_camera()
 	%BlockSequence.start()

@@ -68,6 +68,7 @@ var _previous_direction: Vector2
 
 signal on_floor_changed(value: bool)
 signal direction_changed(direction: float)
+## Emitted when player jumps. notes: bitfield containing the currently pressed notes
 signal jumped(notes: int)
 signal interact(player: Character, notes: int)
 

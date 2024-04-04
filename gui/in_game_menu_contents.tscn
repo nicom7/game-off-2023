@@ -53,6 +53,10 @@ theme_override_constants/separation = 16
 layout_mode = 2
 text = "Settings"
 
+[node name="HelpBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Help"
+
 [node name="CreditsBtn" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Credits"
@@ -88,5 +92,6 @@ script = ExtResource("6_i548y")
 
 [connection signal="pressed" from="VBoxContainer/Header/CloseMenuBtn" to="." method="_on_close_menu_btn_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HelpBtn" to="." method="_on_help_btn_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsBtn" to="." method="_on_credits_btn_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitBtn" to="." method="_on_exit_btn_pressed"]

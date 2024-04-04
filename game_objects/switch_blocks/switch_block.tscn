@@ -90,14 +90,14 @@ shape = SubResource("RectangleShape2D_v1sty")
 
 [node name="Block" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-self_modulate = Color(1, 0, 1, 1)
+self_modulate = Color(1, 0.407843, 0.337255, 1)
 clip_children = 2
 texture = ExtResource("2_ueuwi")
 centered = false
 
 [node name="ToneLabel" type="Label" parent="Block"]
 unique_name_in_owner = true
-self_modulate = Color(1, 0.721569, 1, 1)
+self_modulate = Color(1, 0.703921, 0.668628, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -112,7 +112,7 @@ vertical_alignment = 1
 [node name="HitVFX" type="Sprite2D" parent="Block"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 0.717647, 1, 1)
+self_modulate = Color(1, 0.703921, 0.668628, 1)
 position = Vector2(24, 24)
 texture = SubResource("GradientTexture1D_egq61")
 region_enabled = true
