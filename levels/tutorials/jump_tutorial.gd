@@ -24,9 +24,9 @@ func _init_texts() -> void:
 		"While on the D platform, play the D note on the keyboard ({D_note} key) to jump",
 	])
 
-	_texts_web.append_array(_texts)
+	_texts_web = _texts.duplicate()
 	for i in [Step.MOVE_TO_C, Step.MOVE_TO_D]:
-		_texts_web[i].replace(" (← or →)", "")
+		_texts_web[i] = _texts_web[i].replace("arrow keys (← or →)", "left or right arrow keys")
 
 
 func _on_player_jumped(_notes: int) -> void:

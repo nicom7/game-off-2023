@@ -11,7 +11,7 @@ var _texts_web: PackedStringArray = []
 signal step_changed(step: int)
 
 func _get_texts() -> PackedStringArray:
-	return _texts_web if OS.has_feature("web") else _texts
+	return _texts_web if (not _texts_web.is_empty() and OS.has_feature("web")) else _texts
 
 ## Should be overridden by derived classes
 func _init_texts() -> void:

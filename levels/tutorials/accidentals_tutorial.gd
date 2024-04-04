@@ -10,8 +10,8 @@ func _init_texts() -> void:
 		"To play sharp (#) notes, use the row above the main keys.\n{C♯_note} key is note C#, {D♯_note} key is note D# and so on."
 	])
 
-	_texts.append_array(_texts_web)
-	_texts[0].replace("#", "♯")
+	_texts = _texts_web.duplicate()
+	_texts[0] = _texts[0].replace("#", "♯")
 
 func _on_block_sequence_sequence_finished(_valid) -> void:
 	next_step()
