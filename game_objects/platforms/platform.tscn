@@ -37,6 +37,15 @@ theme = ExtResource("2_vku24")
 text = "A"
 vertical_alignment = 2
 
+[node name="LeftKeyLabel" type="Label" parent="BottomPivot/LeftPivot/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 0.703921, 0.668628, 1)
+layout_mode = 2
+theme = ExtResource("2_vku24")
+text = "{A_note}"
+vertical_alignment = 2
+
 [node name="RightPivot" type="Node2D" parent="BottomPivot"]
 unique_name_in_owner = true
 position = Vector2(96, 0)
@@ -60,5 +69,15 @@ self_modulate = Color(1, 0.703921, 0.668628, 1)
 layout_mode = 2
 theme = ExtResource("2_vku24")
 text = "A"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="RightKeyLabel" type="Label" parent="BottomPivot/RightPivot/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 0.703921, 0.668628, 1)
+layout_mode = 2
+theme = ExtResource("2_vku24")
+text = "{A_note}"
 horizontal_alignment = 2
 vertical_alignment = 2
