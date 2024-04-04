@@ -14,6 +14,7 @@ extends Node2D
 			octave = value
 			_update_tone()
 
+## Display keyboard keys instead of tones
 @export var show_keys: = false:
 	set(value):
 		if show_keys != value:
@@ -82,3 +83,4 @@ func _update_tone() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_tone()
+	_update_show_keys()

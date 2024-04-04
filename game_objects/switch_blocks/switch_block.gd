@@ -14,9 +14,9 @@ signal body_entered(body: Node2D)
 ## Display keyboard keys instead of tones
 @export var show_keys: = false:
 	set(value):
-		show_keys = value
-		if is_node_ready():
-			%ToneLabel.show_keys = show_keys
+		if show_keys != value:
+			show_keys = value
+			_update_show_keys()
 
 @export var octave: int = 0
 @export var hit_valid: bool = true
@@ -62,9 +62,14 @@ func _update_block() -> void:
 	%HitVFX.self_modulate = tone_color.lightened(Globals.LIGHT_COLOR_AMOUNT)
 
 
+func _update_show_keys() -> void:
+	%ToneLabel.show_keys = show_keys
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_block()
+	_update_show_keys()
 
 
 func _on_hit_detection_body_entered(body: Node2D) -> void:

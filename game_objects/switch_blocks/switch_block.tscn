@@ -99,6 +99,7 @@ centered = false
 unique_name_in_owner = true
 self_modulate = Color(1, 0.703921, 0.668628, 1)
 pivot_offset = Vector2(24, 24)
+show_keys = false
 
 [node name="HitVFX" type="Sprite2D" parent="Block"]
 unique_name_in_owner = true

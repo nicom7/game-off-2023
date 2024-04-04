@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://bm8j5kvkieyqj" path="res://tilesets/environment.tres" id="1_ge6jh"]
 [ext_resource type="Script" path="res://game_objects/platforms/platform.gd" id="2_5wvgf"]
-[ext_resource type="Theme" uid="uid://cs15umpslf7mq" path="res://themes/tone_label.tres" id="2_vku24"]
+[ext_resource type="PackedScene" uid="uid://dfuvfdol77fc2" path="res://gui/tone_label.tscn" id="3_o3lkj"]
 
 [node name="Platform" type="TileMap"]
 tile_set = ExtResource("1_ge6jh")
@@ -29,22 +29,10 @@ grow_vertical = 0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="LeftLabel" type="Label" parent="BottomPivot/LeftPivot/MarginContainer"]
+[node name="LeftToneLabel" parent="BottomPivot/LeftPivot/MarginContainer" instance=ExtResource("3_o3lkj")]
 unique_name_in_owner = true
-self_modulate = Color(1, 0.703921, 0.668628, 1)
 layout_mode = 2
-theme = ExtResource("2_vku24")
-text = "A"
-vertical_alignment = 2
-
-[node name="LeftKeyLabel" type="Label" parent="BottomPivot/LeftPivot/MarginContainer"]
-unique_name_in_owner = true
-visible = false
-self_modulate = Color(1, 0.703921, 0.668628, 1)
-layout_mode = 2
-theme = ExtResource("2_vku24")
-text = "{A_note}"
-vertical_alignment = 2
+show_keys = false
 
 [node name="RightPivot" type="Node2D" parent="BottomPivot"]
 unique_name_in_owner = true
@@ -63,21 +51,7 @@ grow_vertical = 0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="RightLabel" type="Label" parent="BottomPivot/RightPivot/MarginContainer"]
+[node name="RightToneLabel" parent="BottomPivot/RightPivot/MarginContainer" instance=ExtResource("3_o3lkj")]
 unique_name_in_owner = true
-self_modulate = Color(1, 0.703921, 0.668628, 1)
 layout_mode = 2
-theme = ExtResource("2_vku24")
-text = "A"
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="RightKeyLabel" type="Label" parent="BottomPivot/RightPivot/MarginContainer"]
-unique_name_in_owner = true
-visible = false
-self_modulate = Color(1, 0.703921, 0.668628, 1)
-layout_mode = 2
-theme = ExtResource("2_vku24")
-text = "{A_note}"
-horizontal_alignment = 2
-vertical_alignment = 2
+show_keys = false
