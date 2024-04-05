@@ -11,6 +11,13 @@ signal body_entered(body: Node2D)
 			tone = value
 			_update_block()
 
+## Display keyboard keys instead of tones
+@export var show_keys: = false:
+	set(value):
+		if show_keys != value:
+			show_keys = value
+			_update_show_keys()
+
 @export var octave: int = 0
 @export var hit_valid: bool = true
 
@@ -28,6 +35,7 @@ var hit_detection_enabled: bool:
 
 var _cur_hit_valid: bool = false
 
+
 func hit() -> void:
 	_cur_hit_valid = hit_valid
 	is_hit.emit(self)
@@ -42,32 +50,31 @@ func hit() -> void:
 	block_note_player.start()
 	$NotePlayerTimer.start()
 
+
 func _update_block() -> void:
 	if not is_node_ready():
 		return
 
+	%ToneLabel.tone = tone
+
 	var tone_color = Config.tone_colors[tone]
 	%Block.self_modulate = tone_color
-	%ToneLabel.self_modulate = tone_color.lightened(Globals.LIGHT_COLOR_AMOUNT)
 	%HitVFX.self_modulate = tone_color.lightened(Globals.LIGHT_COLOR_AMOUNT)
-	var label = Globals.get_label_from_tone(tone)
-	var tone_label: Label = %ToneLabel
 
-	tone_label.text = label
 
-func _update_tone_label() -> void:
-	%ToneLabel.scale = Vector2.ONE / remap(maxi(%ToneLabel.text.length(), 1), 1, 2, 1, 1.25)
-	%ToneLabel.pivot_offset = %ToneLabel.size / 2
+func _update_show_keys() -> void:
+	%ToneLabel.show_keys = show_keys
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_block()
+	_update_show_keys()
 
-func _process(_delta: float) -> void:
-	_update_tone_label()
 
 func _on_hit_detection_body_entered(body: Node2D) -> void:
 	body_entered.emit(body)
+
 
 func _on_body_entered(body: Node2D) -> void:
 	var character = body as Character

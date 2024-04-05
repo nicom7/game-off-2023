@@ -34,6 +34,7 @@ var _bounding_rect: Rect2
 var _overview_zoom: Vector2
 
 var _stages: Array[Node] = []
+var _show_keys: = false
 
 func _start() -> void:
 	%BlockSequence.start()
@@ -166,6 +167,16 @@ func _ready() -> void:
 	_setup_boundaries()
 	_setup_walls()
 	_update_current_state()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_tone_labels"):
+		_show_keys = not _show_keys
+
+		for s in _stages:
+			var platform_sets = _get_platform_sets(s)
+			for ps in platform_sets:
+				ps.show_keys = _show_keys
 
 
 func _on_player_current_tone_changed(tone: Globals.Tone) -> void:

@@ -54,12 +54,19 @@ static func get_note_from_degree(degree: int, tonic: Tone) -> Tone:
 static func format_input_actions(string: String) -> String:
 	if _inputs.is_empty():
 		# Lazy-initialization of _inputs dictionary
-		var tone_actions: PackedStringArray = get_all_tone_actions()
+		var tone_actions: PackedStringArray = InputMap.get_actions()
 
 		for action in tone_actions:
-			var ev: InputEventKey = InputMap.action_get_events(action)[0] as InputEventKey
-			var kc: Key = DisplayServer.keyboard_get_keycode_from_physical(ev.physical_keycode)
-			_inputs[action] = String.chr(kc)
+			var action_events = InputMap.action_get_events(action)
+			if not action_events.is_empty():
+				var ev: InputEventKey = InputMap.action_get_events(action)[0] as InputEventKey
+				if ev:
+					var kc: Key = DisplayServer.keyboard_get_keycode_from_physical(
+						ev.physical_keycode if ev.physical_keycode != 0 else ev.keycode)
+					# Use keycode string if character is non-printable
+					_inputs[action] = OS.get_keycode_string(kc) if (kc & Key.KEY_SPECIAL) else String.chr(kc)
+
+		print(_inputs)
 
 	return string.format(_inputs)
 

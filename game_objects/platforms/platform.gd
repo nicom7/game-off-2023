@@ -15,6 +15,14 @@ extends TileMap
 
 @export var octave: int = 0
 
+## Display keyboard keys instead of tones
+@export var show_keys: = false:
+	set(value):
+		if show_keys != value:
+			show_keys = value
+			_update_show_keys()
+
+
 func _update_size():
 	if not is_node_ready():
 		return
@@ -37,6 +45,7 @@ func _update_size():
 
 	set_cells_terrain_connect(0, cells, 0, 0)
 
+
 func _update_tone() -> void:
 	if not is_node_ready():
 		return
@@ -44,13 +53,20 @@ func _update_tone() -> void:
 	var tone_color = Config.tone_colors[tone]
 	self.set_layer_modulate(0, tone_color)
 
-	var label = Globals.get_label_from_tone(tone)
-	%LeftLabel.text = label
-	%LeftLabel.self_modulate = tone_color.lightened(Globals.LIGHT_COLOR_AMOUNT)
-	%RightLabel.text = label
-	%RightLabel.self_modulate = tone_color.lightened(Globals.LIGHT_COLOR_AMOUNT)
+	%LeftToneLabel.tone = tone
+	%RightToneLabel.tone = tone
+
+
+func _update_show_keys() -> void:
+	if not is_node_ready():
+		return
+
+	%LeftToneLabel.show_keys = show_keys
+	%RightToneLabel.show_keys = show_keys
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_size()
 	_update_tone()
+	_update_show_keys()
