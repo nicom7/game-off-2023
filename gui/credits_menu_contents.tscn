@@ -59,13 +59,13 @@ bbcode_enabled = true
 text = "[center]Sound design using
 [font_size=32][color=orange]SURGE XT[/color][/font_size]
 
-[font_size=20]surge-synthesizer.github.io/[/font_size][/center]"
+[font_size=20][url=https://surge-synthesizer.github.io]surge-synthesizer.github.io[/url][/font_size][/center]"
 fit_content = true
 
 [node name="Control" type="Control" parent="Center"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.25
+size_flags_stretch_ratio = 0.1
 
 [node name="CreditsContainer" type="VBoxContainer" parent="Center"]
 layout_mode = 2
@@ -89,9 +89,6 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Center/CreditsContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-
 [node name="CreditsInfoLbl" type="RichTextLabel" parent="Center/CreditsContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(420, 420)
 layout_mode = 2
@@ -112,23 +109,20 @@ Audio & Programming
 Nicolas Comtois
 [/font_size]
 Additional Art
-[font_size=20]
-craftpix.net
+[font_size=16]
+Backgrounds by [url=https://craftpix.net]craftpix.net[/url]
 
-Computer keyboard image by
-Denelson83 (based on copyright claims).
-CC BY-SA 3.0,
-https://commons.wikimedia.org/w/
-index.php?curid=508928
+Computer keyboard image by Denelson83 (based on copyright claims). CC BY-SA 3.0, [url]https://commons.wikimedia.org/w/index.php?curid=508928[/url]
+
+Keycap image created by Freepik - Flaticon, [url]https://www.flaticon.com/free-icons/letter[/url]
 [/font_size]
 Thanks for playing! :D[/center]"
-autowrap_mode = 0
 script = ExtResource("6_y4cu6")
 
 [node name="Control2" type="Control" parent="Center"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.25
+size_flags_stretch_ratio = 0.1
 
 [node name="RightSideContainer" type="VBoxContainer" parent="Center"]
 layout_mode = 2
@@ -148,7 +142,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_1ufcp")
 bbcode_enabled = true
 text = "[center]Game website
 
-[font_size=20]nicom7.itch.io/musikeys[/font_size][/center]"
+[font_size=20][url=https://nicom7.itch.io/musikeys]nicom7.itch.io/musikeys[/url][/font_size][/center]"
 fit_content = true
 
 [node name="PanelContainer" type="PanelContainer" parent="Center/RightSideContainer"]
@@ -170,3 +164,6 @@ texture = ExtResource("4_i2agc")
 expand_mode = 5
 
 [connection signal="pressed" from="Header/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="meta_clicked" from="Center/LeftSideContainer/SurgeXTContainer/SurgeXTLbl" to="." method="_on_surge_xt_lbl_meta_clicked"]
+[connection signal="meta_clicked" from="Center/CreditsContainer/PanelContainer/MarginContainer/CreditsInfoLbl" to="." method="_on_credits_info_lbl_meta_clicked"]
+[connection signal="meta_clicked" from="Center/RightSideContainer/PanelContainer2/Label" to="." method="_on_label_meta_clicked"]
