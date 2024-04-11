@@ -8,10 +8,10 @@
 [ext_resource type="Script" path="res://levels/basic_level_info.gd" id="6_708ue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3iscd"]
-size = Vector2(576, 288)
+size = Vector2(1152, 288)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtpua"]
-size = Vector2(384, 288)
+size = Vector2(624, 288)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ax677"]
 size = Vector2(336, 288)

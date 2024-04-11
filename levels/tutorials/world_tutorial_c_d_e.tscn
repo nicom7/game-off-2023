@@ -9,6 +9,7 @@
 
 [node name="World" instance=ExtResource("1_46kmy")]
 script = ExtResource("2_ee2nw")
+tutorial = true
 
 [node name="Background" parent="." index="0"]
 background = 1
