@@ -100,21 +100,24 @@ func _process(_delta: float) -> void:
 	var max_top: = %BottomPivot/TopLabelMaxPos as Node2D
 	var max_bottom: = %TopPivot/BottomLabelMaxPos as Node2D
 
-	var r: = get_viewport().get_visible_rect()
-	var t: = get_viewport_transform()
-	r = r * t
+	var r: = get_viewport_rect()
 
-	top_pivot.global_position = min_top.global_position
-	if top_pivot.global_position.y < r.position.y:
-		top_pivot.global_position.y = r.position.y
+	top_pivot.position = min_top.position
+	var tp_screen_pos = top_pivot.get_screen_transform() * top_pivot.position
+	if tp_screen_pos.y < r.position.y:
+		tp_screen_pos.y = r.position.y
+	top_pivot.position = top_pivot.get_screen_transform().affine_inverse() * tp_screen_pos
 	if top_pivot.global_position.y > max_top.global_position.y:
 		top_pivot.global_position.y = max_top.global_position.y
 
-	bottom_pivot.global_position = min_bottom.global_position
-	if bottom_pivot.global_position.y > r.end.y:
-		bottom_pivot.global_position.y = r.end.y
+	bottom_pivot.position = min_bottom.position
+	var bp_screen_pos = bottom_pivot.get_screen_transform() * bottom_pivot.position
+	if bp_screen_pos.y > r.end.y:
+		bp_screen_pos.y = r.end.y
+	bottom_pivot.position = bottom_pivot.get_screen_transform().affine_inverse() * bp_screen_pos
 	if bottom_pivot.global_position.y < max_bottom.global_position.y:
 		bottom_pivot.global_position.y = max_bottom.global_position.y
+
 
 func _on_lower_interaction_interacted(player, interactive_object) -> void:
 	if player and not player.climbing:

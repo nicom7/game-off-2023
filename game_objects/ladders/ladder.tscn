@@ -1,25 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://knuujq4ac74r"]
+[gd_scene load_steps=8 format=3 uid="uid://knuujq4ac74r"]
 
 [ext_resource type="Script" path="res://game_objects/ladders/ladder.gd" id="1_dwuwm"]
 [ext_resource type="Texture2D" uid="uid://c6txl6jf3smyb" path="res://sprites/ladder.png" id="2_wfvfp"]
 [ext_resource type="PackedScene" uid="uid://c60xwma5dmoyi" path="res://game_objects/interactive_object.tscn" id="3_4txev"]
 [ext_resource type="PackedScene" uid="uid://7y3jaf7ow5yt" path="res://game_objects/tile_detector_area.tscn" id="4_hntqy"]
 [ext_resource type="PackedScene" uid="uid://dfuvfdol77fc2" path="res://gui/tone_label.tscn" id="5_n1kgs"]
-[ext_resource type="Script" path="res://game_objects/camera.gd" id="6_sqwao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svqag"]
 size = Vector2(48, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvy5e"]
 size = Vector2(48, 48)
-
-[sub_resource type="Curve" id="Curve_4i5ur"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_gnjwg"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [node name="Ladder" type="Node2D"]
 texture_repeat = 2
@@ -68,7 +59,7 @@ position = Vector2(24, 0)
 unique_name_in_owner = true
 offset_top = -12.0
 offset_bottom = -12.0
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 use_top_left = true
 
 [node name="TopLabelMaxPos" type="Node2D" parent="BottomPivot"]
@@ -98,7 +89,7 @@ position = Vector2(24, 0)
 unique_name_in_owner = true
 offset_top = 12.0
 offset_bottom = 12.0
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 use_top_left = true
 
 [node name="BottomLabelMaxPos" type="Node2D" parent="TopPivot"]
@@ -106,17 +97,6 @@ position = Vector2(24, 48)
 
 [node name="TopLabelMinPos" type="Node2D" parent="TopPivot"]
 position = Vector2(24, 0)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("6_sqwao")
-target_node_path = NodePath("../TestTarget")
-move_speed = 0.1
-position_easing = SubResource("Curve_4i5ur")
-zoom_speed = 0.1
-zoom_easing = SubResource("Curve_gnjwg")
-
-[node name="TestTarget" type="Node2D" parent="."]
-position = Vector2(33, 246)
 
 [connection signal="body_exited" from="Pivot/Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="interacted" from="BottomPivot/LowerInteraction" to="." method="_on_lower_interaction_interacted"]
