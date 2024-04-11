@@ -29,6 +29,13 @@ var _lower_tone: Globals.Tone = Globals.Tone.A:
 			_lower_tone = value
 			_update_lower_tone()
 
+var show_keys: = false:
+	set(value):
+		if show_keys != value:
+			show_keys = value
+			_update_show_keys()
+
+
 func _update_upper_tone() -> void:
 	if not is_node_ready() or Engine.is_editor_hint():
 		return
@@ -36,12 +43,18 @@ func _update_upper_tone() -> void:
 	climb_up_notes = Globals.get_bitfield_from_notes([_upper_tone])
 	$BottomPivot/LowerInteraction.interact_notes = climb_up_notes
 
+	%UpperToneLabel.tone = _upper_tone
+
+
 func _update_lower_tone() -> void:
 	if not is_node_ready() or Engine.is_editor_hint():
 		return
 
 	climb_down_notes = Globals.get_bitfield_from_notes([_lower_tone])
 	$TopPivot/UpperInteraction.interact_notes = climb_down_notes
+
+	%LowerToneLabel.tone = _lower_tone
+
 
 func _update_size():
 	if not is_node_ready():
@@ -53,9 +66,18 @@ func _update_size():
 	%Area2D.scale.y = size
 	%BottomPivot.position.y = sprite_size.y
 
+
 func _update_color():
 	if is_node_ready():
 		%Ladder.modulate = color
+
+
+func _update_show_keys():
+	if not is_node_ready():
+		return
+
+	%LowerToneLabel.show_keys = show_keys
+	%UpperToneLabel.show_keys = show_keys
 
 
 # Called when the node enters the scene tree for the first time.
@@ -64,6 +86,35 @@ func _ready() -> void:
 	_update_upper_tone()
 	_update_lower_tone()
 
+
+func _process(_delta: float) -> void:
+	if not is_node_ready() or Engine.is_editor_hint():
+		return
+
+	var top_pivot: = %TopPivot/LabelPivot as Node2D
+	var bottom_pivot: = %BottomPivot/LabelPivot as Node2D
+
+	# Do not draw labels too far
+	var min_top: = %TopPivot/TopLabelMinPos as Node2D
+	var min_bottom: = %BottomPivot/BottomLabelMinPos as Node2D
+	var max_top: = %BottomPivot/TopLabelMaxPos as Node2D
+	var max_bottom: = %TopPivot/BottomLabelMaxPos as Node2D
+
+	var r: = get_viewport().get_visible_rect()
+	var t: = get_viewport_transform()
+	r = r * t
+
+	top_pivot.global_position = min_top.global_position
+	if top_pivot.global_position.y < r.position.y:
+		top_pivot.global_position.y = r.position.y
+	if top_pivot.global_position.y > max_top.global_position.y:
+		top_pivot.global_position.y = max_top.global_position.y
+
+	bottom_pivot.global_position = min_bottom.global_position
+	if bottom_pivot.global_position.y > r.end.y:
+		bottom_pivot.global_position.y = r.end.y
+	if bottom_pivot.global_position.y < max_bottom.global_position.y:
+		bottom_pivot.global_position.y = max_bottom.global_position.y
 
 func _on_lower_interaction_interacted(player, interactive_object) -> void:
 	if player and not player.climbing:
