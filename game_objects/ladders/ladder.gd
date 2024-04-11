@@ -7,6 +7,8 @@ extends Node2D
 		size = value
 		_update_size()
 
+@export var tone_label_fade_duration: float = 0.25
+
 var color: Color = Color.WHITE:
 	set(value):
 		color = value
@@ -64,6 +66,7 @@ func _update_size():
 	sprite_size.y *= size
 	%Ladder.region_rect = Rect2(Vector2.ZERO, sprite_size)
 	%Area2D.scale.y = size
+	%ToneLabelArea2D.scale.y = size
 	%BottomPivot.position.y = sprite_size.y
 
 
@@ -95,10 +98,10 @@ func _process(_delta: float) -> void:
 	var bottom_pivot: = %BottomPivot/LabelPivot as Node2D
 
 	# Do not draw labels too far
-	var min_top: = %TopPivot/TopLabelMinPos as Node2D
-	var min_bottom: = %BottomPivot/BottomLabelMinPos as Node2D
-	var max_top: = %BottomPivot/TopLabelMaxPos as Node2D
-	var max_bottom: = %TopPivot/BottomLabelMaxPos as Node2D
+	var min_top: = %TopPivot/UpperLabelMinPos as Node2D
+	var min_bottom: = %BottomPivot/LowerLabelMinPos as Node2D
+	var max_top: = %BottomPivot/UpperLabelMaxPos as Node2D
+	var max_bottom: = %TopPivot/LowerLabelMaxPos as Node2D
 
 	var r: = get_viewport_rect()
 
@@ -119,22 +122,34 @@ func _process(_delta: float) -> void:
 		bottom_pivot.global_position.y = max_bottom.global_position.y
 
 
-func _on_lower_interaction_interacted(player, interactive_object) -> void:
+func _enter_climb(player, interactive_object) -> void:
 	if player and not player.climbing:
 		player.global_position = interactive_object.global_position
 		player.enter_climb(self)
 
 
-func _on_upper_interaction_interacted(player, interactive_object) -> void:
-	if player and not player.climbing:
-		player.global_position = interactive_object.global_position
-		player.enter_climb(self)
-
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _exit_climb(body: Node2D) -> void:
 	var player = body as Character
 	if player and player.climbing:
 		player.exit_climb()
+
+
+func _fade_tone_labels(_color: Color, _duration: float) -> void:
+	create_tween().tween_property(%LowerToneLabel, "modulate", _color, _duration)
+	create_tween().tween_property(%UpperToneLabel, "modulate", _color, _duration)
+
+
+
+func _on_lower_interaction_interacted(player, interactive_object) -> void:
+	_enter_climb(player, interactive_object)
+
+
+func _on_upper_interaction_interacted(player, interactive_object) -> void:
+	_enter_climb(player, interactive_object)
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	_exit_climb(body)
 
 
 func _on_bottom_tile_detector_area_tone_changed(tone) -> void:
@@ -143,3 +158,15 @@ func _on_bottom_tile_detector_area_tone_changed(tone) -> void:
 
 func _on_top_tile_detector_area_tone_changed(tone) -> void:
 	_upper_tone = tone
+
+
+func _on_tone_label_area_2d_body_entered(body: Node2D) -> void:
+	var player = body as Character
+	if player:
+		_fade_tone_labels(Color.WHITE, tone_label_fade_duration)
+
+
+func _on_tone_label_area_2d_body_exited(body: Node2D) -> void:
+	var player = body as Character
+	if player:
+		_fade_tone_labels(Color(1, 1, 1, 0), tone_label_fade_duration)
