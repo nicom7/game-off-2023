@@ -32,9 +32,9 @@ var current_tone: Globals.Tone = Globals.Tone.A:
 	get:
 		return current_tone
 	set(value):
-		color = Config.tone_colors[current_tone]
 		if current_tone != value:
 			current_tone = value
+			color = Config.tone_colors[current_tone]
 			current_tone_changed.emit(current_tone)
 
 var current_octave: int = 0:
