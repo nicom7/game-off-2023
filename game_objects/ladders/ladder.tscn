@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://knuujq4ac74r"]
+[gd_scene load_steps=9 format=3 uid="uid://knuujq4ac74r"]
 
 [ext_resource type="Script" path="res://game_objects/ladders/ladder.gd" id="1_dwuwm"]
 [ext_resource type="Texture2D" uid="uid://c6txl6jf3smyb" path="res://sprites/ladder.png" id="2_wfvfp"]
 [ext_resource type="PackedScene" uid="uid://c60xwma5dmoyi" path="res://game_objects/interactive_object.tscn" id="3_4txev"]
 [ext_resource type="PackedScene" uid="uid://7y3jaf7ow5yt" path="res://game_objects/tile_detector_area.tscn" id="4_hntqy"]
+[ext_resource type="PackedScene" uid="uid://dfuvfdol77fc2" path="res://gui/tone_label.tscn" id="5_n1kgs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_svqag"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffp47"]
 size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stnec"]
+size = Vector2(144, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvy5e"]
 size = Vector2(48, 48)
@@ -14,6 +18,8 @@ size = Vector2(48, 48)
 [node name="Ladder" type="Node2D"]
 texture_repeat = 2
 script = ExtResource("1_dwuwm")
+metadata/_edit_vertical_guides_ = [0.0, 48.0]
+metadata/_edit_horizontal_guides_ = [48.0, 0.0, 96.0]
 
 [node name="Pivot" type="Node2D" parent="."]
 
@@ -32,7 +38,18 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Area2D"]
 position = Vector2(24, 24)
-shape = SubResource("RectangleShape2D_svqag")
+shape = SubResource("RectangleShape2D_ffp47")
+
+[node name="ToneLabelArea2D" type="Area2D" parent="Pivot"]
+unique_name_in_owner = true
+position = Vector2(0, -24)
+scale = Vector2(1, 2)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/ToneLabelArea2D"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_stnec")
 
 [node name="BottomPivot" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -49,6 +66,23 @@ shape = SubResource("RectangleShape2D_uvy5e")
 [node name="BottomTileDetectorArea" parent="BottomPivot" instance=ExtResource("4_hntqy")]
 position = Vector2(24, 6)
 
+[node name="LabelPivot" type="Node2D" parent="BottomPivot"]
+position = Vector2(24, 0)
+
+[node name="LowerToneLabel" parent="BottomPivot/LabelPivot" instance=ExtResource("5_n1kgs")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+offset_top = -12.0
+offset_bottom = -12.0
+scale = Vector2(0.75, 0.75)
+use_top_left = true
+
+[node name="UpperLabelMaxPos" type="Node2D" parent="BottomPivot"]
+position = Vector2(24, -48)
+
+[node name="LowerLabelMinPos" type="Node2D" parent="BottomPivot"]
+position = Vector2(24, 0)
+
 [node name="TopPivot" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -63,7 +97,26 @@ shape = SubResource("RectangleShape2D_uvy5e")
 [node name="TopTileDetectorArea" parent="TopPivot" instance=ExtResource("4_hntqy")]
 position = Vector2(24, 6)
 
+[node name="LabelPivot" type="Node2D" parent="TopPivot"]
+position = Vector2(24, 0)
+
+[node name="UpperToneLabel" parent="TopPivot/LabelPivot" instance=ExtResource("5_n1kgs")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+offset_top = 12.0
+offset_bottom = 12.0
+scale = Vector2(0.75, 0.75)
+use_top_left = true
+
+[node name="LowerLabelMaxPos" type="Node2D" parent="TopPivot"]
+position = Vector2(24, 48)
+
+[node name="UpperLabelMinPos" type="Node2D" parent="TopPivot"]
+position = Vector2(24, 0)
+
 [connection signal="body_exited" from="Pivot/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Pivot/ToneLabelArea2D" to="." method="_on_tone_label_area_2d_body_entered"]
+[connection signal="body_exited" from="Pivot/ToneLabelArea2D" to="." method="_on_tone_label_area_2d_body_exited"]
 [connection signal="interacted" from="BottomPivot/LowerInteraction" to="." method="_on_lower_interaction_interacted"]
 [connection signal="tone_changed" from="BottomPivot/BottomTileDetectorArea" to="." method="_on_bottom_tile_detector_area_tone_changed"]
 [connection signal="interacted" from="TopPivot/UpperInteraction" to="." method="_on_upper_interaction_interacted"]

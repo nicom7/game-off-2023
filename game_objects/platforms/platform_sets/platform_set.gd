@@ -63,6 +63,8 @@ func _update_show_keys() -> void:
 	for p in get_platforms():
 		p.show_keys = show_keys
 
+	for l in get_ladders():
+		l.show_keys = show_keys
 
 func _update_tone() -> void:
 	if not is_node_ready():

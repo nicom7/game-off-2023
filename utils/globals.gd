@@ -66,8 +66,6 @@ static func format_input_actions(string: String) -> String:
 					# Use keycode string if character is non-printable
 					_inputs[action] = OS.get_keycode_string(kc) if (kc & Key.KEY_SPECIAL) else String.chr(kc)
 
-		print(_inputs)
-
 	return string.format(_inputs)
 
 ## Replace project setting configs in curly braces with their corresponding values
