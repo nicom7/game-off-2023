@@ -139,7 +139,6 @@ func _fade_tone_labels(_color: Color, _duration: float) -> void:
 	create_tween().tween_property(%UpperToneLabel, "modulate", _color, _duration)
 
 
-
 func _on_lower_interaction_interacted(player, interactive_object) -> void:
 	_enter_climb(player, interactive_object)
 
