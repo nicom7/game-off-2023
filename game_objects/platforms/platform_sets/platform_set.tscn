@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://knuujq4ac74r" path="res://game_objects/ladders/ladder.tscn" id="4_i4kyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xdeo"]
+resource_local_to_scene = true
 size = Vector2(96, 288)
 
 [node name="PlatformSet" type="Node2D"]
