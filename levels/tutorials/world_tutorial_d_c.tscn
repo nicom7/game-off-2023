@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5kd21pwsbcmx"]
+[gd_scene load_steps=8 format=3 uid="uid://b5kd21pwsbcmx"]
 
 [ext_resource type="PackedScene" uid="uid://bgmrmwu61uqnt" path="res://levels/world_a.tscn" id="1_4pbjb"]
 [ext_resource type="Script" path="res://levels/tutorials/world_tutorial_d_c.gd" id="2_shlla"]
 [ext_resource type="PackedScene" uid="uid://bkol8urwsl85l" path="res://levels/tutorials/block_sequence_tutorial.tscn" id="3_yfp6c"]
 [ext_resource type="Script" path="res://levels/tutorials/block_sequence_tutorial_d_c.gd" id="4_sm41l"]
 [ext_resource type="Resource" uid="uid://xbtv2efpt7yu" path="res://levels/level_infos/level_tutorial_d_c.tres" id="6_a8cuq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdgtd"]
+size = Vector2(576, 288)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1l8h"]
+size = Vector2(384, 288)
 
 [node name="World" instance=ExtResource("1_4pbjb")]
 script = ExtResource("2_shlla")
@@ -19,6 +25,7 @@ position = Vector2(960, 288)
 
 [node name="BoundingRect" parent="Environment/Stages/Stage0/PlatformSet" index="0"]
 position = Vector2(240, -48)
+shape = SubResource("RectangleShape2D_fdgtd")
 
 [node name="Platform" parent="Environment/Stages/Stage0/PlatformSet" index="1"]
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 131072, 0, 65541, 131072, 2, 6, 131072, 0, 65542, 131072, 2, 7, 131072, 0, 65543, 131072, 2, 8, 131072, 0, 65544, 131072, 2, 9, 131072, 0, 65545, 131072, 2, 10, 131072, 0, 65546, 131072, 2, 11, 196608, 0, 65547, 196608, 2)
@@ -32,6 +39,7 @@ position = Vector2(624, 528)
 
 [node name="BoundingRect" parent="Environment/Stages/Stage0/PlatformSet2" index="0"]
 position = Vector2(144, -48)
+shape = SubResource("RectangleShape2D_w1l8h")
 
 [node name="Platform" parent="Environment/Stages/Stage0/PlatformSet2" index="1"]
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 65536, 65536, 2, 1, 131072, 0, 65537, 131072, 2, 2, 131072, 0, 65538, 131072, 2, 3, 131072, 0, 65539, 131072, 2, 4, 131072, 0, 65540, 131072, 2, 5, 131072, 0, 65541, 131072, 2, 6, 131072, 0, 65542, 131072, 2, 7, 196608, 0, 65543, 196608, 2)

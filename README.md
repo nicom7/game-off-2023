@@ -39,6 +39,7 @@ To **climb stairs**, press the key of the platform you want to reach. For exampl
 - Nicolas Comtois
 
 ### Additional Art
-- craftpix.net
+- Backgrounds by [craftpix.net](https://craftpix.net)
+- Computer keyboard image by Denelson83 (based on copyright claims). CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=508928
 
 ### *Thanks for playing! :D*
